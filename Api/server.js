@@ -4,9 +4,11 @@ const app = express();
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const morgan = require('morgan');
-// const db = require('./db/db');
+const db = require('./db/db');
 const port =  process.env.PORT || 4000;
+const models = require('./Models/index');
 const indexRouter = require('./Router/app');
+const authRouter = require('./Router/auth.routers');  
 app.use(cors());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
@@ -14,6 +16,7 @@ app.use(morgan('dev'));
 
 
 app.use('/', indexRouter.router);
+app.use('/api', authRouter.router);
 // app.use('/api', userRouter.router);
 app.use((req, res, next) => { 
     const error = new Error('Not Found 404');
@@ -30,14 +33,12 @@ app.use((error, req, res, next) => {
     })
 });
 
-app.listen(port, () => {
-    console.log('Server is running on port => ' + port);
-});
 
-// db.sync().then(() => {
-//     app.listen(port, () => {
-//         console.log('Server is running on port => ' + port);
-//     });
-// } ).catch(err => {
-//     console.log(err);
-// });
+
+db.sync().then(() => {
+    app.listen(port, () => {
+        console.log('Server is running on port => ' + port);
+    });
+} ).catch(err => {
+    console.log(err);
+});
