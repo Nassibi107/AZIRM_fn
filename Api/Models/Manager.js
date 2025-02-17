@@ -9,7 +9,7 @@ const Manager = db.define('Manager', {
     autoIncrement: true,
   },
   references : {
-    type: DataTypes.BIGINT,
+    type: DataTypes.STRING,
     allowNull: false,
   },
 });

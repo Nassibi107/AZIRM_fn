@@ -30,10 +30,10 @@ exports.register = async (req, res) => {
             income,
             status,
         });
-        const ref =  Math.floor(Math.random() * 1000);
+        const ref = firstName + lastName + Math.floor(Math.random() * 1000);
         if (role === 'manager') {
             await Model.Manager.create({
-                references: ref,
+                references: ref.toString(),
             });
         }
         res.status(201).json({
@@ -45,3 +45,36 @@ exports.register = async (req, res) => {
         res.status(500).json({msg:'Server Error'});
     }
 }
+
+exports.login = async (req, res) => {
+    const { emailAddress, password } = req.body;
+    try {
+        const user = await Model.User.findOne({
+            where: {
+                emailAddress
+            }
+        });
+        if (!user) {
+            return res.status(404).json({
+                success: false,
+                message: 'User not found'
+            });
+        }
+        const isMatch = await bcrypt.compare(password, user.password);
+        if (!isMatch) {
+            return res.status(401).json({
+                success: false,
+                message: 'Invalid credentials'
+            });
+        }
+        const token = jwtHelper.sign({ id : user.id, email: user.emailAddress ,name: user.firstName});
+        res.status(200).json({
+            success: true,
+            token
+        });
+    } catch (error) {
+        console.error(error.message);
+        res.status(500).json({msg:'Server Error'});
+    }
+}
+
