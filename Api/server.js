@@ -9,6 +9,7 @@ const port =  process.env.PORT || 4000;
 const models = require('./Models/index');
 const indexRouter = require('./Router/app');
 const authRouter = require('./Router/auth.routers');  
+const adminRouter = require('./Router/admin.routers');  
 app.use(cors());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
@@ -17,6 +18,7 @@ app.use(morgan('dev'));
 
 app.use('/', indexRouter.router);
 app.use('/api', authRouter.router);
+app.use('/ad', adminRouter.router);
 // app.use('/api', userRouter.router);
 app.use((req, res, next) => { 
     const error = new Error('Not Found 404');
