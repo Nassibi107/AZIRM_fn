@@ -1,7 +1,8 @@
-const { DataTypes } = require('sequelize');
-const db = require('../db/db.js');
+const { DataTypes } = require("sequelize");
+const db = require('../db/db');
 
-const User = db.define('User', {
+
+const User = db.define("User", {
   id: {
     type: DataTypes.BIGINT,
     autoIncrement: true,
@@ -17,39 +18,43 @@ const User = db.define('User', {
   },
   phoneNumber: {
     type: DataTypes.STRING,
-  },
-  emailAddress: {
-    type: DataTypes.STRING,
     allowNull: false,
   },
+  email: {
+    type: DataTypes.STRING,
+    allowNull: false,
+    unique: true,
+    validate: {
+        isEmail: true // checks for email format
+    }
+  },
   role: {
-    type: DataTypes.ENUM('admin', 'manager', 'user'),
+    type: DataTypes.ENUM,
+    values: ['user', 'admin','leader'],
     allowNull: false,
   },
   address: {
     type: DataTypes.STRING,
-    allowNull: false,
   },
   password: {
     type: DataTypes.STRING,
     allowNull: false,
   },
   income: {
-    type: DataTypes.DECIMAL(8, 2),
-    allowNull: false,
+    type: DataTypes.DECIMAL,
+    defaultValue: 0,
   },
   status: {
-    type: DataTypes.BOOLEAN,
-    allowNull: false,
+    type: DataTypes.INTEGER,
+    defaultValue: 1,
   },
-}, {
-  tableName: 'user',
-  timestamps: true,
 });
 
 User.associate = (models) => {
-  User.belongsTo(models.Manager, { foreignKey: "managerId", as: "manager" });
-  User.belongsTo(models.Donation, { foreignKey: "donationId", as: "donation" });
+  User.belongsTo(models.Company, { foreignKey: "CmpRid", as: "company" });
+  User.hasMany(models.Donation, { foreignKey: "userId", as: "donations" }); // FIXED
 };
+
+
 
 module.exports = User;

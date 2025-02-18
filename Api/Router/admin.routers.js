@@ -2,11 +2,12 @@ const express = require('express');
 
 const router = express.Router();
 
-const authController = require("../controllers/authContoller.js");
+const adminController = require("../controllers/adminController.js");
 const authMiddleware = require("../middleware/authMiddleware.js");
 
-router.post('/register',authController.register);
+
 router.post('/login',authController.login);
-router.get('/me', authMiddleware.check, authController.me);
+
+router.post('/CreateCmp',authMiddleware.check,adminController.CreateCmp);
 
 exports.router = router;

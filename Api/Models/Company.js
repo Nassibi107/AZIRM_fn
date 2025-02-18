@@ -1,11 +1,11 @@
-const { DataTypes } = require('sequelize');
-const db = require('../db/db.js');
+const { DataTypes } = require("sequelize");
 
-const Company = db.define('Company', {
+const db = require('../db/db');
+const Company = db.define("Company", {
   cmpID: {
     type: DataTypes.BIGINT,
-    primaryKey: true,
     autoIncrement: true,
+    primaryKey: true,
   },
   label: {
     type: DataTypes.STRING,
@@ -14,7 +14,7 @@ const Company = db.define('Company', {
 });
 
 Company.associate = (models) => {
-  Company.hasMany(models.Manager, { foreignKey: "idCmp", as: "managers" });
+  Company.hasMany(models.User, { foreignKey: "CmpRid", as: "user" });
 };
 
 module.exports = Company;
