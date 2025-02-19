@@ -40,23 +40,25 @@ const UserTableRow = props => {
               cursor: "pointer"
             }
           }}>
-              {user.name}
+            {user.firstName}
             </Paragraph>
           </Box>
         </FlexBox>
       </TableCell>
-
+      
+      {/* <TableCell padding="normal">{user.lastName}</TableCell> */}
+      <TableCell padding="normal">{user.phoneNumber}</TableCell>
+      <TableCell padding="normal">{user.status}</TableCell>
       <TableCell padding="normal">{user.email}</TableCell>
-
-      <TableCell padding="normal">{user.company}</TableCell>
-
+      <TableCell padding="normal">{user.CmpRid}</TableCell>
+      <TableCell padding="normal">{user.address}</TableCell>
       <TableCell padding="normal">{user.role}</TableCell>
 
       <TableCell padding="normal">
         <TableMoreMenu open={openMenuEl} handleOpen={handleOpenMenu} handleClose={handleCloseOpenMenu}>
           <TableMoreMenuItem Icon={Edit} title="Edit" handleClick={() => {
           handleCloseOpenMenu();
-          navigate("/dashboard/add-user");
+          navigate("/user-add/".concat(user.id));
         }} />
           <TableMoreMenuItem Icon={DeleteOutline} title="Delete" handleClick={() => {
           handleCloseOpenMenu();

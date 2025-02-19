@@ -7,33 +7,53 @@ import { isDark } from "@/utils/constants"; // =================================
 
 // ==============================================================
 const headCells = [{
-  id: "name",
+  id: "firstName",
   numeric: true,
   disablePadding: false,
-  label: "Name"
-}, {
-  id: "email",
-  numeric: false,
+  label: "firstName"
+},
+//  {
+//   id: "lastName",
+//   numeric: false,
+//   disablePadding: false,
+//   label: "lastName"
+// }
+, {
+  id: "phoneNumber",
+  numeric: true,
   disablePadding: false,
-  label: "Email"
+  label: "phoneNumber"
+}, {
+  id: "status",
+  numeric: true,
+  disablePadding: false,
+  label: "status"
 }, {
   id: "company",
   numeric: true,
   disablePadding: false,
-  label: "Company"
-}, {
+  label: "company"
+} 
+, {
+  id: "email",
+  numeric: true,
+  disablePadding: false,
+  label: "email"
+} 
+, {
+  id: "address",
+  numeric: true,
+  disablePadding: false,
+  label: "address"
+} 
+, {
   id: "role",
   numeric: true,
   disablePadding: false,
-  label: "Role"
-}, {
-  id: "actions",
-  numeric: true,
-  disablePadding: false,
-  label: "Actions"
-} //   { id: "" },
-];
+  label: "role"
+} 
 
+];
 const UserTableHead = props => {
   const {
     onSelectAllRows,

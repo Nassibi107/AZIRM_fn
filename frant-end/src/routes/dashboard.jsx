@@ -13,6 +13,7 @@ const  HomePage= Loadable(lazy(() => import("@/pages/dashboard/ecommerce")));
 const  UserPage = Loadable(lazy(() => import("../pages/dashboard/users/UserList1Page")));
 const  UserGridPage = Loadable(lazy(() => import("../pages/dashboard/users/UserGrid2Page")));
 const  UserAddPage = Loadable(lazy(() => import("../pages/dashboard/users/add-new-user")));
+const  UserUpPage = Loadable(lazy(() => import("../pages/dashboard/users/updateUserPage")));
 const  Account = Loadable(lazy(() => import("../pages/dashboard/accounts")));
 
 
@@ -38,6 +39,10 @@ export const DashboardRoutes = [{
   {
     path : "/user-add" ,
     element : <UserAddPage/>
+  } ,
+  {
+    path : "/user-add/:id" ,
+    element : <UserUpPage/>
   } ,
   {
     path : "/account" ,

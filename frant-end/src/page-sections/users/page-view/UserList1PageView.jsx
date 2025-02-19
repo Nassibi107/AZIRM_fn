@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Box, Card, Table, TableBody, TableContainer, TablePagination } from "@mui/material"; // CUSTOM COMPONENTS
 
 import { Scrollbar } from "@/components/scrollbar";
@@ -8,13 +8,14 @@ import SearchArea from "../SearchArea";
 import HeadingArea from "../HeadingArea";
 import UserTableRow from "../UserTableRow";
 import UserTableHead from "../UserTableHead"; // CUSTOM DEFINED HOOK
-
+const ADMIN_ROUTE = import.meta.env.VITE_ADMIN_URL;
 import useMuiTable, { getComparator, stableSort } from "@/hooks/useMuiTable"; // CUSTOM DUMMY DATA
+import axios from "axios";
 
-import { USER_LIST } from "@/__fakeData__/users";
+
 
 const UserList1PageView = () => {
-  const [users, setUsers] = useState([...USER_LIST]);
+  const [users, setUsers] = useState([]);
   const [userFilter, setUserFilter] = useState({
     role: "",
     search: ""
@@ -34,6 +35,20 @@ const UserList1PageView = () => {
   } = useMuiTable({
     defaultOrderBy: "name"
   });
+
+  const _getUser = async () => {
+
+    try {
+      const res = await axios.get(`${ADMIN_ROUTE}/users`);
+
+      setUsers(res.data.data);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+  useEffect(() => {
+    _getUser(); 
+  }, []);
 
   const handleChangeFilter = (key, value) => {
     setUserFilter(state => ({ ...state,

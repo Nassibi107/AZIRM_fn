@@ -1,12 +1,13 @@
-import { Box, Button, Card, Grid, IconButton, styled, Switch, TextField } from "@mui/material";
+import { Box, Button, Card, Grid, IconButton, InputLabel, MenuItem, Select, styled, Switch, TextField } from "@mui/material";
 import PhotoCamera from "@mui/icons-material/PhotoCamera";
 import * as Yup from "yup";
 import { useFormik } from "formik"; // CUSTOM COMPONENTS
-
+import axios from "axios";
 import { Paragraph, Small } from "@/components/typography";
 import { FlexBetween, FlexRowAlign } from "@/components/flexbox"; // CUSTOM UTILS METHOD
 
 import { isDark } from "@/utils/constants"; // STYLED COMPONENTS
+const ADMIN_ROUTE = import.meta.env.VITE_ADMIN_URL;
 
 const SwitchWrapper = styled(FlexBetween)({
   width: "100%",
@@ -39,27 +40,51 @@ const UploadButton = styled(FlexRowAlign)(({
 
 const AddNewUserPageView = () => {
   const initialValues = {
-    fullName: "",
+    firstName: "",
+    lastName: "",
+    phoneNumber: "+",
     email: "",
-    phone: "",
-    country: "",
-    state: "",
-    city: "",
+    role: "",
     address: "",
-    zip: "",
-    about: ""
+    password: "",
+    label: ""
   };
+
   const validationSchema = Yup.object().shape({
-    fullName: Yup.string().required("Name is Required!"),
+    firstName: Yup.string().required("First Name is Required!"),
+    lastName: Yup.string().required("Last Name is Required!"),
+    phoneNumber: Yup.number().min(8).required("Phone is Required!"),
     email: Yup.string().email().required("Email is Required!"),
-    phone: Yup.number().min(8).required("Phone is Required!"),
-    country: Yup.string().required("Country is Required!"),
-    state: Yup.string().required("State is Required!"),
-    city: Yup.string().required("City is Required!"),
+    role: Yup.string().required("Role is Required!"),
     address: Yup.string().required("Address is Required!"),
-    zip: Yup.string().required("Zip is Required!"),
-    about: Yup.string().required("About is Required!")
+    password: Yup.string().required("Password is Required!"),
+    
   });
+  
+    const _handleSubmit = async (values) => {
+          try {
+               const body = {
+                  firstName: values.firstName,
+                  lastName: values.lastName,
+                  email: values.email,
+                  phoneNumber: values.phoneNumber,
+                  address: values.address,
+                  password: values.password,
+                  role: values.role,
+                  label: values.label
+               }
+              const response = await axios.post(`${ADMIN_ROUTE}/register`, body,{
+                  headers: {
+                      'Content-Type': 'application/json',
+              }});
+              console.log(response.data);
+
+          }
+          catch (error) {
+              console.log(error);
+          }
+    }
+
   const {
     values,
     errors,
@@ -69,23 +94,23 @@ const AddNewUserPageView = () => {
   } = useFormik({
     initialValues,
     validationSchema,
-    onSubmit: () => {}
+    onSubmit: (values) => {
+      console.log(values);
+      _handleSubmit(values);
+    }
   });
-  return <Box pt={2} pb={4}>
+
+  return (
+    <Box pt={2} pb={4}>
       <Grid container spacing={3}>
         <Grid item md={4} xs={12}>
           <StyledCard>
             <ButtonWrapper>
               <UploadButton>
                 <label htmlFor="upload-btn">
-                  <input accept="image/*" id="upload-btn" type="file" style={{
-                  display: "none"
-                }} />
+                  <input accept="image/*" id="upload-btn" type="file" style={{ display: "none" }} />
                   <IconButton component="span">
-                    <PhotoCamera sx={{
-                    fontSize: 26,
-                    color: "grey.400"
-                  }} />
+                    <PhotoCamera sx={{ fontSize: 26, color: "grey.400" }} />
                   </IconButton>
                 </label>
               </UploadButton>
@@ -101,13 +126,6 @@ const AddNewUserPageView = () => {
                   Public Profile
                 </Paragraph>
 
-                <Switch defaultChecked />
-              </SwitchWrapper>
-
-              <SwitchWrapper>
-                <Paragraph display="block" fontWeight={600}>
-                  Banned
-                </Paragraph>
                 <Switch defaultChecked />
               </SwitchWrapper>
 
@@ -131,53 +149,121 @@ const AddNewUserPageView = () => {
         </Grid>
 
         <Grid item md={8} xs={12}>
-          <Card sx={{
-          padding: 3
-        }}>
+          <Card sx={{ padding: 3 }}>
             <form onSubmit={handleSubmit}>
               <Grid container spacing={3}>
                 <Grid item sm={6} xs={12}>
-                  <TextField fullWidth name="fullName" label="Full Name" value={values.fullName} onChange={handleChange} helperText={touched.fullName && errors.fullName} error={Boolean(touched.fullName && errors.fullName)} />
+                  <InputLabel id="firstName-label">First Name</InputLabel>
+                  <TextField 
+                    fullWidth 
+                    name="firstName" 
+                    value={values.firstName} 
+                    onChange={handleChange} 
+                    helperText={touched.firstName && errors.firstName} 
+                    error={Boolean(touched.firstName && errors.firstName)} 
+                  />
+                </Grid>
+                <Grid item sm={6} xs={12}>
+                  <InputLabel id="lastName-label">Last Name</InputLabel>
+                  <TextField 
+                    fullWidth 
+                    name="lastName" 
+                    value={values.lastName} 
+                    onChange={handleChange} 
+                    helperText={touched.lastName && errors.lastName} 
+                    error={Boolean(touched.lastName && errors.lastName)} 
+                  />
                 </Grid>
 
                 <Grid item sm={6} xs={12}>
-                  <TextField fullWidth name="email" label="Email Address" value={values.email} onChange={handleChange} helperText={touched.email && errors.email} error={Boolean(touched.email && errors.email)} />
+                  <InputLabel id="email-label">Email</InputLabel>
+                  <TextField 
+                    fullWidth 
+                    name="email" 
+                    value={values.email} 
+                    onChange={handleChange} 
+                    helperText={touched.email && errors.email} 
+                    error={Boolean(touched.email && errors.email)} 
+                  />
                 </Grid>
 
                 <Grid item sm={6} xs={12}>
-                  <TextField fullWidth name="phone" label="Phone Number" value={values.phone} onChange={handleChange} helperText={touched.phone && errors.phone} error={Boolean(touched.phone && errors.phone)} />
+                  <InputLabel id="phone-label">Phone</InputLabel>
+                  <TextField 
+                    fullWidth 
+                    name="phoneNumber" 
+                    value={values.phoneNumber} 
+                    onChange={handleChange} 
+                    helperText={touched.phoneNumber && errors.phoneNumber} 
+                    error={Boolean(touched.phoneNumber && errors.phoneNumber)} 
+                  />
                 </Grid>
 
                 <Grid item sm={6} xs={12}>
-                  <TextField fullWidth name="country" label="Country" value={values.country} onChange={handleChange} helperText={touched.country && errors.country} error={Boolean(touched.country && errors.country)} />
+                  <InputLabel id="address-label">Address</InputLabel>
+                  <TextField 
+                    fullWidth 
+                    name="address" 
+                    value={values.address} 
+                    onChange={handleChange} 
+                    helperText={touched.address && errors.address} 
+                    error={Boolean(touched.address && errors.address)} 
+                  />
                 </Grid>
 
                 <Grid item sm={6} xs={12}>
-                  <TextField fullWidth name="state" label="State/Region" value={values.state} onChange={handleChange} helperText={touched.state && errors.state} error={Boolean(touched.state && errors.state)} />
+                  <InputLabel id="password-label">Password</InputLabel>
+                  <TextField 
+                    fullWidth 
+                    name="password" 
+                    value={values.password} 
+                    onChange={handleChange} 
+                    helperText={touched.password && errors.password} 
+                    error={Boolean(touched.password && errors.password)} 
+                  />
                 </Grid>
 
                 <Grid item sm={6} xs={12}>
-                  <TextField fullWidth name="city" label="City" value={values.city} onChange={handleChange} helperText={touched.city && errors.city} error={Boolean(touched.city && errors.city)} />
+                  <InputLabel id="role-label">Role</InputLabel>
+                  <Select
+                    labelId="role-label"
+                    id="role-select"
+                    name="role"
+                    label="Role"
+                    value={values.role}
+                    onChange={handleChange}
+                    helperText={touched.role && errors.role} 
+                    error={Boolean(touched.role && errors.role)} 
+                    fullWidth
+                  >
+                    <MenuItem value="">----</MenuItem>
+                    <MenuItem value="admin">Admin</MenuItem>
+                    <MenuItem value="leader">Leader</MenuItem>
+                    <MenuItem value="user">User</MenuItem>
+                  </Select>
                 </Grid>
 
                 <Grid item sm={6} xs={12}>
-                  <TextField fullWidth name="address" label="Address" value={values.address} onChange={handleChange} helperText={touched.address && errors.address} error={Boolean(touched.address && errors.address)} />
-                </Grid>
-
-                <Grid item sm={6} xs={12}>
-                  <TextField fullWidth name="zip" label="Zip/Code" value={values.zip} onChange={handleChange} helperText={touched.zip && errors.zip} error={Boolean(touched.zip && errors.zip)} />
+                  <InputLabel id="label-label">Label</InputLabel>
+                  <Select
+                    labelId="label-label"
+                    id="label-select"
+                    name="label"
+                    label="Label"
+                    value={values.label}
+                    onChange={handleChange}
+                    fullWidth
+                  >
+                    <MenuItem value="">----</MenuItem>
+                    <MenuItem value="2">LSI</MenuItem>
+                    <MenuItem value="3">LvM</MenuItem>
+                    <MenuItem value="4">Kenzo</MenuItem>
+                    <MenuItem value="nexsus">nexsus</MenuItem>
+                  </Select>
                 </Grid>
 
                 <Grid item xs={12}>
-                  <TextField multiline fullWidth rows={10} name="about" label="About" value={values.about} onChange={handleChange} helperText={touched.about && errors.about} error={Boolean(touched.about && errors.about)} sx={{
-                  "& .MuiOutlinedInput-root textarea": {
-                    padding: 0
-                  }
-                }} />
-                </Grid>
-
-                <Grid item xs={12}>
-                  <Button type="submit" variant="contained">
+                  <Button type="submit" variant="contained" color="primary">
                     Create User
                   </Button>
                 </Grid>
@@ -186,7 +272,8 @@ const AddNewUserPageView = () => {
           </Card>
         </Grid>
       </Grid>
-    </Box>;
+    </Box>
+  );
 };
 
 export default AddNewUserPageView;

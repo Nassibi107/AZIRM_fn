@@ -37,11 +37,12 @@ const HeadingArea = ({
       </FlexBox>
 
       <TabContext value={value}>
+     
         <TabListWrapper variant="scrollable" onChange={changeTab}>
           <Tab disableRipple label="All Users" value="" />
-          <Tab disableRipple label="Administrator" value="administrator" />
-          <Tab disableRipple label="leaders" value="leaders" />
-          <Tab disableRipple label="user" value="subscriber" />
+          <Tab disableRipple label="Administrator" value="admin" />
+          <Tab disableRipple label="leaders" value="leader" />
+          <Tab disableRipple label="user" value="user" />\
         </TabListWrapper>
       </TabContext>
 
