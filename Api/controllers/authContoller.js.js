@@ -4,64 +4,6 @@ const bcrypt = require('bcryptjs');
 // Register a new user
 const jwtHelper = require('../utils/jwtHelper');
 
-exports.register = async (req, res) => {
-    const { 
-          firstName,
-          lastName,
-          phoneNumber,
-          email,
-          role,
-          address,
-          password,
-          income,
-          status,
-            label,
-    } = req.body;
-    try {
-        console.log(req.body);
-        let userItem = {}
-        const passwordCrypt = await bcrypt.hash(password, 10);
-        if (role === 'leader' || role === 'user') {
-            const  company = await Model.Company.findOne({
-                 where: { label}
-            });
-            const user = await Model.User.create({
-                firstName,
-                lastName,
-                phoneNumber,
-                email,
-                role,
-                address,
-                password: passwordCrypt,
-                income,
-                status,
-                CmpRid : company.cmpID,
-            });
-            userItem = user;
-        }
-        else {
-            const user = await Model.User.create({
-                firstName,
-                lastName,
-                phoneNumber,
-                email,
-                role,
-                address,
-                password: passwordCrypt,
-                income,
-                status,
-            });
-            userItem = user;
-        }
-        res.status(201).json({
-            success: true,
-            data: userItem
-        });
-    } catch (error) {
-        console.error(error.message);
-        res.status(500).json({msg:'Server Error'});
-    }
-}
 
 exports.login = async (req, res) => {
     const { email, password } = req.body;

@@ -1,0 +1,674 @@
+* commit 4172fea67870375084d86811dbae4b98bf692e29
+| Author: Yassine Nassibi <my.yassinenassibi@gmail.com>
+| Date:   Tue Aug 6 18:16:06 2024 +0100
+| 
+|     templite table fixed
+| 
+* commit 9348b45d5e9451bcb810f629b76b3c9a674bceb1
+| Author: Yassine Nassibi <my.yassinenassibi@gmail.com>
+| Date:   Fri Aug 2 20:37:18 2024 +0100
+| 
+|     small change
+| 
+* commit f61072dd61cb729f9d2dfba93ef139c1cbc10ba0
+| Author: Yassine Nassibi <my.yassinenassibi@gmail.com>
+| Date:   Fri Aug 2 20:01:14 2024 +0100
+| 
+|     table refactoring is done
+| 
+* commit 475d3d741ffbbfd4de6ad457a5467fd81ee407d2
+| Author: Yassine Nassibi <my.yassinenassibi@gmail.com>
+| Date:   Fri Aug 2 18:28:49 2024 +0100
+| 
+|     redesign table Report
+| 
+* commit a6f9c20251dbf71731473b5541cb6fccbaa03744
+| Author: Yassine Nassibi <my.yassinenassibi@gmail.com>
+| Date:   Thu Aug 1 14:47:31 2024 +0100
+| 
+|     fixe some issue in login !!
+| 
+* commit a92a14f87efc348e63ae8181f8dc0828f4cd9802
+| Author: Yassine Nassibi <my.yassinenassibi@gmail.com>
+| Date:   Thu Aug 1 14:13:35 2024 +0100
+| 
+|     V_ATH
+| 
+* commit 16fac2204821a85e64487b1559beb11c549b82f4
+| Author: Yassine Nassibi <my.yassinenassibi@gmail.com>
+| Date:   Thu Aug 1 13:09:29 2024 +0100
+| 
+|     refactoring is done !
+| 
+* commit c890ea79a9e671c4e5ca297739b64c83f18461ea
+| Author: Yassine Nassibi <my.yassinenassibi@gmail.com>
+| Date:   Thu Aug 1 12:35:28 2024 +0100
+| 
+|     V3 AUTH refactoring is
+| 
+* commit 6360d9e03629070c2ca78bffa082bca01064c4df
+| Author: Yassine Nassibi <my.yassinenassibi@gmail.com>
+| Date:   Wed Jul 31 12:17:59 2024 +0100
+| 
+|     test V_ATH
+| 
+* commit dad5aa3daeec2e22c0a06b737c97f451bfd0152c
+| Author: Yassine Nassibi <my.yassinenassibi@gmail.com>
+| Date:   Fri Jul 26 17:54:46 2024 +0100
+| 
+|     fixed reduxToolkit
+| 
+* commit fc429cd17e5e13747cb573b1354237fb5cabf40e
+| Author: Yassine Nassibi <my.yassinenassibi@gmail.com>
+| Date:   Fri Jul 26 12:37:10 2024 +0100
+| 
+|     fix some issue in  tamplite  |mobile|
+| 
+* commit 8fff51178dd9251d5cec3787e0cfbf75f3af69d7
+| Author: Yassine Nassibi <my.yassinenassibi@gmail.com>
+| Date:   Fri Jul 26 11:54:30 2024 +0100
+| 
+|     config redux for stiper
+|   
+*   commit 18d8d81f70a28ff7123e06d3e62a137900c3b621
+|\  Merge: 31bbda4 26c72fe
+| | Author: Mahri Imad-Eddine <mahriimadeddine028@gmail.com>
+| | Date:   Thu Jul 25 07:21:24 2024 -0400
+| | 
+| |     merge into main steper
+| | 
+| * commit 26c72fe5b8c1b95c0c494e65f968be9f9f733908
+| | Author: Mahri Imad-Eddine <mahriimadeddine028@gmail.com>
+| | Date:   Thu Jul 25 07:09:29 2024 -0400
+| | 
+| |     add in both mode
+| | 
+| * commit b09b2aa02cbc5fbcebcebe5944c25ed78534d670
+| | Author: Mahri Imad-Eddine <mahriimadeddine028@gmail.com>
+| | Date:   Wed Jul 24 10:55:14 2024 -0400
+| | 
+| |     finish steper
+| | 
+| * commit fdf40356c0c381fb9728fa8273aacaac0bfe1e87
+| | Author: Mahri Imad-Eddine <mahriimadeddine028@gmail.com>
+| | Date:   Wed Jul 24 08:45:21 2024 -0400
+| | 
+| |     step done
+| | 
+| * commit 624432ab87a767caf6d949e7718d551b1f4728eb
+| | Author: Mahri Imad-Eddine <mahriimadeddine028@gmail.com>
+| | Date:   Wed Jul 24 07:53:22 2024 -0400
+| | 
+| |     steps
+| | 
+| * commit 9fa7d49b6c824ca7d0a09719cd0dbd330c2ebe8b
+| | Author: Mahri Imad-Eddine <mahriimadeddine028@gmail.com>
+| | Date:   Mon Jul 22 09:57:15 2024 -0400
+| | 
+| |     add config
+| | 
+* | commit 31bbda4ba770624302c5eaeef669af9233f85054
+| | Author: Yassine Nassibi <ynassibi@e3r7p9.1337.ma>
+| | Date:   Tue Jul 23 18:36:55 2024 +0100
+| | 
+| |     logout
+| | 
+* | commit db7f3af138dab6d51c7f278cc627bbc0ea336999
+| | Author: Yassine Nassibi <ynassibi@e3r7p9.1337.ma>
+| | Date:   Tue Jul 23 16:33:30 2024 +0100
+| | 
+| |     logout
+| | 
+* | commit ace2c812e2fbfd0baf72c2ff53b62f9123a69c15
+| | Author: Yassine Nassibi <ynassibi@e3r7p9.1337.ma>
+| | Date:   Tue Jul 23 16:14:29 2024 +0100
+| | 
+| |     |optimise the code for get img fastly |
+| | 
+* | commit 20a4c60822819f914095ba2d0d71003e90aadc6d
+| | Author: Yassine Nassibi <ynassibi@e3r3p8.1337.ma>
+| | Date:   Sun Jul 21 20:31:22 2024 +0100
+| | 
+| |     mange trail
+| | 
+* | commit 86999abc35eb0292ea0191cdf526e91c63bc9fb0
+| | Author: Yassine Nassibi <ynassibi@e3r3p8.1337.ma>
+| | Date:   Sun Jul 21 20:17:34 2024 +0100
+| | 
+| |     |manage trail done |
+| | 
+* | commit 679fead70eebcdbfefa819806d5dad6d88f5e4c1
+| | Author: Yassine Nassibi <my.yassinenassibi@gmail.com>
+| | Date:   Thu Jul 18 12:54:39 2024 +0100
+| | 
+| |     login done
+| | 
+* | commit cffcc34bab51b427a324183f18a3da37615665ad
+| | Author: Yassine Nassibi <my.yassinenassibi@gmail.com>
+| | Date:   Wed Jul 17 15:50:00 2024 +0100
+| | 
+| |     model j
+| | 
+* | commit 1ce543842e35870ea0270b1c874c04c7bea41f09
+| | Author: Yassine Nassibi <my.yassinenassibi@gmail.com>
+| | Date:   Wed Jul 17 11:30:10 2024 +0100
+| | 
+| |     edit line is done
+| | 
+* | commit 86304e3ee5ac3310d70a98ccc83617f53691ec3b
+| | Author: Yassine Nassibi <ynassibi@e3r8p11.1337.ma>
+| | Date:   Wed Jul 17 08:58:12 2024 +0100
+| | 
+| |     git lineId
+| |   
+* |   commit 38355099752a8b5ce79b0028d33d91ac9d420dc9
+|\ \  Merge: d6806a9 008c5be
+| |/  Author: yassine nassibi <my.yassinenassibi@gmail.com>
+|/|   Date:   Tue Jul 16 14:01:37 2024 +0000
+| |   
+| |       Merge branch 'yassine' into 'main'
+| |       
+| |       line web json
+| |       
+| |       See merge request novacode1/tmp_rebornott!2
+| |   
+| *   commit 008c5be2b05d9d8cc549efbe245bfeca08f5406c
+| |\  Merge: 8ae7b66 d6806a9
+| |/  Author: yassine nassibi <my.yassinenassibi@gmail.com>
+|/|   Date:   Tue Jul 16 14:00:24 2024 +0000
+| |   
+| |       Merge branch 'main' into 'yassine'
+| |       
+| |       # Conflicts:
+| |       #   src/__fakeData__/Data/db.json
+| |   
+* |   commit d6806a94f76d3572be502a96decd53ef58e0817c
+|\ \  Merge: b73c368 d6b7736
+| | | Author: Mahri Imad-Eddine <mahriimadeddine028@gmail.com>
+| | | Date:   Wed Jul 10 10:28:52 2024 -0400
+| | | 
+| | |     merge cards
+| | | 
+* | | commit b73c3687b14ccb14dfdfb148d4bdd1f781693144
+| | | Author: Mahri Imad-Eddine <mahriimadeddine028@gmail.com>
+| | | Date:   Wed Jul 10 10:17:25 2024 -0400
+| | | 
+| | |     merge V0
+| | | 
+* | | commit 87c1ca4cf34ff2d691ac309b9032d81007f7853a
+| | | Author: Mahri Imad-Eddine <mahriimadeddine028@gmail.com>
+| | | Date:   Wed Jul 10 10:03:59 2024 -0400
+| | | 
+| | |     fix conflict
+| | |   
+* | |   commit ea4a17d16d93f35f23584e9428e694570e0dd591
+|\ \ \  Merge: 87baafd 669c43b
+| | | | Author: Mahri Imad-Eddine <mahriimadeddine028@gmail.com>
+| | | | Date:   Wed Jul 10 09:55:17 2024 -0400
+| | | | 
+| | | |     merge withe imad
+| | | | 
+* | | | commit 87baafd8f564f6aefc1b0fc2d838a6ef83997164
+| | | | Author: Mahri Imad-Eddine <mahriimadeddine028@gmail.com>
+| | | | Date:   Wed Jul 10 09:52:10 2024 -0400
+| | | | 
+| | | |     redirect to dashboard if user there
+| | | | 
+* | | | commit 385355b1169482c087d4281fabf2257718ae96b5
+| | | | Author: Mahri Imad-Eddine <mahriimadeddine028@gmail.com>
+| | | | Date:   Wed Jul 10 09:27:03 2024 -0400
+| | | | 
+| | | |     login done need just to get the api
+| | | | 
+* | | | commit 4f89b4d0003169291a2265b1f0350e37027cf2ef
+| | | | Author: Mahri Imad-Eddine <mahriimadeddine028@gmail.com>
+| | | | Date:   Wed Jul 10 04:35:35 2024 -0400
+| | | | 
+| | | |     add login
+| | | | 
+* | | | commit 2792b07b9d3988534b9d43d8d055ec95fa958ab9
+| | | | Author: Mahri Imad-Eddine <mahriimadeddine028@gmail.com>
+| | | | Date:   Mon Jul 8 07:32:49 2024 -0400
+| | | | 
+| | | |     change m3u to line for simple mode
+| | | |   
+* | | |   commit 04b20aab58053e21f3ec0fe59aad5514b11bc2f8
+|\ \ \ \  Merge: f41b510 5de6a4c
+| | | | | Author: Mahri Imad-Eddine <mahriimadeddine028@gmail.com>
+| | | | | Date:   Mon Jul 8 07:24:30 2024 -0400
+| | | | | 
+| | | | |     Merge remote-tracking branch 'origin/main'
+| | | | | 
+* | | | | commit f41b5106581a83ed308b43c33f6350c8b9714bea
+| | | | | Author: Mahri Imad-Eddine <mahriimadeddine028@gmail.com>
+| | | | | Date:   Mon Jul 8 07:20:21 2024 -0400
+| | | | | 
+| | | | |     add variant='outlined' in left
+| | | | | 
+| | | | * commit 8ae7b66e0d89fbbd230f01ec77c1eed9320c60c5
+| | | |/  Author: Yassine Nassibi <my.yassinenassibi@gmail.com>
+| | | |   Date:   Tue Jul 16 10:46:28 2024 +0100
+| | | |   
+| | | |       line web json
+| | | | 
+| | | * commit d6b77368e4252b2b258b685c5cb4af340cb4a5ff
+| | |/  Author: Yassine Nassibi <my.yassinenassibi@gmail.com>
+| | |   Date:   Wed Jul 10 15:15:05 2024 +0100
+| | |   
+| | |       json server is done
+| | | 
+| | * commit 669c43bff7013ecb899163906bacc99efa0271e2
+| | | Author: Yassine Nassibi <my.yassinenassibi@gmail.com>
+| | | Date:   Wed Jul 10 11:16:15 2024 +0100
+| | | 
+| | |     fix the lost page
+| | | 
+| | * commit 97c31886dd5625cfb6dfde34678ce3ac446c612d
+| | | Author: Yassine Nassibi <my.yassinenassibi@gmail.com>
+| | | Date:   Tue Jul 9 16:02:46 2024 +0100
+| | | 
+| | |     init  axios && run web server
+| | | 
+| | * commit 70d8e4e9d7e2c12029ead24b2cf2ec4fd90fdce9
+| | | Author: Yassine Nassibi <my.yassinenassibi@gmail.com>
+| | | Date:   Mon Jul 8 18:33:18 2024 +0100
+| | | 
+| | |     ticket Field move to new art
+| | | 
+| | * commit b00b997c9b3efbafcddc40660f7c3201fbfb0c6d
+| | | Author: Yassine Nassibi <my.yassinenassibi@gmail.com>
+| | | Date:   Mon Jul 8 15:20:38 2024 +0100
+| | | 
+| | |     Mail convert to TicketSupport
+| | | 
+| | * commit 942147a625df3157f44f0752315f8d1a81076884
+| |/  Author: Yassine Nassibi <my.yassinenassibi@gmail.com>
+| |   Date:   Mon Jul 8 12:33:15 2024 +0100
+| |   
+| |       |Tickt| desgin
+| | 
+| * commit 5de6a4c44c5741e45556ca1f73deeebb6a7b6487
+|/  Author: Yassine Nassibi <my.yassinenassibi@gmail.com>
+|   Date:   Thu Jul 4 15:01:53 2024 +0100
+|   
+|       fix some problems
+| 
+* commit 67750c8e998a98d41d14129e1f274b1383c28b93
+| Author: Mahri Imad-Eddine <mahriimadeddine028@gmail.com>
+| Date:   Thu Jul 4 06:28:41 2024 -0400
+| 
+|     TicketFields -> Right Side -> add clear btn clean code add toast
+| 
+* commit de41a0d8919a6e5e214655fa30a787060f3b39fb
+| Author: Mahri Imad-Eddine <imahri@student.1337.ma>
+| Date:   Wed Jul 3 23:52:21 2024 +0100
+| 
+|      finish the ticket
+| 
+* commit d6cf78bf9f1ee9e91cc5aaed237007cc446a9715
+| Author: Mahri Imad-Eddine <imahri@student.1337.ma>
+| Date:   Wed Jul 3 21:02:28 2024 +0100
+| 
+|     clean left side in ticket fields
+|   
+*   commit 7d620352d09dd041ea65a3090c9ca357ae46c1d6
+|\  Merge: 9b09a53 a83b1d7
+| | Author: Mahri Imad-Eddine <mahriimadeddine028@gmail.com>
+| | Date:   Wed Jul 3 10:32:42 2024 -0400
+| | 
+| |     Merge remote-tracking branch 'origin/main'
+| | 
+| * commit a83b1d7c2fec82f6ba533a91932d92ad5db0836d
+| | Author: Yassine Nassibi <my.yassinenassibi@gmail.com>
+| | Date:   Wed Jul 3 15:11:11 2024 +0100
+| | 
+| |     fixed some errors
+| | 
+* | commit 9b09a536414e5651aa8d1f74b7c18f7d8d8f1732
+|/  Author: Mahri Imad-Eddine <mahriimadeddine028@gmail.com>
+|   Date:   Wed Jul 3 10:27:50 2024 -0400
+|   
+|       add left side in ticket
+| 
+* commit c2c86ec3a620bfa6a1ab4b6a9860c7d5f045b859
+| Author: Mahri Imad-Eddine <imahri@student.1337.ma>
+| Date:   Tue Jul 2 22:48:32 2024 +0100
+| 
+|     add route ticket fields
+|   
+*   commit b3e4b752cbe145288a7d1791014738b8b3004186
+|\  Merge: ea15090 e784ffa
+| | Author: Mahri Imad-Eddine <mahriimadeddine028@gmail.com>
+| | Date:   Tue Jul 2 07:01:08 2024 -0400
+| | 
+| |     Merge remote-tracking branch 'origin/main'
+| | 
+| * commit e784ffafabb5bce33ae389832edf4d8abda1c806
+| | Author: Yassine Nassibi <my.yassinenassibi@gmail.com>
+| | Date:   Tue Jul 2 11:34:19 2024 +0100
+| | 
+| |     |change mode is done|
+| | 
+| * commit a6315a26ea00beb89aed045b1065064f69882f5e
+| | Author: Yassine Nassibi <my.yassinenassibi@gmail.com>
+| | Date:   Tue Jul 2 11:06:55 2024 +0100
+| | 
+| |     |change mode is c|
+| | 
+| * commit 9d0d5843b7c8e17278734086384eb91f24999123
+| | Author: Yassine Nassibi <my.yassinenassibi@gmail.com>
+| | Date:   Mon Jul 1 12:34:44 2024 +0100
+| | 
+| |     |mode button| is loading
+| | 
+* | commit ea150909295bf122b0ca6bee44e200658ab2f652
+| | Author: Mahri Imad-Eddine <mahriimadeddine028@gmail.com>
+| | Date:   Tue Jul 2 06:59:10 2024 -0400
+| | 
+| |     add simple mode
+| | 
+* | commit 53e1c640a34e3e23fdfe1550862970cf52e923fd
+|/  Author: Mahri Imad-Eddine <mahriimadeddine028@gmail.com>
+|   Date:   Tue Jul 2 06:29:42 2024 -0400
+|   
+|       add simple mode
+| 
+* commit cae4aa371662fa7dcd39426d3dcfc51b476d1165
+| Author: Yassine Nassibi <my.yassinenassibi@gmail.com>
+| Date:   Fri Jun 28 23:18:58 2024 +0100
+| 
+|     test changeMode
+| 
+* commit 8ffbbfe9e0bf0f467edbc5849befdebd34d9b015
+| Author: Yassine Nassibi <my.yassinenassibi@gmail.com>
+| Date:   Fri Jun 28 11:53:37 2024 +0100
+| 
+|     create line fixed
+| 
+* commit 32babf3c19d2f0f112161b07a2ec3b114391e83f
+| Author: Yassine Nassibi <my.yassinenassibi@gmail.com>
+| Date:   Mon Jun 24 14:35:34 2024 +0100
+| 
+|     fixe select templite
+| 
+* commit c1e4975869b75ad4aff08e959450bdf56972b6b5
+| Author: Yassine Nassibi <ynassibi@e1r4p10.1337.ma>
+| Date:   Sun Jun 23 16:34:26 2024 +0100
+| 
+|     Paid Trail Price
+| 
+* commit dbce157a1bc2cfe4f9c99667528e1acb0d8f640b
+| Author: Yassine Nassibi <ynassibi@e1r4p10.1337.ma>
+| Date:   Sun Jun 23 12:46:12 2024 +0100
+| 
+|     |reward Program done ! |
+| 
+* commit 5a403c9299d08826aba1e90cd77b95b1926c8e94
+| Author: Yassine Nassibi <ynassibi@e1r4p10.1337.ma>
+| Date:   Sun Jun 23 11:49:57 2024 +0100
+| 
+|     ||
+| 
+* commit d20818656ba92752afc74e826fa63ec612c48559
+| Author: Yassine Nassibi <ynassibi@e1r4p10.1337.ma>
+| Date:   Sat Jun 22 17:05:36 2024 +0100
+| 
+|     |reward| is loading now
+| 
+* commit ba001c89cbaec7c9c7efd7f0bf8cfa1fdc2b37c6
+| Author: Yassine Nassibi <ynassibi@e1r4p10.1337.ma>
+| Date:   Sat Jun 22 16:00:54 2024 +0100
+| 
+|     Voucher and its templet done
+| 
+* commit 48646b5934932694af891299443d886d141ea8af
+| Author: Yassine Nassibi <ynassibi@e1r4p10.1337.ma>
+| Date:   Sat Jun 22 15:02:50 2024 +0100
+| 
+|     vouchers | fixing ...v1
+| 
+* commit b8534eae8449e85cd492fdec5693e6f123e6f6f2
+| Author: Yassine Nassibi <ynassibi@e1r4p10.1337.ma>
+| Date:   Sat Jun 22 14:46:59 2024 +0100
+| 
+|     vouchers | fixing ...
+| 
+* commit 1d653beb7a3b702f9b0ef31034f880ecd18e99f7
+| Author: Yassine Nassibi <ynassibi@e1r2p11.1337.ma>
+| Date:   Sat Jun 22 12:41:07 2024 +0100
+| 
+|     |vourcher| list is loading.
+| 
+* commit 2cf5c207d98076d18d428e57935e607135e8c6a1
+| Author: Yassine Nassibi <ynassibi@e1r2p11.1337.ma>
+| Date:   Sat Jun 22 12:40:02 2024 +0100
+| 
+|     |vourcher| list is loading
+| 
+* commit b38e02253159200283eeecc55b40da942036648e
+| Author: Yassine Nassibi <ynassibi@e1r2p11.1337.ma>
+| Date:   Sat Jun 22 12:14:26 2024 +0100
+| 
+|     |Voucher |create done
+| 
+* commit 1b8025d5d4395ba32a2edb7baed0776b93ad8d57
+| Author: Yassine Nassibi <ynassibi@e1r2p11.1337.ma>
+| Date:   Sat Jun 22 11:06:31 2024 +0100
+| 
+|     |dep| v0
+| 
+* commit 19f970c3c510bf4064d1e2b1bee1df14ea48bdb9
+| Author: Yassine Nassibi <ynassibi@e1r2p11.1337.ma>
+| Date:   Fri Jun 21 20:09:53 2024 +0100
+| 
+|     CreateVouchers v0
+| 
+* commit f27ee436cb2b01e25140e219112d7a1f3d87b4aa
+| Author: Yassine Nassibi <ynassibi@e1r2p11.1337.ma>
+| Date:   Fri Jun 21 17:19:54 2024 +0100
+| 
+|     faq done
+| 
+* commit 17bda87204f3b589cf443a0662f26be38480bd4d
+| Author: Yassine Nassibi <my.yassinenassibi@gmail.com>
+| Date:   Thu Jun 20 18:36:24 2024 +0100
+| 
+|     faqCate is lo_v1
+| 
+* commit 6a5e5752efe1dd17f01f91d01b3b18a14a4dd3a0
+| Author: Yassine Nassibi <ynassibi@e1r2p11.1337.ma>
+| Date:   Thu Jun 20 16:47:49 2024 +0100
+| 
+|     |build| after merge home files v3
+| 
+* commit f4841643de575304f7f2e5973ceb6064a9d1cfe9
+| Author: Yassine Nassibi <ynassibi@e1r2p11.1337.ma>
+| Date:   Thu Jun 20 16:26:53 2024 +0100
+| 
+|     |build| after merge home files v2
+| 
+* commit 4640539d2df58493b53d3781c38e10fe016c7cf2
+| Author: Yassine Nassibi <ynassibi@e1r2p11.1337.ma>
+| Date:   Thu Jun 20 16:19:41 2024 +0100
+| 
+|     |build| after merge home files
+| 
+* commit 4e7b9a785b2f1b5079bbc217040631aa17efa68b
+| Author: Yassine Nassibi <ynassibi@e1r2p11.1337.ma>
+| Date:   Thu Jun 20 15:38:19 2024 +0100
+| 
+|     fore push |FAQ|
+| 
+* commit 59f4a1d3c1f1aee5b15b0e9a7aa0fcb470cd61cd
+| Author: Yassine Nassibi <ynassibi@e1r2p11.1337.ma>
+| Date:   Wed Jun 19 16:52:28 2024 +0100
+| 
+|     layout for faqCatyroy
+| 
+* commit e5619d244443e10f672938dedcfd2529bb96ac02
+| Author: Yassine Nassibi <ynassibi@e1r2p11.1337.ma>
+| Date:   Wed Jun 19 12:34:27 2024 +0100
+| 
+|     faq is loading V0
+| 
+* commit 6bc3bf5222f1e9c49d636c0153be71c07f29c70f
+| Author: Yassine Nassibi <ynassibi@e1r2p11.1337.ma>
+| Date:   Wed Jun 19 10:55:51 2024 +0100
+| 
+|     lunch the project from schoo37
+| 
+* commit 924619c3a4892fb0a9641541aeb821dd02d1b84a
+| Author: Yassine Nassibi <my.yassinenassibi@gmail.com>
+| Date:   Sat Jun 15 12:05:04 2024 +0100
+| 
+|     Repot Done V2
+| 
+* commit 53067b95c972ae19b71819926cf5773ce19c34ce
+| Author: Yassine Nassibi <my.yassinenassibi@gmail.com>
+| Date:   Sat Jun 15 11:52:28 2024 +0100
+| 
+|     Repot Done
+| 
+* commit 63187013da847068f424641ad26c18ac61d314c7
+| Author: Yassine Nassibi <my.yassinenassibi@gmail.com>
+| Date:   Fri Jun 14 18:20:08 2024 +0100
+| 
+|     fix quik
+| 
+* commit 794b26d0db07743fb1ff0b665086f117880ae821
+| Author: Yassine Nassibi <my.yassinenassibi@gmail.com>
+| Date:   Thu Jun 13 16:26:19 2024 +0100
+| 
+|     tick is londig v1 && repot is loding V2
+| 
+* commit c05799491e703f51e68319786507b4f4a7860f2b
+| Author: Yassine Nassibi <my.yassinenassibi@gmail.com>
+| Date:   Thu Jun 13 16:12:03 2024 +0100
+| 
+|     Report  is loading V2
+| 
+* commit 1b2678d93dc47d6d9b32c2c5f1710639449817a9
+| Author: Yassine Nassibi <my.yassinenassibi@gmail.com>
+| Date:   Thu Jun 13 15:28:50 2024 +0100
+| 
+|     Report  is loading V1
+| 
+* commit 5c6a574073498dc063f76103b5a098c5ff9babe2
+| Author: Yassine Nassibi <my.yassinenassibi@gmail.com>
+| Date:   Thu Jun 13 15:03:15 2024 +0100
+| 
+|     list chennel is loading
+| 
+* commit 875ac2af928682e57c27c422aaa3f978f294767d
+| Author: Yassine Nassibi <my.yassinenassibi@gmail.com>
+| Date:   Thu Jun 13 12:20:30 2024 +0100
+| 
+|     ReportCreateChannel
+| 
+* commit 09b6648202f51e090105f533ccad50b6692800a1
+| Author: Yassine Nassibi <my.yassinenassibi@gmail.com>
+| Date:   Wed Jun 12 16:04:24 2024 +0100
+| 
+|     fix height of drop in Edit line and manage templite
+| 
+* commit 4082a780664bb985ac856ccc9d9799b2e6fa5daf
+| Author: Yassine Nassibi <my.yassinenassibi@gmail.com>
+| Date:   Wed Jun 12 15:13:39 2024 +0100
+| 
+|     fiexed in line page
+| 
+* commit 760035f77f714f344498567b72ce5d7b5d7e8666
+| Author: Yassine Nassibi <my.yassinenassibi@gmail.com>
+| Date:   Tue Jun 11 14:18:20 2024 +0100
+| 
+|     Report navigation is done
+| 
+* commit cdd522090faab5ba181bd1c00c0bac0cfaf0458a
+| Author: Yassine Nassibi <my.yassinenassibi@gmail.com>
+| Date:   Tue Jun 11 12:54:15 2024 +0100
+| 
+|     Report structure is done V2
+| 
+* commit 376a93380c710a9b1ebd2ca90bf94d15d19e920c
+| Author: Yassine Nassibi <my.yassinenassibi@gmail.com>
+| Date:   Tue Jun 11 11:43:32 2024 +0100
+| 
+|     Report structure is done
+| 
+* commit 8de343253decbd250877faad0fa9d1d8c5aeb1d9
+| Author: Yassine Nassibi <my.yassinenassibi@gmail.com>
+| Date:   Mon Jun 10 16:33:59 2024 +0100
+| 
+|     Report loading
+| 
+* commit 486f847bb86489b5aae9b6a95aa661788d1c129e
+| Author: Yassine Nassibi <my.yassinenassibi@gmail.com>
+| Date:   Mon Jun 10 13:30:18 2024 +0100
+| 
+|     line is done
+| 
+* commit e29436ffdff825bdd08cad862195f4ab513dc0ab
+| Author: Yassine Nassibi <my.yassinenassibi@gmail.com>
+| Date:   Mon Jun 10 10:22:02 2024 +0100
+| 
+|     patch the code
+| 
+* commit dfd09e438c7ff5812fdefc6d3322f8b5b3b87ad0
+| Author: MAFTOUH <omar.maftou0000@gmail.com>
+| Date:   Wed May 29 16:13:30 2024 +0100
+| 
+|     Ticket 1/2
+| 
+* commit d60a7bb1442b1ca7aa9e52d899202c8314d88fef
+| Author: MAFTOUH <omar.maftou0000@gmail.com>
+| Date:   Wed May 29 15:38:38 2024 +0100
+| 
+|     customiser request credit
+| 
+* commit d52ba7423516b062539abaeaab5ff1e1540c4133
+| Author: MAFTOUH <omar.maftou0000@gmail.com>
+| Date:   Wed May 29 12:20:31 2024 +0100
+| 
+|     transaction page are done
+| 
+* commit 6fee37c5ab53937b2cad8451bca5c10272d9fa2b
+| Author: MAFTOUH <omar.maftou0000@gmail.com>
+| Date:   Wed May 29 10:53:14 2024 +0100
+| 
+|     manage announcement
+| 
+* commit d8c49c3253aaa3ab831aced7dadd4c4679613f70
+| Author: MAFTOUH <omar.maftou0000@gmail.com>
+| Date:   Wed May 29 09:49:20 2024 +0100
+| 
+|     announcement page
+| 
+* commit ac4985b29c3872b327df12bc3a53f66b216735f6
+| Author: MAFTOUH <omar.maftou0000@gmail.com>
+| Date:   Tue May 28 17:55:32 2024 +0100
+| 
+|     solv small prb
+| 
+* commit 106d481ffd8faab4060151b76b69e6c44df0cb0a
+| Author: MAFTOUH <omar.maftou0000@gmail.com>
+| Date:   Tue May 28 17:48:37 2024 +0100
+| 
+|     analytics
+| 
+* commit 70c9e5b4aff33c41fedae90f0b86292df753f5ae
+| Author: MAFTOUH <omar.maftou0000@gmail.com>
+| Date:   Tue May 28 11:55:47 2024 +0100
+| 
+|     copy link & copy text
+| 
+* commit b6789a9f98b4b4a753b2817d8588f5d799f073f2
+| Author: MAFTOUH <omar.maftou0000@gmail.com>
+| Date:   Tue May 28 09:45:02 2024 +0100
+| 
+|     solv some prob
+| 
+* commit ef54334ee4f99035b27f891234b5665d836c93cd
+  Author: Med Slax <slaxmed8@gmail.com>
+  Date:   Tue May 28 08:31:57 2024 +0000
+  
+      Initial commit

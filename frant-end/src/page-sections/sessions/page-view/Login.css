@@ -1,0 +1,529 @@
+.all{
+    background: #25293C;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 10000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.holder{
+    height: 70vh;
+    width: 50%;
+    background: #2F3249;
+    border-radius: 21px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 0 1%;
+    gap: 1.4%;
+    transition: 0.5s;
+}
+
+.first_part
+{
+    width: 40%;
+    height: 95%;
+    background: url('./picback.jpg');
+    background-position: center;
+    background-size: cover;
+    border-radius: 14px;
+    position: relative;
+    overflow: hidden;
+    transition: 0.5s;
+}
+
+.second_part
+{
+    width: 60%;
+    height: 95%;
+    background: #292A35;
+    border-radius: 14px;
+    color: black;
+    transition: 0.5s;
+}
+
+.overlay{
+    position: absolute;
+    background: rgba(0, 0, 0, 0.8);
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    transition: 0.5s;
+}
+
+.topPart{
+    height: 70%;
+    width: 95%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+}
+
+.holder_descript{
+    max-height: 80%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    overflow: hidden;
+}
+
+.title_descript{
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.description{
+    font-size: 1rem;
+    font-weight: 400;
+    text-align: center;
+}
+
+
+
+.BottomPart{
+    height: 30%;
+    width: 95%;
+    margin: auto;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+.holder_bottom{
+    margin: 0 auto;
+    position: relative;
+    width: 95%;
+    margin-bottom: 20px;
+    background: #d9d9d967;
+    padding: 10px 15px;
+    border-radius: 10px;
+
+}
+
+.welcome{
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+.quote{
+    font-size: 1.5rem;
+    font-weight: 400;
+}
+
+/* *********************************** */
+.second_part{
+    display: flex;
+    align-items: center;
+    color: white;
+    position: relative;
+    overflow: hidden;
+    transition: 0.5s;
+
+}
+.cover_it{
+    background-image:url('./Spaceranger.gif');
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    visibility:visible;
+    display: block;
+    transition: 0.5s;
+}
+
+.box_over{
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    transition: 0.5s;
+}
+
+.loginHolder{
+    z-index: 20;
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    transition: 0.5s;
+    overflow: auto;
+    gap: 10px;
+}
+.pic_holder{
+    width: 25%;
+    text-align: center;
+}
+
+.pic_logo{
+    width: 100%;
+}
+
+.input_holder{
+    padding-top: 15px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.btn_holder{
+    width: 100%;
+    text-align: center;
+}
+
+.inp{
+    width: 50%;
+    padding: 10px;
+    color: #FEFFFF;
+    background: transparent;
+    border: 2px solid #FEFFFF;
+    border-radius: 10px;
+}
+
+.password_{
+    position: relative;
+    width: 100%;
+}
+
+.btn_submit{
+    width: 40%;
+    padding:20px 15px;
+    border-radius: 10px;
+    background: #363456 !important;
+    border: 1px solid white !important;
+    color: white  !important;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.btn_submit:hover{
+    border: 1px solid #363456;
+    background: white;
+    color: #363456;
+}
+
+.quote_sign{
+    color: #B1B4BB;
+}
+
+
+.inpass{
+    width: 100%;
+    padding: 10px;
+    color: #FEFFFF;
+    background: transparent;
+    border: 2px solid #FEFFFF;
+    border-radius: 10px;
+}
+
+.forgot_pass{
+    font-weight: 500;
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+.forgot_pass:hover{
+    text-decoration: underline;
+    color: #B1B4BB;
+}
+
+.check_it{
+    position: absolute;
+    top:27%;
+    right: 5%;
+    cursor: pointer;
+    background: transparent;
+    color: white;
+    border: 0px;
+}
+
+.error{
+    font-size: 15px;
+    padding: 0;
+    color: #B1B4BB;
+}
+
+@media (max-width:2000px){
+    .holder{
+        height: 80vh;
+        width: 70%;
+    }
+}
+
+
+@media (max-width:1100px){
+
+    .inp{
+        width: 50%;
+    }
+    .password_{
+        width: 50%;
+    }
+
+    .btn_submit{
+        width: 50%;
+    }
+    .pic_holder{
+        width: 200px;
+    }
+    .holder{
+        height: 80vh;
+        width: 80%;
+    }
+    .first_part{
+        visibility: hidden;
+        display: none;
+    }
+    .second_part{
+        width: 97%;
+    }
+    .cover_it{
+        visibility: visible;
+        display: block;
+    }
+    .loginHolder{
+        height: fit-content;
+        gap: 10px;
+
+    }
+}
+
+@media (max-width:700px){
+    .inp{
+        width: 70%;
+    }
+    .password_{
+        width: 70%;
+    }
+}
+
+@media (max-width:500px){
+
+    .pic_holder{
+        width: 50%;
+    }
+    .inp{
+        width: 80%;
+    }
+    .btn_submit{
+        width: 70%;
+    }
+    .password_{
+        width: 80%;
+    }
+}
+
+@use postcss-preset-env {
+  stage: 0;
+}
+
+/* config.css */
+
+
+/* helpers/align.css */
+
+.align {
+  display: grid;
+  place-items: center;
+}
+
+.grid {
+  inline-size: 90%;
+  margin-inline: auto;
+  max-inline-size: 20rem;
+}
+
+/* helpers/hidden.css */
+
+.hidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+/* helpers/icon.css */
+
+
+
+.icons {
+  display: none;
+}
+
+.icon {
+  block-size: 1em;
+  display: inline-block;
+  fill: var(--iconFill);
+  inline-size: 1em;
+  vertical-align: middle;
+}
+
+/* layout/base.css */
+
+:root {
+  --htmlFontSize: 100%;
+
+  --bodyBackgroundColor: #2c3338;
+  --bodyColor: var(--baseColor);
+  --bodyFontFamily: "Open Sans";
+  --bodyFontFamilyFallback: sans-serif;
+  --bodyFontSize: 0.875rem;
+  --bodyFontWeight: 400;
+  --bodyLineHeight: 1.5;
+}
+
+
+/* modules/anchor.css */
+
+
+
+a {
+  color: var(--anchorColor);
+  outline: 0;
+  text-decoration: none;
+}
+
+a:focus,
+a:hover {
+  text-decoration: underline;
+}
+
+/* modules/form.css */
+
+:root {
+  --formGap: 0.875rem;
+}
+
+.container {
+  inline-size: 100%;
+  margin-inline: auto;
+  max-inline-size: 20rem;
+  border-radius: 20px;
+}
+input {
+  background-image: none;
+  border: 0;
+  color: inherit;
+  font: inherit;
+  margin: 0;
+  outline: 0;
+  padding: 0;
+  transition: background-color 0.3s;
+}
+
+input[type="submit"] {
+  cursor: pointer;
+}
+
+.form {
+  display: grid;
+  gap: var(--formGap);
+}
+
+.form input[type="password"],
+.form input[type="text"],
+.form input[type="submit"] {
+  inline-size: 100%;
+}
+
+.form__field {
+  display: flex;
+}
+
+.form__input {
+  flex: 1;
+}
+
+/* modules/login.css */
+
+:root {
+  --loginBorderRadus: 0.25rem;
+  /* --loginColor: #eee; */
+
+  --loginInputBackgroundColor: #3b4148;
+  --loginInputHoverBackgroundColor: #434a52;
+
+  --loginLabelBackgroundColor: #363b41;
+
+  --loginSubmitBackgroundColor: #6950e8;
+  --loginSubmitColor: #eee;
+  --loginSubmitHoverBackgroundColor: #6950e8e0;
+}
+
+/* .login {
+  color: var(--loginColor);
+} */
+
+.login label,
+.login input[type="text"],
+.login input[type="password"],
+.login input[type="submit"] {
+  border-radius: var(--loginBorderRadus);
+  padding: 1rem;
+}
+
+.login label {
+  background-color: var(--loginLabelBackgroundColor);
+  border-bottom-right-radius: 0;
+  border-top-right-radius: 0;
+  padding-inline: 1.25rem;
+}
+
+.login input[type="password"],
+.login input[type="text"] {
+  background-color: var(--loginInputBackgroundColor);
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
+}
+
+.login input[type="password"]:focus,
+.login input[type="password"]:hover,
+.login input[type="text"]:focus,
+.login input[type="text"]:hover {
+  background-color: var(--loginInputHoverBackgroundColor);
+}
+
+.login input[type="submit"] {
+  background-color: var(--loginSubmitBackgroundColor);
+  color: var(--loginSubmitColor);
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.login input[type="submit"]:focus,
+.login input[type="submit"]:hover {
+  background-color: var(--loginSubmitHoverBackgroundColor);
+}
+
+/* modules/text.css */
+
+p {
+  margin-block: 1.5rem;
+}
+
+.text--center {
+  text-align: center;
+}

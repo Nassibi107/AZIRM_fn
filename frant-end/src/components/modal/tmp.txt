@@ -1,0 +1,102 @@
+const API_URLS = import.meta.env.VITE_LV_URL;
+
+const ModalPermission = ({ children, open, handleClose, ...props }) => {
+  const permissionsArray = [
+    "bouquets_index",
+    "m3us_all",
+    "m3us_bouquets",
+    "m3us_create",
+    "m3us_edit",
+    "m3us_extend",
+    "m3us_index",
+    "m3us_restrictions",
+    "m3us_show",
+    "m3us_syncs",
+    "packages_create",
+    "packages_create_refund_policies",
+    "packages_delete_refund_policies",
+    "packages_edit",
+    "packages_edit_refund_policies",
+    "packages_index",
+    "packages_show",
+    "packages_show_bouquets",
+    "packages_show_refund_policies",
+    "paid_trial_prices_buy",
+    "paid_trial_prices_create",
+    "paid_trial_prices_edit",
+    "paid_trial_prices_index",
+    "paid_trial_prices_show",
+    "permissions_index",
+    "restrictions_batch_create",
+    "restrictions_batch_delete",
+    "restrictions_create_any",
+    "restrictions_create_for_my_descendants",
+    "restrictions_delete_any",
+    "restrictions_delete_my_created",
+    "restrictions_edit_any",
+    "restrictions_edit_my_created",
+    "restrictions_index",
+    "restrictions_show",
+    "roles_can_giving_admin",
+    "roles_can_giving_hgfhf",
+    "roles_can_giving_no-permission",
+    "roles_can_giving_testP3",
+    "roles_can_giving_user",
+    "roles_can_giving_yes",
+    "roles_can_giving_yes2",
+    "roles_can_giving_yes2020",
+    "roles_create",
+    "roles_edit",
+    "roles_index",
+    "roles_packages",
+    "roles_permissions",
+    "roles_setting_edit",
+    "roles_setting_show",
+    "roles_show",
+    "templates_all",
+    "templates_create",
+    "templates_create_global",
+    "templates_edit",
+    "templates_index",
+    "templates_show",
+    "templates_show_bouquets",
+    "transactions_create",
+    "transactions_create_from_system",
+    "transactions_index",
+    "transactions_refund",
+    "transactions_refund_first_credit",
+    "transactions_see_all",
+    "transactions_show",
+    "users_childrens",
+    "users_create",
+    "users_descendants",
+    "users_edit",
+    "users_index",
+    "users_permissions",
+    "users_restrictions",
+    "users_roles",
+    "users_see_all",
+    "users_show"
+]
+
+  const [permissions, setPermissions] = useState(permissionsArray.reduce((acc, curr) => {
+    acc[curr] = false;
+    return acc;
+  }, {}));
+
+ 
+
+  const [alertMessage, setAlertMessage] = useState(null); // To handle success or error messages
+  const [alertSeverity, setAlertSeverity] = useState("success"); 
+  const handleCheckboxChange = (event) => {
+    const { name, checked } = event.target;
+    setPermissions((prev) => ({
+      ...prev,
+      [name]: checked,
+    }));
+  };
+
+  // 3. Handle submit (for demonstration purposes)
+  const getPremtions = () => {
+    console.log("Permissions:", permissions);
+  };

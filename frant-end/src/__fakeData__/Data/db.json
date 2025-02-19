@@ -1,0 +1,105 @@
+{
+  "card": [
+    {
+      "type": "6 Month",
+      "name": "varchr-00",
+      "packe": "MAG",
+      "id": "571a"
+    },
+    {
+      "id": "5290",
+      "type": "MAG",
+      "name": "varchar08",
+      "packe": "Active Code"
+    }
+  ],
+  "mangeLine": [
+    {
+      "lineId": "1",
+      "status": "En ligne",
+      "userName": "fgfgfg",
+      "password": 2561890,
+      "expiredate": "2024-06-14 13:19:45",
+      "dns": "http://tmphmnnd.ip365.cx",
+      "owner": "yufeng888",
+      "maxConnections": "0/1",
+      "info": {
+        "pay": "CardPaid",
+        "video": "NoVideo",
+        "web": "web"
+      },
+      "id": "b401"
+    },
+    {
+      "lineId": "2",
+      "status": "Offline",
+      "userName": 78014568,
+      "password": 2561890,
+      "expiredate": "2024-06-14 13:19:45",
+      "dns": "http://tmphmnnd.ip365.cx",
+      "owner": "yufeng888",
+      "maxConnections": "0/0",
+      "info": {
+        "pay": "CardPaid",
+        "video": "NoVideo",
+        "web": "web"
+      },
+      "id": "d0fc"
+    },
+    {
+      "lineId": "3",
+      "status": "Offline",
+      "userName": 78014568,
+      "password": 2561890,
+      "expiredate": "2024-06-14 13:19:45",
+      "dns": "http://tmphmnnd.ip365.cx",
+      "owner": "yufeng888",
+      "maxConnections": "0/1",
+      "info": {
+        "pay": "CardPaid",
+        "video": "NoVideo",
+        "web": "web"
+      },
+      "id": "5c8a"
+    },
+    {
+      "lineId": "4",
+      "status": "Offline",
+      "userName": 78014568,
+      "password": 2561890,
+      "expiredate": "2023-07-11 13:19:45",
+      "dns": "http://tmphmnnd.ip365.cx",
+      "owner": "test01",
+      "maxConnections": "0/1",
+      "info": {
+        "pay": "CardPaid",
+        "video": "NoVideo",
+        "web": "web"
+      },
+      "id": "3a52"
+    },
+    {
+      "lineId": "5",
+      "status": "En ligne",
+      "userName": "7789989898",
+      "password": 2561890,
+      "expiredate": "2024-06-14 13:19:45",
+      "dns": "http://tmphmnnd.ip365.cx",
+      "owner": "ynassibi13421",
+      "maxConnections": "0/1",
+      "info": {
+        "pay": "CardPaid",
+        "video": "NoVideo",
+        "web": "web"
+      },
+      "id": "a96b"
+    }
+  ],
+  "login": [
+    {
+      "username": "yassine",
+      "password": "0618",
+      "level": 0
+    }
+  ]
+}

@@ -4,6 +4,66 @@ const bcrypt = require('bcryptjs');
 const jwtHelper = require('../utils/jwtHelper');
 
 
+
+exports.register = async (req, res) => {
+    try {
+        const { 
+            firstName,
+            lastName,
+            phoneNumber,
+            email,
+            role,
+            address,
+            password,
+            income,
+            status,
+            label,
+        } = req.body;
+
+        console.log(req.body);
+
+        // Hash password before storing in the database
+        const passwordCrypt = await bcrypt.hash(password, 10);
+
+        // Define userData object
+        let userData = {
+            firstName,
+            lastName,
+            phoneNumber,
+            email,
+            role,
+            address,
+            password: passwordCrypt,
+            income,
+            status,
+        };
+
+        // If the user is a 'leader' or 'user', fetch company ID
+        if (role === 'leader' || role === 'user') {
+            const company = await Model.Company.findOne({ where: { label } });
+
+            if (!company) {
+                return res.status(404).json({ msg: 'Company not found' });
+            }
+
+            // ✅ Dynamically add CmpRid to userData
+            userData.CmpRid = company.cmpID;
+        }
+
+        // ✅ Create user with userData (including CmpRid if applicable)
+        const userItem = await Model.User.create(userData);
+
+        res.status(201).json({
+            success: true,
+            data: userItem
+        });
+
+    } catch (error) {
+        console.error(error.message);
+        res.status(500).json({ msg: 'Server Error' });
+    }
+};
+
 exports.CreateCmp = async (req, res) => { 
     const { label } = req.body;
     
@@ -25,6 +85,7 @@ exports.CreateCmp = async (req, res) => {
         res.status(500).json({msg:'Server Error'});
     }
 }
+
 exports.getUsers = async (req, res) => {
     try {
         const users = await Model.User.findAll();
