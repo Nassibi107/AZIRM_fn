@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Avatar, Box, Card, Grid, IconButton, Pagination, Stack } from "@mui/material"; // CUSTOM COMPONENTS
 
 import FlexBetween from "@/components/flexbox/FlexBetween";
@@ -10,23 +10,40 @@ import UserDetails from "../UserDetails"; // CUSTOM ICON COMPONENT
 import MoreVertical from "@/icons/MoreVertical"; // CUSTOM UTILS METHOD
 
 import { paginate } from "@/utils/paginate"; // CUSTOM DUMMY DATA
+import axios from "axios";
+const ADMIN_ROUTE = import.meta.env.VITE_ADMIN_URL;
 
-import { USER_LIST } from "@/__fakeData__/users";
 
 const UserGrid2PageView = () => {
   const [userPerPage] = useState(21);
   const [page, setPage] = useState(1);
-  const [users] = useState([...USER_LIST]);
+  const [users,setUsers] = useState([]);
   const [searchValue, setSearchValue] = useState("");
-  const [selectedItem, setSelectedItem] = useState(USER_LIST[1]); // handle select
+  const [selectedItem, setSelectedItem] = useState(users[0]); // handle select
 
-  const handleSelectItem = id => setSelectedItem(USER_LIST[id]); // active select item
+  const handleSelectItem = id => setSelectedItem(users[id]); // active select item
 
 
-  const activeItem = id => selectedItem.id === id;
+  const activeItem = id => selectedItem?.id === id;
+
+  const _getUser = async () => {
+
+    try {
+      const res = await axios.get(`${ADMIN_ROUTE}/users`);
+
+      setUsers(res.data.data);
+      console.log(res.data.data);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+  useEffect(() => {
+    _getUser(); 
+  }, []);
+
 
   let filteredUsers = users.filter(item => {
-    if (searchValue) return item.name.toLowerCase().includes(searchValue.toLowerCase());else return true;
+    if (searchValue) return item.firstName.toLowerCase().includes(searchValue.toLowerCase());else return true;
   });
   return <Box pt={2} pb={4}>
       <Grid container>
@@ -56,7 +73,7 @@ const UserGrid2PageView = () => {
 
                         <Box>
                           <H6 fontSize={14} color={activeItem(item.id) ? "white" : "text.primary"}>
-                            {item.name}
+                            {item.firstName} {item.lastName}
                           </H6>
 
                           <Paragraph color={activeItem(item.id) ? "white" : "text.secondary"}>

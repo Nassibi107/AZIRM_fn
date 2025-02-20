@@ -1,19 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { Box, Button, Card, Grid, IconButton, InputLabel, MenuItem, Select, styled, Switch, TextField } from "@mui/material";
+import { FlexBetween, FlexRowAlign } from "@/components/flexbox"; 
 import PhotoCamera from "@mui/icons-material/PhotoCamera";
 import * as Yup from "yup";
 import { useFormik } from "formik";
 import axios from "axios";
 import { useParams } from "react-router-dom";
-
-
+import { Paragraph, Small } from "@/components/typography";
+import { isDark } from "@/utils/constants"; // STYLED COMPONENTS
 const ADMIN_ROUTE = import.meta.env.VITE_ADMIN_URL;
-
-const SwitchWrapper = styled('div')({
+const SwitchWrapper = styled(FlexBetween)({
   width: "100%",
   marginTop: 10
 });
-
 const StyledCard = styled(Card)({
   padding: 24,
   minHeight: 400,
@@ -21,19 +20,21 @@ const StyledCard = styled(Card)({
   alignItems: "center",
   flexDirection: "column"
 });
-
-const ButtonWrapper = styled('div')(({ theme }) => ({
+const ButtonWrapper = styled(FlexRowAlign)(({
+  theme
+}) => ({
   width: 100,
   height: 100,
   borderRadius: "50%",
-  backgroundColor: theme.palette.grey[100]
+  backgroundColor: theme.palette.grey[isDark(theme) ? 700 : 100]
 }));
-
-const UploadButton = styled('div')(({ theme }) => ({
+const UploadButton = styled(FlexRowAlign)(({
+  theme
+}) => ({
   width: 50,
   height: 50,
   borderRadius: "50%",
-  backgroundColor: theme.palette.grey[200],
+  backgroundColor: theme.palette.grey[isDark(theme) ? 600 : 200],
   border: `1px solid ${theme.palette.background.paper}`
 }));
 
@@ -68,20 +69,20 @@ const UpdateUser = () => {
         email: user.email,
         role: user.role,
         address: user.address,
-        password: user.password,
+        password: "",
         label: user.label
       }
     : {};
 
   // Form validation schema using Yup
   const validationSchema = Yup.object().shape({
-    firstName: Yup.string().required("First Name is Required!"),
-    lastName: Yup.string().required("Last Name is Required!"),
-    phoneNumber: Yup.number().min(8).required("Phone is Required!"),
-    email: Yup.string().email().required("Email is Required!"),
-    role: Yup.string().required("Role is Required!"),
-    address: Yup.string().required("Address is Required!"),
-    password: Yup.string().required("Password is Required!")
+    firstName: Yup.string().min(4),
+    lastName: Yup.string().min(4),
+    phoneNumber: Yup.number().min(8),
+    email: Yup.string().email(),
+    role: Yup.string(),
+    address: Yup.string(),
+    password: Yup.string()
   });
 
   // Handle form submission
@@ -125,7 +126,7 @@ const UpdateUser = () => {
   return (
     <Box pt={2} pb={4}>
       <Grid container spacing={3}>
-        <Grid item md={4} xs={12}>
+      <Grid item md={4} xs={12}>
           <StyledCard>
             <ButtonWrapper>
               <UploadButton>
@@ -137,15 +138,35 @@ const UpdateUser = () => {
                 </label>
               </UploadButton>
             </ButtonWrapper>
+
+            <Paragraph marginTop={2} maxWidth={200} display="block" textAlign="center" color="text.secondary">
+              Allowed *.jpeg, *.jpg, *.png, *.gif max size of 3.1 MB
+            </Paragraph>
+
             <Box maxWidth={250} marginTop={5} marginBottom={1}>
               <SwitchWrapper>
-                {/* <Paragraph display="block" fontWeight={600}>Public Profile</Paragraph> */}
+                <Paragraph display="block" fontWeight={600}>
+                  Public Profile
+                </Paragraph>
+
                 <Switch defaultChecked />
               </SwitchWrapper>
+
+              <Small display="block" color="text.secondary">
+                Apply disable account
+              </Small>
+
               <SwitchWrapper>
-                {/* <Paragraph display="block" fontWeight={600}>Email Verified</Paragraph> */}
+                <Paragraph display="block" fontWeight={600}>
+                  Email Verified
+                </Paragraph>
+
                 <Switch defaultChecked />
               </SwitchWrapper>
+
+              <Small display="block" color="text.secondary">
+                Disabling this will automatically send the user a verification email
+              </Small>
             </Box>
           </StyledCard>
         </Grid>

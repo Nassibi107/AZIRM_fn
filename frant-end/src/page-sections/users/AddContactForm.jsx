@@ -1,47 +1,76 @@
-import { Box, Grid, Stack, Button, Avatar, TextField, IconButton, useMediaQuery } from "@mui/material";
+import { Box, Grid, Stack, Button, Avatar, TextField, IconButton, useMediaQuery, InputLabel, Select, MenuItem } from "@mui/material";
 import { CameraAlt } from "@mui/icons-material";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { useFormik } from "formik";
 import * as Yup from "yup"; // CUSTOM COMPONENTS
-
+import "./style.css"
 import { H5 } from "@/components/typography";
 import { Scrollbar } from "@/components/scrollbar";
 import { AvatarBadge } from "@/components/avatar-badge"; // ==========================================================================
-
+import axios from "axios";
+const ADMIN_ROUTE = import.meta.env.VITE_ADMIN_URL;
 // ==========================================================================
 const AddContactForm = ({
   handleCancel,
   data
 }) => {
   const downSm = useMediaQuery(theme => theme.breakpoints.down("sm"));
-  const initialValues = {
-    firstName: data?.name || "",
-    lastName: "",
-    birthday: "",
-    company: data?.company || "",
-    email: data?.email || "",
-    phone: data?.phone || ""
-  };
-  const validationSchema = Yup.object({
-    firstName: Yup.string().min(3, "Must be greater then 3 characters").required("First Name is Required!"),
-    lastName: Yup.string().required("Last Name is Required!"),
-    email: Yup.string().email("Invalid email address").required("Email is Required!"),
-    birthday: Yup.date().required("Date of Birth is Required!"),
-    phone: Yup.number().min(9).required("Phone Number is required!"),
-    company: Yup.string().required("Company is Required!")
+  const initialValues = data 
+  ? {
+      firstName: data.firstName,
+      lastName: data.lastName,
+      phoneNumber: data.phoneNumber,
+      email: data.email,
+      role: data.role,
+      address: data.address,
+      password: "",
+      label: data.label
+    }
+  : {};
+  const validationSchema = Yup.object().shape({
+    firstName: Yup.string().min(4),
+    lastName: Yup.string().min(4),
+    phoneNumber: Yup.number().min(8),
+    email: Yup.string().email(),
+    role: Yup.string(),
+    address: Yup.string(),
+    password: Yup.string()
   });
-  const {
-    values,
-    errors,
-    handleSubmit,
-    handleChange,
-    handleBlur,
-    touched,
-    setFieldValue
-  } = useFormik({
+
+  // Handle form submission
+  const _handleSubmit = async (values) => {
+    try {
+      const body = {
+        firstName: values.firstName,
+        lastName: values.lastName,
+        email: values.email,
+        phoneNumber: values.phoneNumber,
+        address: values.address,
+        password: values.password,
+        role: values.role,
+        label: values.label
+      };
+    
+      const response = await axios.put(`${ADMIN_ROUTE}/user/${data.id}`, body, {
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+      console.log(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  // Formik hook for handling the form
+  const { values, errors, handleChange, handleSubmit, handleBlur,touched } = useFormik({
     initialValues,
     validationSchema,
-    onSubmit: values => console.log(values)
+    enableReinitialize: true, // Ensure the form reinitializes when user data changes
+    onSubmit: (values) => {
+      _handleSubmit(values);
+    
+    }
   });
   return <Box>
       <H5 fontSize={16} mb={4}>
@@ -73,31 +102,74 @@ const AddContactForm = ({
             </AvatarBadge>
           </Stack>
 
-          <Grid container spacing={3}>
+        <Grid container spacing={3}>
             <Grid item sm={6} xs={12}>
-              <TextField fullWidth name="firstName" label="First Name" variant="outlined" onBlur={handleBlur} value={values.firstName} onChange={handleChange} error={Boolean(errors.firstName && touched.firstName)} helperText={touched.firstName && errors.firstName} />
+              <TextField fullWidth name="firstName" label="First Name" variant="standard" onBlur={handleBlur} value={values.firstName} onChange={handleChange} error={Boolean(errors.firstName && touched.firstName)} helperText={touched.firstName && errors.firstName} />
             </Grid>
 
             <Grid item sm={6} xs={12}>
-              <TextField fullWidth name="lastName" label="Last Name" variant="outlined" onBlur={handleBlur} value={values.lastName} onChange={handleChange} error={Boolean(errors.lastName && touched.lastName)} helperText={touched.lastName && errors.lastName} />
+              <TextField fullWidth name="lastName" label="Last Name" variant="standard" onBlur={handleBlur} value={values.lastName} onChange={handleChange} error={Boolean(errors.lastName && touched.lastName)} helperText={touched.lastName && errors.lastName} />
             </Grid>
 
             <Grid item sm={6} xs={12}>
-              <DatePicker label="Birthday" value={values.birthday} onChange={date => setFieldValue("birthday", date)} renderInput={params => <TextField {...params} fullWidth name="birthday" onBlur={handleBlur} error={Boolean(errors.birthday && touched.birthday)} helperText={touched.birthday && errors.birthday} />} />
+              <TextField fullWidth name="email" type="email" label="Email" variant="standard" onBlur={handleBlur} value={values.email} onChange={handleChange} error={Boolean(errors.email && touched.email)} helperText={touched.email && errors.email} />
             </Grid>
 
             <Grid item sm={6} xs={12}>
-              <TextField fullWidth name="company" label="Company" variant="outlined" onBlur={handleBlur} value={values.company} onChange={handleChange} error={Boolean(errors.company && touched.company)} helperText={touched.company && errors.company} />
+              <TextField fullWidth name="phone" label="Phone Number" variant="standard" onBlur={handleBlur} value={values.phoneNumber} onChange={handleChange} error={Boolean(errors.phoneNumber && touched.phoneNumber)} helperText={touched.phone && errors.phone} />
             </Grid>
-
             <Grid item sm={6} xs={12}>
-              <TextField fullWidth name="email" type="email" label="Email" variant="outlined" onBlur={handleBlur} value={values.email} onChange={handleChange} error={Boolean(errors.email && touched.email)} helperText={touched.email && errors.email} />
-            </Grid>
+                            <InputLabel>Role</InputLabel>
+                            <Select
+                              fullWidth
+                              label="Role"
+                              name="role"
+                              value={values.role}
+                              onChange={handleChange}
+                            >
+                              <MenuItem value="admin">Admin</MenuItem>
+                              <MenuItem value="leader">Leader</MenuItem>
+                              <MenuItem value="user">User</MenuItem>
+                            </Select>
+                          </Grid>
+          <Grid item sm={6} xs={12}>
+                  <InputLabel>Label</InputLabel>
+                  <Select
+                    fullWidth
+                    label="Label"
+                    name="label"
+                    value={values.label}
+                    onChange={handleChange}
+                  >
+                    <MenuItem value="LSI">LSI</MenuItem>
+                    <MenuItem value="LvM">LvM</MenuItem>
+                    <MenuItem value="Kenzo">Kenzo</MenuItem>
+                    <MenuItem value="nexsus">nexsus</MenuItem>
+                  </Select>
+        </Grid>
+        <Grid item sm={12} xs={12}>
 
-            <Grid item sm={6} xs={12}>
-              <TextField fullWidth name="phone" label="Phone Number" variant="outlined" onBlur={handleBlur} value={values.phone} onChange={handleChange} error={Boolean(errors.phone && touched.phone)} helperText={touched.phone && errors.phone} />
-            </Grid>
+            <div className='cardss'>
+
+              <div className="e-card playing">
+              <div className="image"></div>  
+              <div className="wave"></div>
+              
+              
+              <h4 style={{ color: 'white', margin: "15px 20px", position:'absolute', zIndex: "500" }}>Update your user</h4><br/>
+              <br/>
+              <h5 >
+              it’s your key to staying connected, enhancing your experience, and ensuring seamless collaboration.
+              </h5>
+              </div>
+            </div>
+
+
           </Grid>
+          </Grid>
+          
+         
+
         </Scrollbar>
 
         <Stack direction="row" alignItems="center" spacing={1} mt={4}>

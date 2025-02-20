@@ -3,7 +3,7 @@ import { Avatar, Box, Checkbox, TableCell, TableRow } from "@mui/material";
 import { DeleteOutline, Edit } from "@mui/icons-material"; // CUSTOM DEFINED HOOK
 
 import useNavigate from "@/hooks/useNavigate"; // CUSTOM COMPONENTS
-
+import  MoreButtonListUser  from "@/components/more-button/MoreButtonListUser";
 import { FlexBox } from "@/components/flexbox";
 import { Paragraph } from "@/components/typography";
 import { TableMoreMenuItem, TableMoreMenu } from "@/components/table"; // ==============================================================
@@ -55,16 +55,7 @@ const UserTableRow = props => {
       <TableCell padding="normal">{user.role}</TableCell>
 
       <TableCell padding="normal">
-        <TableMoreMenu open={openMenuEl} handleOpen={handleOpenMenu} handleClose={handleCloseOpenMenu}>
-          <TableMoreMenuItem Icon={Edit} title="Edit" handleClick={() => {
-          handleCloseOpenMenu();
-          navigate("/user-add/".concat(user.id));
-        }} />
-          <TableMoreMenuItem Icon={DeleteOutline} title="Delete" handleClick={() => {
-          handleCloseOpenMenu();
-          handleDeleteUser(user.id);
-        }} />
-        </TableMoreMenu>
+          <MoreButtonListUser user={user} />
       </TableCell>
     </TableRow>;
 };

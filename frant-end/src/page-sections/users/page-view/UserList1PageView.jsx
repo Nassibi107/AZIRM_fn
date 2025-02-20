@@ -61,7 +61,8 @@ const UserList1PageView = () => {
   };
 
   let filteredUsers = stableSort(users, getComparator(order, orderBy)).filter(item => {
-    if (userFilter.role) return item.role.toLowerCase() === userFilter.role;else if (userFilter.search) return item.name.toLowerCase().includes(userFilter.search.toLowerCase());else return true;
+     console.log(item);
+    if (userFilter.role) return item.role.toLowerCase() === userFilter.role;else if (userFilter.search) return item.firstName.toLowerCase().includes(userFilter.search.toLowerCase());else return true;
   });
 
   const handleDeleteUser = id => {

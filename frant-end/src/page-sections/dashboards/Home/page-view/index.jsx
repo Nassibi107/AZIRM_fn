@@ -12,6 +12,11 @@ import Earnings from '../Earnings';
 import RewardsPrograms from '../RewardsPrograms';
 
 const index = () => {
+
+  useEffect(() => {
+    console.log('Dashboard Page');
+    window.location.reload();
+  }, []); 
   
     return <Box pt={2} pb={4}>
     <Grid container spacing={3}>

@@ -11,8 +11,10 @@ import TopProducts from "../TopProducts";
 import RecentOrders from "../RecentOrders";
 import DailyVisitors from "../DailyVisitors";
 import CustomerReview from "../CustomerReview";
+import { useEffect } from "react";
 
 const EcommercePageView = () => {
+  
   return <Box pt={2} pb={4}>
       <Grid container spacing={3}>
         {
