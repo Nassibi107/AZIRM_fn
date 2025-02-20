@@ -1,4 +1,4 @@
-import { Box, Button, Card, Grid, IconButton, InputLabel, MenuItem, Select, styled, Switch, TextField } from "@mui/material";
+import { Alert, Box, Button, Card, Grid, IconButton, InputLabel, MenuItem, Select, styled, Switch, TextField } from "@mui/material";
 import PhotoCamera from "@mui/icons-material/PhotoCamera";
 import * as Yup from "yup";
 import { useFormik } from "formik"; // CUSTOM COMPONENTS
@@ -7,6 +7,7 @@ import { Paragraph, Small } from "@/components/typography";
 import { FlexBetween, FlexRowAlign } from "@/components/flexbox"; // CUSTOM UTILS METHOD
 
 import { isDark } from "@/utils/constants"; // STYLED COMPONENTS
+import { useState } from "react";
 const ADMIN_ROUTE = import.meta.env.VITE_ADMIN_URL;
 
 const SwitchWrapper = styled(FlexBetween)({
@@ -38,6 +39,8 @@ const UploadButton = styled(FlexRowAlign)(({
   border: `1px solid ${theme.palette.background.paper}`
 }));
 
+
+
 const AddNewUserPageView = () => {
   const initialValues = {
     firstName: "",
@@ -49,7 +52,9 @@ const AddNewUserPageView = () => {
     password: "",
     label: ""
   };
-
+  const [alertMessage, setAlertMessage] = useState(null); 
+  const [isLoading, setIsLoading] = useState(true);
+  const [alertSeverity, setAlertSeverity] = useState(null); 
   const validationSchema = Yup.object().shape({
     firstName: Yup.string().required("First Name is Required!"),
     lastName: Yup.string().required("Last Name is Required!"),
@@ -77,11 +82,13 @@ const AddNewUserPageView = () => {
                   headers: {
                       'Content-Type': 'application/json',
               }});
-              console.log(response.data);
-
+              setAlertMessage("User created successfully!");
+               setAlertSeverity("success");
           }
           catch (error) {
               console.log(error);
+              setAlertMessage(error.response.data.msg);
+              setAlertSeverity("error");
           }
     }
 
@@ -103,6 +110,7 @@ const AddNewUserPageView = () => {
   return (
     <Box pt={2} pb={4}>
       <Grid container spacing={3}>
+    
         <Grid item md={4} xs={12}>
           <StyledCard>
             <ButtonWrapper>
@@ -149,6 +157,12 @@ const AddNewUserPageView = () => {
         </Grid>
 
         <Grid item md={8} xs={12}>
+        <Grid item lg={12 }xs={12}>
+                      {alertMessage && (
+                        <Alert severity={alertSeverity} sx={{ my: 2 }}>
+                          {alertMessage}
+                        </Alert>
+                      )}</Grid>
           <Card sx={{ padding: 3 }}>
             <form onSubmit={handleSubmit}>
               <Grid container spacing={3}>

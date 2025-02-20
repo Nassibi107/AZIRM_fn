@@ -24,8 +24,10 @@ import Facebook from "@/icons/Facebook";
 import Whatsapp from "@/icons/Whatsapp";
 import Messenger from "@/icons/Messenger";
 import { isDark } from "@/utils/constants"; // ==============================================================
-
+import axios from "axios";
 import MoreHorizontal from "@/icons/MoreHorizontal"; 
+
+const   ADMIN_ROUTE = import.meta.env.VITE_ADMIN_URL;
 const UserDetails = ({
   data
 }) => {
@@ -36,16 +38,26 @@ const UserDetails = ({
   const [openDialog, setOpenDialog] = useState(false); // State to control the dialog
 
   const handleCloseModal = () => setOpenModal(false);
+  const handleDeleteUser = async (id)=> {
+    try {
+   
+      const res = await axios.delete(`${ADMIN_ROUTE}/user/${id}`);
+      console.log(res);
 
+    } catch (error) {
+      console.error(error);
+  };
+}
   const handleCloseMenu = () => {
     setAnchorEl(null);
     setOpenDialog(true); // Open the confirmation dialog when the menu is closed
   };
 
-  const handleConfirmDelete = () => {
+  const handleConfirmDelete = (id) => {
     setOpenDialog(false);
     // Place your delete action here
-    alert("Contact deleted!");
+    handleDeleteUser(id);
+    
   };
 
   const handleCancelDelete = () => {
@@ -119,13 +131,13 @@ const UserDetails = ({
       >
         <DialogTitle>Confirm Deletion</DialogTitle>
         <DialogContent>
-          <Paragraph>Are you sure you want to delete this contact?</Paragraph>
+          <Paragraph>Are you sure you want to delete this user?</Paragraph>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleCancelDelete} color="primary">
+          <Button onClick={()=> handleCancelDelete} color="primary">
             Cancel
           </Button>
-          <Button onClick={handleConfirmDelete} color="primary">
+          <Button onClick={() => handleConfirmDelete(data.id)} color="error">
             Confirm
           </Button>
         </DialogActions>
