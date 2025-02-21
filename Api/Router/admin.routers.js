@@ -13,6 +13,7 @@ router.use(authMiddleware.check, isAdmin.checkIs);
 router.post('/CreateCmp', adminController.CreateCmp);
 router.get('/cmps', adminController.getAllCompanies);
 router.delete('/cmp/:id', adminController.destroyCompany);
+router.get('/cmp/:id', adminController.getCmpId);
 
 // Manage users
 router.get('/users', adminController.getUsers);

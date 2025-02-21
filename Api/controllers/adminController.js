@@ -216,6 +216,23 @@ exports.destroyCompany = async (req, res) => {
     }
 };
 
+exports.getCmpId = async (req, res) => {
+    const { id } = req.params;
+    try {
+        const company = await Model.Company.findByPk(id);
+        if(!company) {
+            return res.status(404).json({msg: 'Company not found'});
+        }
+        res.status(200).json({
+            success: true,
+            data: company
+        });
+    } catch (error) {
+        console.error(error.message);
+        res.status(500).json({msg:'Server Error'});
+    }
+}
+
 exports.destroyUser = async (req, res) => {
     try {
         const { id } = req.params;
