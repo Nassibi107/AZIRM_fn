@@ -16,7 +16,7 @@ router.delete('/cmp/:id', adminController.destroyCompany);
 
 // Manage users
 router.get('/users', adminController.getUsers);
-router.post('/register',adminController.register);
+
 router.get('/user/:id', adminController.getUserId);
 router.put('/user/:id', adminController.updateUserId);
 router.put('/userStatus/:id', adminController.updateUserId);

@@ -1,8 +1,7 @@
-const Model = require('../Models');
-const bcrypt = require('bcryptjs');
-// Register a new user
-const jwtHelper = require('../utils/jwtHelper');
 
+
+const { where } = require('sequelize');
+const Model = require('../Models');
 
 
 exports.register = async (req, res) => {
@@ -62,44 +61,33 @@ exports.register = async (req, res) => {
     }
 };
 
-exports.CreateCmp = async (req, res) => { 
-    const { label } = req.body;
-    
-    try {
-        const companyFind = await Model.Company.findOne({
-            where: { label }
-        });
-        if (companyFind) 
-            return res.status(400).json({ msg: 'Company already exists' });
-        const company = await Model.Company.create({
-            label
-        });
-        res.status(201).json({
-            success: true,
-            data: company
-        });
-    } catch (error) {
-        console.error(error.message);
-        res.status(500).json({msg:'Server Error'});
-    }
-}
-
 exports.getUsers = async (req, res) => {
     try {
-        const users = await Model.User.findAll();
+        const users = await Model.User.findAll({
+            where: {
+                createBy: req.userRef
+            }
+        });
         res.status(200).json({
             success: true,
             data: users
         });
     } catch (error) {
         console.error(error.message);
-        res.status(500).json({msg:'Server Error'});
+        res.status(500).json({ msg: 'Server Error' });
     }
-}
+};
+
+
 exports.getUserId = async (req, res) => {
     const { id } = req.params;
     try {
-        const user = await Model.User.findByPk(id);
+        const user = await Model.User.findOne({
+            where: {
+              id: id,
+              createBy: req.userRef
+            }
+          });
         if(!user) {
             return res.status(404).json({msg: 'User not found'});
         }
@@ -126,7 +114,11 @@ exports.updateUserId = async (req, res) => {
             label
         } = req.body;
 
-        const user = await Model.User.findByPk(id);
+        const user = await Model.User.findOne({
+            where: {
+              id: id,
+              createBy: req.userRef
+            }});
         if (!user) {
             return res.status(404).json({ msg: 'User not found' });
         }
@@ -171,8 +163,14 @@ exports.updatestatus = async (req, res) => {
 
         const [updated] = await Model.User.update(
             { status },
-            { where: { id } }
-        );
+            {
+              where: {
+                id: id,
+                createBy: req.userRef
+              }
+            }
+          );
+          
 
         if (updated) {
             return res.status(200).json({ msg: 'User status updated successfully', status });
@@ -185,43 +183,19 @@ exports.updatestatus = async (req, res) => {
     }
 };
 
-exports.getAllCompanies = async (req, res) => {
-    try {
-        const companies = await Model.Company.findAll();
-        res.status(200).json({
-            success: true,
-            data: companies
-        });
-    } catch (error) {
-        console.error(error.message);
-        res.status(500).json({msg:'Server Error'});
-    }
-}
-exports.destroyCompany = async (req, res) => {
-    try {
-        const { id } = req.params;
 
-        // Delete the company directly
-        const deleted = await Model.Company.destroy({ where: { cmpID: id } });
-
-        if (!deleted) {
-            return res.status(404).json({ msg: 'Company not found' });
-        }
-
-        res.status(200).json({ msg: 'Company deleted successfully' });
-
-    } catch (error) {
-        console.error(error.message);
-        res.status(500).json({ msg: 'Server Error' });
-    }
-};
 
 exports.destroyUser = async (req, res) => {
     try {
         const { id } = req.params;
 
         // Delete the user directly
-        const deleted = await Model.User.destroy({ where: { id } });
+        const deleted = await Model.User.destroy({
+            where: {
+              id: id,
+              createBy: req.userRef
+            }
+          });
 
         if (!deleted) {
             return res.status(404).json({ msg: 'User not found' });

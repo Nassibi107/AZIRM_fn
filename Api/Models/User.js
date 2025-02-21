@@ -44,10 +44,13 @@ const User = db.define("User", {
     type: DataTypes.DECIMAL,
     defaultValue: 0,
   },
+  createBy: {
+    type: DataTypes.BIGINT,
+  },
   status: {
     type: DataTypes.INTEGER,
     defaultValue: 1,
-  },
+  }
 });
 
 User.associate = (models) => {
