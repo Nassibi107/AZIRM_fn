@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Box, Menu, Stack, Button, Avatar, useTheme, IconButton, Dialog, DialogActions, DialogContent, DialogTitle } from "@mui/material";
 import { DeleteOutline } from "@mui/icons-material"; // Import Edit here
 
@@ -36,7 +36,7 @@ const UserDetails = ({
   const [openModal, setOpenModal] = useState(false);
   const [anchorEl, setAnchorEl] = useState(null);
   const [openDialog, setOpenDialog] = useState(false); // State to control the dialog
-
+  const [cmp, setCmp] = useState();
   const handleCloseModal = () => setOpenModal(false);
   const handleDeleteUser = async (id)=> {
     try {
@@ -48,6 +48,21 @@ const UserDetails = ({
       console.error(error);
   };
 }
+const _getCompany = async () => {
+  try {
+    console.log(data);
+    console.log(data.Cmpid);
+    const res = await axios.get(`${ADMIN_ROUTE}/cmp/${data.CmpRid}`);
+    console.log(res.data.data.label);
+    setCmp(res.data.data.label);
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+useEffect(() => {
+  _getCompany();  
+}, [data]);
   const handleCloseMenu = () => {
     setAnchorEl(null);
     setOpenDialog(true); // Open the confirmation dialog when the menu is closed
@@ -114,7 +129,7 @@ const UserDetails = ({
         </Stack>
 
         <Box mt={4}>
-          <ListItem Icon={City} title={data.Cmpid} />
+          <ListItem Icon={City} title={cmp || "ADMIN"} />
           <ListItem Icon={Email} title={data.email} />
           <ListItem Icon={Call} title={data.phoneNumber} />
           <ListItem Icon={Flag} title={data.address} />

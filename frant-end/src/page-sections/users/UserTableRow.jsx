@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Avatar, Box, Checkbox, TableCell, TableRow } from "@mui/material";
 import { DeleteOutline, Edit } from "@mui/icons-material"; // CUSTOM DEFINED HOOK
 
@@ -6,8 +6,10 @@ import useNavigate from "@/hooks/useNavigate"; // CUSTOM COMPONENTS
 import  MoreButtonListUser  from "@/components/more-button/MoreButtonListUser";
 import { FlexBox } from "@/components/flexbox";
 import { Paragraph } from "@/components/typography";
-import { TableMoreMenuItem, TableMoreMenu } from "@/components/table"; // ==============================================================
-
+import { TableMoreMenuItem, TableMoreMenu } from "@/components/table";
+import axios from "axios";
+ // ==============================================================
+const ADMIN_ROUTE = import.meta.env.VITE_ADMIN_URL;
 // ==============================================================
 const UserTableRow = props => {
   const {
@@ -16,12 +18,28 @@ const UserTableRow = props => {
     handleSelectRow,
     handleDeleteUser
   } = props;
+  const [cmp, setCmp] = useState();
   const navigate = useNavigate();
   const [openMenuEl, setOpenMenuEl] = useState(null);
 
   const handleOpenMenu = event => {
     setOpenMenuEl(event.currentTarget);
   };
+
+  const _getCompany = async () => {
+      try {
+        const res = await axios.get(`${ADMIN_ROUTE}/cmp/${user.CmpRid}`);
+        console.log(res.data.data.label);
+        setCmp(res.data.data.label);
+      } catch (error) {
+        console.error(error);
+      }
+  };
+
+  useEffect(() => {
+      _getCompany();  
+    }, []);
+
 
   const handleCloseOpenMenu = () => setOpenMenuEl(null);
 
@@ -49,8 +67,8 @@ const UserTableRow = props => {
       {/* <TableCell padding="normal">{user.lastName}</TableCell> */}
       <TableCell padding="normal">{user.phoneNumber}</TableCell>
       <TableCell padding="normal">{user.status}</TableCell>
+      <TableCell padding="normal">{cmp || "ADMIN"}</TableCell>
       <TableCell padding="normal">{user.email}</TableCell>
-      <TableCell padding="normal">{user.CmpRid}</TableCell>
       <TableCell padding="normal">{user.address}</TableCell>
       <TableCell padding="normal">{user.role}</TableCell>
 
