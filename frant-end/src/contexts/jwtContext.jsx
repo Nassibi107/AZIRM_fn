@@ -103,7 +103,7 @@ export const AuthProvider = ({ children }) => {
           dispatch({
             type: "INIT",
             payload: {
-              user: userResponse.data,
+              user: userResponse.data.data,
               isAuthenticated: true,
             },
           });

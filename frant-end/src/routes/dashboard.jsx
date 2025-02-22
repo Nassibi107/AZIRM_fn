@@ -8,10 +8,13 @@ import DashboardLayout from "@/layouts/dashboard/DashboardLayout"; // ALL DASHBO
 import { AuthGuard } from "@/components/auth";
 
 import { Create } from "@mui/icons-material";
+import { el } from "date-fns/locale";
 
 const  HomePage= Loadable(lazy(() => import("@/pages/dashboard/ecommerce")));
 const  UserPage = Loadable(lazy(() => import("../pages/dashboard/users/UserList1Page")));
-const  UserGridPage = Loadable(lazy(() => import("../pages/dashboard/users/UserGrid2Page")));
+const  UserLeaderPageView = Loadable(lazy(() => import("../pages/dashboard/users/UserLeaderPageView")));
+const  UserGridPage = Loadable(lazy(() => import("../pages/dashboard/users/UserGrid2Pages")));
+const  LeaderGridPage = Loadable(lazy(() => import("../pages/dashboard/users/LeadeGrid2Page")));
 const  UserAddPage = Loadable(lazy(() => import("../pages/dashboard/users/add-new-user")));
 const  UserUpPage = Loadable(lazy(() => import("../pages/dashboard/users/updateUserPage")));
 const  Account = Loadable(lazy(() => import("../pages/dashboard/accounts")));
@@ -47,7 +50,15 @@ export const DashboardRoutes = [{
   {
     path : "/account" ,
     element : <Account/>
-  } 
+  } ,
+  {
+    path : "/Ousers",
+    element :<UserLeaderPageView/>
+  },
+  {
+    path : "/ouser-grid",
+    element :<LeaderGridPage/>
+  }
   // , {
   //   path :"announcement",
   //   element :<PrivteRoute per = "users_create"> <Announcement/></PrivteRoute>

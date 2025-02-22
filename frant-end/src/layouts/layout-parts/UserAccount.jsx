@@ -21,12 +21,12 @@ const UserAccount = () => {
         {/* <Chip variant="outlined" label="60% Complete" size="small" /> */}
        {
         <Paragraph fontSize={16} fontWeight={600} mt={1}>
-            {user.username}
+            {user.firstName} {user.lastName}
        </Paragraph>
        }
-        {/* <Paragraph fontSize={13} fontWeight={500} color="text.secondary" mt={0.5}>
-          aaron@example.com
-        </Paragraph> */}
+        <Paragraph fontSize={13} fontWeight={500} color="text.secondary" mt={0.5}>
+        {user.email}
+        </Paragraph>
       </Box>
 
       {/* <Button>Upgrade to Pro</Button> */}

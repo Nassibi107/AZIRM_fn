@@ -119,8 +119,8 @@ const ProfilePopover = () => {
           <FlexBox alignItems="center" gap={1}>
             <Avatar src="/static/user/user-11.png" sx={{ width: 35, height: 35 }} />
             <Box>
-              <H6 fontSize={14}>{user.username || "yassine"}</H6>
-              {/* <Small color="text.secondary" display="block">
+              <H6 fontSize={14}>{user.firstName || "yassine"}</H6>
+              {/* <Small color="text.secndary" display="block">
                 aaron@example.com
               </Small> */}
             </Box>

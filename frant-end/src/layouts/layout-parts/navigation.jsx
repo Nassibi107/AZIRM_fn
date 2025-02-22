@@ -20,3 +20,18 @@ export const navigations = [{
   icon: duotone.UserList
 }
 ];
+
+export const leaderLayout = [{
+  type: "label",
+  label: "Dashboard"
+}, {
+  name: "Home",
+  path: "",
+  icon: duotone.HomeIcon
+}
+, {
+  name: "Users",
+  path: "/ousers",
+  icon: duotone.UserList
+}
+];

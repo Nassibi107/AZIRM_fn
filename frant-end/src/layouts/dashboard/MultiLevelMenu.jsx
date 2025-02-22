@@ -8,7 +8,7 @@ import useLocation from "@/hooks/useLocation"; // LAYOUT BASED HOOK
 import useLayout from "./context/useLayout"; // CUSTOM COMPONENTS
 
 import SidebarAccordion from "./SidebarAccordion";
-import { navigations } from "../layout-parts/navigation"; // CUSTOM STYLED COMPONENTS
+import { navigations ,leaderLayout} from "../layout-parts/navigation"; // CUSTOM STYLED COMPONENTS
 
 import { ItemText, ListLabel, BulletIcon, ICON_STYLE, ExternalLink, NavItemButton } from "../layout-parts/styles/sidebar"; // ===========================================================================
 
@@ -43,6 +43,7 @@ const MultiLevelMenu = ({
 
   const renderLevels = data => {
     return data.map((item, index) => {
+      console.log(data);
       // MENU LABEL DESIGN
       if (item.type === "label") {
         return <ListLabel key={index} compact={COMPACT}>
@@ -82,10 +83,12 @@ const MultiLevelMenu = ({
 
 
   const filterNavigation = useMemo(() => {
-    return navigations.filter(navigation => {
-      if (!navigation.access) return true;else if (navigation.access === user?.role) return true;else return false;
-    });
-  }, [user?.role]);
+    // Only filter `navigations` when user is not a leader
+    if (user?.role !== "leader") return navigations; // Otherwise, return `leaderLayout`
+    else return leaderLayout;
+  } // eslint-disable-next-line react-hooks/exhaustive-deps
+  , [user]); // RENDER MULTI LEVEL MENU 
+  
   return <>{renderLevels(filterNavigation)}</>;
 };
 
