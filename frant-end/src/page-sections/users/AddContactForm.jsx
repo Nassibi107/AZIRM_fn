@@ -163,13 +163,8 @@ const AddContactForm = ({
               </h5>
               </div>
             </div>
-
-
           </Grid>
           </Grid>
-          
-         
-
         </Scrollbar>
 
         <Stack direction="row" alignItems="center" spacing={1} mt={4}>

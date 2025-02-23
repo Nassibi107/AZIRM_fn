@@ -10,7 +10,8 @@ import { AuthGuard } from "@/components/auth";
 import { Create } from "@mui/icons-material";
 import { el } from "date-fns/locale";
 
-const  HomePage= Loadable(lazy(() => import("@/pages/dashboard/ecommerce")));
+import PrivateRoute from "@/components/auth/PrivteRoute"; 
+ const  HomePage= Loadable(lazy(() => import("@/pages/dashboard/ecommerce")));
 const  UserPage = Loadable(lazy(() => import("../pages/dashboard/users/UserList1Page")));
 const  UserLeaderPageView = Loadable(lazy(() => import("../pages/dashboard/users/UserLeaderPageView")));
 const  UserGridPage = Loadable(lazy(() => import("../pages/dashboard/users/UserGrid2Pages")));
@@ -18,6 +19,9 @@ const  LeaderGridPage = Loadable(lazy(() => import("../pages/dashboard/users/Lea
 const  UserAddPage = Loadable(lazy(() => import("../pages/dashboard/users/add-new-user")));
 const  UserUpPage = Loadable(lazy(() => import("../pages/dashboard/users/updateUserPage")));
 const  Account = Loadable(lazy(() => import("../pages/dashboard/accounts")));
+const  MapMain = Loadable(lazy(() => import("../pages/dashboard/map/mapPage")));
+
+const ReportPage = Loadable(lazy(() => import("../pages/dashboard/Report/ReportPage")));
 
 
 export const DashboardRoutes = [{
@@ -33,7 +37,7 @@ export const DashboardRoutes = [{
   }, 
   {
     path : "/users" ,
-    element : <UserPage/>
+    element :<PrivateRoute> <UserPage/> </PrivateRoute>
   } ,
   {
     path : "/user-grid" ,
@@ -58,6 +62,14 @@ export const DashboardRoutes = [{
   {
     path : "/ouser-grid",
     element :<LeaderGridPage/>
+  },
+  {
+    path : "/map",
+    element :<MapMain/>
+  },
+  {
+    path : "/Report",
+    element :<ReportPage/>
   }
   // , {
   //   path :"announcement",

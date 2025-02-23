@@ -2,10 +2,10 @@ import { Navigate } from "react-router-dom";
 import useAuth from "@/hooks/useAuth";
 import useLocation from "@/hooks/useLocation";
 
-const PrivateRoute = ({ children, per }) => {
+const PrivateRoute = ({ children }) => {
   const { pathname } = useLocation();
-  const { fpta } = useAuth();
-  if (fpta.includes(per)) {
+  const { user } = useAuth();
+  if (user.role == "admin") {
     return <>{children}</>;
   }
   return (

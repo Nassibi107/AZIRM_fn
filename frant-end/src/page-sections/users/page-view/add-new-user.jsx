@@ -9,7 +9,7 @@ import { FlexBetween, FlexRowAlign } from "@/components/flexbox"; // CUSTOM UTIL
 import { isDark } from "@/utils/constants"; // STYLED COMPONENTS
 import { useState } from "react";
 const ADMIN_ROUTE = import.meta.env.VITE_ADMIN_URL;
-
+const _URL_API= import.meta.env.VITE_URL_API;
 const SwitchWrapper = styled(FlexBetween)({
   width: "100%",
   marginTop: 10
@@ -78,7 +78,8 @@ const AddNewUserPageView = () => {
                   role: values.role,
                   label: values.label
                }
-              const response = await axios.post(`${ADMIN_ROUTE}/register`, body,{
+               console.log(_URL_API);
+              const response = await axios.post(`${_URL_API}/register`, body,{
                   headers: {
                       'Content-Type': 'application/json',
               }});

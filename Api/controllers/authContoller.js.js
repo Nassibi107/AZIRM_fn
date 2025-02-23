@@ -48,8 +48,8 @@ exports.me = async (req, res) => {
         });
         res.status(200).json({
             success: true,
-            data: user
-        });
+            data: user       
+         });
     } catch (error) {
         console.error(error.message);
         res.status(403).json({msg:'forbidden'});

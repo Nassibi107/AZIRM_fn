@@ -59,6 +59,7 @@ const BasicInformation = () => {
     address: "",
     zipCode: 4336
   };
+  
   const validationSchema = Yup.object({
     fullName: Yup.string().min(3, "Must be greater then 3 characters").required("First Name is Required!"),
     email: Yup.string().email("Invalid email address").required("Email is Required!"),
@@ -89,12 +90,15 @@ const BasicInformation = () => {
     setBouquetChildren(e.target.value)
   }
   
-  const formattedDate = new Date(user.data.createdAt).toLocaleString('en-US', {
+  const formattedDate = new Date(user.createdAt).toLocaleString('en-US', {
     weekday: 'long',
     year: 'numeric',
     month: 'long',
   });
 
+  useEffect(() => {
+    console.log(user);
+  }, []);
   return <Fragment>
       <Card sx={{
       padding: 3,
@@ -135,7 +139,7 @@ const BasicInformation = () => {
 
           <Box mt={2}>
             <H6 fontSize={18} textAlign="center">
-              {user.username}
+              {user?.firstName} {user?.lastName}
             </H6>
 
             <FlexBetween maxWidth={360} flexWrap="wrap" margin="auto" mt={1}>
@@ -143,14 +147,14 @@ const BasicInformation = () => {
                 <Bratislava sx={{
                 fontSize: 18
               }} />
-                <Paragraph>{user.data.CmpRid}</Paragraph>
+                <Paragraph>{user.data?.CmpRid}</Paragraph>
               </FlexBox>
 
               <FlexBox alignItems="center" gap={1} color="grey.500">
                 <MapMarkerIcon sx={{
                 fontSize: 18
               }} />
-                <Paragraph>{user.data.address}</Paragraph>
+                <Paragraph>{user?.address}</Paragraph>
               </FlexBox>
 
               <FlexBox alignItems="center" gap={1} color="grey.500">
@@ -181,22 +185,22 @@ const BasicInformation = () => {
             <Grid container spacing={3}>
               <Grid item sm={6} xs={12}>
                 <TextField fullWidth name="fullName" label="Full Name" variant="standard" onBlur={handleBlur}
-                onChange={handleChange} value={user.data.firstName} helperText={touched.firstName && errors.firstName} error={Boolean(touched.firstName && errors.firstName)} />
+                onChange={handleChange} value={user.firstName} helperText={touched.firstName && errors.firstName} error={Boolean(touched.firstName && errors.firstName)} />
               </Grid>
 
               <Grid item sm={6} xs={12}>
-                <TextField fullWidth name="email" label="Email" variant="standard" onBlur={handleBlur} onChange={handleChange} value={user.data.email} helperText={touched.email && errors.email} error={Boolean(touched.email && errors.email)} />
+                <TextField fullWidth name="email" label="Email" variant="standard" onBlur={handleBlur} onChange={handleChange} value={user.email} helperText={touched.email && errors.email} error={Boolean(touched.email && errors.email)} />
               </Grid>
 
               <Grid item sm={6} xs={12}>
-                <TextField fullWidth name="userName" label="Username" variant="standard" onBlur={handleBlur} onChange={handleChange} value={user.data.lastName} helperText={touched.userName && errors.userName} error={Boolean(touched.userName && errors.userName)}/>
+                <TextField fullWidth name="userName" label="Username" variant="standard" onBlur={handleBlur} onChange={handleChange} value={user.lastName} helperText={touched.userName && errors.userName} error={Boolean(touched.userName && errors.userName)}/>
               </Grid>
 
               <Grid item sm={6} xs={12}>
-                <TextField fullWidth name="Whatsapp" label="Role" variant="standard" onBlur={handleBlur} onChange={handleChange} value={user.data.role} helperText={touched.whatssap && errors.whatssap} error={Boolean(touched.whatssap && errors.whatssap)}/>
+                <TextField fullWidth name="Whatsapp" label="Role" variant="standard" onBlur={handleBlur} onChange={handleChange} value={user.role} helperText={touched.whatssap && errors.whatssap} error={Boolean(touched.whatssap && errors.whatssap)}/>
               </Grid>
               <Grid item sm={6} xs={12}>
-                <TextField fullWidth name="phone" label="phone" variant="standard" onBlur={handleBlur} onChange={handleChange} value={user.data.phoneNumber} helperText={touched.whatssap && errors.whatssap} error={Boolean(touched.whatssap && errors.whatssap)}/>
+                <TextField fullWidth name="phone" label="phone" variant="standard" onBlur={handleBlur} onChange={handleChange} value={user.phoneNumber} helperText={touched.whatssap && errors.whatssap} error={Boolean(touched.whatssap && errors.whatssap)}/>
               </Grid>
 
   

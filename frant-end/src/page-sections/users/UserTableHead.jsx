@@ -52,6 +52,12 @@ const headCells = [{
   disablePadding: false,
   label: "role"
 } 
+, {
+  id: "actions",
+  numeric: true,
+  disablePadding: false,
+  label: "actions"
+} 
 
 ];
 const UserTableHead = props => {

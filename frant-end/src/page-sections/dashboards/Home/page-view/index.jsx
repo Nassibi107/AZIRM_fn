@@ -20,19 +20,19 @@ const index = () => {
   
     return <Box pt={2} pb={4}>
     <Grid container spacing={3}>
-      <Grid item xs={12}>
+      <Grid item xs={6}>
         <Cards/>
       </Grid>
-      <Grid item md={9} xs={12}>
+      <Grid item md={6} xs={6}>
         <Transactions />
       </Grid>
-      <Grid item md={3} xs={12}>
+      <Grid item md={6} xs={6}>
         <Earnings />
       </Grid>
-      <Grid item md={6} xs={12}>
+      <Grid item md={6} xs={6}>
         <Games/>
       </Grid>
-      <Grid item md={6} xs={12}>
+      <Grid item md={6} xs={6}>
         <RewardsPrograms/>
       </Grid>
     </Grid>

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Box, Button, Card, Table, TableBody, TableContainer, TablePagination } from "@mui/material"; // CUSTOM COMPONENTS
+import { Box, Button, Card, Table, TableBody, TableContainer, TablePagination,Grid } from "@mui/material"; // CUSTOM COMPONENTS
 
 import { Scrollbar } from "@/components/scrollbar";
 import { TableDataNotFound, TableToolbar } from "@/components/table"; // CUSTOM PAGE SECTION COMPONENTS
@@ -78,21 +78,30 @@ const UserLeaderPageView = () => {
       <Card>
       
         <Box px={2} pt={2}>
+          <Grid container spacing={2} sx={{ display: "flex", justifyContent: "space-between",alignItems: "center" }}>
+                  <Grid item lg={6} md={4} xs={12}>
+                        <Button variant="contained" startIcon={<Add />} onClick={() => navigate("/user-add")}>
+                          Add New User
+                        </Button>
+                  </Grid>
+                  <Grid item lg={6} md={4} xs={12} >
+                        
           <SearchArea value={userFilter.search} gridRoute="/ouser-grid" listRoute="/ousers" onChange={e => handleChangeFilter("search", e.target.value)} />
+                  </Grid>
+          </Grid>
         </Box>
+       
         
-        <Button variant="contained" startIcon={<Add />} onClick={() => navigate("/user-add")}>
-        Add New User
-      </Button>
         {
         /* TABLE ROW SELECTION HEADER  */
       }
-        {selected.length > 0 && <TableToolbar selected={selected.length} handleDeleteRows={handleAllUserDelete} />}
+        {/* {selected.length > 0 && <TableToolbar selected={selected.length} handleDeleteRows={handleAllUserDelete} />} */}
 
         {
         /* TABLE HEAD & BODY ROWS */
       }
         <TableContainer>
+        
           <Scrollbar autoHide={false}>
             <Table>
               <UserTableHead order={order} orderBy={orderBy} numSelected={selected.length} rowCount={filteredUsers.length} onRequestSort={handleRequestSort} onSelectAllRows={handleSelectAllRows(filteredUsers.map(row => row.id))} />

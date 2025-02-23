@@ -63,7 +63,6 @@ const UserTableRow = props => {
           </Box>
         </FlexBox>
       </TableCell>
-      
       {/* <TableCell padding="normal">{user.lastName}</TableCell> */}
       <TableCell padding="normal">{user.phoneNumber}</TableCell>
       <TableCell padding="normal">{user.status}</TableCell>
@@ -71,7 +70,6 @@ const UserTableRow = props => {
       <TableCell padding="normal">{user.email}</TableCell>
       <TableCell padding="normal">{user.address}</TableCell>
       <TableCell padding="normal">{user.role}</TableCell>
-
       <TableCell padding="normal">
           <MoreButtonListUser user={user} />
       </TableCell>

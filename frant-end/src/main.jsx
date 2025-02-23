@@ -7,7 +7,9 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "nprogress/nprogress.css";
+
 import "react-quill/dist/quill.snow.css";
+
 import "simplebar-react/dist/simplebar.min.css";
 import "pure-react-carousel/dist/react-carousel.es.css";
 import { Provider } from "react-redux";

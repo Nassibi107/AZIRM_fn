@@ -18,6 +18,16 @@ export const navigations = [{
   name: "Users",
   path: "/users",
   icon: duotone.UserList
+},
+{
+  name: "Report",
+  path: "/Report",
+  icon: duotone.Report
+}
+, {
+  name: "map",
+  path: "/map",
+  icon: duotone.ActiveCode
 }
 ];
 
@@ -34,4 +44,5 @@ export const leaderLayout = [{
   path: "/ousers",
   icon: duotone.UserList
 }
+
 ];

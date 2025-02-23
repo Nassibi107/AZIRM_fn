@@ -46,7 +46,7 @@ const UserTableRow = props => {
               cursor: "pointer"
             }
           }}>
-            {user.firstName}
+            {user.firstName} 
             </Paragraph>
           </Box>
         </FlexBox>
@@ -61,7 +61,7 @@ const UserTableRow = props => {
       <TableCell padding="normal">{user.role}</TableCell>
 
       <TableCell padding="normal">
-          <MoreButtonListUser user={user} />
+          <MoreButtonListUser  user={user} />
       </TableCell>
     </TableRow>;
 };
