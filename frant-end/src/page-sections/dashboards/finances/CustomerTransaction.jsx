@@ -1,7 +1,9 @@
-import { Box, Card, Table, Avatar, TableRow, TableBody, TableHead, IconButton } from "@mui/material";
-import { Schedule, Tune } from "@mui/icons-material";
+
+import { Box, Card, Table, Avatar, TableRow, TableBody, TableHead, IconButton, TablePagination } from "@mui/material";
+import { Email, Schedule, Tune } from "@mui/icons-material";
 import { nanoid } from "nanoid";
 import { format } from "date-fns"; // CUSTOM COMPONENTS
+import React from "react";
 
 import { Scrollbar } from "@/components/scrollbar";
 import { Paragraph, Small } from "@/components/typography";
@@ -9,8 +11,10 @@ import { FlexBetween, FlexBox } from "@/components/flexbox"; // COMMON DASHBOARD
 
 import { BodyTableCell, HeadTableCell } from "../_common"; // CUSTOM DUMMY DATA SET
 
-const DATA = [{
+const DATA = [
+  {
   id: nanoid(),
+  email : "user1@gmail.com",
   total: 356.25,
   createdAt: new Date("August 31, 2022 10:30:00"),
   user: {
@@ -20,8 +24,9 @@ const DATA = [{
   }
 }, {
   id: nanoid(),
+  email : "user2@gmail.com",
   total: 165.58,
-  createdAt: new Date("August 30, 2022 13:30:00"),
+  createdAt: new Date("february 30, 2025 13:30:00"),
   user: {
     id: nanoid(),
     name: "Ikauwis",
@@ -30,45 +35,109 @@ const DATA = [{
 }, {
   id: nanoid(),
   total: 463.25,
-  createdAt: new Date("August 29, 2022 19:30:00"),
+  email : "user3@gmail.com",
+  createdAt: new Date("february 29, 2025 19:30:00"),
   user: {
     id: nanoid(),
     name: "Dayet",
-    image: "/static/user/user-15.png"
+    // image: "/static/user/user-15.png"
   }
 }, {
   id: nanoid(),
   total: 185.58,
-  createdAt: new Date("August 28, 2022 16:30:00"),
+  email : "user4@gmail.com",
+  createdAt: new Date("february 28, 2025 16:30:00"),
   user: {
     id: nanoid(),
     name: "Ikauwis",
+    // image: "/static/user/user-13.png"
+  }
+}
+,
+  {
+  id: nanoid(),
+  email : "user1@gmail.com",
+  total: 356.25,
+  createdAt: new Date("August 31, 2022 10:30:00"),
+  user: {
+    id: nanoid(),
+    name: "Arikunn",
     image: "/static/user/user-13.png"
+  }
+}, {
+  id: nanoid(),
+  email : "user2@gmail.com",
+  total: 165.58,
+  createdAt: new Date("february 30, 2025 13:30:00"),
+  user: {
+    id: nanoid(),
+    name: "Ikauwis",
+    image: "/static/user/user-14.png"
+  }
+}, {
+  id: nanoid(),
+  total: 463.25,
+  email : "user3@gmail.com",
+  createdAt: new Date("february 29, 2025 19:30:00"),
+  user: {
+    id: nanoid(),
+    name: "Dayet",
+    // image: "/static/user/user-15.png"
+  }
+}, {
+  id: nanoid(),
+  total: 185.58,
+  email : "user4@gmail.com",
+  createdAt: new Date("february 28, 2025 16:30:00"),
+  user: {
+    id: nanoid(),
+    name: "Ikauwis",
+    // image: "/static/user/user-13.png"
   }
 }];
 
+
 const CustomerTransaction = () => {
+  const [page, setPage] = React.useState(0);
+  const [rowsPerPage, setRowsPerPage] = React.useState(5);
+
+  const handleChangePage = (event, newPage) => {
+    setPage(newPage);
+  };
+
+  const handleChangeRowsPerPage = (event) => {
+    setRowsPerPage(parseInt(event.target.value, 10));
+    setPage(0); // Reset to the first page when rows per page is changed
+  };
+
   const getColor = index => {
     return index % 2 === 1 ? "action.selected" : "transparent";
   };
 
-  return <Card>
+  // Slice data to only show the rows for the current page
+  const currentPageData = DATA.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage);
+
+  return (
+    <Card>
       <FlexBetween p={3}>
         <Paragraph fontSize={18} fontWeight={500}>
           Customer Transactions
         </Paragraph>
 
         <FlexBox gap={1}>
-          <Paragraph lineHeight={1} sx={{
-          gap: 1,
-          display: "flex",
-          borderRadius: 1.5,
-          color: "grey.500",
-          alignItems: "center",
-          padding: ".25rem .5rem",
-          backgroundColor: "action.selected"
-        }}>
-            <Schedule fontSize="small" /> 24 Aug - 31 Aug
+          <Paragraph
+            lineHeight={1}
+            sx={{
+              gap: 1,
+              display: "flex",
+              borderRadius: 1.5,
+              color: "grey.500",
+              alignItems: "center",
+              padding: ".25rem .5rem",
+              backgroundColor: "action.selected",
+            }}
+          >
+            <Schedule fontSize="small" /> 02 Jun - 15 Feb
           </Paragraph>
 
           <IconButton color="secondary">
@@ -78,12 +147,11 @@ const CustomerTransaction = () => {
       </FlexBetween>
 
       <Scrollbar>
-        <Table sx={{
-        minWidth: 500
-      }}>
+        <Table sx={{ minWidth: 500 }}>
           <TableHead>
             <TableRow>
               <HeadTableCell>TRANSACTION</HeadTableCell>
+              <HeadTableCell>Email</HeadTableCell>
               <HeadTableCell>DATE</HeadTableCell>
               <HeadTableCell>TIME</HeadTableCell>
               <HeadTableCell>AMOUNT</HeadTableCell>
@@ -91,9 +159,8 @@ const CustomerTransaction = () => {
           </TableHead>
 
           <TableBody>
-            {DATA.map((item, index) => <TableRow key={index} sx={{
-            backgroundColor: getColor(index)
-          }}>
+            {currentPageData.map((item, index) => (
+              <TableRow key={index} sx={{ backgroundColor: getColor(index) }}>
                 <BodyTableCell>
                   <FlexBox gap={1}>
                     <Avatar variant="rounded" src={item.user.image} />
@@ -106,6 +173,7 @@ const CustomerTransaction = () => {
                   </FlexBox>
                 </BodyTableCell>
 
+                <BodyTableCell>{item.email}</BodyTableCell>
                 <BodyTableCell>{format(new Date(item.createdAt), "dd MMM, yyyy")}</BodyTableCell>
                 <BodyTableCell>{format(new Date(item.createdAt), "hh:mm a")}</BodyTableCell>
 
@@ -114,11 +182,26 @@ const CustomerTransaction = () => {
                     ${item.total}
                   </Paragraph>
                 </BodyTableCell>
-              </TableRow>)}
+              </TableRow>
+            ))}
           </TableBody>
         </Table>
       </Scrollbar>
-    </Card>;
+
+      {/* Pagination */}
+      <TablePagination
+        rowsPerPageOptions={[5, 10, 25]}
+        component="div"
+        count={DATA.length}
+        rowsPerPage={rowsPerPage}
+        page={page}
+        onPageChange={handleChangePage}
+        onRowsPerPageChange={handleChangeRowsPerPage}
+      />
+    </Card>
+  );
 };
 
 export default CustomerTransaction;
+
+

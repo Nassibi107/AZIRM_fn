@@ -20,6 +20,7 @@ const  UserAddPage = Loadable(lazy(() => import("../pages/dashboard/users/add-ne
 const  UserUpPage = Loadable(lazy(() => import("../pages/dashboard/users/updateUserPage")));
 const  Account = Loadable(lazy(() => import("../pages/dashboard/accounts")));
 const  MapMain = Loadable(lazy(() => import("../pages/dashboard/map/mapPage")));
+const  SquareLink = Loadable(lazy(() => import("../pages/dashboard/finance-2.jsx")));
 
 const ReportPage = Loadable(lazy(() => import("../pages/dashboard/Report/ReportPage")));
 
@@ -65,11 +66,16 @@ export const DashboardRoutes = [{
   },
   {
     path : "/map",
-    element :<MapMain/>
+    element :<PrivateRoute><MapMain/></PrivateRoute>
   },
   {
     path : "/Report",
     element :<ReportPage/>
+  }
+  ,
+  {
+    path : "/square",
+    element :<PrivateRoute><SquareLink/></PrivateRoute>
   }
   // , {
   //   path :"announcement",

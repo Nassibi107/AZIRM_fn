@@ -3,6 +3,7 @@ const express = require('express');
 const router = express.Router();
 
 const adminController = require("../controllers/adminController.js");
+// const squareController = require("../controllers/SquareController.js");
 const authMiddleware = require("../middleware/authMiddleware.js");
 const isAdmin = require("../middleware/adminMiddleware.js");
 
@@ -22,5 +23,6 @@ router.get('/user/:id', adminController.getUserId);
 router.put('/user/:id', adminController.updateUserId);
 router.put('/userStatus/:id', adminController.updateUserId);
 router.delete('/user/:id', adminController.destroyUser);
-
+// square 
+// router.get('/payments', adminController.paymentsApInfo);
 exports.router = router;

@@ -65,13 +65,10 @@ const Balance = () => {
         </FlexBox>
 
         <FlexBox alignItems="center" gap={2}>
-          <Button sx={{
-          minWidth: 100
-        }}>Send</Button>
           <Button variant="outlined" color="secondary" sx={{
           minWidth: 100
         }}>
-            Receive
+            refresh 
           </Button>
         </FlexBox>
       </Box>

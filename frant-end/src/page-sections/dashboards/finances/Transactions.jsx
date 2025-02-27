@@ -18,10 +18,10 @@ const Transactions = ({
 
   const chartSeries = [{
     name: "Income",
-    data: [48000, 40000, 22000, 30000, 28000, 20000, 48000, 25000, 20000, 44000, 25000, 15000]
+    data: [480, 400, 220, 300, 280 ,200, 480, 250, 200, 440, 250, 150]
   }, {
     name: "Expense",
-    data: [42000, 35000, 28000, 15000, 20000, 30000, 45000, 20000, 30000, 41000, 35000, 15000]
+    data: [420, 350, 280, 150, 200, 300, 450, 200, 300, 410, 350, 150]
   }]; // REACT CHART OPTIONS
 
   const chartOptions = merge(baseChartOptions(theme), {
@@ -46,7 +46,7 @@ const Transactions = ({
     yaxis: {
       min: 0,
       show: true,
-      max: 50000,
+      max: 500,
       tickAmount: 5,
       labels: {
         formatter: value => value / 1000 + "K",

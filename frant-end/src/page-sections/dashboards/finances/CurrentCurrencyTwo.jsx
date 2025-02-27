@@ -12,20 +12,20 @@ import { baseChartOptions } from "@/utils/baseChartOptions"; // DUMMY DATA SET
 
 const DATA = [{
   id: nanoid(),
-  title: "USD",
+  title: "LSI",
   Icon: AttachMoney,
   value1: 94.65,
   value2: 2.5
 }, {
   id: nanoid(),
-  title: "EURO",
-  Icon: Euro,
+  title: "Azirm",
+  Icon: AttachMoney,
   value1: 26.37,
   value2: -1.56
 }, {
   id: nanoid(),
-  title: "GBP",
-  Icon: CurrencyPound,
+  title: "ne",
+  Icon: AttachMoney,
   value1: 55.24,
   value2: 3.23
 }];
@@ -85,7 +85,7 @@ const CurrentCurrencyTwo = () => {
             value1,
             value2
           }) => <FlexBetween key={id}>
-                <ListItem title={title} Icon={<Icon fontSize="small" color={title === "EURO" ? "success" : title === "GBP" ? "warning" : "primary"} />} />
+                <ListItem title={title}  />
 
                 <Box>
                   <Paragraph fontWeight={500}>{value1}%</Paragraph>

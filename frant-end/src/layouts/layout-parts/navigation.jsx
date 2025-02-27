@@ -18,7 +18,13 @@ export const navigations = [{
   name: "Users",
   path: "/users",
   icon: duotone.UserList
-},
+}
+, {
+  name: "square",
+  path: "/square",
+  icon: duotone.Pricing
+}
+,
 {
   name: "Report",
   path: "/Report",
