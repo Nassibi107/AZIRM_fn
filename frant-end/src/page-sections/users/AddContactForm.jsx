@@ -1,4 +1,4 @@
-import { Box, Grid, Stack, Button, Avatar, TextField, IconButton, useMediaQuery, InputLabel, Select, MenuItem } from "@mui/material";
+import { Box, Grid, Stack, Button, Avatar, TextField, IconButton, useMediaQuery, InputLabel, Select, MenuItem, Alert } from "@mui/material";
 import { CameraAlt } from "@mui/icons-material";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { useFormik } from "formik";
@@ -8,12 +8,16 @@ import { H5 } from "@/components/typography";
 import { Scrollbar } from "@/components/scrollbar";
 import { AvatarBadge } from "@/components/avatar-badge"; // ==========================================================================
 import axios from "axios";
+import { useState } from "react";
 const ADMIN_ROUTE = import.meta.env.VITE_ADMIN_URL;
 // ==========================================================================
 const AddContactForm = ({
   handleCancel,
   data
 }) => {
+   const [alertMessage, setAlertMessage] = useState(null); 
+    const [isLoading, setIsLoading] = useState(true);
+    const [alertSeverity, setAlertSeverity] = useState(null); 
   const downSm = useMediaQuery(theme => theme.breakpoints.down("sm"));
   const initialValues = data 
   ? {
@@ -56,9 +60,13 @@ const AddContactForm = ({
           'Content-Type': 'application/json'
         }
       });
+      setAlertMessage("User update successfully!");
+      setAlertSeverity("success");
       console.log(response.data);
     } catch (error) {
       console.log(error);
+      setAlertMessage(error.response.data.msg);
+      setAlertSeverity("error"); //
     }
   };
 
@@ -103,6 +111,12 @@ const AddContactForm = ({
           </Stack>
 
         <Grid container spacing={3}>
+            <Grid item lg={12 }xs={12}>
+                                        {alertMessage && (
+                                          <Alert severity={alertSeverity} sx={{ my: 2 }}>
+                                            {alertMessage}
+                                          </Alert>
+                                        )}</Grid>
             <Grid item sm={6} xs={12}>
               <TextField fullWidth name="firstName" label="First Name" variant="standard" onBlur={handleBlur} value={values.firstName} onChange={handleChange} error={Boolean(errors.firstName && touched.firstName)} helperText={touched.firstName && errors.firstName} />
             </Grid>
@@ -127,9 +141,11 @@ const AddContactForm = ({
                               value={values.role}
                               onChange={handleChange}
                             >
-                              <MenuItem value="admin">Admin</MenuItem>
-                              <MenuItem value="leader">Leader</MenuItem>
-                              <MenuItem value="user">User</MenuItem>
+                              <MenuItem value="admin">gerant</MenuItem>
+                              <MenuItem value="assistant">assistant</MenuItem>
+                              <MenuItem value="teamLeader">teamLeader</MenuItem>
+                              <MenuItem value="Leader">Leader</MenuItem>
+                              <MenuItem value="distribuer">distribuer</MenuItem>
                             </Select>
                           </Grid>
           <Grid item sm={6} xs={12}>
@@ -141,6 +157,7 @@ const AddContactForm = ({
                     value={values.label}
                     onChange={handleChange}
                   >
+                  
                     <MenuItem value="LSI">LSI</MenuItem>
                     <MenuItem value="LvM">LvM</MenuItem>
                     <MenuItem value="Kenzo">Kenzo</MenuItem>

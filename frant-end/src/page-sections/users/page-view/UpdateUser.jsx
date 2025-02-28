@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Box, Button, Card, Grid, IconButton, InputLabel, MenuItem, Select, styled, Switch, TextField } from "@mui/material";
+import { Alert, Box, Button, Card, Grid, IconButton, InputLabel, MenuItem, Select, styled, Switch, TextField } from "@mui/material";
 import { FlexBetween, FlexRowAlign } from "@/components/flexbox"; 
 import PhotoCamera from "@mui/icons-material/PhotoCamera";
 import * as Yup from "yup";
@@ -42,23 +42,27 @@ const UpdateUser = () => {
   const { id } = useParams();
   const [user, setUser] = useState(null);  // Initialize as null to handle loading state
   const [loading, setLoading] = useState(true); // Loading state to track when the user data is being fetched
+  const [alertMessage, setAlertMessage] = useState(null); 
+  const [isLoading, setIsLoading] = useState(true);
+  const [alertSeverity, setAlertSeverity] = useState(null); 
 
   // Fetch user data by ID
   const _getUser = async () => {
     try {
       const res = await axios.get(`${ADMIN_ROUTE}/user/${id}`);
       setUser(res.data.data);
-      setLoading(false); // Set loading to false once the data is fetched
+      setLoading(false); 
+    // Set loading to false once the data is fetched
     } catch (error) {
       console.error(error);
-      setLoading(false); // Set loading to false even if there is an error
+      setLoading(false);
     }
   };
-
+  
   // Call _getUser on component mount
   useEffect(() => {
     _getUser();
-  }, [id]);
+  }, [id ]);
 
   // Initial form values, set after user data is fetched
   const initialValues = user
@@ -102,9 +106,14 @@ const UpdateUser = () => {
         headers: {
           'Content-Type': 'application/json'
         }
+     
       });
+      setAlertMessage("User update successfully!");
+      setAlertSeverity("success");
       console.log(response.data);
     } catch (error) {
+      setAlertMessage(error.response.data.msg);
+      setAlertSeverity("error"); //
       console.log(error);
     }
   };
@@ -126,6 +135,12 @@ const UpdateUser = () => {
   return (
     <Box pt={2} pb={4}>
       <Grid container spacing={3}>
+         <Grid item lg={12 }xs={12}>
+                              {alertMessage && (
+                                <Alert severity={alertSeverity} sx={{ my: 2 }}>
+                                  {alertMessage}
+                                </Alert>
+                              )}</Grid>
       <Grid item md={4} xs={12}>
           <StyledCard>
             <ButtonWrapper>
@@ -261,9 +276,11 @@ const UpdateUser = () => {
                     value={values.role}
                     onChange={handleChange}
                   >
-                    <MenuItem value="admin">Admin</MenuItem>
-                    <MenuItem value="leader">Leader</MenuItem>
-                    <MenuItem value="user">User</MenuItem>
+                      <MenuItem value="admin">gerant</MenuItem>
+                      <MenuItem value="assistant">assistant</MenuItem>
+                      <MenuItem value="teamLeader">teamLeader</MenuItem>
+                      <MenuItem value="Leader">Leader</MenuItem>
+                       <MenuItem value="distribuer">distribuer</MenuItem>
                   </Select>
                 </Grid>
 

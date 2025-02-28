@@ -84,7 +84,7 @@ const MultiLevelMenu = ({
 
   const filterNavigation = useMemo(() => {
     // Only filter `navigations` when user is not a leader
-    if (user?.role !== "leader") return navigations; // Otherwise, return `leaderLayout`
+    if (user?.role !== "assistant") return navigations; // Otherwise, return `leaderLayout`
     else return leaderLayout;
   } // eslint-disable-next-line react-hooks/exhaustive-deps
   , [user]); // RENDER MULTI LEVEL MENU 

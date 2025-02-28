@@ -39,13 +39,11 @@ const UploadButton = styled(FlexRowAlign)(({
   border: `1px solid ${theme.palette.background.paper}`
 }));
 
-
-
 const AddNewUserPageView = () => {
   const initialValues = {
     firstName: "",
     lastName: "",
-    phoneNumber: "+",
+    phoneNumber: "",
     email: "",
     role: "",
     address: "",
@@ -92,7 +90,6 @@ const AddNewUserPageView = () => {
               setAlertSeverity("error");
           }
     }
-
   const {
     values,
     errors,
@@ -252,9 +249,11 @@ const AddNewUserPageView = () => {
                     fullWidth
                   >
                     <MenuItem value="">----</MenuItem>
-                    <MenuItem value="admin">Admin</MenuItem>
-                    <MenuItem value="leader">Leader</MenuItem>
-                    <MenuItem value="user">User</MenuItem>
+                    <MenuItem value="admin">gerant</MenuItem>
+                    <MenuItem value="assistant">assistant</MenuItem>
+                    <MenuItem value="teamLeader">teamLeader</MenuItem>
+                    <MenuItem value="Leader">Leader</MenuItem>
+                    <MenuItem value="distbituer">distbituer</MenuItem>
                   </Select>
                 </Grid>
 

@@ -1,49 +1,79 @@
-const { Client, environments } = require("square"); 
+const axios = require("axios");
 require("dotenv").config();
 
-if (!process.env.SQUARE_ACCESS_TOKEN) {
-  throw new Error("SQUARE_ACCESS_TOKEN is not set in the environment variables");
-}
 
-const squareClient = new Client({
-  accessToken: process.env.SQUARE_ACCESS_TOKEN, // Set this in your .env file
-  environment: environments.sandbox, // Change to environments.production when live
-});
 
-const paymentsApi = squareClient.paymentsApi;
-const customersApi = squareClient.customersApi;
+const SQUARE_API_URL = process.env.SQUARE_API_URL || "https://connect.squareup.com/v2";
+const ACCESS_TOKEN = process.env.SQUARE_ACCESS_TOKEN;
+// Function to fetch all payments (with pagination)
+async function getAllPayments(cursor = null, allPayments = []) {
+    try {
+        const params = { sort_order: "DESC", limit: 100 }; // Get 100 payments per request
+        if (cursor) params.cursor = cursor;
 
-exports.paymentsApInfo = async (req, res) => {
-  try {
-    const response = await paymentsApi.listPayments();
-    const payments = response.result.payments;
+        const response = await axios.get(`${SQUARE_API_URL}/payments`, {
+            headers: { Authorization: `Bearer ${ACCESS_TOKEN}` },
+            params,
+        });
 
-    const paymentDetails = await Promise.all(
-      payments.map(async (payment) => {
-        const customerId = payment.customerId;
-        let email = "No Email";
+        const payments = response.data.payments || [];
+        allPayments.push(...payments);
 
-        if (customerId) {
-          try {
-            const customer = await customersApi.retrieveCustomer(customerId);
-            email = customer.result.customer.emailAddress || "No Email";
-          } catch (error) {
-            console.error(`Error fetching customer with ID ${customerId}:`, error);
-          }
+        // If more payments exist, fetch next page
+        if (response.data.cursor) {
+            return await getAllPayments(response.data.cursor, allPayments);
         }
 
-        return {
-          id: payment.id,
-          amount: payment.amountMoney.amount,
-          currency: payment.amountMoney.currency,
-          email,
-        };
-      })
-    );
+        return allPayments;
+    } catch (error) {
+        console.error("Error fetching payments:", error.response ? error.response.data : error.message);
+        return [];
+    }
+}
 
-    res.status(200).json(paymentDetails);
-  } catch (error) {
-     console.error("Error retrieving payments:", error);
-    res.status(500).json({ error: "Error retrieving payments" });
-  }
+// Function to get customer email
+async function getCustomerEmail(customerId) {
+    try {
+        const response = await axios.get(`${SQUARE_API_URL}/customers/${customerId}`, {
+            headers: { Authorization: `Bearer ${ACCESS_TOKEN}` },
+        });
+
+        return response.data.customer.email_address || null;
+    } catch (error) {
+        console.error(`Error fetching customer ${customerId}:`, error.message);
+        return null;
+    }
+}
+
+// API Endpoint: Get All Payments
+exports.allP = async (req, res) => {
+    try {
+        const payments = await getAllPayments();
+        const detailedPayments = [];
+
+        for (const payment of payments) {
+            let email = payment.receipt_email || null;
+
+            // If email is not in payment, fetch from customer profile
+            if (!email && payment.customer_id) {
+                email = await getCustomerEmail(payment.customer_id);
+            }
+
+            detailedPayments.push({
+                id: payment.id,
+                amount: payment.amount_money.amount / 100,
+                currency: payment.amount_money.currency,
+                status: payment.status,
+                created_at: payment.created_at,
+                email: email,
+            });
+        }
+
+        res.json({ success: true, payments: detailedPayments });
+    } catch (error) {
+        console.error("API Error:", error.message);
+        res.status(500).json({ success: false, message: "Internal Server Error" });
+    }
 };
+
+// Start server

@@ -39,10 +39,11 @@ const HeadingArea = ({
       <TabContext value={value}>
      
         <TabListWrapper variant="scrollable" onChange={changeTab}>
-          <Tab disableRipple label="All Users" value="" />
-          <Tab disableRipple label="Administrator" value="admin" />
-          <Tab disableRipple label="leaders" value="leader" />
-          <Tab disableRipple label="user" value="user" />\
+          <Tab disableRipple label="All" value="" />
+          <Tab disableRipple label="assistant" value="assistant" />
+          <Tab disableRipple label="teamleader" value="teamleader" />
+          <Tab disableRipple label="leader" value="leader" />
+          <Tab disableRipple label="distribuer" value="distbituer" />
         </TabListWrapper>
       </TabContext>
 
