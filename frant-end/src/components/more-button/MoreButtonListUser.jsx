@@ -20,6 +20,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 const   ADMIN_ROUTE = import.meta.env.VITE_ADMIN_URL;
+const   VITE_LEADER = import.meta.env.VITE_LEADER_URL;
 const StyledIconButton = styled(IconButton)(({ theme }) => ({
     flexShrink: 0,
     color: theme.palette.grey[isDark(theme) ? 300 : 400],
@@ -32,6 +33,7 @@ const optionList = [
 
 const MoreButtonTri = ({
     user,
+    flag,
     options = optionList,
     renderOptions,
     ...props
@@ -47,7 +49,11 @@ const [isRefund, setIsRefund] = useState(false);
     const handleOptionClick = (option) => {
         console.log(option);
         if (option === "Edit") {
-          navigate(`/user-add/${user.id}`);
+          if (flag)
+             navigate(`/user-add/${user.id}`);
+          else
+            navigate(`/user-add-ass/${user.id}`);
+
         }else if (option === "Delete") {
             setIsDelete(true);
         }
@@ -63,9 +69,14 @@ const [isRefund, setIsRefund] = useState(false);
         setIsDelete(false);
     };
 
-    const handleDeleteUser = async (id) => {
+    const handleDeleteUser = async (user) => {
       try {
-        const res = await axios.delete(`${ADMIN_ROUTE}/user/${user.id}`);
+        console.log(flag)
+        let res;
+        if (flag)
+           res = await axios.delete(`${ADMIN_ROUTE}/user/${user.id}`);
+        else
+          res = await axios.delete(`${VITE_LEADER}/user/${user.id}`);
         console.log(res);
 
       } catch (error) {

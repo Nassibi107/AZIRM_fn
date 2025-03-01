@@ -15,12 +15,12 @@ router.post('/CreateCmp', adminController.CreateCmp);
 router.get('/cmps', adminController.getAllCompanies);
 router.delete('/cmp/:id', adminController.destroyCompany);
 router.get('/cmp/:id', adminController.getCmpId);
+router.put('/user/:id', adminController.updateUserId);
 
 // Manage users
 router.get('/users', adminController.getUsers);
 
 router.get('/user/:id', adminController.getUserId);
-router.put('/user/:id', adminController.updateUserId);
 router.put('/userStatus/:id', adminController.updateUserId);
 router.delete('/user/:id', adminController.destroyUser);
 // square 

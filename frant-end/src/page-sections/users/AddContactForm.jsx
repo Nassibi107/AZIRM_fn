@@ -65,7 +65,7 @@ const AddContactForm = ({
       console.log(response.data);
     } catch (error) {
       console.log(error);
-      setAlertMessage(error.response.data.msg);
+      setAlertMessage(error.response);
       setAlertSeverity("error"); //
     }
   };

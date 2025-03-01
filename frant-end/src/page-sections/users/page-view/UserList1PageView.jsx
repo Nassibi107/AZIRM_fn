@@ -97,7 +97,8 @@ const UserList1PageView = () => {
               <UserTableHead order={order} orderBy={orderBy} numSelected={selected.length} rowCount={filteredUsers.length} onRequestSort={handleRequestSort} onSelectAllRows={handleSelectAllRows(filteredUsers.map(row => row.id))} />
 
               <TableBody>
-                {filteredUsers.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map(user => <UserTableRow key={user.id} user={user} isSelected={isSelected(user.id)} handleSelectRow={handleSelectRow} handleDeleteUser={handleDeleteUser} />)}
+                {filteredUsers.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map(user => <UserTableRow key={user.id} user={user} flagId={1}
+                isSelected={isSelected(user.id)} handleSelectRow={handleSelectRow} handleDeleteUser={handleDeleteUser} />)}
 
                 {filteredUsers.length === 0 && <TableDataNotFound />}
               </TableBody>

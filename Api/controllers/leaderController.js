@@ -35,7 +35,7 @@ exports.register = async (req, res) => {
          
         };
         console.log(req.userRef);
-        if (role === 'leader' || role === 'user') {
+        if (role === 'assistant' || role === 'user') {
             const company = await Model.Company.findOne({ where: { label } });
 
             if (!company) {
@@ -154,8 +154,6 @@ exports.updateUserId = async (req, res) => {
     } 
 };
 
-
-
 exports.updatestatus = async (req, res) => {
     try {
         const { id } = req.params;
@@ -182,8 +180,6 @@ exports.updatestatus = async (req, res) => {
         res.status(500).json({ msg: 'Server Error' });
     }
 };
-
-
 
 exports.destroyUser = async (req, res) => {
     try {

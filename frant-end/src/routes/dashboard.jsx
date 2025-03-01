@@ -11,7 +11,7 @@ import { Create } from "@mui/icons-material";
 import { el } from "date-fns/locale";
 
 import PrivateRoute from "@/components/auth/PrivteRoute"; 
- const  HomePage= Loadable(lazy(() => import("@/pages/dashboard/ecommerce")));
+const  HomePage= Loadable(lazy(() => import("@/pages/dashboard/ecommerce")));
 const  UserPage = Loadable(lazy(() => import("../pages/dashboard/users/UserList1Page")));
 const  UserLeaderPageView = Loadable(lazy(() => import("../pages/dashboard/users/UserLeaderPageView")));
 const  UserGridPage = Loadable(lazy(() => import("../pages/dashboard/users/UserGrid2Pages")));
@@ -21,9 +21,8 @@ const  UserUpPage = Loadable(lazy(() => import("../pages/dashboard/users/updateU
 const  Account = Loadable(lazy(() => import("../pages/dashboard/accounts")));
 const  MapMain = Loadable(lazy(() => import("../pages/dashboard/map/mapPage")));
 const  SquareLink = Loadable(lazy(() => import("../pages/dashboard/finance-2.jsx")));
-
 const ReportPage = Loadable(lazy(() => import("../pages/dashboard/Report/ReportPage")));
-
+const Upbyass = Loadable(lazy(() => import("../pages/dashboard/users/updateLeaderPage")));
 
 export const DashboardRoutes = [{
   path: "/",
@@ -51,6 +50,10 @@ export const DashboardRoutes = [{
   {
     path : "/user-add/:id" ,
     element : <UserUpPage/>
+  } ,
+  {
+    path : "/user-add-ass/:id" ,
+    element : <Upbyass/>
   } ,
   {
     path : "/account" ,

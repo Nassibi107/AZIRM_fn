@@ -55,3 +55,24 @@ exports.me = async (req, res) => {
         res.status(403).json({msg:'forbidden'});
     }
 }
+
+
+exports.getTopUser =  async (req, res) => {
+    try {
+        const user = await Model.User.findAll({
+            limit: 4,
+            order: [['createdAt', 'DESC']],
+
+            where : {
+                
+            }
+        });
+        res.status(200).json({
+            success: true,
+            data: user
+        });
+    } catch (error) {
+        console.error(error.message);
+        res.status(500).json({msg:'Server Error'});
+    }
+}

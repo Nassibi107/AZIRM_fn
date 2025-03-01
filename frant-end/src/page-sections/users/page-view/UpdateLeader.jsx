@@ -8,9 +8,7 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 import { Paragraph, Small } from "@/components/typography";
 import { isDark } from "@/utils/constants"; // STYLED COMPONENTS
-
-const ADMIN_ROUTE = import.meta.env.VITE_ADMIN_URL;
-const VITE_LEADER= import.meta.env.VITE_LEADER_URL;
+const LEADER_ROUTE = import.meta.env.VITE_LEADER_URL;
 const SwitchWrapper = styled(FlexBetween)({
   width: "100%",
   marginTop: 10
@@ -41,7 +39,6 @@ const UploadButton = styled(FlexRowAlign)(({
 }));
 
 const UpdateUser = () => {
-
   const { id } = useParams();
   const [user, setUser] = useState(null);  // Initialize as null to handle loading state
   const [loading, setLoading] = useState(true); // Loading state to track when the user data is being fetched
@@ -49,14 +46,11 @@ const UpdateUser = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [alertSeverity, setAlertSeverity] = useState(null); 
 
-
   // Fetch user data by ID
   const _getUser = async () => {
     try {
-     
-        const res = await axios.get(`${ADMIN_ROUTE}/user/${id}`);
-        setUser(res.data.data);
-     
+      const res = await axios.get(`${LEADER_ROUTE}/user/${id}`);
+      setUser(res.data.data);
       setLoading(false); 
     // Set loading to false once the data is fetched
     } catch (error) {
@@ -108,7 +102,7 @@ const UpdateUser = () => {
         role: values.role,
         label: values.label
       };
-      const response = await axios.put(`${ADMIN_ROUTE}/user/${id}`, body, {
+      const response = await axios.put(`${LEADER_ROUTE}/user/${id}`, body, {
         headers: {
           'Content-Type': 'application/json'
         }

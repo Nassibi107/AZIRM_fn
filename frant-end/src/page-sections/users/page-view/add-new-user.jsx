@@ -86,7 +86,7 @@ const AddNewUserPageView = () => {
           }
           catch (error) {
               console.log(error);
-              setAlertMessage(error.response.data.msg);
+              setAlertMessage(error.response);
               setAlertSeverity("error");
           }
     }
