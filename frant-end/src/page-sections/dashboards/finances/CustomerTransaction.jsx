@@ -8,9 +8,9 @@ import React from "react";
 import { Scrollbar } from "@/components/scrollbar";
 import { Paragraph, Small } from "@/components/typography";
 import { FlexBetween, FlexBox } from "@/components/flexbox"; // COMMON DASHBOARD RELATED COMPONENTS
-
+const ADMIN_ROUTE = import.meta.env.VITE_ADMIN_URL;
 import { BodyTableCell, HeadTableCell } from "../_common"; // CUSTOM DUMMY DATA SET
-
+import axios from 'axios'
 const DATA = [
   {
   id: nanoid(),
@@ -101,6 +101,28 @@ const CustomerTransaction = () => {
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
 
+  const [teamMembers, setTeamMembers] = React.useState([]);
+  const ACCESS_TOKEN = "EAAAl2oUOJeHSN6BXjHx38sA03IFI2qSQ6VCL4kkxRLnLdqXzYIC6EkEWs-ZlNPo"; // Store this securely
+
+  React.useEffect(() => {
+    const fetchTeamMembers = async () => {
+      try {
+        const response = await axios.get(
+          `${ADMIN_ROUTE}/team-members`
+ 
+
+        );
+        console
+        setTeamMembers(response.data.team_members);
+        console.log(response.data)
+      } catch (error) {
+        console.error("Error fetching team members:", error);
+      }
+    };
+
+    fetchTeamMembers();
+    
+  }, []);
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
   };

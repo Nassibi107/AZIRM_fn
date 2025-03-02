@@ -86,7 +86,7 @@ const AddNewUserPageView = () => {
           }
           catch (error) {
               console.log(error);
-              setAlertMessage(error.response);
+              setAlertMessage("error");
               setAlertSeverity("error");
           }
     }
@@ -269,10 +269,10 @@ const AddNewUserPageView = () => {
                     fullWidth
                   >
                     <MenuItem value="">----</MenuItem>
-                    <MenuItem value="2">LSI</MenuItem>
+                    <MenuItem value="1">LSI</MenuItem>
                     <MenuItem value="3">LvM</MenuItem>
                     <MenuItem value="4">Kenzo</MenuItem>
-                    <MenuItem value="nexsus">nexsus</MenuItem>
+                    <MenuItem value="2">nexsus</MenuItem>
                   </Select>
                 </Grid>
 

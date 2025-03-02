@@ -12,6 +12,7 @@ import ExpenseHistory from "../ExpenseHistory";
 import CurrentCurrencyTwo from "../CurrentCurrencyTwo";
 import CustomerTransaction from "../CustomerTransaction";
 
+
 const Finance2PageView = () => {
   return <Box pt={2} pb={4}>
       <Grid container spacing={3}>

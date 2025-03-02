@@ -1,7 +1,19 @@
 const Model = require('../Models');
 const bcrypt = require('bcryptjs');
 // Register a new user
+const fs = require('fs');
 const jwtHelper = require('../utils/jwtHelper');
+const sendEmail = require('./mailer');
+const QRCode = require('qrcode');
+const { v4: uuidv4 } = require('uuid');
+
+const path = require('path');
+
+// Ensure that the directory for QR codes exists
+const qrCodeDirectory = path.join(__dirname, 'public', 'qrcodes');
+if (!fs.existsSync(qrCodeDirectory)) {
+    fs.mkdirSync(qrCodeDirectory, { recursive: true });
+}
 
 
 
@@ -20,9 +32,10 @@ exports.register = async (req, res) => {
             label,
         } = req.body;
         
+        // Hash password
         const passwordCrypt = await bcrypt.hash(password, 10);
 
-        // Define userData object
+        // Define user data object
         let userData = {
             firstName,
             lastName,
@@ -33,9 +46,9 @@ exports.register = async (req, res) => {
             password: passwordCrypt,
             income,
             status,
-         
         };
-        console.log(req.userRef);
+
+        // If the user has a role 'leader' or 'user', find the associated company
         if (role === 'leader' || role === 'user') {
             const company = await Model.Company.findOne({ where: { label } });
 
@@ -43,17 +56,40 @@ exports.register = async (req, res) => {
                 return res.status(404).json({ msg: 'Company not found' });
             }
 
-            // ✅ Dynamically add CmpRid to userData
+            // Dynamically add CmpRid to userData
             userData.CmpRid = company.cmpID;
-            userData.createBy = req.userRef ;
+            userData.createBy = req.userRef;
         }
 
-        // ✅ Create user with userData (including CmpRid if applicable)
+        // Create the user in the database
         const userItem = await Model.User.create(userData);
 
+        // Generate QR code with user details (could be a URL or just an identifier)
+        const userUrl = `http://localhost:4000/user/${userItem.id}`; // Or any other URL for user details
+
+        // Generate QR code and save it as a file
+        const qrCodeFileName = `user_${userItem.id}.png`;
+        const qrCodePath = path.join(qrCodeDirectory, qrCodeFileName);
+
+        // Create the QR code and save it as a PNG image
+        await QRCode.toFile(qrCodePath, userUrl);
+
+        // Store the path to the QR code in the user data
+        userItem.qrCodePath = `/qrcodes/${qrCodeFileName}`;
+        await userItem.save();
+
+        // Send a welcome email to the user after creation
+        const emailSubject = 'Welcome to Our Service!';
+        const emailText = `Hi ${userItem.firstName} ${userItem.lastName},\n\n We are excited to have you with us.\n\n You can view your details using the QR code attached.\n
+        \n`;
+
+        await sendEmail(userItem.email, emailSubject, emailText,qrCodeFileName, qrCodePath);
+
+        // Respond with success
         res.status(201).json({
             success: true,
-            data: userItem
+            data: userItem,
+            qrCodePath: userItem.qrCodePath // Return the QR code file path in the response
         });
 
     } catch (error) {
@@ -61,6 +97,7 @@ exports.register = async (req, res) => {
         res.status(500).json({ msg: 'Server Error' });
     }
 };
+
 
 exports.CreateCmp = async (req, res) => { 
     const { label } = req.body;

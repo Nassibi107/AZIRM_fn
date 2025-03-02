@@ -5,8 +5,6 @@ const router = express.Router();
 const leaderController = require("../controllers/leaderController.js");
 const authMiddleware = require("../middleware/authMiddleware.js");
 
-// Apply middlewares to all routes in this router
-
 
 router.use(authMiddleware.check);
 router.get('/users', leaderController.getUsers);

@@ -47,8 +47,10 @@ const [isRefund, setIsRefund] = useState(false);
     const handleClose = () => setAnchorEl(null);
     const navigate = useNavigate();
     const handleOptionClick = (option) => {
-        console.log(option);
-        if (option === "Edit") {
+      console.log("**********************");
+      console.log(user);
+      console.log("**********************");
+      if (option === "Edit") {
           if (flag)
              navigate(`/user-add/${user.id}`);
           else
@@ -71,12 +73,11 @@ const [isRefund, setIsRefund] = useState(false);
 
     const handleDeleteUser = async (user) => {
       try {
-        console.log(flag)
         let res;
         if (flag)
-           res = await axios.delete(`${ADMIN_ROUTE}/user/${user.id}`);
+           res = await axios.delete(`${ADMIN_ROUTE}/user/${user}`);
         else
-          res = await axios.delete(`${VITE_LEADER}/user/${user.id}`);
+          res = await axios.delete(`${VITE_LEADER}/user/${user}`);
         console.log(res);
 
       } catch (error) {
