@@ -26,6 +26,7 @@ import Messenger from "@/icons/Messenger";
 import { isDark } from "@/utils/constants"; // ==============================================================
 import axios from "axios";
 import MoreHorizontal from "@/icons/MoreHorizontal"; 
+import { da } from "date-fns/locale";
 
 const   ADMIN_ROUTE = import.meta.env.VITE_ADMIN_URL;
 const UserDetails = ({
@@ -62,6 +63,7 @@ const _getCompany = async () => {
 
 useEffect(() => {
   _getCompany();  
+
 }, [data]);
   const handleCloseMenu = () => {
     setAnchorEl(null);
@@ -119,6 +121,12 @@ useEffect(() => {
         </FlexBetween>
 
         <Stack alignItems="center">
+        <Avatar src={"http://localhost:4000"+data.uimg} sx={{
+          width: 120,
+          height: 120,
+          backgroundColor: "white"
+        }} />
+
           <H6 fontSize={16} mt={2}>
             {data.firstName} {data.lastName}
           </H6>
@@ -138,6 +146,9 @@ useEffect(() => {
       </> : <Box height="100%" display="flex" alignItems="center" justifyContent="center" color="text.secondary">
         No Data
       </Box>}
+      <Stack alignItems="center">
+        <img src={"http://localhost:4000"+data.qr} alt="QR" style={{width: "100px", height: "100px"}} />
+        </Stack>
 
       {/* Confirmation Dialog */}
       <Dialog

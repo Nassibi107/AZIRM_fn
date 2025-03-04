@@ -8,6 +8,7 @@ import { FlexBetween, FlexRowAlign } from "@/components/flexbox"; // CUSTOM UTIL
 
 import { isDark } from "@/utils/constants"; // STYLED COMPONENTS
 import { useState } from "react";
+import { LoadingButton } from "@mui/lab";
 const ADMIN_ROUTE = import.meta.env.VITE_ADMIN_URL;
 const _URL_API= import.meta.env.VITE_URL_API;
 const SwitchWrapper = styled(FlexBetween)({
@@ -51,8 +52,14 @@ const AddNewUserPageView = () => {
     label: ""
   };
   const [alertMessage, setAlertMessage] = useState(null); 
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const [alertSeverity, setAlertSeverity] = useState(null); 
+  const [selectedFile, setSelectedFile] = useState(null);
+
+const handleFileChange = (event) => {
+  setSelectedFile(event.target.files[0]);
+};
+
   const validationSchema = Yup.object().shape({
     firstName: Yup.string().required("First Name is Required!"),
     lastName: Yup.string().required("Last Name is Required!"),
@@ -64,32 +71,40 @@ const AddNewUserPageView = () => {
     
   });
   
-    const _handleSubmit = async (values) => {
-          try {
-               const body = {
-                  firstName: values.firstName,
-                  lastName: values.lastName,
-                  email: values.email,
-                  phoneNumber: values.phoneNumber,
-                  address: values.address,
-                  password: values.password,
-                  role: values.role,
-                  label: values.label
-               }
-               console.log(_URL_API);
-              const response = await axios.post(`${_URL_API}/register`, body,{
-                  headers: {
-                      'Content-Type': 'application/json',
-              }});
-              setAlertMessage("User created successfully!");
-               setAlertSeverity("success");
-          }
-          catch (error) {
-              console.log(error);
-              setAlertMessage("error");
-              setAlertSeverity("error");
-          }
+  const _handleSubmit = async (values) => {
+    try {
+      setIsLoading(true);
+      const formData = new FormData();
+      formData.append("firstName", values.firstName);
+      formData.append("lastName", values.lastName);
+      formData.append("email", values.email);
+      formData.append("phoneNumber", values.phoneNumber);
+      formData.append("address", values.address);
+      formData.append("password", values.password);
+      formData.append("role", values.role);
+      formData.append("label", values.label);
+  
+      if (selectedFile) {
+        formData.append("uimg", selectedFile); // Add the selected image file
+      }
+  
+      const response = await axios.post(`${_URL_API}/register`, formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+  
+      setAlertMessage("User created successfully!");
+      setAlertSeverity("success");
+      setIsLoading(false);
+    } catch (error) {
+      setIsLoading(false);
+      console.log(error);
+      setAlertMessage("Error creating user.");
+      setAlertSeverity("error");
     }
+  };
+  
   const {
     values,
     errors,
@@ -112,9 +127,16 @@ const AddNewUserPageView = () => {
         <Grid item md={4} xs={12}>
           <StyledCard>
             <ButtonWrapper>
+              {/* send imge from her */}
               <UploadButton>
                 <label htmlFor="upload-btn">
-                  <input accept="image/*" id="upload-btn" type="file" style={{ display: "none" }} />
+                  <input
+                    accept="image/*"
+                    id="upload-btn"
+                    type="file"
+                    style={{ display: "none" }}
+                    onChange={handleFileChange} // Capture the selected file
+                  />
                   <IconButton component="span">
                     <PhotoCamera sx={{ fontSize: 26, color: "grey.400" }} />
                   </IconButton>
@@ -277,9 +299,11 @@ const AddNewUserPageView = () => {
                 </Grid>
 
                 <Grid item xs={12}>
-                  <Button type="submit" variant="contained" color="primary">
+                <LoadingButton loading={isLoading} type="submit">
+                 
                     Create User
-                  </Button>
+                  
+                  </LoadingButton>
                 </Grid>
               </Grid>
             </form>

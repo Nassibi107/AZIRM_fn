@@ -1,4 +1,6 @@
 const express = require('express');
+const path = require('path');
+
 require('dotenv').config();
 const app = express();
 const bodyParser = require('body-parser');
@@ -17,6 +19,8 @@ app.use(bodyParser.json());
 app.use(morgan('dev'));
 
 
+app.use('/uploads', express.static(path.join(__dirname, 'controllers/public/uploads')));
+app.use('/qrcodes', express.static(path.join(__dirname, 'controllers/public/qrcodes')));
 app.use('/', indexRouter.router);
 app.use('/api', authRouter.router);
 app.use('/ad', adminRouter.router);
@@ -41,6 +45,7 @@ app.use((error, req, res, next) => {
 
 db.sync().then(() => {
     app.listen(port, () => {
+        console.log('Uploads directory:', path.join(__dirname, 'uploads'));
         console.log('Server is running on port => ' + port);
     });
 } ).catch(err => {

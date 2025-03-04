@@ -6,6 +6,7 @@ const jwtHelper = require('../utils/jwtHelper');
 const sendEmail = require('./mailer');
 const QRCode = require('qrcode');
 const { v4: uuidv4 } = require('uuid');
+const multer = require('multer');
 
 const path = require('path');
 
@@ -15,81 +16,114 @@ if (!fs.existsSync(qrCodeDirectory)) {
     fs.mkdirSync(qrCodeDirectory, { recursive: true });
 }
 
+const uploadsFile = path.join(__dirname, 'public', 'uploads');
+if (!fs.existsSync(uploadsFile)) {
+    fs.mkdirSync(uploadsFile, { recursive: true });
+}
+
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, uploadsFile); // Ensure this folder exists
+    },
+    filename: function (req, file, cb) {
+        cb(null, Date.now() + path.extname(file.originalname));
+    }
+});
+
+const upload = multer({ storage });
 
 
 exports.register = async (req, res) => {
     try {
-        const { 
-            firstName,
-            lastName,
-            phoneNumber,
-            email,
-            role,
-            address,
-            password,
-            income,
-            status,
-            label,
-        } = req.body;
-        
-        // Hash password
-        const passwordCrypt = await bcrypt.hash(password, 10);
-
-        // Define user data object
-        let userData = {
-            firstName,
-            lastName,
-            phoneNumber,
-            email,
-            role,
-            address,
-            password: passwordCrypt,
-            income,
-            status,
-        };
-
-        // If the user has a role 'leader' or 'user', find the associated company
-        if (role === 'leader' || role === 'user') {
-            const company = await Model.Company.findOne({ where: { label } });
-
-            if (!company) {
-                return res.status(404).json({ msg: 'Company not found' });
+        upload.single('uimg')(req, res, async function (err) {
+            if (err) {
+                return res.status(400).json({ msg: 'Image upload failed', error: err.message });
             }
 
-            // Dynamically add CmpRid to userData
-            userData.CmpRid = company.cmpID;
-            userData.createBy = req.userRef;
-        }
+            const {
+                firstName,
+                lastName,
+                phoneNumber,
+                email,
+                role,
+                address,
+                password,
+                income,
+                status,
+                label,
+            } = req.body;
 
-        // Create the user in the database
-        const userItem = await Model.User.create(userData);
+            // Hash password
+            const passwordCrypt = await bcrypt.hash(password, 10);
 
-        // Generate QR code with user details (could be a URL or just an identifier)
-        const userUrl = `http://localhost:4000/user/${userItem.id}`; // Or any other URL for user details
+            // Define user data object
+            let userData = {
+                firstName,
+                lastName,
+                phoneNumber,
+                email,
+                role,
+                address,
+                password: passwordCrypt,
+                income,
+                status,
+                uimg: req.file ? `/uploads/${req.file.filename}` : null, // Store image path
+            };
 
-        // Generate QR code and save it as a file
-        const qrCodeFileName = `user_${userItem.id}.png`;
-        const qrCodePath = path.join(qrCodeDirectory, qrCodeFileName);
+            // If the user has a role 'leader' or 'user', find the associated company
+            if (role === 'leader' || role === 'user') {
+                const company = await Model.Company.findOne({ where: { label } });
 
-        // Create the QR code and save it as a PNG image
-        await QRCode.toFile(qrCodePath, userUrl);
+                if (!company) {
+                    return res.status(404).json({ msg: 'Company not found' });
+                }
 
-        // Store the path to the QR code in the user data
-        userItem.qrCodePath = `/qrcodes/${qrCodeFileName}`;
-        await userItem.save();
+                // Dynamically add CmpRid to userData
+                userData.CmpRid = company.cmpID;
+                console.log(req.userRef);
+                userData.createBy = req.userRef;
+            }
 
-        // Send a welcome email to the user after creation
-        const emailSubject = 'Welcome to Our Service!';
-        const emailText = `Hi ${userItem.firstName} ${userItem.lastName},\n\n We are excited to have you with us.\n\n You can view your details using the QR code attached.\n
-        \n`;
+            // Create the user in the database
+            const userItem = await Model.User.create(userData);
+            const userUrl = `http://192.168.1.11:4000/user/${userItem.id}`; //
 
-        await sendEmail(userItem.email, emailSubject, emailText,qrCodeFileName, qrCodePath);
+            // Generate QR code with user details (could be a URL or just an identifier)
+            const qrCodeFileName = `user_${userItem.id}.png`;
+            const qrCodePath = path.join(qrCodeDirectory, qrCodeFileName);
+    
+            // Create the QR code and save it as a PNG image
+            await QRCode.toFile(qrCodePath, userUrl);
+    
+            // Store the path to the QR code in the user data
+            userItem.qr = `/qrcodes/${qrCodeFileName}`;
+            await userItem.save();
+    
+            // Send a welcome email to the user after creation
+            const emailSubject = 'Welcome to Our platform!';
+const emailText = `
+  Hi ${userItem.firstName} ${userItem.lastName},\n\n
+  🎉 Welcome aboard!🎉\n
+  We are thrilled to have you join our community of generous volunteers and donors! Our platform is designed to connect volunteers like you with people in need, making it easier than ever to make a real difference. You’re all set up and ready to begin helping others!\n
+  🔑 Your Account Details:\n
+  -Password: ${password}\n
+  If you ever need any assistance or have questions, our support team is here for you at [support@yourservice.com]. We're happy to assist! 😊\n
+  Thank you for your willingness to make a difference. We believe that together, we can create a better world, one act of kindness at a time.\n\n
+  Best regards,\n
+  The [Your Company] Team\n
+  ---
+  [azirm] | [https://azirm.ca/] | [Support Contact]
+`;
+    
+            await sendEmail(userItem.email, emailSubject, emailText, qrCodePath);
 
-        // Respond with success
-        res.status(201).json({
-            success: true,
-            data: userItem,
-            qrCodePath: userItem.qrCodePath // Return the QR code file path in the response
+            // Respond with success
+            res.status(201).json({
+                success: true,
+                data: userItem,
+                qrCodePath: userItem.qrCodePath,
+                profileImage: userItem.uimg // Return image path
+            });
         });
 
     } catch (error) {
@@ -97,7 +131,6 @@ exports.register = async (req, res) => {
         res.status(500).json({ msg: 'Server Error' });
     }
 };
-
 
 exports.CreateCmp = async (req, res) => { 
     const { label } = req.body;

@@ -129,7 +129,7 @@ const UpdateUser = () => {
   });
 
   if (loading) {
-    return <Box pt={2} pb={4}>Loading...</Box>; // Show loading state while user data is being fetched
+    return <Box pt={2} pb={4}>Loading... ..</Box>; // Show loading state while user data is being fetched
   }
 
   return (

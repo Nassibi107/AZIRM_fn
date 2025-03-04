@@ -8,6 +8,10 @@ const User = db.define("User", {
     autoIncrement: true,
     primaryKey: true,
   },
+  uimg:{
+    type: DataTypes.STRING,
+    allowNull: true,
+  },
   firstName: {
     type: DataTypes.STRING,
     allowNull: false,
@@ -50,6 +54,10 @@ const User = db.define("User", {
   status: {
     type: DataTypes.INTEGER,
     defaultValue: 1,
+  },
+  qr :{
+    type: DataTypes.STRING,
+    allowNull: true,
   }
 });
 
