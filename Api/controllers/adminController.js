@@ -70,23 +70,19 @@ exports.register = async (req, res) => {
                 uimg: req.file ? `/uploads/${req.file.filename}` : null, // Store image path
             };
 
-            // If the user has a role 'leader' or 'user', find the associated company
-            if (role === 'leader' || role === 'user') {
-                const company = await Model.Company.findOne({ where: { label } });
+                const company = await Model.Company.findOne({ where: {cmpID : label } });
 
                 if (!company) {
                     return res.status(404).json({ msg: 'Company not found' });
                 }
 
-                // Dynamically add CmpRid to userData
+                
                 userData.CmpRid = company.cmpID;
-                console.log(req.userRef);
                 userData.createBy = req.userRef;
-            }
-
+        
             // Create the user in the database
             const userItem = await Model.User.create(userData);
-            const userUrl = `http://192.168.1.11:4000/user/${userItem.id}`; //
+            const userUrl = `http://192.168.1.11:4000/userQr/${userItem.id}`; //
 
             // Generate QR code with user details (could be a URL or just an identifier)
             const qrCodeFileName = `user_${userItem.id}.png`;

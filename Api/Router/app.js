@@ -9,6 +9,7 @@ router.get('/', (req, res) => {
 
 router.get('/userQr/:id', async (req, res) => {
     const { id } = req.params;
+
     const user = await Model.User.findByPk(id);
     if (!user) {
         return res.status(404).send('User not found');

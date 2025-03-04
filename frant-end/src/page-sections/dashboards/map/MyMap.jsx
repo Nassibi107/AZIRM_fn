@@ -1,25 +1,73 @@
-import ReactMapboxGl, { Layer, Feature } from 'react-mapbox-gl';
-import 'mapbox-gl/dist/mapbox-gl.css';
+import React, { useState } from 'react';
+import { GoogleMap, Marker, useJsApiLoader } from '@react-google-maps/api';
 
-// Ensure compatibility with Mapbox GL
-const Map = ReactMapboxGl({
-  accessToken: "pk.eyJ1IjoiYXltYW5hdHRhZiIsImEiOiJjbTdnZWd3eXIwcmhsMmpyMGNlNzE0Mm53In0.rKz0Htwt5p-OmwNcZXDZhw"
-});
+const GOOGLE_MAP_KEY =import.meta.env.VITE_YOUR_GOOGLE_MAPS_API_KEY;
 
-function MyMap() {
+const containerStyle = {
+  width: '100%',
+  height: '400px',
+};
+
+const center = {
+  lat: 37.7749, // Set to your desired default location
+  lng: -122.4194,
+};
+
+const MyMap = () => {
+  const [locations, setLocations] = useState([]);
+  
+  const { isLoaded } = useJsApiLoader({
+    googleMapsApiKey:GOOGLE_MAP_KEY , // Replace with your API key
+  });
+
+  const handleMapClick = (event) => {
+    setLocations((prevLocations) => [
+      ...prevLocations,
+      { lat: event.latLng.lat(), lng: event.latLng.lng() },
+    ]);
+  };
+
+  const handleSubmit = () => {
+    // Send locations to backend to store in the database
+    fetch('/api/locations', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ locations }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log('Locations saved:', data);
+      })
+      .catch((error) => {
+        console.error('Error saving locations:', error);
+      });
+  };
+
   return (
-    <Map
-      style="mapbox://styles/mapbox/streets-v11"
-      containerStyle={{
-        height: '100vh',
-        width: '100vw'
-      }}
-    >
-      <Layer type="symbol" id="marker" layout={{ 'icon-image': 'marker-15' }}>
-        <Feature coordinates={[-0.481747846041145, 51.3233379650232]} />
-      </Layer>
-    </Map>
+    <div>
+      {isLoaded ? (
+        <GoogleMap
+          mapContainerStyle={containerStyle}
+          center={center}
+          zoom={10}
+          onClick={handleMapClick}
+        >
+          {locations.map((location, index) => (
+            <Marker
+              key={index}
+              position={{ lat: location.lat, lng: location.lng }}
+            />
+          ))}
+        </GoogleMap>
+      ) : (
+        <div>Loading...</div>
+      )}
+
+      <button onClick={handleSubmit}>Save Locations</button>
+    </div>
   );
-}
+};
 
 export default MyMap;
