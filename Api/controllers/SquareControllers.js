@@ -1,47 +1,59 @@
+const squareService = require("../services/squareService");
+const Employee = require("../models/employeeModel");
 
-require('dotenv').config();
+exports.getEmployesSquare = async (req, res) => {
+    try{
+      const employees = await squareService.fetchEmployees();
+      if(!employees.length){
+        return res.status(404).json({message: "No data found"});
+      }
+      res.status(200).json(employees);
+    }catch(error){
+      console.error("Error:", error);
+      res.status(500).json({message: "Internal Server Error"});
+}
+}
 
-const axios = require("axios");
-const  SQUARE_API_URL = process.env.SQUARE_API_URL;
-const  SQUARE_ACCESS_TOKEN = process.env.SQUARE_ACCESS_TOKEN;
-  // Get all team members
-  exports.getTeamMembers = async (req, res) => {
-    try {
-    console.log(SQUARE_ACCESS_TOKEN)
-    console.log(SQUARE_API_URL)
-    const response = await axios.get(`${SQUARE_API_URL}/team-members/THE_WRONG_ID`, { 
-        headers: { Authorization: `Bearer ${SQUARE_ACCESS_TOKEN}` }
-      });
-
-      res.json(response.data);
-    } catch (error) {
-      res.status(500).json({ error: error.response?.data || error.message });
+exports.getPayement = async (req, res) => {
+  try{
+    const pay = await squareService.fetchPayments();
+    if(!pay.length){
+      return res.status(404).json({message: "No data found"});
     }
-  };
-  
-  // Get all payments for all team members
-  exports.getAllTeamMemberPayments = async (req, res) => {
+    res.status(200).json(pay);
+  }catch(error){
+    console.error("Error:", error);
+    res.status(500).json({message: "Internal Server Error"});
+  }
+}
+exports.getTopEmployeesByPayments = async (req, res) => {
     try {
-      // First get all team members
-      const teamResponse = await squareClient.teamApi.listTeamMembers();
-      const teamMembers = teamResponse.result.teamMembers;
-      
-      // Then get payments for each team member
-      const paymentsPromises = teamMembers.map(async (member) => {
-        const paymentResponse = await squareClient.paymentsApi.listPayments({
-          teamMemberId: member.id,
+        const payments = await squareService.fetchPayments();
+        const employees = await squareService.fetchEmployees();
+
+        if (!payments.length || !employees.length) {
+            return res.status(404).json({ message: "No data found" });
+        }
+
+        // Create employee list
+        const employeeMap = {};
+        employees.forEach(emp => {
+            employeeMap[emp.id] = new Employee(emp.id, emp.first_name, emp.last_name);
         });
-        
-        return {
-          teamMember: member,
-          payments: paymentResponse.result.payments || []
-        };
-      });
-      
-      const teamMemberPayments = await Promise.all(paymentsPromises);
-      res.json(teamMemberPayments);
+
+        // Sum payments per employee
+        payments.forEach(payment => {
+            if (payment.team_member_id && employeeMap[payment.team_member_id]) {
+                employeeMap[payment.team_member_id].totalPayments += payment.amount_money.amount;
+            }
+        });
+
+        // Convert to array and sort by total payments
+        const sortedEmployees = Object.values(employeeMap).sort((a, b) => b.totalPayments - a.totalPayments);
+
+        res.status(200).json(sortedEmployees);
     } catch (error) {
-      res.status(500).json({ error: error.message });
+        console.error("Error:", error);
+        res.status(500).json({ message: "Internal Server Error" });
     }
-  };
-  
+};

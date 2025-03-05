@@ -9,7 +9,8 @@ import { FlexBetween } from "@/components/flexbox";
 import { Paragraph } from "@/components/typography"; // CUSTOM UTILS METHOD
 
 import { isDark } from "@/utils/constants";
-import { baseChartOptions } from "@/utils/baseChartOptions"; // DUMMY DATA SET
+import { baseChartOptions } from "@/utils/baseChartOptions"; // DUMMY DATA SET'
+
 
 const DATA = [{
   id: nanoid(),
@@ -30,6 +31,7 @@ const DATA = [{
   value1: 55.24,
   value2: 3.23
 }];
+
 
 const CurrentCurrency = () => {
   const theme = useTheme(); // REACT CHART OPTIONS

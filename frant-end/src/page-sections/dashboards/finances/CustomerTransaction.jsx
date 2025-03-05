@@ -8,9 +8,10 @@ import React from "react";
 import { Scrollbar } from "@/components/scrollbar";
 import { Paragraph, Small } from "@/components/typography";
 import { FlexBetween, FlexBox } from "@/components/flexbox"; // COMMON DASHBOARD RELATED COMPONENTS
-const ADMIN_ROUTE = import.meta.env.VITE_ADMIN_URL;
 import { BodyTableCell, HeadTableCell } from "../_common"; // CUSTOM DUMMY DATA SET
-import axios from 'axios'
+import axios from "axios";
+import { useEffect, useState } from "react";
+const ADMIN_ROUTE = import.meta.env.VITE_ADMIN_URL;
 const DATA = [
   {
   id: nanoid(),
@@ -102,27 +103,20 @@ const CustomerTransaction = () => {
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
 
   const [teamMembers, setTeamMembers] = React.useState([]);
-  const ACCESS_TOKEN = "EAAAl2oUOJeHSN6BXjHx38sA03IFI2qSQ6VCL4kkxRLnLdqXzYIC6EkEWs-ZlNPo"; // Store this securely
+  const _getEmp = async () => {
+    try {
+      const res = await axios.get(`${ADMIN_ROUTE}/team-members`);
+      console.log(res.data);
+      setTeamMembers(res.data);
+    }catch (error) { 
 
-  React.useEffect(() => {
-    const fetchTeamMembers = async () => {
-      try {
-        const response = await axios.get(
-          `${ADMIN_ROUTE}/team-members`
- 
+    }
+  };
 
-        );
-        console
-        setTeamMembers(response.data.team_members);
-        console.log(response.data)
-      } catch (error) {
-        console.error("Error fetching team members:", error);
-      }
-    };
+useEffect(() => {
+  _getEmp();
+}, []);
 
-    fetchTeamMembers();
-    
-  }, []);
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
   };
@@ -137,7 +131,7 @@ const CustomerTransaction = () => {
   };
 
   // Slice data to only show the rows for the current page
-  const currentPageData = DATA.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage);
+  const currentPageData = teamMembers.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage);
 
   return (
     <Card>
@@ -172,11 +166,12 @@ const CustomerTransaction = () => {
         <Table sx={{ minWidth: 500 }}>
           <TableHead>
             <TableRow>
-              <HeadTableCell>TRANSACTION</HeadTableCell>
+              <HeadTableCell>user</HeadTableCell>
               <HeadTableCell>Email</HeadTableCell>
-              <HeadTableCell>DATE</HeadTableCell>
-              <HeadTableCell>TIME</HeadTableCell>
-              <HeadTableCell>AMOUNT</HeadTableCell>
+              <HeadTableCell>status</HeadTableCell>
+              <HeadTableCell>create</HeadTableCell>
+              <HeadTableCell>update</HeadTableCell>
+              <HeadTableCell>phone</HeadTableCell>
             </TableRow>
           </TableHead>
 
@@ -185,23 +180,24 @@ const CustomerTransaction = () => {
               <TableRow key={index} sx={{ backgroundColor: getColor(index) }}>
                 <BodyTableCell>
                   <FlexBox gap={1}>
-                    <Avatar variant="rounded" src={item.user.image} />
+                    <Avatar variant="rounded" src={""} />
                     <Box>
                       <Paragraph color="text.primary" fontWeight={500}>
-                        {item.user.name}
+                        {item.first_name} {item.last_name}
                       </Paragraph>
-                      <Small>{item.user.id.substring(0, 10)}</Small>
+                      <Small>{item.id.substring(0, 10)}</Small>
                     </Box>
                   </FlexBox>
                 </BodyTableCell>
 
                 <BodyTableCell>{item.email}</BodyTableCell>
-                <BodyTableCell>{format(new Date(item.createdAt), "dd MMM, yyyy")}</BodyTableCell>
-                <BodyTableCell>{format(new Date(item.createdAt), "hh:mm a")}</BodyTableCell>
+                <BodyTableCell>{item.status}</BodyTableCell>
+                <BodyTableCell>{format(new Date(item.created_at), "dd MMM, yyyy")}</BodyTableCell>
+                <BodyTableCell>{format(new Date(item.updated_at), "dd MMM, yyyy")}</BodyTableCell>
 
                 <BodyTableCell>
                   <Paragraph color="text.primary" fontWeight={500}>
-                    ${item.total}
+                    {item.phone_number}
                   </Paragraph>
                 </BodyTableCell>
               </TableRow>
@@ -214,7 +210,7 @@ const CustomerTransaction = () => {
       <TablePagination
         rowsPerPageOptions={[5, 10, 25]}
         component="div"
-        count={DATA.length}
+        count={teamMembers.length}
         rowsPerPage={rowsPerPage}
         page={page}
         onPageChange={handleChangePage}

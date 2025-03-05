@@ -16,8 +16,9 @@ const containerStyle = {
 };
 
 const center = {
-  lat: 37.7749, // Default center for the map
-  lng: 45.508888,
+ // 45.51788172231601, -73.56491603185499
+  lat:45.51788172231601, 
+  lng:-73.56491603185499,
 };
 
 const MyMap = () => {
@@ -100,11 +101,12 @@ const MyMap = () => {
               key={index}
               icon={{
                 url: "https://www.pngall.com/wp-content/uploads/10/Map-Marker-PNG-Pic.png", // Custom marker image URL
-                scaledSize: new window.google.maps.Size(30, 30), // Resize the image if needed
+                scaledSize: new window.google.maps.Size(40, 40), // Resize the image if needed
               }}
               position={{ lat: location.lat, lng: location.lng }}
             />
           ))}
+          <H4>Click on the map to add or remove locations</H4>
         </GoogleMap>
       ) : (
         <div>Loading...</div>

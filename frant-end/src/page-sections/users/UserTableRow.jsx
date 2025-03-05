@@ -72,7 +72,7 @@ const UserTableRow = props => {
       <TableCell padding="normal">{user.address}</TableCell>
       <TableCell padding="normal">{user.role}</TableCell>
       <TableCell padding="normal">
-          <MoreButtonListUser user={user}  flag={flagId || 0}/>
+          <MoreButtonListUser user={user}    flag={flagId || 0}/>
       </TableCell>
     </TableRow>;
 };
