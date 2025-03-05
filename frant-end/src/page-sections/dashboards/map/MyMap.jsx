@@ -10,11 +10,14 @@ const containerStyle = {
   width: '90%',
   height: '500px',
   margin: '10px auto',
+  borderRadius: '25px',
+  // border :"#003892 solid 3px"
+  
 };
 
 const center = {
   lat: 37.7749, // Default center for the map
-  lng: -122.4194,
+  lng: 45.508888,
 };
 
 const MyMap = () => {
@@ -65,9 +68,7 @@ const MyMap = () => {
   return (
     <Box>
       <Grid container justifyContent="center" spacing={2}>
-        <Grid item xs={6} md={6}>
-          <H4>Click on the map to add locations</H4>
-        </Grid>
+        
         <Grid item sm={6} xs={12}>
                             <InputLabel>take you user</InputLabel>
                             <Select
