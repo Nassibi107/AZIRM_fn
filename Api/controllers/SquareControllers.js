@@ -1,6 +1,7 @@
 const squareService = require("../services/squareService");
 const Employee = require("../models/employeeModel");
 
+
 exports.getEmployesSquare = async (req, res) => {
     try{
       const employees = await squareService.fetchEmployees();
@@ -40,10 +41,10 @@ exports.getTopEmployeesByPayments = async (req, res) => {
         employees.forEach(emp => {
             employeeMap[emp.id] = new Employee(emp.id, emp.first_name, emp.last_name);
         });
-
         // Sum payments per employee
         payments.forEach(payment => {
             if (payment.team_member_id && employeeMap[payment.team_member_id]) {
+              console.log(employeeMap[payment.team_member_id].totalPayments); 
                 employeeMap[payment.team_member_id].totalPayments += payment.amount_money.amount;
             }
         });

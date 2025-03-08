@@ -8,6 +8,9 @@ import { FlexBetween, FlexBox } from "@/components/flexbox"; // CUSTOM UTILS MET
 import { format } from "@/utils/currency";
 import { numberFormat } from "@/utils/numberFormat"; // CUSTOM DUMMY DATA
 
+import axios  from "axios";
+import { useEffect, useState } from "react";
+const ADMIN_ROUTE = import.meta.env.VITE_ADMIN_URL;
 const DATA = [{
   id: nanoid(),
   totalSold: 13440,
@@ -47,6 +50,22 @@ const DATA = [{
 }];
 
 const TopSeller = () => {
+  
+  const [emp ,setEmp] = useState();
+  
+  
+  const _getEmployee = async () => {
+    try{
+      const res = await axios.get(`${ADMIN_ROUTE}/top-leaders`);
+      setEmp(res.data.slice(0, 5));
+
+    }catch(error)
+    {
+      console.error(error);
+    }
+  }
+  useEffect(() => {_getEmployee()}, []);
+
   return <Card sx={{
     p: 3,
     height: "100%"
@@ -69,17 +88,17 @@ const TopSeller = () => {
       </FlexBetween>
 
       <Stack spacing={2.5}>
-        {DATA.map(item => <FlexBetween key={item.id}>
+        {emp?.map(item => <FlexBetween key={item.id}>
             <FlexBox gap={1.5}>
               <Badge overlap="circular" anchorOrigin={{
             vertical: "bottom",
             horizontal: "right"
-          }} badgeContent={<Avatar alt="Remy Sharp" src={item.country} sx={{
+          }} badgeContent={<Avatar alt="Remy Sharp" src={item.id} sx={{
             all: "unset",
             width: 17,
             height: 17
           }} />}>
-                <Avatar alt={item.user.name} src={item.user.image} sx={{
+                <Avatar alt={item.name} src={""} sx={{
               width: 45,
               height: 45
             }} />
@@ -87,17 +106,17 @@ const TopSeller = () => {
 
               <Box>
                 <Small fontWeight={500} color="text.secondary">
-                  ${format(item.totalAmount)}
+                 {item.id}
                 </Small>
 
                 <Paragraph lineHeight={1} fontWeight={600}>
-                  {item.user.name}
+                  {item.name}
                 </Paragraph>
               </Box>
             </FlexBox>
 
             <Paragraph fontWeight={500} color="text.secondary">
-              {numberFormat(item.totalSold)}
+              {numberFormat(item.totalPayments)}
             </Paragraph>
           </FlexBetween>)}
       </Stack>

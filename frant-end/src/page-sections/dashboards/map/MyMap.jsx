@@ -1,10 +1,20 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { GoogleMap, Marker, useJsApiLoader } from '@react-google-maps/api';
 import { Box, Button, Grid, InputLabel, MenuItem, Select } from '@mui/material';
 
 import { H4 } from "@/components/typography";
 
 const GOOGLE_MAP_KEY = import.meta.env.VITE_YOUR_GOOGLE_MAPS_API_KEY;
+
+const fakeLocations = [
+  { lat: 45.5017, lng: -73.5673, feed: 1 }, // Green marker (feed 1) - Montreal City Hall
+  { lat: 45.5088, lng: -73.554, feed: 0 },  // Red marker (feed 0) - Montreal Downtown
+  { lat: 45.4543, lng: -73.6404, feed: -1 }, // Orange marker (feed -1) - Olympic Stadium
+  { lat: 45.5355, lng: -73.6136, feed: 1 },  // Green marker (feed 1) - Parc Jean-Drapeau
+  { lat: 45.4920, lng: -73.5862, feed: 0 },  // Red marker (feed 0) - McGill University
+  { lat: 45.5155, lng: -73.5672, feed: -1 }, // Orange marker (feed -1) - Old Montreal (Vieux-Montréal)
+];
+
 
 const containerStyle = {
   width: '90%',
@@ -26,7 +36,22 @@ const MyMap = () => {
   const { isLoaded } = useJsApiLoader({
     googleMapsApiKey: GOOGLE_MAP_KEY, // Your Google Maps API Key
   });
+ 
 
+  useEffect(() => {
+    if (isLoaded) {
+      setLocations([...fakeLocations]);
+    }
+  }, [isLoaded]);
+
+
+  const get_marker_color = (feed) => {
+    if (feed === 1) return '/static/loactions/green.png';
+    else if (feed === -1) return '/static/loactions/orange.png';
+    else if (feed === 0) return '/static/loactions/red.png'; // Default to red for feed 0
+    return '/static/loactions/sky.png'; // Default to red for feed 0
+  }
+  
   // Handle click event on map
   const handleMapClick = (event) => {
     // Get the clicked location's latitude and longitude
@@ -92,20 +117,20 @@ const MyMap = () => {
         <GoogleMap
           mapContainerStyle={containerStyle}
           center={center}
-          zoom={10}
+          zoom={13.5}
           onClick={handleMapClick} // Register the map click event
         >
-          {/* Render markers for all locations */}
-          {locations.map((location, index) => (
-            <Marker
-              key={index}
-              icon={{
-                url: "https://www.pngall.com/wp-content/uploads/10/Map-Marker-PNG-Pic.png", // Custom marker image URL
-                scaledSize: new window.google.maps.Size(40, 40), // Resize the image if needed
-              }}
-              position={{ lat: location.lat, lng: location.lng }}
-            />
-          ))}
+        {isLoaded && window.google && locations.map((location, index) => (
+  <Marker
+    key={index}
+    position={{ lat: location.lat, lng: location.lng }}
+    icon={{
+      url: get_marker_color(location.feed),
+      scaledSize: new window.google.maps.Size(33, 33),
+     
+    }}
+  />
+))}
           <H4>Click on the map to add or remove locations</H4>
         </GoogleMap>
       ) : (
