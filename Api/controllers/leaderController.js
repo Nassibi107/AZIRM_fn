@@ -204,3 +204,35 @@ exports.destroyUser = async (req, res) => {
         res.status(500).json({ msg: 'Server Error' });
     }
 };
+
+exports.insertDonation = async (req, res) => {
+    try {
+        const { 
+            amount,
+            type,
+            lat,
+            lng,
+            feed,
+            userId
+        } = req.body;
+
+        const donation = await Model.Donation.create({
+            amount,
+            type,
+            lat,
+            lng,
+            feed,
+            userId
+        });
+
+        res.status(201).json({
+            success: true,
+            data: donation
+        });
+
+    } catch (error) {
+        console.error(error.message);
+        res.status(500).json({ msg: 'Server Error' });
+    }
+}
+

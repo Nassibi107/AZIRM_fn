@@ -1,26 +1,148 @@
 import React, { useEffect, useState } from 'react';
 import { GoogleMap, Marker, useJsApiLoader } from '@react-google-maps/api';
-import { Box, Button, Grid, InputLabel, MenuItem, Select } from '@mui/material';
+import { Autocomplete, Box, Button, Grid, InputLabel, MenuItem, Select, TextField } from '@mui/material';
 
 import { H4 } from "@/components/typography";
 
 const GOOGLE_MAP_KEY = import.meta.env.VITE_YOUR_GOOGLE_MAPS_API_KEY;
+const users = ["user0", "user1", "user2", "user3", "user4"]; // Example user array
 
 const fakeLocations = [
-  { lat: 45.5017, lng: -73.5673, feed: 1 }, // Green marker (feed 1) - Montreal City Hall
-  { lat: 45.5088, lng: -73.554, feed: 0 },  // Red marker (feed 0) - Montreal Downtown
-  { lat: 45.4543, lng: -73.6404, feed: -1 }, // Orange marker (feed -1) - Olympic Stadium
-  { lat: 45.5355, lng: -73.6136, feed: 1 },  // Green marker (feed 1) - Parc Jean-Drapeau
-  { lat: 45.4920, lng: -73.5862, feed: 0 },  // Red marker (feed 0) - McGill University
-  { lat: 45.5155, lng: -73.5672, feed: -1 }, // Orange marker (feed -1) - Old Montreal (Vieux-Montréal)
+  { id :1 ,amount: 10,lat: 45.5017, lng: -73.5673, feed: 1 }, // Green marker (feed 1) - Montreal City Hall
+  { id: 4 ,amount: 10,lat: 45.5088, lng: -73.554, feed: 0 },  // Red marker (feed 0) - Montreal Downtown
+  { id: 5 ,amount: 10,lat: 45.4543, lng: -73.6404, feed: -1 }, // Orange marker (feed -1) - Olympic Stadium
+  { id: 6 ,amount: 10,lat: 45.5355, lng: -73.6136, feed: 1 },  // Green marker (feed 1) - Parc Jean-Drapeau
+  { id: 8,amount: 10,lat: 45.4920, lng: -73.5862, feed: 0 },  // Red marker (feed 0) - McGill University
+  { id: 10,amount: 10,lat: 45.5155, lng: -73.5672, feed: -1 }, // Orange marker (feed -1) - Old Montreal (Vieux-Montréal)
+];
+const customStyleLight = [
+  {
+    elementType: "geometry",
+    stylers: [{ color: "#f5f5f5" }] // Soft gray background
+  },
+  {
+    elementType: "labels.text.fill",
+    stylers: [{ color: "#616161" }] // Dark gray text for readability
+  },
+  {
+    elementType: "labels.text.stroke",
+    stylers: [{ color: "#ffffff" }] // White stroke for text contrast
+  },
+  {
+    featureType: "administrative.land_parcel",
+    stylers: [{ visibility: "off" }] // Hide parcel lines for a clean look
+  },
+  {
+    featureType: "poi",
+    elementType: "geometry",
+    stylers: [{ color: "#e1e1e1" }] // Light gray for points of interest
+  },
+  {
+    featureType: "poi.park",
+    elementType: "geometry",
+    stylers: [{ color: "#c8e6c9" }] // Soft green for parks
+  },
+  {
+    featureType: "road",
+    elementType: "geometry",
+    stylers: [{ color: "#ffffff" }] // White roads for clarity
+  },
+  {
+    featureType: "road.arterial",
+    elementType: "geometry",
+    stylers: [{ color: "#f1f1f1" }] // Slightly off-white for arterial roads
+  },
+  {
+    featureType: "road.highway",
+    elementType: "geometry",
+    stylers: [{ color: "#fdd835" }] // Yellowish for highways
+  },
+  {
+    featureType: "road.highway",
+    elementType: "geometry.stroke",
+    stylers: [{ color: "#e0a800" }] // Slightly darker yellow stroke
+  },
+  {
+    featureType: "transit",
+    elementType: "geometry",
+    stylers: [{ color: "#bdbdbd" }] // Light gray for transit lines
+  },
+  {
+    featureType: "water",
+    elementType: "geometry",
+    stylers: [{ color: "#b3e5fc" }] // Soft blue for water
+  }
 ];
 
+const customStyle = [
+  {
+    elementType: "geometry",
+    stylers: [{ color: "#212d42" }] // Dark blue-gray for base map
+  },
+  {
+    elementType: "labels.text.fill",
+    stylers: [{ color: "#a3c6ff" }] // Light blue for text
+  },
+  {
+    elementType: "labels.text.stroke",
+    stylers: [{ color: "#1b2838" }] // Dark stroke to enhance readability
+  },
+  {
+    featureType: "administrative",
+    elementType: "geometry.stroke",
+    stylers: [{ color: "#3b4d66" }] // Subtle blue-gray strokes
+  },
+  {
+    featureType: "administrative.land_parcel",
+    stylers: [{ visibility: "off" }] // Hide land parcel lines for cleaner look
+  },
+  {
+    featureType: "poi",
+    elementType: "geometry",
+    stylers: [{ color: "#2a3f5f" }] // Darker blue for points of interest
+  },
+  {
+    featureType: "poi.park",
+    elementType: "geometry",
+    stylers: [{ color: "#234d20" }] // Dark green for parks
+  },
+  {
+    featureType: "road",
+    elementType: "geometry",
+    stylers: [{ color: "#2c4875" }] // Blue-gray for roads
+  },
+  {
+    featureType: "road.arterial",
+    elementType: "geometry",
+    stylers: [{ color: "#36557a" }] // Slightly lighter arterial roads
+  },
+  {
+    featureType: "road.highway",
+    elementType: "geometry",
+    stylers: [{ color: "#4a6ea3" }] // Brighter blue for highways
+  },
+  {
+    featureType: "road.highway",
+    elementType: "geometry.stroke",
+    stylers: [{ color: "#243b60" }] // Darker strokes for contrast
+  },
+  {
+    featureType: "transit",
+    elementType: "geometry",
+    stylers: [{ color: "#2b3e57" }] // Dark blue for transit lines
+  },
+  {
+    featureType: "water",
+    elementType: "geometry",
+    stylers: [{ color: "#1b3a68" }] // Deep blue for water
+  }
+];
 
 const containerStyle = {
   width: '90%',
-  height: '500px',
+  height: '650px',
   margin: '10px auto',
-  borderRadius: '25px',
+  borderRadius: '20px',
   // border :"#003892 solid 3px"
   
 };
@@ -31,7 +153,10 @@ const center = {
   lng:-73.56491603185499,
 };
 
+
 const MyMap = () => {
+  const [selectedUser, setSelectedUser] = useState(""); // Store selected user
+
   const [locations, setLocations] = useState([]);
   const { isLoaded } = useJsApiLoader({
     googleMapsApiKey: GOOGLE_MAP_KEY, // Your Google Maps API Key
@@ -49,9 +174,12 @@ const MyMap = () => {
     if (feed === 1) return '/static/loactions/green.png';
     else if (feed === -1) return '/static/loactions/orange.png';
     else if (feed === 0) return '/static/loactions/red.png'; // Default to red for feed 0
-    return '/static/loactions/sky.png'; // Default to red for feed 0
+    return '/static/loactions/gray.png'; // Default to red for feed 0
   }
-  
+  // Handle user selection
+  const handleUserChange = (event, newValue) => {
+    setSelectedUser(newValue);
+  };
   // Handle click event on map
   const handleMapClick = (event) => {
     // Get the clicked location's latitude and longitude
@@ -92,32 +220,37 @@ const MyMap = () => {
   };
 
   return (
-    <Box>
+    <Box sx={{ width: '100%', padding: '20px' }}>
+      {/* Header Section */}
+      <Box sx={{ textAlign: 'center', marginBottom: '20px' }}>
+        <H4>{selectedUser ? `Selected User: ${selectedUser}` : 'Select a User'}</H4>
+      </Box>
+
+      {/* User Selection Grid */}
       <Grid container justifyContent="center" spacing={2}>
-        
         <Grid item sm={6} xs={12}>
-                            <InputLabel>take you user</InputLabel>
-                            <Select
-                              fullWidth
-                              label="user"
-                              name="user"
-                             
-                              
-                            >
-                              <MenuItem value="">----</MenuItem>
-                              <MenuItem value="user0">user0</MenuItem>
-                              <MenuItem value="user1">user1</MenuItem>
-                              <MenuItem value="user2">user2</MenuItem>
-                              <MenuItem value="user3">user3</MenuItem>
-                        
-                            </Select>
-            </Grid>
+          <InputLabel>Select User</InputLabel>
+          <Autocomplete
+            fullWidth
+            value={selectedUser}
+            onChange={handleUserChange}
+            options={users}
+            renderInput={(params) => <TextField {...params} label="Select User" variant="outlined" />}
+            isOptionEqualToValue={(option, value) => option === value}
+            disableClearable
+          />
+        </Grid>
       </Grid>
+
+      {/* Google Map Section */}
+      <Box sx={{ marginTop: '30px' }}>
       {isLoaded ? (
         <GoogleMap
           mapContainerStyle={containerStyle}
           center={center}
-          zoom={13.5}
+          options={{ styles: customStyleLight }} // Apply custom style
+
+          zoom={12.5}
           onClick={handleMapClick} // Register the map click event
         >
         {isLoaded && window.google && locations.map((location, index) => (
@@ -137,12 +270,15 @@ const MyMap = () => {
         <div>Loading...</div>
       )}
 
+      </Box>
+
       {/* Button to submit locations */}
-    <Box margin={3}>
-      <Button variant="outlined"  onClick={handleSubmit}>Save Locations</Button>
+      <Box sx={{ marginTop: '20px' }}>
+        <Button variant="outlined" onClick={() => alert('Locations Saved!')}>Save Locations</Button>
       </Box>
     </Box>
   );
 };
+
 
 export default MyMap;

@@ -317,3 +317,21 @@ exports.destroyUser = async (req, res) => {
         res.status(500).json({ msg: 'Server Error' });
     }
 };
+
+exports.getDonationsbyID = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const donations = await Model.Donation.findAll({
+            where: {
+                userId: id
+            }
+        });
+        res.status(200).json({
+            success: true,
+            data: donations
+        });
+    }catch (error) {
+        console.error(error.message);
+        res.status(500).json({ msg: 'Server Error' });
+    }
+}

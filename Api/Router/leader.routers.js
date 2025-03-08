@@ -12,5 +12,6 @@ router.get('/user/:id', leaderController.getUserId);
 router.put('/user/:id', leaderController.updateUserId);
 router.put('/userStatus/:id', leaderController.updateUserId);
 router.delete('/user/:id', leaderController.destroyUser);
+router.post('/don', leaderController.insertDonation);
 
 exports.router = router;

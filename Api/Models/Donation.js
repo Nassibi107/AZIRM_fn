@@ -1,7 +1,6 @@
 const { DataTypes } = require("sequelize");
 const db = require('../db/db');
 
-
 const Donation = db.define("Donation", {
   idD: {
     type: DataTypes.BIGINT,
@@ -12,8 +11,20 @@ const Donation = db.define("Donation", {
     type: DataTypes.DECIMAL,
     allowNull: false,
   },
-  type: {
+  type:{
     type: DataTypes.STRING,
+    allowNull: true,
+  },
+  lat:{
+    type: DataTypes.DOUBLE,
+    defaultValue:0.0
+  },
+  lng:{
+    type: DataTypes.DOUBLE,
+    defaultValue:0.0
+  },
+  feed :{
+    type: DataTypes.INTEGER,
     allowNull: false,
   },
 });
@@ -23,4 +34,5 @@ Donation.associate = (models) => {
 };
 
 module.exports = Donation;
+
 
