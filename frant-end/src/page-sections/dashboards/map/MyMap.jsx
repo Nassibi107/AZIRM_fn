@@ -1,11 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { GoogleMap, Marker, useJsApiLoader } from '@react-google-maps/api';
 import { Autocomplete, Box, Button, Grid, InputLabel, MenuItem, Select, TextField } from '@mui/material';
-
+import { useTheme } from '@emotion/react';
 import { H4 } from "@/components/typography";
-
+import { isDark } from "@/utils/constants";
+import axios from 'axios';
+import { set } from 'nprogress';
 const GOOGLE_MAP_KEY = import.meta.env.VITE_YOUR_GOOGLE_MAPS_API_KEY;
 const users = ["user0", "user1", "user2", "user3", "user4"]; // Example user array
+const   ADMIN_ROUTE = import.meta.env.VITE_ADMIN_URL;
+const   VITE_LEADER = import.meta.env.VITE_LEADER_URL;
+
+
 
 const fakeLocations = [
   { id :1 ,amount: 10,lat: 45.5017, lng: -73.5673, feed: 1 }, // Green marker (feed 1) - Montreal City Hall
@@ -15,6 +21,9 @@ const fakeLocations = [
   { id: 8,amount: 10,lat: 45.4920, lng: -73.5862, feed: 0 },  // Red marker (feed 0) - McGill University
   { id: 10,amount: 10,lat: 45.5155, lng: -73.5672, feed: -1 }, // Orange marker (feed -1) - Old Montreal (Vieux-Montréal)
 ];
+
+
+
 const customStyleLight = [
   {
     elementType: "geometry",
@@ -148,28 +157,64 @@ const containerStyle = {
 };
 
 const center = {
- // 45.51788172231601, -73.56491603185499
   lat:45.51788172231601, 
   lng:-73.56491603185499,
 };
 
-
 const MyMap = () => {
-  const [selectedUser, setSelectedUser] = useState(""); // Store selected user
+  const [selectedUser, setSelectedUser] = useState(""); 
+  const [users, setUsers] = useState("");
+  const [usersInfo, setusersInfo] = useState("");
 
   const [locations, setLocations] = useState([]);
   const { isLoaded } = useJsApiLoader({
-    googleMapsApiKey: GOOGLE_MAP_KEY, // Your Google Maps API Key
+    googleMapsApiKey: GOOGLE_MAP_KEY, 
   });
- 
+  const theme = useTheme();
 
+  const _Addontion = async (name) =>{
+    const userID = usersInfo.find(user => user.firstName === name)?.id;
+    console.log(usersInfo);
+    console.log("name : " + name);
+    console.log("userId : "  + userID)
+    const requests = locations.map(location => {
+      const body = {
+        amount: 0,
+        type: type,
+        lat: location.lat,
+        lng: location.lng,
+        feed: feed,
+        userId: userID
+      };
+  
+      return axios.post(`${YOUR_API_ENDPOINT}`, body);
+    });
+    console.log(requests);
+    // try {
+    //   const responses = await Promise.all(requests); // Wait for all requests to complete
+    //   responses.forEach(response => console.log('Request successful:', response.data));
+    // } catch (error) {
+    //   console.log(err);
+    // }
+  }
+  const get_info = async () => {
+
+    try{
+      const response = await axios.get(`${ADMIN_ROUTE}/users`);
+      setUsers(response.data.data.map((user) => user.firstName));
+      setusersInfo(response.data.data);
+    
+    }catch(err){
+      console.log(err);
+    }
+  }  
   useEffect(() => {
     if (isLoaded) {
       setLocations([...fakeLocations]);
     }
   }, [isLoaded]);
 
-
+useEffect(() => {get_info()}, []);
   const get_marker_color = (feed) => {
     if (feed === 1) return '/static/loactions/green.png';
     else if (feed === -1) return '/static/loactions/orange.png';
@@ -179,6 +224,8 @@ const MyMap = () => {
   // Handle user selection
   const handleUserChange = (event, newValue) => {
     setSelectedUser(newValue);
+   
+    setLocations([])
   };
   // Handle click event on map
   const handleMapClick = (event) => {
@@ -214,8 +261,8 @@ const MyMap = () => {
 
   // Handle submission of locations
   const handleSubmit = () => {
-    // Here you would send the locations to your backend to save them in the database
     console.log('Submitting locations:', locations);
+    _Addontion(selectedUser);
     setLocations([]); // Clear the locations after submission
   };
 
@@ -248,15 +295,17 @@ const MyMap = () => {
         <GoogleMap
           mapContainerStyle={containerStyle}
           center={center}
-          options={{ styles: customStyleLight }} // Apply custom style
+          options={{ styles: isDark(theme)  ? customStyle : customStyleLight }} 
 
           zoom={12.5}
-          onClick={handleMapClick} // Register the map click event
+          onClick={handleMapClick} 
         >
         {isLoaded && window.google && locations.map((location, index) => (
   <Marker
     key={index}
     position={{ lat: location.lat, lng: location.lng }}
+
+    label={location.amount}
     icon={{
       url: get_marker_color(location.feed),
       scaledSize: new window.google.maps.Size(33, 33),
@@ -273,8 +322,8 @@ const MyMap = () => {
       </Box>
 
       {/* Button to submit locations */}
-      <Box sx={{ marginTop: '20px' }}>
-        <Button variant="outlined" onClick={() => alert('Locations Saved!')}>Save Locations</Button>
+      <Box sx={{ margin: 'auto 10px' }}>
+        <Button variant="outlined" onClick={ handleSubmit}>Save Locations</Button>
       </Box>
     </Box>
   );
