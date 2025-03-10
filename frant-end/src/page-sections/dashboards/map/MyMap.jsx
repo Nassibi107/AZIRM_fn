@@ -180,22 +180,22 @@ const MyMap = () => {
     const requests = locations.map(location => {
       const body = {
         amount: 0,
-        type: type,
+        type: "INTI",
         lat: location.lat,
         lng: location.lng,
-        feed: feed,
+        feed: 100,
         userId: userID
       };
   
-      return axios.post(`${YOUR_API_ENDPOINT}`, body);
+      return axios.post(`${VITE_LEADER}/don`, body);
     });
-    console.log(requests);
-    // try {
-    //   const responses = await Promise.all(requests); // Wait for all requests to complete
-    //   responses.forEach(response => console.log('Request successful:', response.data));
-    // } catch (error) {
-    //   console.log(err);
-    // }
+    // console.log(requests);
+    try {
+      const responses = await Promise.all(requests); // Wait for all requests to complete
+      responses.forEach(response => console.log('Request successful:', response.data));
+    } catch (error) {
+      console.log(err);
+    }
   }
   const get_info = async () => {
 
@@ -218,8 +218,8 @@ useEffect(() => {get_info()}, []);
   const get_marker_color = (feed) => {
     if (feed === 1) return '/static/loactions/green.png';
     else if (feed === -1) return '/static/loactions/orange.png';
-    else if (feed === 0) return '/static/loactions/red.png'; // Default to red for feed 0
-    return '/static/loactions/gray.png'; // Default to red for feed 0
+    else if (feed === 0) return '/static/loactions/red.png'; // 
+    return '/static/loactions/gray.png'; // 
   }
   // Handle user selection
   const handleUserChange = (event, newValue) => {
@@ -281,7 +281,7 @@ useEffect(() => {get_info()}, []);
             fullWidth
             value={selectedUser}
             onChange={handleUserChange}
-            options={users}
+            options={users  || []}
             renderInput={(params) => <TextField {...params} label="Select User" variant="outlined" />}
             isOptionEqualToValue={(option, value) => option === value}
             disableClearable

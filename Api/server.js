@@ -17,7 +17,14 @@ app.use(cors());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 app.use(morgan('dev'));
+// Serve static files (HTML, CSS, JS)
+app.use(express.static(path.join(__dirname, "views")));
+app.use(express.static(path.join(__dirname, 'public')));
 
+// Redirect root ("/") to index.html
+app.get("/userQr/:id", (req, res) => {
+    res.sendFile(path.join(__dirname, "views", "index.html"));
+});
 
 app.use('/uploads', express.static(path.join(__dirname, 'controllers/public/uploads')));
 app.use('/qrcodes', express.static(path.join(__dirname, 'controllers/public/qrcodes')));

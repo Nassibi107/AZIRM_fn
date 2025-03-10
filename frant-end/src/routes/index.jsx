@@ -7,15 +7,11 @@ import { ComponentRoutes } from "./components"; // GLOBAL ERROR PAGE
 
 const ErrorPage = Loadable(lazy(() => import("@/pages/404"))); // LANDING / INITIAL PAGE
 
-const Landing = Loadable(lazy(() => import("@/pages/landing")));
 const PermissionDenied = Loadable(lazy(() => import("../pages/403.jsx")));
 
 export const routes = () => {
   return [// INITIAL / INDEX PAGE
-  {
-    path: "/",
-    element: <Landing />
-  }, // GLOBAL ERROR PAGE
+  // GLOBAL ERROR PAGE
   {
     path: "*",
     element: <ErrorPage />

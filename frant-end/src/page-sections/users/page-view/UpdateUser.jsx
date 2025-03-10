@@ -282,11 +282,12 @@ const UpdateUser = () => {
                     value={values.role}
                     onChange={handleChange}
                   >
-                      <MenuItem value="admin">gerant</MenuItem>
-                      <MenuItem value="assistant">assistant</MenuItem>
-                      <MenuItem value="teamLeader">teamLeader</MenuItem>
-                      <MenuItem value="Leader">Leader</MenuItem>
-                       <MenuItem value="distribuer">distribuer</MenuItem>
+                  <MenuItem value="">----</MenuItem>
+                  <MenuItem value="admin">gerant</MenuItem>
+                  <MenuItem value="assistant">assistant</MenuItem>
+                  <MenuItem value="teamLeader">teamLeader</MenuItem>
+                  <MenuItem value="Leader">Leader</MenuItem>
+                  <MenuItem value="distbituer">distbituer</MenuItem>
                   </Select>
                 </Grid>
 
@@ -299,10 +300,8 @@ const UpdateUser = () => {
                     value={values.label}
                     onChange={handleChange}
                   >
-                    <MenuItem value="LSI">LSI</MenuItem>
-                    <MenuItem value="LvM">LvM</MenuItem>
-                    <MenuItem value="Kenzo">Kenzo</MenuItem>
-                    <MenuItem value="nexsus">nexsus</MenuItem>
+                   <MenuItem value="">----</MenuItem>
+                  <MenuItem value="1">azirm</MenuItem>
                   </Select>
                 </Grid>
 

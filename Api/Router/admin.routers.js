@@ -4,8 +4,8 @@ const router = express.Router();
 
 const adminController = require("../controllers/adminController.js");
 const SquareControllers = require("../controllers/SquareControllers.js");
-const authMiddleware = require("../middleware/authMiddleware.js");
-const isAdmin = require("../middleware/adminMiddleware.js");
+const authMiddleware = require("../Middleware/authMiddleware.js");
+const isAdmin = require("../Middleware/adminMiddleware.js");
 
 // Apply middlewares to all routes in this router
 router.use(authMiddleware.check, isAdmin.checkIs);
@@ -28,4 +28,5 @@ router.get('/team-members', SquareControllers.getEmployesSquare);
 router.get('/payments', SquareControllers.getPayement);
 router.get('/top-leaders', SquareControllers.getTopEmployeesByPayments);
 router.get('/don/:id', adminController.getDonationsbyID);
+router.get('/dons', adminController.getAllDonations);
 exports.router = router;

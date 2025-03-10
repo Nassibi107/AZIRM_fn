@@ -66,6 +66,4 @@ User.associate = (models) => {
   User.hasMany(models.Donation, { foreignKey: "userId", as: "donations" }); // FIXED
 };
 
-
-
 module.exports = User;

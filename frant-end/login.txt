@@ -1,5 +1,10 @@
 https://www.svgrepo.com/svg/310964/live
 
 
-
 https://codepen.io/marcobiedermann/pen/nbpKWV
+
+
+if (feed === 1) ==> green.png
+    else if (feed === -1) ==> orange.png'
+    else if (feed === 0) ==> red.png'; 
+     else  ==> gray.png'; 

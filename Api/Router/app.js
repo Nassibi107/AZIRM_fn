@@ -19,7 +19,7 @@ router.get('/userQr/:id', async (req, res) => {
         name: user.name,
         email: user.email,
         phone: user.phoneNumber,
-        qrCode: user.qrCode
+      
     }
     res.json(userData);
 });

@@ -9,7 +9,7 @@ const { v4: uuidv4 } = require('uuid');
 const multer = require('multer');
 
 const path = require('path');
-
+const URL_SQ = process.env.SQ_URL_REDIRECT;
 // Ensure that the directory for QR codes exists
 const qrCodeDirectory = path.join(__dirname, 'public', 'qrcodes');
 if (!fs.existsSync(qrCodeDirectory)) {
@@ -82,7 +82,7 @@ exports.register = async (req, res) => {
         
             // Create the user in the database
             const userItem = await Model.User.create(userData);
-            const userUrl = `http://192.168.1.11:4000/userQr/${userItem.id}`; //
+            const userUrl = `${URL_SQ}/userQr/${userItem.id}`; //
 
             // Generate QR code with user details (could be a URL or just an identifier)
             const qrCodeFileName = `user_${userItem.id}.png`;
@@ -96,19 +96,25 @@ exports.register = async (req, res) => {
             await userItem.save();
     
             // Send a welcome email to the user after creation
-            const emailSubject = 'Welcome to Our platform!';
+            const emailSubject = ' Activation de votre compte Azirm';
 const emailText = `
-  Hi ${userItem.firstName} ${userItem.lastName},\n\n
-  🎉 Welcome aboard!🎉\n
-  We are thrilled to have you join our community of generous volunteers and donors! Our platform is designed to connect volunteers like you with people in need, making it easier than ever to make a real difference. You’re all set up and ready to begin helping others!\n
-  🔑 Your Account Details:\n
-  -Password: ${password}\n
-  If you ever need any assistance or have questions, our support team is here for you at [support@yourservice.com]. We're happy to assist! 😊\n
-  Thank you for your willingness to make a difference. We believe that together, we can create a better world, one act of kindness at a time.\n\n
-  Best regards,\n
-  The [Your Company] Team\n
-  ---
-  [azirm] | [https://azirm.ca/] | [Support Contact]
+ 
+Bonjour  ${userItem.firstName} ${userItem.lastName},
+
+Votre compte Azirm est maintenant activé. Vous pouvez dès à présent accéder à la plateforme et commencer votre mission : apporter du soutien et redonner le sourire aux enfants à travers la collecte de dons.
+
+Dans quelques instants, vous recevrez un email contenant les instructions pour installer l’application et commencer à l'utiliser.
+
+🔑 Informations de connexion :
+
+Nom d'utilisateur ou email :${userItem.email}
+Mot de passe : ${userItem.password}
+Pour toute question ou assistance, notre équipe support est disponible à support@azirm.ca.
+
+Merci pour votre engagement.
+
+Cordialement,
+L’équipe Azirm
 `;
     
             await sendEmail(userItem.email, emailSubject, emailText, qrCodePath);
@@ -333,5 +339,19 @@ exports.getDonationsbyID = async (req, res) => {
     }catch (error) {
         console.error(error.message);
         res.status(500).json({ msg: 'Server Error' });
+    }
+}
+
+
+exports.getAllDonations = async (req, res) => {
+    try {
+        const donations = await Model.Donation.findAll();
+        res.status(200).json({
+            success: true,
+            data: donations
+        });
+    } catch (error) {
+        console.error(error.message);
+        res.status(500).json({msg:'Server Error'});
     }
 }

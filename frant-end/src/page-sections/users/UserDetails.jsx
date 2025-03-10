@@ -121,7 +121,7 @@ useEffect(() => {
         </FlexBetween>
 
         <Stack alignItems="center">
-        <Avatar src={"http://localhost:4000"+data.uimg} sx={{
+        <Avatar src={"https://apiv1.azirm.ca"+data.uimg} sx={{
           width: 120,
           height: 120,
           backgroundColor: "white"
@@ -147,7 +147,7 @@ useEffect(() => {
         No Data
       </Box>}
       <Stack alignItems="center">
-        <img src={"http://localhost:4000"+data.qr} alt="QR" style={{width: "100px", height: "100px"}} />
+        <img src={"https://apiv1.azirm.ca"+data.qr} alt="QR" style={{width: "100px", height: "100px"}} />
         </Stack>
 
       {/* Confirmation Dialog */}

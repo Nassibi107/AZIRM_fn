@@ -236,3 +236,29 @@ exports.insertDonation = async (req, res) => {
     }
 }
 
+exports.updateDon = async (req, res) => {
+    const reqId = req.params.id;
+    const { amount, type, lat, lng, feed } = req.body;
+    try {
+        const don = await Model.Donation.findOne({
+            where: {
+                idD: reqId
+            }
+        });
+        if (!don) {
+            return res.status(404).json({ msg: 'Donation not found' });
+        }
+        don.amount = amount;
+        don.type = type;
+        don.lat = lat;
+        don.lng = lng;
+        don.feed = feed;
+        await don.save();
+        res.status(200).json({ msg: 'Donation updated successfully', don });
+    
+    } catch (error) {
+        console.error(error.message);
+        res.status(500).json({ msg: 'Server Error' });
+    }
+}
+

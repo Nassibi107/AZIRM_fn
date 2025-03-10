@@ -291,10 +291,7 @@ const handleFileChange = (event) => {
                     fullWidth
                   >
                     <MenuItem value="">----</MenuItem>
-                    <MenuItem value="1">LSI</MenuItem>
-                    <MenuItem value="3">LvM</MenuItem>
-                    <MenuItem value="4">Kenzo</MenuItem>
-                    <MenuItem value="2">nexsus</MenuItem>
+                    <MenuItem value="1">azirm</MenuItem>
                   </Select>
                 </Grid>
 

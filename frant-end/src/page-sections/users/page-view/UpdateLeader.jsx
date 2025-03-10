@@ -293,10 +293,8 @@ const UpdateUser = () => {
                     value={values.label}
                     onChange={handleChange}
                   >
-                    <MenuItem value="LSI">LSI</MenuItem>
-                    <MenuItem value="LvM">LvM</MenuItem>
-                    <MenuItem value="Kenzo">Kenzo</MenuItem>
-                    <MenuItem value="nexsus">nexsus</MenuItem>
+                    <MenuItem value="">----</MenuItem>
+                    <MenuItem value="1">azirm</MenuItem>
                   </Select>
                 </Grid>
 
