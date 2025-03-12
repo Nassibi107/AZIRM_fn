@@ -46,9 +46,17 @@ exports.me = async (req, res) => {
                 id: req.userRef
             }
         });
+        const getAmount = await Model.Donation.findAll({
+            where: {
+                userId: req.userRef
+            }
+        });
+       
         res.status(200).json({
             success: true,
-            data: user       
+            data: user,
+            amount:  getAmount.map((amount) => amount.amount).reduce((a, b) => parseFloat(a) +parseFloat(b) , 0) || 0
+        
          });
     } catch (error) {
         console.error(error.message);
@@ -100,3 +108,4 @@ exports.changePassword = async (req, res) => {
         return res.status(500).json({ message: "Internal server error", error: error.message });
     }
 };
+
