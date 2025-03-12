@@ -21,10 +21,10 @@ app.use(morgan('dev'));
 app.use(express.static(path.join(__dirname, "views")));
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Redirect root ("/") to index.html
-app.get("/userQr/:id", (req, res) => {
-    res.sendFile(path.join(__dirname, "views", "index.html"));
-});
+// // Redirect root ("/") to index.html
+// app.get("/userQr/:id", (req, res) => {
+//     res.sendFile(path.join(__dirname, "views", "index.html"));
+// });
 
 app.use('/uploads', express.static(path.join(__dirname, 'controllers/public/uploads')));
 app.use('/qrcodes', express.static(path.join(__dirname, 'controllers/public/qrcodes')));
@@ -52,7 +52,6 @@ app.use((error, req, res, next) => {
 
 db.sync().then(() => {
     app.listen(port, () => {
-        console.log('Uploads directory:', path.join(__dirname, 'uploads'));
         console.log('Server is running on port => ' + port);
     });
 } ).catch(err => {

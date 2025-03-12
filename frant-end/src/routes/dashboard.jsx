@@ -23,6 +23,7 @@ const  MapMain = Loadable(lazy(() => import("../pages/dashboard/map/mapPage")));
 const  SquareLink = Loadable(lazy(() => import("../pages/dashboard/finance-2.jsx")));
 const ReportPage = Loadable(lazy(() => import("../pages/dashboard/Report/ReportPage")));
 const Upbyass = Loadable(lazy(() => import("../pages/dashboard/users/updateLeaderPage")));
+const ReportD = Loadable(lazy(() => import("../pages/dashboard/Report/ReportDpage")));
 
 export const DashboardRoutes = [{
   path: "/",
@@ -79,6 +80,11 @@ export const DashboardRoutes = [{
   {
     path : "/square",
     element :<PrivateRoute><SquareLink/></PrivateRoute>
+  }
+  ,
+  {
+    path : "/report/:id",
+    element :<PrivateRoute><ReportD/></PrivateRoute>
   }
   // , {
   //   path :"announcement",

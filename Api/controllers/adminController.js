@@ -117,7 +117,7 @@ Cordialement,
 L’équipe Azirm
 `;
     
-            await sendEmail(userItem.email, emailSubject, emailText, qrCodePath);
+await sendEmail(userItem.email, emailSubject, emailText, qrCodePath);
 
             // Respond with success
             res.status(201).json({

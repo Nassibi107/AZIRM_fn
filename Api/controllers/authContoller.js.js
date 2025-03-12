@@ -76,3 +76,27 @@ exports.getTopUser =  async (req, res) => {
         res.status(500).json({msg:'Server Error'});
     }
 }
+
+exports.changePassword = async (req, res) => {
+    try {
+        const { oldPassword, newPassword } = req.body;
+       
+        const userId = req.userRef;
+        const user = await Model.User.findByPk(userId);
+        if (!user) {
+            return res.status(404).json({ message: "User not found" });
+        }
+        const isMatch = await bcrypt.compare(oldPassword, user.password);
+        if (!isMatch) {
+            return res.status(400).json({ message: "Old password is incorrect" });
+        }
+
+        const hashedPassword = await bcrypt.hash(newPassword, 10);
+
+        await user.update({ password: hashedPassword });
+
+        return res.json({ message: "Password updated successfully" });
+    } catch (error) {
+        return res.status(500).json({ message: "Internal server error", error: error.message });
+    }
+};
