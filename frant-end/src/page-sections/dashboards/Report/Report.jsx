@@ -28,6 +28,10 @@ const endOfToday = new Date(today.setUTCHours(23, 59, 59, 999)).toISOString(); /
   const [dataReport, setDataReport] = useState([]);
   const[isLoading, setIsLoading] = useState(true);
 
+  const handleRowClick = (user) => {
+    navigate(`/Report/${user.id}`, { state: { user ,dataReport} });
+  };
+  
   // Format Start Date: Set time to 00:00:00.000Z
   const formatStartDate = (date) => {
     if (!date) return null;
@@ -66,15 +70,24 @@ const endOfToday = new Date(today.setUTCHours(23, 59, 59, 999)).toISOString(); /
 
   // Columns for DataGrid
   const columns = [
+    { field: 'id', headerName: 'id', width: 180  },
     { field: 'name', headerName: 'Name', width: 150 },
     { field: 'totalPayments', headerName: 'Total Payments', width: 180 },
+    { field: 'Startdata', headerName: 'Start  data', width: 180 },
+    { field: 'Enddata', headerName: 'End data', width: 180 },
+    { field: 'commission', headerName: 'commission', width: 180 },
   ];
 
   // Convert API Data to Table Rows
   const rows = dataReport.map((user, index) => ({
-    id: index + 1,
+    tri: index + 1,
+    id: user.id,
     name: user.name,
-    totalPayments: user.totalPayments,
+    totalPayments: user.totalPayments.toFixed(2),
+    Startdata :sdata.substring(0, 10) ,
+    Enddata : edata.substring(0, 10),
+    commission:  (user.totalPayments * 0.35).toFixed(4),
+
   }));
 
   // Export Data to Excel
@@ -97,7 +110,6 @@ const endOfToday = new Date(today.setUTCHours(23, 59, 59, 999)).toISOString(); /
               </IconWrapper>
               <H6 fontSize={16}>Report</H6>
             </FlexBox>
-
       <Divider sx={{ my: 3 }} />
       <Box sx={{ padding: 3 }}>
         <Grid container spacing={2} justifyContent="space-between" alignItems="center">
@@ -130,12 +142,14 @@ const endOfToday = new Date(today.setUTCHours(23, 59, 59, 999)).toISOString(); /
            <Box display="flex" justifyContent="center" alignItems="center" height="20vh">
                       <CircularProgress />
                     </Box>):(<Box sx={{ height: 400, width: '100%' }}>
-          <DataGrid
-            rows={rows}
-            columns={columns}
-            pageSize={5}
-            rowsPerPageOptions={[5]}
-          />
+                      <DataGrid
+        rows={rows}
+        columns={columns}
+        pageSize={5}
+        rowsPerPageOptions={[5]}
+        onRowClick={(e) => handleRowClick(e.row)} 
+/>
+
         </Box>)}
         </Box>
       

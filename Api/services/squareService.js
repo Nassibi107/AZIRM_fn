@@ -5,15 +5,46 @@ const BASE_URL = process.env.SQUARE_API_URL;
 
 const squareService = {
     async fetchPayments() {
+        function formatStartOfDay(date) {
+            date.setHours(0, 0, 0, 0); // Set time to 00:00:00.000
+            return date.toISOString(); // Returns the date in ISO format
+        }
+        let currentDate = new Date();
+        
+        let currentDay = currentDate.getDay();
+        let daysToSubtract = currentDay === 0 ? 6 : currentDay - 1; 
+        
+        let startDate = new Date(currentDate);
+        startDate.setDate(currentDate.getDate() - daysToSubtract);
+        let formattedStartDate = formatStartOfDay(startDate);
+        let endDate = new Date(startDate);
+        endDate.setDate(startDate.getDate() + 6);
+        endDate.setHours(23, 59, 59, 999);
+        let formattedEndDate = endDate.toISOString();
+        console.log("Start Date:", formattedStartDate);
+        console.log("End Date:", formattedEndDate);
+       
         try {
-            const response = await axios.get(`${BASE_URL}/payments`, {
-                headers: {
-                    Authorization: `Bearer ${ACCESS_TOKEN}`,
-                    "Square-Version": "2025-02-20",
-                    "Content-Type": "application/json",
-                },
-            });
-            return response.data.payments || [];
+            let allPayments = [];
+            let cursor = null;
+            do {
+                let url = `${BASE_URL}/payments?begin_time=${formattedStartDate}&end_time=${formattedEndDate}`;
+                if (cursor) {
+                    url += `&cursor=${cursor}`; 
+                }
+                const response = await axios.get(url, {
+                    headers: {
+                        Authorization: `Bearer ${ACCESS_TOKEN}`,
+                        "Square-Version": "2025-02-20",
+                        "Content-Type": "application/json",
+                    },
+                });
+                allPayments = allPayments.concat(response.data.payments || []);
+                cursor = response.data.cursor;
+    
+            } while (cursor);  
+    
+            return allPayments; 
         } catch (error) {
             console.error("Error fetching payments:", error.response?.data || error.message);
             return [];

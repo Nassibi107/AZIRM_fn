@@ -1,6 +1,4 @@
-import { Avatar, Badge, Box, Card, Stack } from "@mui/material";
-import { nanoid } from "nanoid"; // CUSTOM COMPONENTS
-
+import { Avatar, Badge, Box, Card, Stack,CircularProgress ,Grid} from "@mui/material";
 import { MoreButton } from "@/components/more-button";
 import { Paragraph, Small } from "@/components/typography";
 import { FlexBetween, FlexBox } from "@/components/flexbox"; // CUSTOM UTILS METHODS
@@ -10,57 +8,25 @@ import { numberFormat } from "@/utils/numberFormat"; // CUSTOM DUMMY DATA
 
 import axios  from "axios";
 import { useEffect, useState } from "react";
+
 const ADMIN_ROUTE = import.meta.env.VITE_ADMIN_URL;
-const DATA = [{
-  id: nanoid(),
-  totalSold: 13440,
-  totalAmount: 350000,
-  // country: "/static/flags/usa-round.png",
-  user: {
-    name: "Gage Paquette",
-    // image: "/static/user/user-11.png"
-  }
-}, {
-  id: nanoid(),
-  totalSold: 10240,
-  totalAmount: 148000,
-  // country: "/static/flags/uk-round.png",
-  user: {
-    name: "Lara Harvey",
-    image: "/static/user/user-16.png"
-  }
-}, {
-  id: nanoid(),
-  totalSold: 10240,
-  totalAmount: 148000,
-  // country: "/static/flags/germany-round.png",
-  user: {
-    name: "Evan Scott",
-    image: "/static/user/user-17.png"
-  }
-}, {
-  id: nanoid(),
-  totalSold: 10240,
-  totalAmount: 148000,
-  // country: "/static/flags/spain-round.png",
-  user: {
-    name: "Benja Johnston",
-    image: "/static/user/user-18.png"
-  }
-}];
+
 
 const TopSeller = () => {
   
   const [emp ,setEmp] = useState();
-  
+  const[isLoading, setIsLoading] = useState(false);
   
   const _getEmployee = async () => {
     try{
+      setIsLoading(true);
       const res = await axios.get(`${ADMIN_ROUTE}/top-leaders`);
-      setEmp(res.data.slice(0, 5));
-
+      setEmp(res.data.slice(0, 4));
+      setIsLoading(false);
+      
     }catch(error)
     {
+      setIsLoading(false);
       console.error(error);
     }
   }
@@ -88,6 +54,12 @@ const TopSeller = () => {
       </FlexBetween>
 
       <Stack spacing={2.5}>
+        {isLoading && <Box sx={{height:'100hv'}}><Grid container spacing={2}> 
+          <Grid item xs={6} sx={{display:'flex',justifyContent:'center',alignItems:'center'}}>
+            <CircularProgress /></Grid>
+          <Grid item xs={6} sx={{display:'flex',justifyContent:'center',alignItems:'center'}}>
+            <CircularProgress /></Grid>
+          </Grid> </Box> }
         {emp?.map(item => <FlexBetween key={item.id}>
             <FlexBox gap={1.5}>
               <Badge overlap="circular" anchorOrigin={{

@@ -17,7 +17,7 @@ const initialState = {
 
 const setSession = (accessToken) => {
   if (accessToken) {
-    Cookies.set("accessToken", accessToken, { expires: 1 });
+    Cookies.set("accessToken", accessToken, { expires: 7 });
     axios.defaults.headers.common.Authorization = `Jwt ${accessToken}`;
   } else {
     Cookies.remove("accessToken");

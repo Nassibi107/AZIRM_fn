@@ -9,14 +9,6 @@ const languageOptions = {
     icon: "/static/flags/usa-round.png",
     label: "English"
   },
-  es: {
-    icon: "/static/flags/spain-round.png",
-    label: "Spanish"
-  },
-  gr: {
-    icon: "/static/flags/germany-round.png",
-    label: "Germany"
-  },
   fr: {
     icon: "/static/flags/france-round.png",
     label: "Français"
