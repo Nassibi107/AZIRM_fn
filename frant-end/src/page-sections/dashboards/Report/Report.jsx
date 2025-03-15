@@ -21,17 +21,17 @@ const ADMIN_ROUTE = import.meta.env.VITE_ADMIN_URL;
 const Report = () => {
   const navigate = useNavigate();
   const today = new Date();
-  const startOfToday = new Date(today.setUTCHours(0, 0, 0, 0)).toISOString();  // RFC 3339 format
-const endOfToday = new Date(today.setUTCHours(23, 59, 59, 999)).toISOString(); // 
+  const startOfToday = new Date(today.setUTCHours(0, 0, 0, 0));  // RFC 3339 format
+  const endOfToday = new Date(today.setUTCHours(23, 59, 59, 999)); // 
   const [sdata, setSdata] = useState(startOfToday);
   const [edata, setEdata] = useState(endOfToday);
   const [dataReport, setDataReport] = useState([]);
-  const[isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
 
   const handleRowClick = (user) => {
     navigate(`/Report/${user.id}`, { state: { user ,dataReport} });
   };
-  
+
   // Format Start Date: Set time to 00:00:00.000Z
   const formatStartDate = (date) => {
     if (!date) return null;
@@ -48,7 +48,6 @@ const endOfToday = new Date(today.setUTCHours(23, 59, 59, 999)).toISOString(); /
     return d.toISOString();
   };
 
-  // Fetch Data when Dates Change
   useEffect(() => {
     if (!sdata || !edata) return; // Prevent fetching if dates are not selected
 
@@ -59,23 +58,22 @@ const endOfToday = new Date(today.setUTCHours(23, 59, 59, 999)).toISOString(); /
           `${ADMIN_ROUTE}/report?startDate=${formatStartDate(sdata)}&endDate=${formatEndDate(edata)}`
         );
         setDataReport(response.data); // Use response.data instead of response.json()
-        setIsLoading(false)
+        setIsLoading(false);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
     };
 
     fetchData();
-  }, [sdata, edata]); // Runs every time sdata or edata changes
+  }, [sdata, edata]);
 
-  // Columns for DataGrid
   const columns = [
-    { field: 'id', headerName: 'id', width: 180  },
+    { field: 'id', headerName: 'id', width: 180 },
     { field: 'name', headerName: 'Name', width: 150 },
     { field: 'totalPayments', headerName: 'Total Payments', width: 180 },
-    { field: 'Startdata', headerName: 'Start  data', width: 180 },
-    { field: 'Enddata', headerName: 'End data', width: 180 },
-    { field: 'commission', headerName: 'commission', width: 180 },
+    { field: 'Startdata', headerName: 'Start Data', width: 180 },
+    { field: 'Enddata', headerName: 'End Data', width: 180 },
+    { field: 'commission', headerName: 'Commission', width: 180 },
   ];
 
   // Convert API Data to Table Rows
@@ -84,10 +82,9 @@ const endOfToday = new Date(today.setUTCHours(23, 59, 59, 999)).toISOString(); /
     id: user.id,
     name: user.name,
     totalPayments: user.totalPayments.toFixed(2),
-    Startdata :sdata.substring(0, 10) ,
-    Enddata : edata.substring(0, 10),
-    commission:  (user.totalPayments * 0.35).toFixed(4),
-
+    Startdata: sdata.toISOString().substring(0, 10), // Convert Date to YYYY-MM-DD format
+    Enddata: edata.toISOString().substring(0, 10), // Convert Date to YYYY-MM-DD format
+    commission: (user.totalPayments * 0.35).toFixed(4),
   }));
 
   // Export Data to Excel
@@ -95,7 +92,6 @@ const endOfToday = new Date(today.setUTCHours(23, 59, 59, 999)).toISOString(); /
     const ws = XLSX.utils.json_to_sheet(rows);
     const wb = XLSX.utils.book_new();
     XLSX.utils.book_append_sheet(wb, ws, 'Report Data');
-
     const excelBuffer = XLSX.write(wb, { bookType: 'xlsx', type: 'array' });
     const file = new Blob([excelBuffer], { type: 'application/octet-stream' });
 
@@ -104,12 +100,12 @@ const endOfToday = new Date(today.setUTCHours(23, 59, 59, 999)).toISOString(); /
 
   return (
     <Card sx={{ mt: 3, padding: 3 }}>
-         <FlexBox gap={0.5} alignItems="center">
-              <IconWrapper>
-                <Pages sx={{ color: "primary.main" }} />
-              </IconWrapper>
-              <H6 fontSize={16}>Report</H6>
-            </FlexBox>
+      <FlexBox gap={0.5} alignItems="center">
+        <IconWrapper>
+          <Pages sx={{ color: "primary.main" }} />
+        </IconWrapper>
+        <H6 fontSize={16}>Report</H6>
+      </FlexBox>
       <Divider sx={{ my: 3 }} />
       <Box sx={{ padding: 3 }}>
         <Grid container spacing={2} justifyContent="space-between" alignItems="center">
@@ -139,21 +135,23 @@ const endOfToday = new Date(today.setUTCHours(23, 59, 59, 999)).toISOString(); /
         </Grid>
         <Divider sx={{ my: 3 }} />
         {isLoading ? (
-           <Box display="flex" justifyContent="center" alignItems="center" height="20vh">
-                      <CircularProgress />
-                    </Box>):(<Box sx={{ height: 400, width: '100%' }}>
-                      <DataGrid
-        rows={rows}
-        columns={columns}
-        pageSize={5}
-        rowsPerPageOptions={[5]}
-        onRowClick={(e) => handleRowClick(e.row)} 
-/>
-
-        </Box>)}
-        </Box>
-      
-    </Card>);
+          <Box display="flex" justifyContent="center" alignItems="center" height="20vh">
+            <CircularProgress />
+          </Box>
+        ) : (
+          <Box sx={{ height: 400, width: '100%' }}>
+            <DataGrid
+              rows={rows}
+              columns={columns}
+              pageSize={5}
+              rowsPerPageOptions={[5]}
+              onRowClick={(e) => handleRowClick(e.row)} 
+            />
+          </Box>
+        )}
+      </Box>
+    </Card>
+  );
 };
 
 export default Report;

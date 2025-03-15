@@ -201,9 +201,8 @@ const MyMap = () => {
 
     try{
       const response = await axios.get(`${ADMIN_ROUTE}/users`);
-      setUsers(response.data.data.map((user) => user.firstName));
+      setUsers(response.data.data.map((user) => `${user.firstName} ${user.lastName}`));
       setusersInfo(response.data.data);
-    
     }catch(err){
       console.log(err);
     }

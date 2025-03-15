@@ -4,7 +4,7 @@ const ACCESS_TOKEN = process.env.SQUARE_ACCESS_TOKEN;
 const BASE_URL = process.env.SQUARE_API_URL;
 
 const squareService = {
-    async fetchPayments() {
+    async fetchPayments(date) {
         function formatStartOfDay(date) {
             date.setHours(0, 0, 0, 0); // Set time to 00:00:00.000
             return date.toISOString(); // Returns the date in ISO format
@@ -21,14 +21,20 @@ const squareService = {
         endDate.setDate(startDate.getDate() + 6);
         endDate.setHours(23, 59, 59, 999);
         let formattedEndDate = endDate.toISOString();
-        console.log("Start Date:", formattedStartDate);
-        console.log("End Date:", formattedEndDate);
+       
        
         try {
             let allPayments = [];
             let cursor = null;
             do {
-                let url = `${BASE_URL}/payments?begin_time=${formattedStartDate}&end_time=${formattedEndDate}`;
+                if (date == 'now') 
+                {
+                    url = `${BASE_URL}/payments`;
+                    cursor = null;
+                }
+                else 
+                    url = `${BASE_URL}/payments?begin_time=${formattedStartDate}&end_time=${formattedEndDate}`;
+                console.log("url", url);
                 if (cursor) {
                     url += `&cursor=${cursor}`; 
                 }
@@ -40,6 +46,7 @@ const squareService = {
                     },
                 });
                 allPayments = allPayments.concat(response.data.payments || []);
+            if(date != 'now')
                 cursor = response.data.cursor;
     
             } while (cursor);  

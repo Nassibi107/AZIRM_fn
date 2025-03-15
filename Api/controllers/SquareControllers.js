@@ -16,6 +16,7 @@ exports.getEmployesSquare = async (req, res) => {
 }
 
 exports.getPayement = async (req, res) => {
+   
   try{
     const pay = await squareService.fetchPayments();
     if(!pay.length){
@@ -28,8 +29,12 @@ exports.getPayement = async (req, res) => {
   }
 }
 exports.getTopEmployeesByPayments = async (req, res) => {
+    const { date } = req.query;
+    console.log("date", date);
+   
+   
   try {
-      const payments = await squareService.fetchPayments();
+      const payments = await squareService.fetchPayments(date);
       const employees = await squareService.fetchEmployees();
 
       if (!payments.length || !employees.length) {

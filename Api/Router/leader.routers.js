@@ -5,7 +5,7 @@ const router = express.Router();
 const leaderController = require("../controllers/leaderController.js");
 const adminController = require("../controllers/adminController.js");
 const authMiddleware = require("../Middleware/authMiddleware.js");
-
+const SquareControllers = require("../controllers/SquareControllers.js");
 
 
 router.use(authMiddleware.check);
@@ -17,4 +17,5 @@ router.delete('/user/:id', leaderController.destroyUser);
 router.post('/don', leaderController.insertDonation);
 router.put('/don/:id', leaderController.updateDon);
 router.get('/don/:id', adminController.getDonationsbyID);
+router.get('/top-leaders', SquareControllers.getTopEmployeesByPayments);
 exports.router = router;

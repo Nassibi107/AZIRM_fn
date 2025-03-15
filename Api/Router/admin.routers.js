@@ -26,7 +26,7 @@ router.delete('/user/:id', adminController.destroyUser);
 // square 
 router.get('/team-members', SquareControllers.getEmployesSquare);
 router.get('/payments', SquareControllers.getPayement);
-router.get('/top-leaders', SquareControllers.getTopEmployeesByPayments);
+
 router.get('/dons', adminController.getAllDonations);
 router.get("/report",SquareControllers.getPayementsByDate);
 exports.router = router;
