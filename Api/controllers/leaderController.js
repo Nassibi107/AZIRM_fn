@@ -262,3 +262,27 @@ exports.updateDon = async (req, res) => {
     }
 }
 
+exports.getTopWeek = async (req, res) => {
+     const{team_member_id} = req.query;
+
+
+    try{
+        let user = {};
+        const tran = await Model.Transactions.findAll();
+        if (!tran) {
+            return res.status(404).json({ msg: 'Transaction not found' });
+        }
+        if (team_member_id) {
+            user = tran.filter(tran => tran.team_member_id === team_member_id);
+        }
+        res.status(200).json({
+            success: true,
+            data: tran,
+            user : user,
+        });
+    }catch(error){
+        console.error(error.message);
+        res.status(500).json({msg:'Server Error'});
+    }
+}
+

@@ -53,19 +53,31 @@ app.use((error, req, res, next) => {
 });
 
 
-
 db.sync().then(() => {
     app.listen(port, () => {
         console.log('Server is running on port => ' + port);
         
         // Call the function immediately when the server starts
         squareService.getTopEmployeesByPaymentsBackup();
-        
-        // Schedule it to run every 24 hours (86,400,000 ms)
-        setInterval(() => {
-            console.log("Executing getTopEmployeesByPaymentsBackup...");
-            squareService.getTopEmployeesByPaymentsBackup();
-        }, 24 * 60 * 60 * 1000); // 24 hours in milliseconds
+
+        // Define the interval time (24 hours)
+        const intervalTime = 24 * 60 * 60 * 1000; // 24 hours in milliseconds
+        let remainingTime = intervalTime / 1000; // Convert to seconds
+
+        // Countdown display function
+        const countdown = setInterval(() => {
+            remainingTime--;
+
+            if (remainingTime % 60 === 0) { // Show message every 1 minute
+                console.log(`Next backup in ${Math.floor(remainingTime / 60)} minutes...`);
+            }
+
+            if (remainingTime <= 0) {
+                console.log("Executing getTopEmployeesByPaymentsBackup...");
+                squareService.getTopEmployeesByPaymentsBackup();
+                remainingTime = intervalTime / 1000; // Reset countdown
+            }
+        }, 1000); // Update every second
     });
 }).catch(err => {
     console.log(err);
