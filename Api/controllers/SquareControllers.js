@@ -126,3 +126,33 @@ exports.getPayementsByDate = async (req, res) => {
       res.status(500).json({ message: "Internal Server Error" });
   }
 }
+
+
+exports.getPayementsByTeamID = async (req, res) => {
+    const { team_member_id } = req.query;
+    try {
+        const payments = await squareService.fetchPaymentsByTeamID({ team_member_id });
+
+        // Filter payments by the given conditions
+        const filteredPayments = payments.filter(payment => 
+            payment.team_member_id === team_member_id && 
+            payment.source_type === "CARD" && 
+            payment.status === "COMPLETED"
+        );
+
+        if (!filteredPayments.length) {
+            return res.status(404).json({ message: "No completed card payments found for this team member" });
+        }
+
+        // Map the filtered payments to return only `created_at` and `amount_money.amount / 10`
+        const formattedPayments = filteredPayments.map(payment => ({
+            created_at: payment.created_at,
+            amount: payment.amount_money.amount / 100
+        }));
+
+        res.status(200).json(formattedPayments);
+    } catch (error) {
+        console.error("Error:", error);
+        res.status(500).json({ message: "Internal Server Error" });
+    }
+};

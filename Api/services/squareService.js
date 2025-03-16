@@ -6,8 +6,8 @@ const BASE_URL = process.env.SQUARE_API_URL;
 const squareService = {
     async fetchPayments(date) {
         function formatStartOfDay(date) {
-            date.setHours(0, 0, 0, 0); // Set time to 00:00:00.000
-            return date.toISOString(); // Returns the date in ISO format
+            date.setHours(0, 0, 0, 0);
+            return date.toISOString(); 
         }
         let currentDate = new Date();
         
@@ -21,8 +21,7 @@ const squareService = {
         endDate.setDate(startDate.getDate() + 6);
         endDate.setHours(23, 59, 59, 999);
         let formattedEndDate = endDate.toISOString();
-       
-       
+        
         try {
             let allPayments = [];
             let cursor = null;
@@ -102,7 +101,29 @@ const squareService = {
             console.error("Error fetching employees:", error.response?.data || error.message);
             return [];
         }
+    },
+    async fetchPaymentsByTeamID({ team_member_id }) {
+        try {
+            let url = `${BASE_URL}/payments`;
+            
+            const response = await axios.get(url, {
+                headers: {
+                    Authorization: `Bearer ${ACCESS_TOKEN}`,
+                    "Square-Version": "2025-02-20",
+                    "Content-Type": "application/json",
+                },
+            });
+            let allPayments = response.data.payments;
+            let filteredPayments = allPayments.filter(payment => payment.team_member_id === team_member_id);
+    
+            return filteredPayments;
+    
+        } catch (error) {
+            console.error("Error fetching payments:", error.response?.data || error.message);
+            return [];
+        }
     }
+    
 };
 
 module.exports = squareService;
