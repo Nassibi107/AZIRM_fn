@@ -1,6 +1,6 @@
 const squareService = require("../services/squareService");
 const Employee = require("../Models/employeeModel");
-
+const { Transactions } = require("../Models");
 
 exports.getEmployesSquare = async (req, res) => {
     try{
@@ -132,8 +132,6 @@ exports.getPayementsByTeamID = async (req, res) => {
     const { team_member_id } = req.query;
     try {
         const payments = await squareService.fetchPaymentsByTeamID({ team_member_id });
-
-        // Filter payments by the given conditions
         const filteredPayments = payments.filter(payment => 
             payment.team_member_id === team_member_id && 
             payment.source_type === "CARD" && 
@@ -144,15 +142,70 @@ exports.getPayementsByTeamID = async (req, res) => {
             return res.status(404).json({ message: "No completed card payments found for this team member" });
         }
 
-        // Map the filtered payments to return only `created_at` and `amount_money.amount / 10`
         const formattedPayments = filteredPayments.map(payment => ({
             created_at: payment.created_at,
             amount: payment.amount_money.amount / 100
         }));
 
-        res.status(200).json(formattedPayments);
+        res.status(200).json({
+            success: true,
+            amount: formattedPayments,
+            total : formattedPayments.reduce((sum, amount) => sum + amount.amount, 0)
+         });
     } catch (error) {
         console.error("Error:", error);
         res.status(500).json({ message: "Internal Server Error" });
+    }
+};
+
+ // Ensure the correct path
+
+exports.getTopEmployeesByPaymentsBackup = async (req, res) => {
+    try {
+
+        const payments = await squareService.fetchPayments();
+        const employees = await squareService.fetchEmployees();
+        await Transactions.destroy({ where: {} }); 
+        if (!payments.length || !employees.length) {
+            console.log("No data found");
+            return;
+        }
+
+        const employeeMap = {};
+        employees.forEach(emp => {
+            employeeMap[emp.id] = {
+                id: emp.id,
+                name: `${emp.first_name} ${emp.last_name}`,
+                payments: [],
+                totalPayments: 0
+            };
+        });
+
+        payments.forEach(payment => {
+            if (payment.team_member_id && payment.source_type === "CARD" && payment.status === "COMPLETED") {
+                const amountInDollars = payment.total_money.amount / 100;
+                
+                if (employeeMap[payment.team_member_id]) {
+                    const employee = employeeMap[payment.team_member_id];
+                    employee.payments.push(amountInDollars);
+                    employee.totalPayments += amountInDollars;
+                }
+            }
+        });
+
+        const transactionsToInsert = Object.values(employeeMap).map(emp => ({
+            team_member_id: emp.id,
+            name: emp.name,
+            totalPayments: emp.totalPayments
+        })).sort((a, b) => b.totalPayments - a.totalPayments);
+
+        if (transactionsToInsert.length > 0) {
+            await Transactions.bulkCreate(transactionsToInsert);
+            console.log("Transactions inserted successfully");
+        }
+
+    } catch (error) {
+        console.error("Error:", error);
+      console.log("Internal Server Error");
     }
 };

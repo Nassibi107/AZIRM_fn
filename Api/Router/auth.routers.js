@@ -12,4 +12,5 @@ router.post('/login',authController.login);
 router.get('/me', authMiddleware.check, authController.me);
 router.put('/chpass', authMiddleware.check, authController.changePassword);
 router.get('/pays', authMiddleware.check, SquareController.getPayementsByTeamID); 
+router.get('/cashLive', authMiddleware.check,authController.getCashLive);
 exports.router = router;

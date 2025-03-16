@@ -3,6 +3,7 @@ const path = require('path');
 
 require('dotenv').config();
 const app = express();
+const squareService = require("./controllers/SquareControllers");
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const morgan = require('morgan');
@@ -20,11 +21,14 @@ app.use(morgan('dev'));
 // Serve static files (HTML, CSS, JS)
 app.use(express.static(path.join(__dirname, "views")));
 app.use(express.static(path.join(__dirname, 'public')));
-
+const ACCESS_TOKEN = process.env.SQUARE_ACCESS_TOKEN;
+const BASE_URL = process.env.SQUARE_API_URL;
 // // Redirect root ("/") to index.html
 // app.get("/userQr/:id", (req, res) => {
 //     res.sendFile(path.join(__dirname, "views", "index.html"));
 // });
+const axios = require("axios");
+
 
 app.use('/uploads', express.static(path.join(__dirname, 'controllers/public/uploads')));
 app.use('/qrcodes', express.static(path.join(__dirname, 'controllers/public/qrcodes')));
@@ -53,7 +57,16 @@ app.use((error, req, res, next) => {
 db.sync().then(() => {
     app.listen(port, () => {
         console.log('Server is running on port => ' + port);
+        
+        // Call the function immediately when the server starts
+        squareService.getTopEmployeesByPaymentsBackup();
+        
+        // Schedule it to run every 24 hours (86,400,000 ms)
+        setInterval(() => {
+            console.log("Executing getTopEmployeesByPaymentsBackup...");
+            squareService.getTopEmployeesByPaymentsBackup();
+        }, 24 * 60 * 60 * 1000); // 24 hours in milliseconds
     });
-} ).catch(err => {
+}).catch(err => {
     console.log(err);
 });

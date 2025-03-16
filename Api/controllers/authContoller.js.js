@@ -38,8 +38,7 @@ exports.login = async (req, res) => {
     }
 }
 
-
-exports.me = async (req, res) => {
+exports.getCashLive = async (req, res) => {
     try {
         const user = await Model.User.findOne({
             where: {
@@ -51,12 +50,36 @@ exports.me = async (req, res) => {
                 userId: req.userRef
             }
         });
-       
+        const daily  = getAmount.map(payment => ({
+            createdAt: payment.createdAt,
+            amount: payment.amount
+        })).filter(payment => payment.createdAt.getDate() === new Date().getDate());
         res.status(200).json({
             success: true,
-            data: user,
-            amount:  getAmount.map((amount) => amount.amount).reduce((a, b) => parseFloat(a) +parseFloat(b) , 0) || 0
+            amount: {
+                week :0,
+                direct :daily,
+                total : getAmount.reduce((sum, amount) => sum + amount.amount, 0)
+            }
         
+         });
+        
+    } catch (error) {
+        console.error(error.message);
+        res.status(500).json({msg:'Server Error'});
+    }
+}
+
+exports.me = async (req, res) => {
+    try {
+        const user = await Model.User.findOne({
+            where: {
+                id: req.userRef
+            }
+        });
+        res.status(200).json({
+            success: true,
+            data: user
          });
     } catch (error) {
         console.error(error.message);

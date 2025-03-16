@@ -173,9 +173,11 @@ const MyMap = () => {
   const theme = useTheme();
 
   const _Addontion = async (name) =>{
-    const userID = usersInfo.find(user => user.firstName === name)?.id;
+    console.log(usersInfo)
+    const letname = name.split(" ")[1];
+    const userID = usersInfo.find(user => user.lastName === letname)?.id;
     console.log(usersInfo);
-    console.log("name : " + name);
+
     console.log("userId : "  + userID)
     const requests = locations.map(location => {
       const body = {
