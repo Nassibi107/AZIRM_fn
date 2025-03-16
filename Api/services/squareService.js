@@ -1,4 +1,7 @@
 const axios = require("axios");
+const { Transactions, Donation } = require("../Models");
+const { Op } = require("sequelize");
+const models = require("../Models");
 
 const ACCESS_TOKEN = process.env.SQUARE_ACCESS_TOKEN;
 const BASE_URL = process.env.SQUARE_API_URL;
@@ -6,7 +9,7 @@ const BASE_URL = process.env.SQUARE_API_URL;
 const squareService = {
     async fetchPayments(date) {
         function formatStartOfDay(date) {
-            date.setHours(0, 0, 0, 0);
+            date.setHours(12, 0, 0, 0);
             return date.toISOString(); 
         }
         let currentDate = new Date();
@@ -19,7 +22,7 @@ const squareService = {
         let formattedStartDate = formatStartOfDay(startDate);
         let endDate = new Date(startDate);
         endDate.setDate(startDate.getDate() + 6);
-        endDate.setHours(23, 59, 59, 999);
+        endDate.setHours(11, 59, 59, 999);
         let formattedEndDate = endDate.toISOString();
         
         try {
@@ -103,9 +106,27 @@ const squareService = {
         }
     },
     async fetchPaymentsByTeamID({ team_member_id }) {
+        function formatStartOfDay(date) {
+            date.setHours(12, 0, 0, 0);
+            return date.toISOString(); 
+        }
+        let currentDate = new Date();
+        
+        let currentDay = currentDate.getDay();
+        let daysToSubtract = currentDay === 0 ? 6 : currentDay - 1; 
+        
+        let startDate = new Date(currentDate);
+        startDate.setDate(currentDate.getDate());
+        let formattedStartDate = formatStartOfDay(startDate);
+        let endDate = new Date(startDate);
+        endDate.setHours(23, 59, 59, 999);
+        let formattedEndDate = endDate.toISOString();
         try {
-            let url = `${BASE_URL}/payments`;
-            
+           
+            console.log("currentDay", formatStartOfDay(startDate));
+    
+            let url = `${BASE_URL}/payments?begin_time=${formattedStartDate}&end_time=${formattedEndDate}`;
+            console.log("url", url);
             const response = await axios.get(url, {
                 headers: {
                     Authorization: `Bearer ${ACCESS_TOKEN}`,
@@ -113,6 +134,7 @@ const squareService = {
                     "Content-Type": "application/json",
                 },
             });
+    
             let allPayments = response.data.payments;
             let filteredPayments = allPayments.filter(payment => payment.team_member_id === team_member_id);
     
@@ -122,8 +144,49 @@ const squareService = {
             console.error("Error fetching payments:", error.response?.data || error.message);
             return [];
         }
+    },
+
+  async  getAllCashLive() {
+        try {
+            const startOfDay = new Date();
+            startOfDay.setHours(0, 0, 0, 0);
+            const endOfDay = new Date();
+            endOfDay.setHours(23, 59, 59, 999);
+    
+            const usersWithDonations = await models.User.findAll({
+                include: [
+                    {
+                        model: models.Donation,
+                        as: "donations",
+                        where: {
+                            createdAt: { [Op.between]: [startOfDay, endOfDay] }
+                        },
+                        required: false // Includes users even if they have no donations
+                    }
+                ],
+                order: [["id", "ASC"]]
+            });
+    
+            return usersWithDonations.map(user => ({
+                userId: user.id,
+                firstName: user.firstName,
+                lastName: user.lastName,
+                team_member_id: user.team_member_id || null, // If team_member_id exists in Transactions
+                donations: user.donations.map(donation => ({
+                    donationId: donation.idD,
+                    amount: donation.amount,
+                    type: donation.type,
+                    createdAt: donation.createdAt
+                }))
+            }));
+    
+        } catch (error) {
+            console.error("Error fetching users with donations:", error.response?.data || error.message);
+            return [];
+        }
     }
     
-};
+}    
+
 
 module.exports = squareService;

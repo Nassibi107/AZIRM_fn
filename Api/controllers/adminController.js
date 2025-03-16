@@ -195,7 +195,8 @@ exports.updateUserId = async (req, res) => {
             role,
             address,
             status,
-            label
+            label,
+            team_member_id,
         } = req.body;
 
         const user = await Model.User.findByPk(id);
@@ -210,6 +211,7 @@ exports.updateUserId = async (req, res) => {
         if (role !== undefined) user.role = role;
         if (address !== undefined) user.address = address;
         if (status !== undefined) user.status = status;
+        if(team_member_id !== undefined) user.team_member_id = team_member_id;
 
         console.log(user);
 
@@ -346,6 +348,18 @@ exports.getDonationsbyID = async (req, res) => {
 exports.getAllDonations = async (req, res) => {
     try {
         const donations = await Model.Donation.findAll();
+        res.status(200).json({
+            success: true,
+            data: donations
+        });
+    } catch (error) {
+        console.error(error.message);
+        res.status(500).json({msg:'Server Error'});
+    }
+}
+exports.DeleteAllDontion = async (req, res) => {
+    try {
+        const donations = await Model.Donation.destroy({ where: {} });
         res.status(200).json({
             success: true,
             data: donations

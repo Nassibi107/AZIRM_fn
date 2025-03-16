@@ -54,12 +54,14 @@ exports.getCashLive = async (req, res) => {
             createdAt: payment.createdAt,
             amount: payment.amount
         })).filter(payment => payment.createdAt.getDate() === new Date().getDate());
+        
+
         res.status(200).json({
             success: true,
             amount: {
                 week :0,
                 direct :daily,
-                total : getAmount.reduce((sum, amount) => sum + amount.amount, 0)
+                totalDaily : daily.reduce((sum, amount) => sum + amount.amount, 0)
             }
         
          });

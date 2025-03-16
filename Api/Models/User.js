@@ -58,12 +58,17 @@ const User = db.define("User", {
   qr :{
     type: DataTypes.STRING,
     allowNull: true,
+  },
+  team_member_id: {
+    type: DataTypes.STRING,
+    allowNull: true,
   }
+
 });
 
 User.associate = (models) => {
   User.belongsTo(models.Company, { foreignKey: "CmpRid", as: "company" });
-  User.hasMany(models.Donation, { foreignKey: "userId", as: "donations" }); // FIXED
+  User.hasMany(models.Donation, { foreignKey: "userId", as: "donations" }); 
 };
 
 module.exports = User;

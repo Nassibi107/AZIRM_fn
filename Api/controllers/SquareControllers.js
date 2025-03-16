@@ -30,54 +30,79 @@ exports.getPayement = async (req, res) => {
 }
 exports.getTopEmployeesByPayments = async (req, res) => {
     const { date } = req.query;
-    console.log("date", date);
-   
-   
-  try {
-      const payments = await squareService.fetchPayments(date);
-      const employees = await squareService.fetchEmployees();
 
-      if (!payments.length || !employees.length) {
-          return res.status(404).json({ message: "No data found" });
-      }
+    try {
+        const payments = await squareService.fetchPayments(date);
+        const employees = await squareService.fetchEmployees();
+        const AllCash = await squareService.getAllCashLive();
 
-      const employeeMap = {};
-      employees.forEach(emp => {
-          employeeMap[emp.id] = new Employee(emp.id, emp.first_name, emp.last_name);
-      });
+        if (!payments.length || !employees.length) {
+            return res.status(404).json({ message: "No data found" });
+        }
 
-      payments.forEach(payment => {
-          if (payment.team_member_id && payment.source_type === "CARD" && payment.status === "COMPLETED") {
-              const amountInDollars = payment.total_money.amount / 100; 
-              const receiptUrl = payment.receipt_url || "";
-              const paymentDate = payment.created_at;  // Extract the created_at date
+        // Create a map of employees by team_member_id
+        const employeeMap = {};
+        employees.forEach(emp => {
+            employeeMap[emp.id] = new Employee(emp.id, emp.first_name, emp.last_name);
+        });
 
-              if (employeeMap[payment.team_member_id]) {
-                  const employee = employeeMap[payment.team_member_id];
-                  employee.payment.push(amountInDollars);  
-                  employee.url.push(receiptUrl);
-                  employee.date.push(paymentDate);  // Store the payment date
-              }
-          }
-      });
+        // Process payments and associate with employees
+        payments.forEach(payment => {
+            if (
+                payment.team_member_id &&
+                payment.source_type === "CARD" &&
+                payment.status === "COMPLETED"
+            ) {
+                const amountInDollars = payment.total_money.amount / 100;
+                const receiptUrl = payment.receipt_url || "";
+                const paymentDate = payment.created_at;
 
-      const sortedEmployees = Object.values(employeeMap)
-          .map(emp => ({
-              id: emp.id,
-              name: emp.name,
-              totalPayments: emp.payment.reduce((sum, amount) => sum + amount, 0), 
-              payments: emp.payment,
-              urls: emp.url,
-              dates: emp.date  // Include the dates in the response
-          }))
-          .sort((a, b) => b.totalPayments - a.totalPayments);
+                if (employeeMap[payment.team_member_id]) {
+                    const employee = employeeMap[payment.team_member_id];
+                    employee.payment.push(amountInDollars);
+                    employee.url.push(receiptUrl);
+                    employee.date.push(paymentDate);
+                }
+            }
+        });
 
-      res.status(200).json(sortedEmployees);
-  } catch (error) {
-      console.error("Error:", error);
-      res.status(500).json({ message: "Internal Server Error" });
-  }
+        // Create a map for total cash donations per employee
+        const donationsMap = {};
+        AllCash.forEach(user => {
+            if (user.team_member_id && Array.isArray(user.donations)) {
+                const totalCash = user.donations.reduce(
+                    (sum, donation) => sum + (parseFloat(donation.amount) || 0), 0
+                );
+                donationsMap[user.team_member_id] = totalCash;
+            }
+        });
+
+        // Merge payments and cash donations
+        const sortedEmployees = Object.values(employeeMap)
+            .map(emp => {
+                const cashDonations = donationsMap[emp.id] || 0;
+                const totalWithCash = emp.payment.reduce((sum, amount) => sum + amount, 0) + cashDonations;
+
+                return {
+                    id: emp.id,
+                    name: emp.name,
+                    totalPayments: totalWithCash,
+                    payments: emp.payment,
+                    urls: emp.url,
+                    dates: emp.date,
+                    cashDonations
+                };
+            })
+            .sort((a, b) => b.totalPayments - a.totalPayments);
+
+        res.status(200).json(sortedEmployees);
+    } catch (error) {
+        console.error("Error:", error);
+        res.status(500).json({ message: "Internal Server Error" });
+    }
 };
+
+
 
 exports.getPayementsByDate = async (req, res) => {
   const { startDate, endDate } = req.query;
@@ -115,7 +140,7 @@ exports.getPayementsByDate = async (req, res) => {
               totalPayments: emp.payment.reduce((sum, amount) => sum + amount, 0), 
               payments: emp.payment,
               urls: emp.url,
-              dates: emp.date  // Include the dates in the response
+              dates: emp.date 
           }))
           .sort((a, b) => b.totalPayments - a.totalPayments);
 

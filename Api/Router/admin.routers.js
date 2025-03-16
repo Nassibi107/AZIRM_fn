@@ -29,4 +29,5 @@ router.get('/payments', SquareControllers.getPayement);
 
 router.get('/dons', adminController.getAllDonations);
 router.get("/report",SquareControllers.getPayementsByDate);
+router.delete("/don/",adminController.DeleteAllDontion);
 exports.router = router;
