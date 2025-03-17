@@ -36,6 +36,7 @@ exports.getTopEmployeesByPayments = async (req, res) => {
         const employees = await squareService.fetchEmployees();
         const AllCash = await squareService.getAllCashLive();
 
+    
         if (!payments.length || !employees.length) {
             return res.status(404).json({ message: "No data found" });
         }
@@ -234,3 +235,4 @@ exports.getTopEmployeesByPaymentsBackup = async (req, res) => {
       console.log("Internal Server Error");
     }
 };
+

@@ -42,24 +42,47 @@ const { Op } = require("sequelize");
 
 exports.getCashLive = async (req, res) => {
     try {
-        // Get the start and end of today
-        const startOfDay = new Date();
-        startOfDay.setHours(0, 0, 0, 0);
-        const endOfDay = new Date();
-        endOfDay.setHours(23, 59, 59, 999);
+        function formatStartNoonUTC(date) {
+            date.setUTCHours(12, 0, 0, 0);
+            return date.toISOString();
+        }
 
-        // Fetch user
-        const user = await Model.User.findOne({
-            where: { id: req.userRef }
-        });
+        function formatEndMidnightUTC(date) {
+            date.setUTCDate(date.getUTCDate() + 1);
+            date.setUTCHours(0, 0, 0, 0);
+            return date.toISOString();
+        }
+
+        let currentDate = new Date();
+        let currentDay = currentDate.getUTCDay();
+        let daysToSubtract = currentDay === 0 ? 6 : currentDay - 1;
+
+        let startDate = new Date(currentDate);
+        startDate.setUTCDate(currentDate.getUTCDate() - daysToSubtract);
+        let formattedStartDate = formatStartNoonUTC(startDate);
+
+        let endDate = new Date(startDate);
+        endDate.setUTCDate(startDate.getUTCDate() + 6);
+        let formattedEndDate = formatEndMidnightUTC(endDate);
+
+        let todayStart = formatStartNoonUTC(new Date());  
+        let todayEnd = formatEndMidnightUTC(new Date());
+    
 
         // Fetch only today's donations using Sequelize
         const dailyDonations = await Model.Donation.findAll({
             where: {
                 userId: req.userRef,
-                createdAt: { [Op.between]: [startOfDay, endOfDay] } // Fetch only today's records
+                createdAt: { [Op.between]: [todayStart, endOfDay] } // Fetch only today's records
             }
         });
+         
+        const weeklyDonations = await Model.Donation.findAll({
+                    where: {
+                        userId: req.userRef,
+                        createdAt: { [Op.between]: [startOfDay, endOfDay] } // Fetch only today's records
+                    }
+        })
 
         // Format the response
         const daily = dailyDonations.map(payment => ({

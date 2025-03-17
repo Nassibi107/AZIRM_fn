@@ -1,0 +1,59 @@
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-17T16:45:50.633Z"}
+{"level":"error","message":"Not Found 404","stack":"Error: Not Found 404\n    at C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\server.js:72:19\n    at Layer.handle [as handle_request] (C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at trim_prefix (C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\index.js:328:13)\n    at C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\index.js:286:9\n    at Function.process_params (C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\index.js:346:12)\n    at next (C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\index.js:280:10)\n    at C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\index.js:646:15\n    at next (C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\index.js:265:14)\n    at exports.check (C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\Middleware\\authMiddleware.js:18:12)\n    at Layer.handle [as handle_request] (C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\layer.js:95:5)","status":404,"timestamp":"2025-03-17T16:46:55.660Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/ld/ld/top-leaders"},"timestamp":"2025-03-17T16:46:55.675Z"}
+{"level":"info","message":{"method":"GET","status":200,"url":"/top-leaders"},"timestamp":"2025-03-17T16:47:27.291Z"}
+{"level":"info","message":{"method":"GET","status":200,"url":"/top-leaders"},"timestamp":"2025-03-17T16:58:33.182Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-17T17:00:14.627Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-17T17:00:18.217Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-17T17:00:36.335Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-17T17:00:43.066Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-17T17:00:47.262Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-17T17:01:14.118Z"}
+{"level":"error","message":"Not Found 404","stack":"Error: Not Found 404\n    at C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\server.js:72:19\n    at Layer.handle [as handle_request] (C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at trim_prefix (C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\index.js:328:13)\n    at C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\index.js:286:9\n    at Function.process_params (C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\index.js:346:12)\n    at next (C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\index.js:280:10)\n    at C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\index.js:646:15\n    at next (C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\index.js:265:14)\n    at exports.check (C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\Middleware\\authMiddleware.js:18:12)\n    at Layer.handle [as handle_request] (C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\layer.js:95:5)","status":404,"timestamp":"2025-03-17T17:02:56.960Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/ld/pays"},"timestamp":"2025-03-17T17:02:57.862Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/pays"},"timestamp":"2025-03-17T17:03:20.901Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/pays?team_member_id=TMg2OsLdp710OQIs"},"timestamp":"2025-03-17T17:03:37.361Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/pays"},"timestamp":"2025-03-17T17:04:23.778Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/pays"},"timestamp":"2025-03-17T17:08:41.110Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-17T17:09:04.027Z"}
+{"level":"info","message":{"method":"GET","status":200,"url":"/pays"},"timestamp":"2025-03-17T17:13:47.131Z"}
+{"level":"info","message":{"method":"GET","status":200,"url":"/top-leaders?date=now"},"timestamp":"2025-03-17T17:30:34.469Z"}
+{"level":"info","message":{"method":"GET","status":200,"url":"/top-leaders"},"timestamp":"2025-03-17T17:30:52.317Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-17T17:35:44.593Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-17T17:35:57.589Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-17T17:36:19.293Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-17T17:36:30.963Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-17T17:55:11.287Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-17T17:55:53.452Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-17T17:55:57.687Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-17T17:56:04.760Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-17T17:56:13.301Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-17T17:56:16.534Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-17T17:56:23.273Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-17T17:56:26.654Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-17T17:59:10.252Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-17T17:59:16.840Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-17T17:59:18.478Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-17T17:59:23.131Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-17T18:02:31.910Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-17T18:02:36.813Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-17T18:02:45.588Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-17T18:09:36.291Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-17T18:09:42.196Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-17T18:20:15.180Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-17T18:23:06.276Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-17T18:40:14.725Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-17T21:38:30.936Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-17T21:46:01.161Z"}
+{"level":"info","message":{"method":"GET","status":200,"url":"/top-leaders"},"timestamp":"2025-03-17T21:47:26.336Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/pays?team_member_id=TMg2OsLdp710OQIs"},"timestamp":"2025-03-17T22:02:00.527Z"}
+{"level":"info","message":{"method":"GET","status":200,"url":"/top-leaders"},"timestamp":"2025-03-17T22:05:13.896Z"}
+{"level":"info","message":{"method":"GET","status":200,"url":"/cashlive"},"timestamp":"2025-03-17T22:06:43.370Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-17T22:33:47.499Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-17T22:34:11.488Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-17T22:34:17.962Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-17T22:34:31.946Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-17T22:34:37.958Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-17T22:35:47.891Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-17T22:36:05.232Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-17T22:37:12.584Z"}
