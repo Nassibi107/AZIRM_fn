@@ -22,7 +22,7 @@ const squareService = {
         let formattedStartDate = formatStartOfDay(startDate);
         let endDate = new Date(startDate);
         endDate.setDate(startDate.getDate() + 6);
-        endDate.setHours(11, 59, 59, 999);
+        endDate.setHours(23, 59, 59, 999);
         let formattedEndDate = endDate.toISOString();
         
         try {
@@ -149,9 +149,9 @@ const squareService = {
   async  getAllCashLive() {
         try {
             const startOfDay = new Date();
-            startOfDay.setHours(0, 0, 0, 0);
+            startOfDay.setHours(12, 0, 0, 0);
             const endOfDay = new Date();
-            endOfDay.setHours(23, 59, 59, 999);
+            endOfDay.setHours(11, 59, 59, 989);
     
             const usersWithDonations = await models.User.findAll({
                 include: [

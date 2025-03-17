@@ -38,39 +38,49 @@ exports.login = async (req, res) => {
     }
 }
 
+const { Op } = require("sequelize");
+
 exports.getCashLive = async (req, res) => {
     try {
+        // Get the start and end of today
+        const startOfDay = new Date();
+        startOfDay.setHours(0, 0, 0, 0);
+        const endOfDay = new Date();
+        endOfDay.setHours(23, 59, 59, 999);
+
+        // Fetch user
         const user = await Model.User.findOne({
+            where: { id: req.userRef }
+        });
+
+        // Fetch only today's donations using Sequelize
+        const dailyDonations = await Model.Donation.findAll({
             where: {
-                id: req.userRef
+                userId: req.userRef,
+                createdAt: { [Op.between]: [startOfDay, endOfDay] } // Fetch only today's records
             }
         });
-        const getAmount = await Model.Donation.findAll({
-            where: {
-                userId: req.userRef
-            }
-        });
-        const daily  = getAmount.map(payment => ({
+
+        // Format the response
+        const daily = dailyDonations.map(payment => ({
             createdAt: payment.createdAt,
             amount: payment.amount
-        })).filter(payment => payment.createdAt.getDate() === new Date().getDate());
-        
+        }));
 
         res.status(200).json({
             success: true,
             amount: {
-                week :0,
-                direct :daily,
-                totalDaily : daily.reduce((sum, amount) => sum + amount.amount, 0)
+                week: 0,
+                direct: daily,
+                totalDaily: daily.reduce((sum, payment) => sum + parseFloat(payment.amount), 0)
             }
-        
-         });
-        
+        });
+
     } catch (error) {
         console.error(error.message);
-        res.status(500).json({msg:'Server Error'});
+        res.status(500).json({ msg: "Server Error" });
     }
-}
+};
 
 exports.me = async (req, res) => {
     try {
