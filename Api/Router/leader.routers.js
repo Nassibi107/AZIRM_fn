@@ -19,4 +19,6 @@ router.put('/don/:id', leaderController.updateDon);
 router.get('/don/:id', adminController.getDonationsbyID);
 router.get('/top-leaders', SquareControllers.getTopEmployeesByPayments);
 router.get("/topWeek", leaderController.getTopWeek);
+router.get("/weekToTal",SquareControllers.getAllCashWeeK);
+
 exports.router = router;

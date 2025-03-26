@@ -1,74 +1,42 @@
-
-
-// 2️⃣ Employee Model (models/employeeModel.js)
-
-const squareService = require("../services/squareService");
-const Employee = require("../models/employeeModel");
-
-exports.getTopEmployeesByPayments = async (req, res) => {
-    try {
-        const payments = await squareService.fetchPayments();
-        const employees = await squareService.fetchEmployees();
-
-        if (!payments.length || !employees.length) {
-            return res.status(404).json({ message: "No data found" });
-        }
-
-        // Create employee list
-        const employeeMap = {};
-        employees.forEach(emp => {
-            employeeMap[emp.id] = new Employee(emp.id, emp.first_name, emp.last_name);
-        });
-
-        // Sum payments per employee
-        payments.forEach(payment => {
-            if (payment.team_member_id && employeeMap[payment.team_member_id]) {
-                employeeMap[payment.team_member_id].totalPayments += payment.amount_money.amount;
-            }
-        });
-
-        // Convert to array and sort by total payments
-        const sortedEmployees = Object.values(employeeMap).sort((a, b) => b.totalPayments - a.totalPayments);
-
-        res.status(200).json(sortedEmployees);
-    } catch (error) {
-        console.error("Error:", error);
-        res.status(500).json({ message: "Internal Server Error" });
+transactionsToInsert [
+    {
+      team_member_id: 'TMsQvkYpbA8iD7S7',
+      name: 'amine Rarhay',
+      totalPayments: 20
+    },
+    {
+      team_member_id: 'TM-BZpbJXvLiuUG9',
+      name: 'enema Kaba Beavogui',
+      totalPayments: 0
+    },
+    {
+      team_member_id: 'TM-eGldPqa7KsjWb',
+      name: 'Samah Selmane',
+      totalPayments: 47.5
+    },
+    {
+      team_member_id: 'TM-oyiXJpfccB41v',
+      name: 'Rayan Alaoui',
+      totalPayments: 0
+    },
+    {
+      team_member_id: 'TM1u6M2cvzhd_DEm',
+      name: 'lassegue fils dumond',
+      totalPayments: 100
+    },
+    {
+      team_member_id: 'TM36_j6xbhNWV7yk',
+      name: 'Rania Terraz',
+      totalPayments: 0
     }
-};
-// 3️⃣ Payment Controller (controllers/paymentController.js)
+]
 
-const squareService = require("../services/squareService");
-const Employee = require("../models/employeeModel");
+AllCash [ { team_member_id: 'TMsQvkYpbA8iD7S7', week_total: '401304' }  , {} , .... .. . .]
 
-exports.getTopEmployeesByPayments = async (req, res) => {
-    try {
-        const payments = await squareService.fetchPayments();
-        const employees = await squareService.fetchEmployees();
 
-        if (!payments.length || !employees.length) {
-            return res.status(404).json({ message: "No data found" });
-        }
+i want meger to array of object with the same team_member_id and sum the totalPayments and week_total
+// expected result : [ { team_member_id: 'TMsQvkYpbA8iD7S7' , name: 'amine Rarhay', totalPayments :"401324" } ]
 
-        // Create employee list
-        const employeeMap = {};
-        employees.forEach(emp => {
-            employeeMap[emp.id] = new Employee(emp.id, emp.first_name, emp.last_name);
-        });
+keep your mind i want search by id expamle if team_member_id : 'TMsQvkYpbA8iD7S7' i want to get the result of this id only and if i search by id 'TM36_j6xbhNWV7yk' i want to get the result of this id only and so on for all ids in transactionsToInsert araay
 
-        // Sum payments per employee
-        payments.forEach(payment => {
-            if (payment.team_member_id && employeeMap[payment.team_member_id]) {
-                employeeMap[payment.team_member_id].totalPayments += payment.amount_money.amount;
-            }
-        });
-
-        // Convert to array and sort by total payments
-        const sortedEmployees = Object.values(employeeMap).sort((a, b) => b.totalPayments - a.totalPayments);
-
-        res.status(200).json(sortedEmployees);
-    } catch (error) {
-        console.error("Error:", error);
-        res.status(500).json({ message: "Internal Server Error" });
-    }
-};
+i mean add the totalPayments and week_total for the same team_member_id and return the result in the same format as transactionsToInsert array

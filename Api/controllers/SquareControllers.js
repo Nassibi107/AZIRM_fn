@@ -1,6 +1,28 @@
 const squareService = require("../services/squareService");
 const Employee = require("../Models/employeeModel");
 const { Transactions } = require("../Models");
+const { Square } = require("square");
+
+
+const mergePaymentsById = (transactions, allCash, searchId) => {
+    // Find the transaction by team_member_id
+    const transaction = transactions.find(emp => emp.team_member_id === searchId);
+
+    if (!transaction) {
+        return `No data found for team_member_id: ${searchId}`;
+    }
+
+    // Find the matching cash entry
+    const cashEntry = allCash.find(cash => cash.team_member_id === searchId);
+    const cashAmount = cashEntry && cashEntry.week_total ? parseFloat(cashEntry.week_total) : 0;
+
+    // Merge and return result
+    return {
+        team_member_id: transaction.team_member_id,
+        name: transaction.name,
+        totalPayments: transaction.totalPayments + cashAmount
+    };
+};
 
 exports.getEmployesSquare = async (req, res) => {
     try{
@@ -36,6 +58,7 @@ exports.getTopEmployeesByPayments = async (req, res) => {
         const employees = await squareService.fetchEmployees();
         const AllCash = await squareService.getAllCashLive();
 
+        console.log("AllCash:", AllCash);
     
         if (!payments.length || !employees.length) {
             return res.status(404).json({ message: "No data found" });
@@ -83,8 +106,7 @@ exports.getTopEmployeesByPayments = async (req, res) => {
             .map(emp => {
                 const cashDonations = donationsMap[emp.id] || 0;
                 const totalWithCash = emp.payment.reduce((sum, amount) => sum + amount, 0) + cashDonations;
-
-                return {
+              return {
                     id: emp.id,
                     name: emp.name,
                     totalPayments: totalWithCash,
@@ -163,14 +185,13 @@ exports.getPayementsByTeamID = async (req, res) => {
             payment.source_type === "CARD" && 
             payment.status === "COMPLETED"
         );
-
         if (!filteredPayments.length) {
             return res.status(404).json({ message: "No completed card payments found for this team member" });
         }
-
+        console.log("Filtered Payments:", filteredPayments);
         const formattedPayments = filteredPayments.map(payment => ({
             created_at: payment.created_at,
-            amount: payment.amount_money.amount / 100
+            amount: payment.total_money.amount / 100
         }));
 
         res.status(200).json({
@@ -184,14 +205,15 @@ exports.getPayementsByTeamID = async (req, res) => {
     }
 };
 
- // Ensure the correct path
-
 exports.getTopEmployeesByPaymentsBackup = async (req, res) => {
     try {
-
         const payments = await squareService.fetchPayments();
         const employees = await squareService.fetchEmployees();
-        await Transactions.destroy({ where: {} }); 
+        const AllCash = await squareService.getAllCashWeek();
+        let topWeeKPayementAndCash = [];
+
+        await Transactions.destroy({ where: {} });
+
         if (!payments.length || !employees.length) {
             console.log("No data found");
             return;
@@ -210,7 +232,7 @@ exports.getTopEmployeesByPaymentsBackup = async (req, res) => {
         payments.forEach(payment => {
             if (payment.team_member_id && payment.source_type === "CARD" && payment.status === "COMPLETED") {
                 const amountInDollars = payment.total_money.amount / 100;
-                
+
                 if (employeeMap[payment.team_member_id]) {
                     const employee = employeeMap[payment.team_member_id];
                     employee.payments.push(amountInDollars);
@@ -223,7 +245,28 @@ exports.getTopEmployeesByPaymentsBackup = async (req, res) => {
             team_member_id: emp.id,
             name: emp.name,
             totalPayments: emp.totalPayments
-        })).sort((a, b) => b.totalPayments - a.totalPayments);
+        }));
+
+        // Function to merge transactions with AllCash data
+        const mergePaymentsById = (transactions, allCash) => {
+            const cashMap = {};
+            allCash.forEach(cash => {
+                if (cash.team_member_id) {
+                    cashMap[cash.team_member_id] = parseFloat(cash.week_total) || 0;
+                }
+            });
+          return transactions.map(emp => ({
+                team_member_id: emp.team_member_id,
+                name: emp.name,
+                totalPayments: emp.totalPayments + (cashMap[emp.team_member_id] || 0)
+            }));
+        };
+
+        // Loop through all IDs in transactionsToInsert and merge them with AllCash
+        topWeeKPayementAndCash = mergePaymentsById(transactionsToInsert, AllCash)
+            .sort((a, b) => b.totalPayments - a.totalPayments);
+
+        console.log("Merged data:", topWeeKPayementAndCash);
 
         if (transactionsToInsert.length > 0) {
             await Transactions.bulkCreate(transactionsToInsert);
@@ -232,7 +275,22 @@ exports.getTopEmployeesByPaymentsBackup = async (req, res) => {
 
     } catch (error) {
         console.error("Error:", error);
-      console.log("Internal Server Error");
+        console.log("Internal Server Error");
     }
 };
 
+
+exports.getAllCashWeeK = async (req,res) => {
+    try{
+            const getALL = await squareService.getAllCashWeek();
+            if(!getALL.length){
+                res.status(404).json({message: "No data found"});
+            }
+            else {
+                res.status(200).json(getALL);
+            }
+    }catch (error) {
+            console.error("Error:", error);
+            res.status(500).json({message: "Internal Server Error"});
+    }
+}

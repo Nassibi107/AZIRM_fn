@@ -57,3 +57,261 @@
 {"level":"info","message":"Server started on port 4000","timestamp":"2025-03-17T22:35:47.891Z"}
 {"level":"info","message":"Server started on port 4000","timestamp":"2025-03-17T22:36:05.232Z"}
 {"level":"info","message":"Server started on port 4000","timestamp":"2025-03-17T22:37:12.584Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-17T22:42:22.472Z"}
+{"level":"info","message":{"method":"GET","status":200,"url":"/cashlive"},"timestamp":"2025-03-17T22:44:15.022Z"}
+{"level":"info","message":{"method":"POST","status":200,"url":"/login"},"timestamp":"2025-03-17T22:45:11.314Z"}
+{"level":"info","message":{"method":"GET","status":200,"url":"/cashlive"},"timestamp":"2025-03-17T22:45:26.623Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-17T22:49:33.088Z"}
+{"level":"info","message":{"method":"GET","status":200,"url":"/cashlive"},"timestamp":"2025-03-17T22:50:22.665Z"}
+{"level":"info","message":{"method":"POST","status":201,"url":"/don"},"timestamp":"2025-03-17T23:02:02.152Z"}
+{"level":"info","message":{"method":"POST","status":201,"url":"/don"},"timestamp":"2025-03-17T23:02:16.848Z"}
+{"level":"info","message":{"method":"GET","status":200,"url":"/cashlive"},"timestamp":"2025-03-17T23:02:22.534Z"}
+{"level":"info","message":{"method":"GET","status":200,"url":"/cashlive"},"timestamp":"2025-03-17T23:02:25.070Z"}
+{"level":"info","message":{"method":"POST","status":200,"url":"/login"},"timestamp":"2025-03-17T23:02:52.928Z"}
+{"level":"info","message":{"method":"GET","status":200,"url":"/cashlive"},"timestamp":"2025-03-17T23:04:29.875Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-17T23:06:56.220Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-17T23:09:05.433Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-17T23:12:27.021Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-17T23:25:53.497Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-17T23:37:10.481Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-17T23:38:23.118Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-17T23:38:40.670Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-17T23:38:48.641Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-17T23:38:53.730Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-17T23:38:59.912Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-17T23:39:58.727Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-17T23:40:03.199Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-17T23:41:00.615Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-17T23:41:12.318Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-17T23:41:18.311Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-17T23:41:36.849Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-17T23:41:45.361Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-17T23:42:00.296Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-17T23:42:21.559Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-17T23:42:35.954Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-17T23:42:46.086Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-17T23:43:33.052Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-17T23:43:44.138Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-17T23:45:05.703Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-17T23:46:52.227Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-17T23:47:29.823Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-17T23:53:27.575Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-17T23:55:33.354Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-17T23:56:22.381Z"}
+{"level":"info","message":{"method":"GET","status":200,"url":"/weekTotal"},"timestamp":"2025-03-17T23:56:23.109Z"}
+{"level":"info","message":{"method":"GET","status":200,"url":"/weekTotal"},"timestamp":"2025-03-17T23:59:04.649Z"}
+{"level":"info","message":{"method":"GET","status":200,"url":"/weekTotal"},"timestamp":"2025-03-17T23:59:25.438Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-18T00:00:35.209Z"}
+{"level":"info","message":{"method":"GET","status":500,"url":"/weekTotal"},"timestamp":"2025-03-18T00:01:18.534Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-18T00:01:37.619Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-18T00:08:55.931Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-18T00:25:07.863Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-18T00:25:22.597Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-18T00:25:38.922Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-18T00:26:14.794Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-18T00:27:02.776Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-18T00:29:13.140Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-18T00:33:06.664Z"}
+{"level":"error","message":"Not Found 404","stack":"Error: Not Found 404\n    at C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\server.js:92:19\n    at Layer.handle [as handle_request] (C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at trim_prefix (C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\index.js:328:13)\n    at C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\index.js:286:9\n    at Function.process_params (C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\index.js:346:12)\n    at next (C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\index.js:280:10)\n    at C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\index.js:646:15\n    at next (C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\index.js:265:14)\n    at exports.checkIs (C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\Middleware\\adminMiddleware.js:12:13)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)","status":404,"timestamp":"2025-03-18T00:33:56.583Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/ad/ld/top-leaders?date=now"},"timestamp":"2025-03-18T00:33:56.596Z"}
+{"level":"error","message":"Not Found 404","stack":"Error: Not Found 404\n    at C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\server.js:92:19\n    at Layer.handle [as handle_request] (C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at trim_prefix (C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\index.js:328:13)\n    at C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\index.js:286:9\n    at Function.process_params (C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\index.js:346:12)\n    at next (C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\index.js:280:10)\n    at C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\index.js:646:15\n    at next (C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\index.js:265:14)\n    at exports.check (C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\Middleware\\authMiddleware.js:18:12)\n    at Layer.handle [as handle_request] (C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\layer.js:95:5)","status":404,"timestamp":"2025-03-18T00:34:13.089Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/ld/ld/top-leaders?date=now"},"timestamp":"2025-03-18T00:34:13.094Z"}
+{"level":"error","message":"Not Found 404","stack":"Error: Not Found 404\n    at C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\server.js:92:19\n    at Layer.handle [as handle_request] (C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at trim_prefix (C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\index.js:328:13)\n    at C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\index.js:286:9\n    at Function.process_params (C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\index.js:346:12)\n    at next (C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\index.js:280:10)\n    at C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\index.js:646:15\n    at next (C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\index.js:265:14)\n    at exports.check (C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\Middleware\\authMiddleware.js:18:12)\n    at Layer.handle [as handle_request] (C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\layer.js:95:5)","status":404,"timestamp":"2025-03-18T00:34:20.004Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/ld/ld/top-leaders"},"timestamp":"2025-03-18T00:34:20.015Z"}
+{"level":"error","message":"Not Found 404","stack":"Error: Not Found 404\n    at C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\server.js:92:19\n    at Layer.handle [as handle_request] (C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at trim_prefix (C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\index.js:328:13)\n    at C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\index.js:286:9\n    at Function.process_params (C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\index.js:346:12)\n    at next (C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\index.js:280:10)\n    at C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\index.js:646:15\n    at next (C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\index.js:265:14)\n    at exports.check (C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\Middleware\\authMiddleware.js:18:12)\n    at Layer.handle [as handle_request] (C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\layer.js:95:5)","status":404,"timestamp":"2025-03-18T00:34:29.700Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/ld/ld/top-leaders"},"timestamp":"2025-03-18T00:34:29.704Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-18T00:34:50.911Z"}
+{"level":"error","message":"Not Found 404","stack":"Error: Not Found 404\n    at C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\server.js:92:19\n    at Layer.handle [as handle_request] (C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at trim_prefix (C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\index.js:328:13)\n    at C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\index.js:286:9\n    at Function.process_params (C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\index.js:346:12)\n    at next (C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\index.js:280:10)\n    at C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\index.js:646:15\n    at next (C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\index.js:265:14)\n    at exports.check (C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\Middleware\\authMiddleware.js:18:12)\n    at Layer.handle [as handle_request] (C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\layer.js:95:5)","status":404,"timestamp":"2025-03-18T00:34:51.159Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/ld/ld/top-leaders"},"timestamp":"2025-03-18T00:34:51.173Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-18T00:35:03.822Z"}
+{"level":"error","message":"Not Found 404","stack":"Error: Not Found 404\n    at C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\server.js:92:19\n    at Layer.handle [as handle_request] (C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at trim_prefix (C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\index.js:328:13)\n    at C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\index.js:286:9\n    at Function.process_params (C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\index.js:346:12)\n    at next (C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\index.js:280:10)\n    at C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\index.js:646:15\n    at next (C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\index.js:265:14)\n    at exports.check (C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\Middleware\\authMiddleware.js:18:12)\n    at Layer.handle [as handle_request] (C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\layer.js:95:5)","status":404,"timestamp":"2025-03-18T00:35:06.334Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/ld/ld/top-leaders"},"timestamp":"2025-03-18T00:35:06.348Z"}
+{"level":"info","message":{"method":"GET","status":200,"url":"/top-leaders"},"timestamp":"2025-03-18T00:35:19.177Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-18T00:37:38.883Z"}
+{"level":"info","message":{"method":"GET","status":200,"url":"/cashlive"},"timestamp":"2025-03-18T00:46:42.504Z"}
+{"level":"info","message":{"method":"GET","status":200,"url":"/cashlive"},"timestamp":"2025-03-18T00:46:48.007Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-18T00:55:59.818Z"}
+{"level":"info","message":{"method":"POST","status":200,"url":"/login"},"timestamp":"2025-03-18T01:04:54.899Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-18T02:11:38.923Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-18T02:14:58.944Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-18T02:15:28.213Z"}
+{"level":"error","message":"Not Found 404","stack":"Error: Not Found 404\n    at C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\server.js:92:19\n    at Layer.handle [as handle_request] (C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at trim_prefix (C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\index.js:328:13)\n    at C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\index.js:286:9\n    at Function.process_params (C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\index.js:346:12)\n    at next (C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\index.js:280:10)\n    at C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\index.js:646:15\n    at next (C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\index.js:265:14)\n    at exports.check (C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\Middleware\\authMiddleware.js:18:12)\n    at Layer.handle [as handle_request] (C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\layer.js:95:5)","status":404,"timestamp":"2025-03-18T02:15:38.483Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/ld/api/cashlive"},"timestamp":"2025-03-18T02:15:38.507Z"}
+{"level":"error","message":"Not Found 404","stack":"Error: Not Found 404\n    at C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\server.js:92:19\n    at Layer.handle [as handle_request] (C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at trim_prefix (C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\index.js:328:13)\n    at C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\index.js:286:9\n    at Function.process_params (C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\index.js:346:12)\n    at next (C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\index.js:280:10)\n    at C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\index.js:646:15\n    at next (C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\index.js:265:14)\n    at exports.check (C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\Middleware\\authMiddleware.js:18:12)\n    at Layer.handle [as handle_request] (C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\layer.js:95:5)","status":404,"timestamp":"2025-03-18T02:15:46.305Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/ld/cashlive"},"timestamp":"2025-03-18T02:15:46.316Z"}
+{"level":"info","message":{"method":"GET","status":500,"url":"/cashlive"},"timestamp":"2025-03-18T02:16:00.272Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-18T02:18:07.393Z"}
+{"level":"info","message":{"method":"GET","status":500,"url":"/cashlive"},"timestamp":"2025-03-18T02:18:28.677Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-18T02:21:01.720Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-18T02:21:33.427Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-18T02:21:52.831Z"}
+{"level":"info","message":{"method":"GET","status":500,"url":"/cashlive"},"timestamp":"2025-03-18T02:21:55.226Z"}
+{"level":"info","message":{"method":"GET","status":500,"url":"/cashlive"},"timestamp":"2025-03-18T02:22:04.504Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-18T02:22:48.445Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-18T02:23:50.283Z"}
+{"level":"info","message":{"method":"GET","status":500,"url":"/cashlive"},"timestamp":"2025-03-18T02:23:53.935Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-18T02:24:32.932Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-18T02:25:26.068Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-18T02:25:46.978Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-18T02:26:23.833Z"}
+{"level":"info","message":{"method":"GET","status":200,"url":"/cashlive"},"timestamp":"2025-03-18T02:26:24.407Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-18T02:31:11.893Z"}
+{"level":"info","message":{"method":"GET","status":200,"url":"/cashlive"},"timestamp":"2025-03-18T02:32:15.389Z"}
+{"level":"info","message":{"method":"GET","status":200,"url":"/cashlive"},"timestamp":"2025-03-18T02:32:24.751Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-18T02:33:24.057Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-18T02:34:04.026Z"}
+{"level":"info","message":{"method":"GET","status":200,"url":"/cashlive"},"timestamp":"2025-03-18T02:35:24.334Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-18T02:37:17.997Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-18T02:37:52.988Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-18T02:38:37.184Z"}
+{"level":"info","message":{"method":"GET","status":200,"url":"/cashlive"},"timestamp":"2025-03-18T02:38:39.428Z"}
+{"level":"info","message":{"method":"GET","status":200,"url":"/cashlive"},"timestamp":"2025-03-18T02:38:45.597Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-18T02:39:27.205Z"}
+{"level":"info","message":{"method":"GET","status":200,"url":"/cashlive"},"timestamp":"2025-03-18T02:40:00.273Z"}
+{"level":"info","message":{"method":"GET","status":200,"url":"/cashlive"},"timestamp":"2025-03-18T02:40:03.112Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-18T02:40:14.175Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-18T02:40:40.971Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-18T02:41:14.159Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-18T02:43:00.963Z"}
+{"level":"info","message":{"method":"GET","status":200,"url":"/cashlive"},"timestamp":"2025-03-18T02:43:24.165Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-18T02:46:22.143Z"}
+{"level":"info","message":{"method":"GET","status":200,"url":"/cashlive"},"timestamp":"2025-03-18T02:46:32.468Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-18T02:47:05.038Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-18T02:47:25.133Z"}
+{"level":"info","message":{"method":"GET","status":200,"url":"/cashlive"},"timestamp":"2025-03-18T02:47:27.852Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-18T02:48:37.602Z"}
+{"level":"info","message":{"method":"GET","status":200,"url":"/cashlive"},"timestamp":"2025-03-18T02:48:38.629Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-18T02:49:31.622Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-18T02:50:26.594Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-18T02:50:33.400Z"}
+{"level":"info","message":{"method":"GET","status":200,"url":"/cashlive"},"timestamp":"2025-03-18T02:50:40.240Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-18T02:51:50.687Z"}
+{"level":"info","message":{"method":"GET","status":200,"url":"/cashlive"},"timestamp":"2025-03-18T03:16:57.717Z"}
+{"level":"info","message":{"method":"GET","status":200,"url":"/cashlive"},"timestamp":"2025-03-18T03:18:54.534Z"}
+{"level":"info","message":{"method":"GET","status":200,"url":"/weekToTal"},"timestamp":"2025-03-18T03:30:06.524Z"}
+{"level":"info","message":{"method":"GET","status":200,"url":"/cashlive"},"timestamp":"2025-03-18T03:33:18.426Z"}
+{"level":"info","message":{"method":"GET","status":200,"url":"/cashlive"},"timestamp":"2025-03-18T03:37:23.155Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-18T03:45:04.225Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-18T03:46:07.111Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-18T03:46:20.173Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-18T03:50:43.100Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-18T03:53:04.255Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-18T03:55:44.615Z"}
+{"level":"info","message":{"method":"POST","status":200,"url":"/login"},"timestamp":"2025-03-18T03:57:31.163Z"}
+{"level":"info","message":{"method":"POST","status":201,"url":"/don"},"timestamp":"2025-03-18T03:57:55.233Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-18T03:58:19.196Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-18T21:55:35.062Z"}
+{"level":"error","message":"Not Found 404","stack":"Error: Not Found 404\n    at C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\server.js:92:19\n    at Layer.handle [as handle_request] (C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at trim_prefix (C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\index.js:328:13)\n    at C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\index.js:286:9\n    at Function.process_params (C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\index.js:346:12)\n    at next (C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\index.js:280:10)\n    at C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\index.js:646:15\n    at next (C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\index.js:265:14)\n    at exports.check (C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\Middleware\\authMiddleware.js:18:12)\n    at Layer.handle [as handle_request] (C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\layer.js:95:5)","status":404,"timestamp":"2025-03-18T21:57:02.035Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/ld/cashlive"},"timestamp":"2025-03-18T21:57:02.045Z"}
+{"level":"info","message":{"method":"GET","status":200,"url":"/cashlive"},"timestamp":"2025-03-18T21:57:19.758Z"}
+{"level":"info","message":{"method":"GET","status":200,"url":"/cashlive"},"timestamp":"2025-03-18T21:57:53.895Z"}
+{"level":"info","message":{"method":"GET","status":200,"url":"/cashlive"},"timestamp":"2025-03-18T21:58:05.825Z"}
+{"level":"info","message":{"method":"POST","status":200,"url":"/login"},"timestamp":"2025-03-18T21:59:45.605Z"}
+{"level":"error","message":"Not Found 404","stack":"Error: Not Found 404\n    at C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\server.js:92:19\n    at Layer.handle [as handle_request] (C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at trim_prefix (C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\index.js:328:13)\n    at C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\index.js:286:9\n    at Function.process_params (C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\index.js:346:12)\n    at next (C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\index.js:280:10)\n    at C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\index.js:646:15\n    at next (C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\index.js:265:14)\n    at Function.handle (C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\index.js:175:3)\n    at router (C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\index.js:47:12)","status":404,"timestamp":"2025-03-18T22:00:36.054Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/api%7D%7D/me"},"timestamp":"2025-03-18T22:00:36.056Z"}
+{"level":"error","message":"Not Found 404","stack":"Error: Not Found 404\n    at C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\server.js:92:19\n    at Layer.handle [as handle_request] (C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at trim_prefix (C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\index.js:328:13)\n    at C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\index.js:286:9\n    at Function.process_params (C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\index.js:346:12)\n    at next (C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\index.js:280:10)\n    at C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\index.js:646:15\n    at next (C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\index.js:265:14)\n    at Function.handle (C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\index.js:175:3)\n    at router (C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\index.js:47:12)","status":404,"timestamp":"2025-03-18T22:00:40.673Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/api%7D/me"},"timestamp":"2025-03-18T22:00:40.675Z"}
+{"level":"info","message":{"method":"GET","status":200,"url":"/me"},"timestamp":"2025-03-18T22:00:49.351Z"}
+{"level":"info","message":{"method":"POST","status":201,"url":"/don"},"timestamp":"2025-03-18T22:01:56.024Z"}
+{"level":"info","message":{"method":"GET","status":200,"url":"/cashlive"},"timestamp":"2025-03-18T22:02:01.026Z"}
+{"level":"info","message":{"method":"POST","status":201,"url":"/don"},"timestamp":"2025-03-18T22:10:29.088Z"}
+{"level":"info","message":{"method":"GET","status":200,"url":"/cashlive"},"timestamp":"2025-03-18T22:10:33.715Z"}
+{"level":"error","message":"Not Found 404","stack":"Error: Not Found 404\n    at C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\server.js:92:19\n    at Layer.handle [as handle_request] (C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at trim_prefix (C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\index.js:328:13)\n    at C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\index.js:286:9\n    at Function.process_params (C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\index.js:346:12)\n    at next (C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\index.js:280:10)\n    at C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\index.js:646:15\n    at next (C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\index.js:265:14)\n    at Function.handle (C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\index.js:175:3)\n    at router (C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\index.js:47:12)","status":404,"timestamp":"2025-03-18T22:13:43.052Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/api/ld/weekToTal"},"timestamp":"2025-03-18T22:13:43.054Z"}
+{"level":"info","message":{"method":"GET","status":200,"url":"/weekToTal"},"timestamp":"2025-03-18T22:14:09.940Z"}
+{"level":"info","message":{"method":"GET","status":200,"url":"/weekToTal"},"timestamp":"2025-03-18T22:15:11.824Z"}
+{"level":"info","message":{"method":"GET","status":200,"url":"/weekToTal"},"timestamp":"2025-03-18T22:15:14.203Z"}
+{"level":"info","message":{"method":"POST","status":404,"url":"/login"},"timestamp":"2025-03-18T22:16:31.237Z"}
+{"level":"info","message":{"method":"GET","status":200,"url":"/weekToTal"},"timestamp":"2025-03-18T22:19:31.009Z"}
+{"level":"info","message":{"method":"POST","status":404,"url":"/login"},"timestamp":"2025-03-18T22:21:23.724Z"}
+{"level":"info","message":{"method":"POST","status":404,"url":"/login"},"timestamp":"2025-03-18T22:22:42.983Z"}
+{"level":"info","message":{"method":"POST","status":404,"url":"/login"},"timestamp":"2025-03-18T22:25:18.880Z"}
+{"level":"info","message":{"method":"POST","status":404,"url":"/login"},"timestamp":"2025-03-18T22:25:37.721Z"}
+{"level":"info","message":{"method":"POST","status":200,"url":"/login"},"timestamp":"2025-03-18T22:25:46.944Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-18T22:59:58.256Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-18T23:00:43.155Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-18T23:03:05.120Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-18T23:12:24.658Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-18T23:12:42.533Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-18T23:12:50.211Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-18T23:13:14.433Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-18T23:14:18.354Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-18T23:17:44.327Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-18T23:18:28.109Z"}
+{"level":"info","message":{"method":"GET","status":200,"url":"/weekToTal"},"timestamp":"2025-03-18T23:22:27.755Z"}
+{"level":"info","message":{"method":"GET","status":200,"url":"/cashlive"},"timestamp":"2025-03-18T23:23:48.200Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-18T23:26:25.059Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-18T23:35:54.079Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-18T23:36:26.583Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-18T23:36:56.480Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-18T23:37:17.304Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-18T23:39:55.239Z"}
+{"level":"info","message":{"method":"GET","status":200,"url":"/cashlive"},"timestamp":"2025-03-18T23:44:22.438Z"}
+{"level":"info","message":{"method":"GET","status":200,"url":"/weekToTal"},"timestamp":"2025-03-18T23:45:05.057Z"}
+{"level":"info","message":{"method":"GET","status":200,"url":"/cashlive"},"timestamp":"2025-03-18T23:45:20.180Z"}
+{"level":"info","message":{"method":"GET","status":200,"url":"/cashlive"},"timestamp":"2025-03-18T23:47:32.038Z"}
+{"level":"info","message":{"method":"POST","status":201,"url":"/don"},"timestamp":"2025-03-18T23:48:04.446Z"}
+{"level":"info","message":{"method":"GET","status":200,"url":"/weekToTal"},"timestamp":"2025-03-18T23:48:12.723Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-18T23:48:41.563Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-18T23:50:45.012Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-18T23:53:23.793Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-18T23:53:36.351Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-18T23:55:23.284Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-18T23:55:42.179Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-19T00:04:43.363Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-19T22:13:17.700Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-19T22:18:48.221Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-19T22:20:33.652Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-19T22:33:01.439Z"}
+{"level":"info","message":{"method":"GET","status":200,"url":"/pays?team_member_id=TMf-B7TkTTwOnFyR"},"timestamp":"2025-03-19T22:34:09.195Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-21T15:26:15.671Z"}
+{"level":"info","message":{"method":"GET","status":401,"url":"/cashlive"},"timestamp":"2025-03-21T15:26:27.463Z"}
+{"level":"info","message":{"method":"GET","status":200,"url":"/cashlive"},"timestamp":"2025-03-21T15:27:39.712Z"}
+{"level":"info","message":{"method":"GET","status":200,"url":"/cashlive"},"timestamp":"2025-03-21T15:27:50.547Z"}
+{"level":"error","message":"Not Found 404","stack":"Error: Not Found 404\n    at C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\server.js:92:19\n    at Layer.handle [as handle_request] (C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at trim_prefix (C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\index.js:328:13)\n    at C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\index.js:286:9\n    at Function.process_params (C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\index.js:346:12)\n    at next (C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\index.js:280:10)\n    at C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\index.js:646:15\n    at next (C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\index.js:265:14)\n    at Function.handle (C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\index.js:175:3)\n    at router (C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\index.js:47:12)","status":404,"timestamp":"2025-03-21T15:29:07.106Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/api/top-leaders"},"timestamp":"2025-03-21T15:29:07.111Z"}
+{"level":"error","message":"Not Found 404","stack":"Error: Not Found 404\n    at C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\server.js:92:19\n    at Layer.handle [as handle_request] (C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at trim_prefix (C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\index.js:328:13)\n    at C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\index.js:286:9\n    at Function.process_params (C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\index.js:346:12)\n    at next (C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\index.js:280:10)\n    at C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\index.js:646:15\n    at next (C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\index.js:265:14)\n    at Function.handle (C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\index.js:175:3)\n    at router (C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\index.js:47:12)","status":404,"timestamp":"2025-03-21T15:29:19.113Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/api/ld/top-leaders"},"timestamp":"2025-03-21T15:29:19.118Z"}
+{"level":"error","message":"Not Found 404","stack":"Error: Not Found 404\n    at C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\server.js:92:19\n    at Layer.handle [as handle_request] (C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at trim_prefix (C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\index.js:328:13)\n    at C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\index.js:286:9\n    at Function.process_params (C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\index.js:346:12)\n    at next (C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\index.js:280:10)\n    at C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\index.js:646:15\n    at next (C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\index.js:265:14)\n    at Function.handle (C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\index.js:175:3)\n    at router (C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\index.js:47:12)","status":404,"timestamp":"2025-03-21T15:30:58.546Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/api/ld/top-leaders"},"timestamp":"2025-03-21T15:30:58.553Z"}
+{"level":"error","message":"Not Found 404","stack":"Error: Not Found 404\n    at C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\server.js:92:19\n    at Layer.handle [as handle_request] (C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at trim_prefix (C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\index.js:328:13)\n    at C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\index.js:286:9\n    at Function.process_params (C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\index.js:346:12)\n    at next (C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\index.js:280:10)\n    at C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\index.js:646:15\n    at next (C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\index.js:265:14)\n    at Function.handle (C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\index.js:175:3)\n    at router (C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\index.js:47:12)","status":404,"timestamp":"2025-03-21T15:31:15.758Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/api/leader/top-leaders"},"timestamp":"2025-03-21T15:31:15.762Z"}
+{"level":"error","message":"Not Found 404","stack":"Error: Not Found 404\n    at C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\server.js:92:19\n    at Layer.handle [as handle_request] (C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at trim_prefix (C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\index.js:328:13)\n    at C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\index.js:286:9\n    at Function.process_params (C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\index.js:346:12)\n    at next (C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\index.js:280:10)\n    at C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\index.js:646:15\n    at next (C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\index.js:265:14)\n    at exports.check (C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\Middleware\\authMiddleware.js:18:12)\n    at Layer.handle [as handle_request] (C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\layer.js:95:5)","status":404,"timestamp":"2025-03-21T15:31:34.400Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/ld/ld/top-leaders"},"timestamp":"2025-03-21T15:31:34.405Z"}
+{"level":"info","message":{"method":"GET","status":200,"url":"/top-leaders"},"timestamp":"2025-03-21T15:31:44.110Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-26T21:05:36.678Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-26T21:30:27.314Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-26T21:30:53.987Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-26T21:30:59.309Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-26T21:31:36.270Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-26T21:34:23.378Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-26T21:34:49.105Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-26T21:35:25.200Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-26T21:35:32.200Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-26T21:35:38.051Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-26T21:35:41.487Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-26T21:36:00.337Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-26T21:36:13.202Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-26T21:36:56.081Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-26T21:37:16.082Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-26T21:37:20.402Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-26T21:37:50.812Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-26T21:37:59.412Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-26T21:39:36.055Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-26T21:40:16.965Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-26T21:43:43.978Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-26T21:43:53.279Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-26T21:49:49.509Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-26T21:51:05.949Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-26T21:51:49.451Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-26T21:51:55.785Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-26T21:52:00.106Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-26T21:52:22.498Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-26T22:10:44.390Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-26T22:14:35.905Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-26T22:16:02.100Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-26T22:16:08.916Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-26T22:16:18.973Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-26T22:16:23.024Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-26T22:18:02.799Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-03-26T22:19:07.268Z"}

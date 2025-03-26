@@ -4,6 +4,12 @@ const bcrypt = require('bcryptjs');
 // Register a new user
 const jwtHelper = require('../utils/jwtHelper');
 
+require('dotenv').config();
+const moment = require("moment-timezone");
+const timezone ="America/Montreal"
+
+const { Op } = require("sequelize");
+// Helper functions using moment-timezone
 
 exports.login = async (req, res) => {
     const { email, password } = req.body;
@@ -38,64 +44,86 @@ exports.login = async (req, res) => {
     }
 }
 
-const { Op } = require("sequelize");
+
+function formatStartNoonTZ(date) {
+    return moment(date)
+        .tz(timezone)
+        .hour(12)
+        .minute(0)
+        .second(0)
+        .millisecond(0)
+        .toISOString();
+}
+
+function formatEndMidnightTZ(date) {
+    return moment(date)
+        .tz(timezone)
+        .add(1, "day")
+        .startOf("day")
+        .toISOString();
+}
 
 exports.getCashLive = async (req, res) => {
+
+    const now = moment().tz(timezone);
+    
+    // Get hours and minutes
+    const hours = now.hour();    // Returns an integer (0-23)
+    const minutes = now.minute(); // Returns an integer (0-59)
+    
+    // Log the results
+    console.log(`Current Time in ${timezone} is ${hours}:${minutes < 10 ? '0' : ''}${minutes}`);
     try {
-        function formatStartNoonUTC(date) {
-            date.setUTCHours(12, 0, 0, 0);
-            return date.toISOString();
-        }
-
-        function formatEndMidnightUTC(date) {
-            date.setUTCDate(date.getUTCDate() + 1);
-            date.setUTCHours(0, 0, 0, 0);
-            return date.toISOString();
-        }
-
         let currentDate = new Date();
-        let currentDay = currentDate.getUTCDay();
+        let currentDay = moment(currentDate).tz(timezone).day();
         let daysToSubtract = currentDay === 0 ? 6 : currentDay - 1;
 
-        let startDate = new Date(currentDate);
-        startDate.setUTCDate(currentDate.getUTCDate() - daysToSubtract);
-        let formattedStartDate = formatStartNoonUTC(startDate);
+        let startDate = moment(currentDate).tz(timezone).subtract(daysToSubtract, "days").toDate();
+        let formattedStartDate = formatStartNoonTZ(startDate);
 
-        let endDate = new Date(startDate);
-        endDate.setUTCDate(startDate.getUTCDate() + 6);
-        let formattedEndDate = formatEndMidnightUTC(endDate);
+        let endDate = moment(startDate).tz(timezone).add(6, "days").toDate();
+        let formattedEndDate = formatEndMidnightTZ(endDate);
 
-        let todayStart = formatStartNoonUTC(new Date());  
-        let todayEnd = formatEndMidnightUTC(new Date());
+        let todayStart = formatStartNoonTZ(new Date());  
+        let todayEnd = formatEndMidnightTZ(new Date());
     
+        console.log("todayStart", todayStart);
+        // Fetch today's donations
+        console.log("todayeEnd", todayEnd);
 
-        // Fetch only today's donations using Sequelize
+        console.log("formattedStartDate", formattedStartDate);
+        console.log("formattedEndDate", formattedEndDate);
         const dailyDonations = await Model.Donation.findAll({
             where: {
                 userId: req.userRef,
-                createdAt: { [Op.between]: [todayStart, endOfDay] } // Fetch only today's records
+                createdAt: { [Op.between]: [todayStart, todayEnd] }
             }
         });
          
+        // Fetch weekly donations
         const weeklyDonations = await Model.Donation.findAll({
-                    where: {
-                        userId: req.userRef,
-                        createdAt: { [Op.between]: [startOfDay, endOfDay] } // Fetch only today's records
-                    }
-        })
+            where: {
+                userId: req.userRef,
+                createdAt: { [Op.between]: [formattedStartDate, formattedEndDate] }
+            }
+        });
 
-        // Format the response
+        const weekly = weeklyDonations.map(payment => ({
+            createdAt: payment.createdAt,
+            amount: parseFloat(payment.amount)
+        }));
+
         const daily = dailyDonations.map(payment => ({
             createdAt: payment.createdAt,
-            amount: payment.amount
+            amount: parseFloat(payment.amount)
         }));
 
         res.status(200).json({
             success: true,
             amount: {
-                week: 0,
+                week: weekly.reduce((sum, payment) => sum + payment.amount, 0),
                 direct: daily,
-                totalDaily: daily.reduce((sum, payment) => sum + parseFloat(payment.amount), 0)
+                totalDaily: daily.reduce((sum, payment) => sum + payment.amount, 0)
             }
         });
 
@@ -121,7 +149,6 @@ exports.me = async (req, res) => {
         res.status(403).json({msg:'forbidden'});
     }
 }
-
 
 exports.getTopUser =  async (req, res) => {
     try {

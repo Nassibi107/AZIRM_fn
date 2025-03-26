@@ -264,8 +264,6 @@ exports.updateDon = async (req, res) => {
 
 exports.getTopWeek = async (req, res) => {
      const{team_member_id} = req.query;
-
-
     try{
         let user = {};
         const tran = await Model.Transactions.findAll();

@@ -14,8 +14,27 @@ const indexRouter = require('./Router/app');
 const authRouter = require('./Router/auth.routers');
 const adminRouter = require('./Router/admin.routers');
 const leaderRouter = require('./Router/leader.routers');
+const moment = require('moment-timezone');
 const axios = require("axios");
 
+
+
+// Get timezone from environment variable, default to UTC if not set
+const timezone = process.env.TIMEZONE || 'UTC';
+
+// Calculate the start and end of the week based on the provided timezone
+// Here, startOf('week') returns the start (Sunday) and endOf('week') returns the end (Saturday)
+const startOfWeek = moment().tz(timezone).startOf('week'); // e.g., Sunday 00:00:00 in the specified timezone
+const endOfWeek = moment().tz(timezone).endOf('week');       // e.g., Saturday 23:59:59 in the specified timezone
+// Get the current moment in the specified timezone
+const now = moment().tz(timezone);
+
+// Get hours and minutes
+const hours = now.hour();    // Returns an integer (0-23)
+const minutes = now.minute(); // Returns an integer (0-59)
+
+// Log the results
+console.log(`Current Time in ${timezone} is ${hours}:${minutes < 10 ? '0' : ''}${minutes}`);
 // Winston Logger Configuration
 const logger = winston.createLogger({
     level: 'info',
@@ -38,6 +57,7 @@ if (process.env.NODE_ENV !== 'production') {
         )
     }));
 }
+
 
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
