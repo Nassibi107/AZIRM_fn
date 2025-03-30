@@ -82,6 +82,8 @@ app.use((req, res, next) => {
 
 app.use('/uploads', express.static(path.join(__dirname, 'controllers/public/uploads')));
 app.use('/qrcodes', express.static(path.join(__dirname, 'controllers/public/qrcodes')));
+app.use(express.static(path.join(__dirname, 'public')));
+
 app.use('/', indexRouter.router);
 app.use('/api', authRouter.router);
 app.use('/ad', adminRouter.router);

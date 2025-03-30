@@ -238,7 +238,7 @@ exports.insertDonation = async (req, res) => {
 
 exports.updateDon = async (req, res) => {
     const reqId = req.params.id;
-    const { amount, type, lat, lng, feed } = req.body;
+    const { amount, type, lat, lng, feed ,userIds } = req.body;
     try {
         const don = await Model.Donation.findOne({
             where: {
@@ -248,11 +248,12 @@ exports.updateDon = async (req, res) => {
         if (!don) {
             return res.status(404).json({ msg: 'Donation not found' });
         }
-        don.amount = amount;
-        don.type = type;
-        don.lat = lat;
-        don.lng = lng;
-        don.feed = feed;
+        don.amount = amount   || don.amount;
+        don.type = type || don.type;
+        don.lat = lat       || don.lat; 
+        don.lng = lng    || don.lng;
+        don.feed = feed     || don.feed;
+        don.userId = userIds || don.userId;  
         await don.save();
         res.status(200).json({ msg: 'Donation updated successfully', don });
     

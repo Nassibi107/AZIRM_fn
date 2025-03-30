@@ -9,10 +9,6 @@ express().use (
   );
   
   // Ensure uploads directory exists
-  const uploadDir = path.join(__dirname, "audioUploads");
-  if (!fs.existsSync(uploadDir)) {
-    fs.mkdirSync(uploadDir);
-  }
 
 
   

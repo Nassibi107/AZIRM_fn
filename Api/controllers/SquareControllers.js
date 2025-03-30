@@ -58,10 +58,10 @@ exports.getTopEmployeesByPayments = async (req, res) => {
         const employees = await squareService.fetchEmployees();
         const AllCash = await squareService.getAllCashLive();
 
-        console.log("AllCash:", AllCash);
+
     
         if (!payments.length || !employees.length) {
-            return res.status(404).json({ message: "No data found" });
+            return res.status(404).json({ message: "No data founds" });
         }
 
         // Create a map of employees by team_member_id
@@ -100,7 +100,7 @@ exports.getTopEmployeesByPayments = async (req, res) => {
                 donationsMap[user.team_member_id] = totalCash;
             }
         });
-
+        console.error(AllCash)
         // Merge payments and cash donations
         const sortedEmployees = Object.values(employeeMap)
             .map(emp => {
@@ -212,6 +212,8 @@ exports.getTopEmployeesByPaymentsBackup = async (req, res) => {
         const AllCash = await squareService.getAllCashWeek();
         let topWeeKPayementAndCash = [];
 
+        console.error("AllCash:", AllCash);
+
         await Transactions.destroy({ where: {} });
 
         if (!payments.length || !employees.length) {
@@ -265,14 +267,11 @@ exports.getTopEmployeesByPaymentsBackup = async (req, res) => {
         // Loop through all IDs in transactionsToInsert and merge them with AllCash
         topWeeKPayementAndCash = mergePaymentsById(transactionsToInsert, AllCash)
             .sort((a, b) => b.totalPayments - a.totalPayments);
-
-        console.log("Merged data:", topWeeKPayementAndCash);
-
-        if (transactionsToInsert.length > 0) {
-            await Transactions.bulkCreate(transactionsToInsert);
-            console.log("Transactions inserted successfully");
-        }
-
+        
+            if (topWeeKPayementAndCash.length > 0) {
+                await Transactions.bulkCreate(topWeeKPayementAndCash);
+                console.log("Transactions inserted successfully");
+            }
     } catch (error) {
         console.error("Error:", error);
         console.log("Internal Server Error");

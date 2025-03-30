@@ -38,24 +38,45 @@ function formatEndMidnightTZ(date, timezone) {
 
 const squareService = {
   async fetchPayments(date) {
-    let currentDate = new Date();
-    // Get current day in the specified timezone
-    let currentDay = moment(currentDate).tz(timezone).day(); // Sunday=0, Monday=1, etc.
+  
+    function formatStartNoonTZc(date, timezone) {
+      return moment.tz(date, timezone)
+        .utc() // Convert to UTC explicitly
+        .hour(11) // Set to 11:00 AM UTC
+        .minute(0)
+        .second(0)
+        .millisecond(0)
+        .toISOString();
+    }
+    
+    function formatEndMidnightTZc(date, timezone) {
+      return moment.tz(date, timezone)
+        .utc()// Convert to UTC explicitly
+        .hour(23) // Set to 11:58 PM UTC
+        .minute(58)
+        .second(0)
+        .millisecond(0)
+        .toISOString();
+    }
+
+    let currentDate = moment().tz(timezone);
+    let currentDay = currentDate.day(); // Sunday=0, Monday=1, etc.
     let daysToSubtract = currentDay === 0 ? 6 : currentDay - 1;
-
-    // Calculate start of week date based on timezone
-    let startDate = moment(currentDate).tz(timezone).subtract(daysToSubtract, "days").toDate();
-    let formattedStartDate = formatStartNoonTZ(startDate);
-
+    
+    // Ensure timezone is correctly applied when calculating the start of the week
+    let startDate = currentDate.clone().subtract(daysToSubtract, "days").startOf('day');
+    let formattedStartDate = formatStartNoonTZ(startDate.toDate());
+    
     // Calculate end date (6 days ahead) and format it
-    let endDate = moment(startDate).tz(timezone).add(6, "days").toDate();
-    let formattedEndDate = formatEndMidnightTZ(endDate);
-
-    // For 'now', use today's boundaries
-    let todayStart = formatStartNoonTZ(new Date());
-    let todayEnd = formatEndMidnightTZ(new Date());
-    console.log("startOfWeek:", formattedStartDate);
-    console.log("endOfWeek:", formattedEndDate );
+    let endDate = startDate.clone().add(6, "days").endOf('day');
+    let formattedEndDate = formatEndMidnightTZ(endDate.toDate());
+    
+    console.error("startOfWeek:", formattedStartDate);
+    console.error("endOfWeek:", formattedEndDate);
+    let todayStart = formatStartNoonTZc(new Date());
+    let todayEnd = formatEndMidnightTZc(new Date());
+    console.error("todayStart:", todayStart);
+    console.error("todayEnd:", todayEnd);
 
     try {
       let allPayments = [];
@@ -65,11 +86,10 @@ const squareService = {
       do {
         if (date === "now") {
           url = `${BASE_URL}/payments?begin_time=${encodeURIComponent(todayStart)}&end_time=${encodeURIComponent(todayEnd)}`;
-          console.error("fetchPayments(date) url", url);
+          console.error("fetchPayments(date) urlz", url);
           cursor = null;
         } else {
           url = `${BASE_URL}/payments?begin_time=${encodeURIComponent(formattedStartDate)}&end_time=${encodeURIComponent(formattedEndDate)}`;
-          console.error("fetchPayments(date week url", url);
         }
 
         if (cursor) {
@@ -156,7 +176,7 @@ const squareService = {
     try {
       const startOfDay = moment()
         .tz(timezone)
-        .hour(12)
+        .hour(11)
         .minute(0)
         .second(0)
         .millisecond(0)
@@ -193,6 +213,7 @@ const squareService = {
           createdAt: donation.createdAt
         }))
       }));
+     
     } catch (error) {
       console.error("Error fetching users with donations:", error.response?.data || error.message);
       return [];
@@ -215,39 +236,37 @@ const squareService = {
     }
   },
 
- async getAllCashWeek() {
+  async getAllCashWeek() {
     try {
-      // Using moment-timezone and isoWeek (Monday as start)
-      const startOfWeek = moment().tz(timezone).startOf("isoWeek");
-      const endOfWeek = moment().tz(timezone).endOf("isoWeek");
+        let currentDate = moment().tz(timezone);
+        let startDate = currentDate.clone().startOf('isoWeek').startOf('day'); // Gets Monday
+        let endDate = startDate.clone().add(6, 'days').endOf('day'); // Gets Sunday
 
-     
+        const weeklyDonations = await Donation.findAll({
+            attributes: [
+                [col("user.team_member_id"), "team_member_id"],
+                [fn("SUM", col("Donation.amount")), "week_total"]
+            ],
+            include: [
+                {
+                    model: User,
+                    as: "user",
+                    attributes: []
+                }
+            ],
+            where: {
+                createdAt: { [Op.between]: [startDate.toDate(), endDate.toDate()] }
+            },
+            group: ["user.team_member_id"],
+            raw: true,
+        });
 
-const weeklyDonations = await Donation.findAll({
-        attributes: [
-          [col("user.team_member_id"), "team_member_id"],
-          [fn("SUM", col("Donation.amount")), "week_total"]
-        ],
-        include: [
-          {
-            model: User,
-            as: "user", // Must match the alias in your association
-            attributes: []
-          }
-        ],
-        where: {
-          createdAt: { [Op.between]: [startOfWeek.toDate(), endOfWeek.toDate()] }
-        },
-        group: ["user.team_member_id"],
-        raw: true,
-      });
-
-      return weeklyDonations;
+        return weeklyDonations;
     } catch (error) {
-      console.error("Error fetching weekly donations:", error);
-      throw error;
+        console.error("Error fetching weekly donations:", error);
+        throw error;
     }
-  }
+}
 };
 
 module.exports = squareService;
