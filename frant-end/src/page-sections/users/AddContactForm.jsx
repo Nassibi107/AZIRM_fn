@@ -10,6 +10,7 @@ import { AvatarBadge } from "@/components/avatar-badge"; // ====================
 import axios from "axios";
 import { useState } from "react";
 const ADMIN_ROUTE = import.meta.env.VITE_ADMIN_URL;
+const DNS = import.meta.env.VITE_DNS;
 // ==========================================================================
 const AddContactForm = ({
   handleCancel,
@@ -18,6 +19,23 @@ const AddContactForm = ({
    const [alertMessage, setAlertMessage] = useState(null); 
     const [isLoading, setIsLoading] = useState(true);
     const [alertSeverity, setAlertSeverity] = useState(null); 
+  const [selectedFile, setSelectedFile] = useState(null);
+  const [image, setImage] = useState(null); // State to store the image data
+
+    const handleFileChange = (event) => {
+      setSelectedFile(event.target.files[0]);
+      console.log(selectedFile);
+      
+        const file = event.target.files[0];
+        if (file) {
+          const reader = new FileReader();
+          reader.onloadend = () => {
+            setImage(reader.result); // Save the image data
+          };
+          reader.readAsDataURL(file); // Convert the image to a data URL
+        }
+      
+    };
   const downSm = useMediaQuery(theme => theme.breakpoints.down("sm"));
   const initialValues = data 
   ? {
@@ -92,8 +110,8 @@ const AddContactForm = ({
           <Stack direction="row" justifyContent="center" mb={6}>
             <AvatarBadge badgeContent={<label htmlFor="icon-button-file">
                   <input type="file" accept="image/*" id="icon-button-file" style={{
-              display: "none"
-            }} />
+              display: "none"   
+            }} onChange={handleFileChange}/>
 
                   <IconButton aria-label="upload picture" component="span">
                     <CameraAlt sx={{
@@ -102,7 +120,8 @@ const AddContactForm = ({
               }} />
                   </IconButton>
                 </label>}>
-              <Avatar src={data?.uimg || "/static/avatar/001-man.svg"} sx={{
+                
+              <Avatar src={image || DNS+data?.uimg } sx={{
               width: 80,
               height: 80,
               backgroundColor: "grey.100"

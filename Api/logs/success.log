@@ -1480,3 +1480,9 @@
 {"level":"info","message":{"method":"GET","status":304,"url":"/1743597164888.jpg"},"timestamp":"2025-04-02T13:12:16.701Z"}
 {"level":"info","message":{"method":"GET","status":304,"url":"/cmp/4"},"timestamp":"2025-04-02T13:12:16.716Z"}
 {"level":"info","message":{"method":"GET","status":304,"url":"/cmp/4"},"timestamp":"2025-04-02T13:12:16.732Z"}
+{"level":"info","message":{"method":"GET","status":304,"url":"/users"},"timestamp":"2025-04-02T13:19:34.247Z"}
+{"level":"info","message":{"method":"GET","status":304,"url":"/users"},"timestamp":"2025-04-02T13:19:34.265Z"}
+{"level":"info","message":{"method":"GET","status":304,"url":"/users"},"timestamp":"2025-04-02T13:19:34.501Z"}
+{"level":"info","message":{"method":"GET","status":304,"url":"/users"},"timestamp":"2025-04-02T13:19:34.519Z"}
+{"level":"info","message":{"method":"GET","status":304,"url":"/cmp/4"},"timestamp":"2025-04-02T13:20:11.362Z"}
+{"level":"info","message":{"method":"GET","status":304,"url":"/cmp/4"},"timestamp":"2025-04-02T13:20:11.453Z"}
