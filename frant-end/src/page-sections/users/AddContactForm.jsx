@@ -70,12 +70,14 @@ const AddContactForm = ({
         address: values.address,
         password: values.password,
         role: values.role,
-        label: values.label
+        label: values.label,
+        uimg : selectedFile
       };
-    
+      console.log(body);
+      console.log(body);
       const response = await axios.put(`${ADMIN_ROUTE}/user/${data.id}`, body, {
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'multipart/form-data',
         }
       });
       setAlertMessage("User update successfully!");
@@ -109,9 +111,14 @@ const AddContactForm = ({
       }}>
           <Stack direction="row" justifyContent="center" mb={6}>
             <AvatarBadge badgeContent={<label htmlFor="icon-button-file">
-                  <input type="file" accept="image/*" id="icon-button-file" style={{
-              display: "none"   
-            }} onChange={handleFileChange}/>
+                  <input
+                    type="file"  
+                    accept="image/*" 
+                    id="icon-button-file" 
+                    style={{ display: "none" }} 
+                    onChange={handleFileChange} 
+                  
+                  />
 
                   <IconButton aria-label="upload picture" component="span">
                     <CameraAlt sx={{
@@ -119,8 +126,7 @@ const AddContactForm = ({
                 color: "background.paper"
               }} />
                   </IconButton>
-                </label>}>
-                
+                </label>}>               
               <Avatar src={image || DNS+data?.uimg } sx={{
               width: 80,
               height: 80,
@@ -131,11 +137,11 @@ const AddContactForm = ({
 
         <Grid container spacing={3}>
             <Grid item lg={12 }xs={12}>
-                                        {alertMessage && (
-                                          <Alert severity={alertSeverity} sx={{ my: 2 }}>
-                                            {alertMessage}
-                                          </Alert>
-                                        )}</Grid>
+            {alertMessage && (
+              <Alert severity={alertSeverity} sx={{ my: 2 }}>
+                {alertMessage}
+              </Alert>
+            )}</Grid>
             <Grid item sm={6} xs={12}>
               <TextField fullWidth name="firstName" label="First Name" variant="standard" onBlur={handleBlur} value={values.firstName} onChange={handleChange} error={Boolean(errors.firstName && touched.firstName)} helperText={touched.firstName && errors.firstName} />
             </Grid>
@@ -175,8 +181,7 @@ const AddContactForm = ({
                     name="label"
                     value={values.label}
                     onChange={handleChange}
-                  >
-                  
+                  >               
                     <MenuItem value="LSI">LSI</MenuItem>
                     <MenuItem value="LvM">LvM</MenuItem>
                     <MenuItem value="Kenzo">Kenzo</MenuItem>
