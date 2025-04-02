@@ -3,6 +3,9 @@ const Employee = require("../Models/employeeModel");
 const { Transactions } = require("../Models");
 const { Square } = require("square");
 
+const { Op, Sequelize } = require("sequelize");
+const { User, Donation , } = require("../Models"); // Adjust path as needed
+
 
 const mergePaymentsById = (transactions, allCash, searchId) => {
     // Find the transaction by team_member_id
@@ -291,5 +294,22 @@ exports.getAllCashWeeK = async (req,res) => {
     }catch (error) {
             console.error("Error:", error);
             res.status(500).json({message: "Internal Server Error"});
+    }
+}
+
+exports.getDonationsByDate = async (req,res) => {
+    const { date } = req.query;
+    try{
+    
+        const donationCAsh = await squareService.getDonationsSummary(date);
+        if (donationCAsh.length === 0) {
+            return res.status(404).json({ message: "No donations found" });
+        }
+        console.log(donationCAsh);
+        res.status(200).json(donationCAsh);
+
+    }catch(error)
+    {
+        res.status(500).json({ message: "Internal Server Error" });
     }
 }

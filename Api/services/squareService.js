@@ -1,6 +1,6 @@
 const axios = require("axios");
 const { Transactions, Donation, User } = require("../Models");
-const { Op, fn, col } = require("sequelize");
+const { Op, fn, col , literal , Sequelize  } = require("sequelize");
 const models = require("../Models");
 
 // Load environment variables and moment-timezone
@@ -266,6 +266,60 @@ const squareService = {
         console.error("Error fetching weekly donations:", error);
         throw error;
     }
+},
+
+async getDonationsSummary(date) {
+  try {
+    const donationsSummary = await User.findAll({
+      attributes: [
+        "id",
+        "firstName",
+        "lastName",
+        [Sequelize.fn("DATE", Sequelize.col("donations.createdAt")), "donationDate"],
+        [Sequelize.fn("COUNT", Sequelize.col("donations.idD")), "donationCount"],
+        [Sequelize.fn("COALESCE", Sequelize.fn("SUM", Sequelize.col("donations.amount")), 0), "totalAmount"],
+      ],
+      include: [
+        {
+          model: Donation,
+          as: "donations",
+          attributes: ["idD", "createdAt", "amount"],
+          required: false, // LEFT JOIN
+          where: Sequelize.where(
+            Sequelize.fn("DATE", Sequelize.col("donations.createdAt")),
+            date
+          ),
+        },
+      ],
+      group: [
+        Sequelize.fn("DATE", Sequelize.col("donations.createdAt")),
+        "User.id",
+        "donations.idD",
+        "donations.createdAt",
+        "donations.amount",
+      ],
+      having: Sequelize.literal("COALESCE(SUM(donations.amount), 0) > 0"),
+      order: [[Sequelize.literal("COALESCE(SUM(donations.amount), 0)"), "DESC"]],
+      raw: false, // Keep raw false to maintain object structure
+    });
+
+    return donationsSummary.map(user => ({
+      id: user.id,
+      firstName: user.firstName,
+      lastName: user.lastName,
+      donationDate: user.donationDate,
+      donationCount: user.donationCount,
+      totalAmount: user.totalAmount,
+      donations: user.donations.map(d => ({
+        id: d.idD,
+        createdAt: d.createdAt,
+        amount: d.amount,
+      })),
+    }));
+  } catch (error) {
+    console.error("Error fetching donations summary:", error);
+    throw error;
+  }
 }
 };
 
