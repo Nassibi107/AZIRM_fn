@@ -102,7 +102,7 @@ const AddContactForm = ({
               }} />
                   </IconButton>
                 </label>}>
-              <Avatar src={data?.avatar || "/static/avatar/001-man.svg"} sx={{
+              <Avatar src={data?.uimg || "/static/avatar/001-man.svg"} sx={{
               width: 80,
               height: 80,
               backgroundColor: "grey.100"
@@ -145,7 +145,7 @@ const AddContactForm = ({
                               <MenuItem value="assistant">assistant</MenuItem>
                               <MenuItem value="teamLeader">teamLeader</MenuItem>
                               <MenuItem value="Leader">Leader</MenuItem>
-                              <MenuItem value="distribuer">distribuer</MenuItem>
+                              <MenuItem value="distribuer">distributuer</MenuItem>
                             </Select>
                           </Grid>
           <Grid item sm={6} xs={12}>

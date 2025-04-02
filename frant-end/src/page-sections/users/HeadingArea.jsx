@@ -43,7 +43,7 @@ const HeadingArea = ({
           <Tab disableRipple label="assistant" value="assistant" />
           <Tab disableRipple label="teamleader" value="teamleader" />
           <Tab disableRipple label="leader" value="leader" />
-          <Tab disableRipple label="distribuer" value="distbituer" />
+          <Tab disableRipple label="distribuer" value="distributeur" />
         </TabListWrapper>
       </TabContext>
 

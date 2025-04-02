@@ -29,6 +29,7 @@ import MoreHorizontal from "@/icons/MoreHorizontal";
 import { da } from "date-fns/locale";
 
 const   ADMIN_ROUTE = import.meta.env.VITE_ADMIN_URL;
+const DNS = import.meta.env.VITE_DNS;
 const UserDetails = ({
   data
 }) => {
@@ -38,6 +39,7 @@ const UserDetails = ({
   const [anchorEl, setAnchorEl] = useState(null);
   const [openDialog, setOpenDialog] = useState(false); // State to control the dialog
   const [cmp, setCmp] = useState();
+  
   const handleCloseModal = () => setOpenModal(false);
   const handleDeleteUser = async (id)=> {
     try {
@@ -121,7 +123,7 @@ useEffect(() => {
         </FlexBetween>
 
         <Stack alignItems="center">
-        <Avatar src={"https://apiv1.azirm.ca"+data.uimg} sx={{
+        <Avatar src={DNS+data.uimg} sx={{
           width: 120,
           height: 120,
           backgroundColor: "white"

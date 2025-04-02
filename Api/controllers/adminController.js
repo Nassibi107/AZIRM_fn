@@ -51,6 +51,7 @@ exports.register = async (req, res) => {
                 income,
                 status,
                 label,
+                team_member_id,
             } = req.body;
 
             // Hash password
@@ -67,6 +68,7 @@ exports.register = async (req, res) => {
                 password: passwordCrypt,
                 income,
                 status,
+                team_member_id,
                 uimg: req.file ? `/uploads/${req.file.filename}` : null, // Store image path
             };
 
@@ -185,58 +187,76 @@ exports.getUserId = async (req, res) => {
     }
 }
 
+
 exports.updateUserId = async (req, res) => {
     try {
         const { id } = req.params;
-        const { 
-            firstName,
-            lastName,
-            phoneNumber,
-            role,
-            address,
-            status,
-            label,
-            team_member_id,
-        } = req.body;
 
-        const user = await Model.User.findByPk(id);
-        if (!user) {
-            return res.status(404).json({ msg: 'User not found' });
-        }
-
-        // Only update fields that are provided (not undefined)
-        if (firstName !== undefined) user.firstName = firstName;
-        if (lastName !== undefined) user.lastName = lastName;
-        if (phoneNumber !== undefined) user.phoneNumber = phoneNumber;
-        if (role !== undefined) user.role = role;
-        if (address !== undefined) user.address = address;
-        if (status !== undefined) user.status = status;
-        if(team_member_id !== undefined) user.team_member_id = team_member_id;
-
-        console.log(user);
-
-        if (label) {  // Check if label is provided
-            const company = await Model.Company.findOne({ where: { label } });
-
-            console.log(company);
-            if (!company) {
-                return res.status(404).json({ msg: 'Company not found' });
+        upload.single('uimg')(req, res, async function (err) {
+            if (err) {
+                return res.status(400).json({ msg: 'Image upload failed', error: err.message });
             }
-            user.CmpRid = company.cmpID;
-        }
 
-        await user.save();  // Save only modified fields
+            const { 
+                firstName,
+                lastName,
+                phoneNumber,
+                role,
+                address,
+                status,
+                label,
+                email,
+                team_member_id
+            } = req.body;
 
-        // ✅ Send response after successful update
-        res.json({ msg: 'User updated successfully', user });
+            const user = await Model.User.findByPk(id);
+            if (!user) {
+                return res.status(404).json({ msg: 'User not found' });
+            }
+
+            const uploadDir = path.join(__dirname,'public', 'uploads');
+      console.log("userImg" , req.file);
+            // Handle new image update
+            if (req.file) {
+                if (user.uimg) {
+                    const oldImagePath = path.join(uploadDir, path.basename(user.uimg));
+                    if (fs.existsSync(oldImagePath)) {
+                        fs.unlinkSync(oldImagePath); // Delete old image
+                    }
+                }
+               
+                user.uimg = `/uploads/${req.file.filename}`; // Update image path
+            }
+
+            // Update other provided fields
+            if (firstName !== undefined) user.firstName = firstName;
+            if (lastName !== undefined) user.lastName = lastName;
+            if (phoneNumber !== undefined) user.phoneNumber = phoneNumber;
+            if (role !== undefined) user.role = role;
+            if (address !== undefined) user.address = address;
+            if (status !== undefined) user.status = status;
+            if (team_member_id !== undefined) user.team_member_id = team_member_id;
+            if (email !== undefined) user.email = email;
+
+            // Handle company association by label
+            if (label) {  
+                const company = await Model.Company.findOne({ where: { label } });
+                if (!company) {
+                    return res.status(404).json({ msg: 'Company not found' });
+                }
+                user.CmpRid = company.cmpID;
+            }
+
+            await user.save();
+
+            res.json({ msg: 'User updated successfully', user });
+        });
 
     } catch (error) {
         console.error(error.message);
         res.status(500).json({ msg: 'Server Error' });
-    } 
+    }
 };
-
-
 
 exports.updatestatus = async (req, res) => {
     try {
@@ -247,7 +267,6 @@ exports.updatestatus = async (req, res) => {
             { status },
             { where: { id } }
         );
-
         if (updated) {
             return res.status(200).json({ msg: 'User status updated successfully', status });
         } else {

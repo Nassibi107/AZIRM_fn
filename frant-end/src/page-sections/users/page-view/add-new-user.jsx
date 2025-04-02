@@ -275,7 +275,7 @@ const handleFileChange = (event) => {
                     <MenuItem value="assistant">assistant</MenuItem>
                     <MenuItem value="teamLeader">teamLeader</MenuItem>
                     <MenuItem value="Leader">Leader</MenuItem>
-                    <MenuItem value="distbituer">distbituer</MenuItem>
+                    <MenuItem value="distributeur">distributeur</MenuItem>
                   </Select>
                 </Grid>
 

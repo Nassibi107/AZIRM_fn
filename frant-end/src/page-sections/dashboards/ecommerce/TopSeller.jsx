@@ -9,18 +9,55 @@ import { numberFormat } from "@/utils/numberFormat"; // CUSTOM DUMMY DATA
 import axios  from "axios";
 import { useEffect, useState } from "react";
 
-const ADMIN_ROUTE = import.meta.env.VITE_ADMIN_URL;
+const ADMIN_USER = import.meta.env.VITE_LEADER_URL;
 
+const TopUserInconnu = [
+  {
+    "id": "0x00000",
+    "name": "Inconnu",
+    "totalPayments": 0,
+    "payments": [],
+    "urls": [],
+    "dates": [],
+    "cashDonations": 0
+},
+{
+  "id": "0x00000",
+  "name": "Inconnu",
+  "totalPayments": 0,
+  "payments": [],
+  "urls": [],
+  "dates": [],
+  "cashDonations": 0
+},  {
+  "id": "0x00000",
+  "name": "Inconnu",
+  "totalPayments": 0,
+  "payments": [],
+  "urls": [],
+  "dates": [],
+  "cashDonations": 0
+},  {
+  "id": "0x00000",
+  "name": "Inconnu",
+  "totalPayments": 0,
+  "payments": [],
+  "urls": [],
+  "dates": [],
+  "cashDonations": 0
+}
+]
 
 const TopSeller = () => {
   
-  const [emp ,setEmp] = useState();
+  const [emp ,setEmp] = useState([]);
   const[isLoading, setIsLoading] = useState(false);
   
   const _getEmployee = async () => {
     try{
       setIsLoading(true);
-      const res = await axios.get(`${ADMIN_ROUTE}/top-leaders`);
+      console.log(ADMIN_USER);
+      const res = await axios.get(`${ADMIN_USER}/top-leaders?date=now`);
       setEmp(res.data.slice(0, 4));
       setIsLoading(false);
       
@@ -91,6 +128,41 @@ const TopSeller = () => {
               {numberFormat(item.totalPayments)}
             </Paragraph>
           </FlexBetween>)}
+
+          {
+            emp?.length === 0 && TopUserInconnu.map(item => <FlexBetween key={item.id}>
+              <FlexBox gap={1.5}>
+                <Badge overlap="circular" anchorOrigin={{
+              vertical: "bottom",
+              horizontal: "right"
+            }} badgeContent={<Avatar alt="Remy Sharp" src={item.id} sx={{
+              all: "unset",
+              width: 17,
+              height: 17
+            }} />}>
+                  <Avatar alt={item.name} src={""} sx={{
+                width: 45,
+                height: 45
+              }} />
+                </Badge>
+  
+                <Box>
+                  <Small fontWeight={500} color="text.secondary">
+                   {item.id}
+                  </Small>
+  
+                  <Paragraph lineHeight={1} fontWeight={600}>
+                    {item.name}
+                  </Paragraph>
+                </Box>
+              </FlexBox>
+  
+              <Paragraph fontWeight={500} color="text.secondary">
+                {numberFormat(item.totalPayments)}
+              </Paragraph>
+            </FlexBetween>)
+          }
+
       </Stack>
     </Card>;
 };

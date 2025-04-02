@@ -86,7 +86,7 @@ const squareService = {
       do {
         if (date === "now") {
           url = `${BASE_URL}/payments?begin_time=${encodeURIComponent(todayStart)}&end_time=${encodeURIComponent(todayEnd)}`;
-          console.error("fetchPayments(date) urlz", url);
+          console.log("fetchPayments(date) urlz", url);
           cursor = null;
         } else {
           url = `${BASE_URL}/payments?begin_time=${encodeURIComponent(formattedStartDate)}&end_time=${encodeURIComponent(formattedEndDate)}`;

@@ -41,13 +41,15 @@ const UploadButton = styled(FlexRowAlign)(({
 }));
 
 const UpdateUser = () => {
-
+  const [selectedFile, setSelectedFile] = useState(null);
   const { id } = useParams();
   const [user, setUser] = useState(null);  // Initialize as null to handle loading state
   const [loading, setLoading] = useState(true); // Loading state to track when the user data is being fetched
   const [alertMessage, setAlertMessage] = useState(null); 
   const [isLoading, setIsLoading] = useState(true);
   const [alertSeverity, setAlertSeverity] = useState(null); 
+  const [image, setImage] = useState(null);
+
 
 
   // Fetch user data by ID
@@ -80,7 +82,8 @@ const UpdateUser = () => {
         role: user.role,
         address: user.address,
         password: "",
-        label: user.label
+        label: user.label,
+        teamMemberId :user.team_member_id
       }
     : {};
 
@@ -92,9 +95,25 @@ const UpdateUser = () => {
     email: Yup.string().email(),
     role: Yup.string(),
     address: Yup.string(),
-    password: Yup.string()
+    password: Yup.string(),
+    teamMemberId : Yup.string()
   });
 
+  const handleFileChange = (event) => {
+    setSelectedFile(event.target.files[0]);
+    console.log(selectedFile);
+    
+      const file = event.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onloadend = () => {
+          setImage(reader.result); // Save the image data
+        };
+        reader.readAsDataURL(file); // Convert the image to a data URL
+      }
+    
+  };
+  
   // Handle form submission
   const _handleSubmit = async (values) => {
     try {
@@ -106,11 +125,14 @@ const UpdateUser = () => {
         address: values.address,
         password: values.password,
         role: values.role,
-        label: values.label
+        label: values.label,
+        team_member_id : values.teamMemberId,
+        uimg: selectedFile
       };
+      console.log(body);
       const response = await axios.put(`${ADMIN_ROUTE}/user/${id}`, body, {
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'multipart/form-data',
         }
      
       });
@@ -152,10 +174,20 @@ const UpdateUser = () => {
             <ButtonWrapper>
               <UploadButton>
                 <label htmlFor="upload-btn">
-                  <input accept="image/*" id="upload-btn" type="file" style={{ display: "none" }} />
-                  <IconButton component="span">
-                    <PhotoCamera sx={{ fontSize: 26, color: "grey.400" }} />
-                  </IconButton>
+                  <input accept="image/*" id="upload-btn" type="file" style={{ display: "none" }}  onChange={handleFileChange} />
+                  {image ? (
+              // If an image is selected, display it
+              <img
+                src={image}
+                alt="Uploaded"
+                style={{ width: 100, height: 100, objectFit: 'cover', borderRadius: '50%' }}
+              />
+            ) : (
+              // Otherwise, display the IconButton
+              <IconButton component="span">
+                <PhotoCamera sx={{ fontSize: 26, color: "grey.400" }} />
+              </IconButton>
+            )}
                 </label>
               </UploadButton>
             </ButtonWrapper>
@@ -272,6 +304,18 @@ const UpdateUser = () => {
                     error={Boolean(touched.password && errors.password)}
                   />
                 </Grid>
+                <Grid item sm={8} xs={12}>
+                  <InputLabel>team member id</InputLabel>
+                  <TextField
+                    placeholder="get the code from squares"
+                    fullWidth
+                    name="teamMemberId"
+                    value={values.teamMemberId}
+                    onChange={handleChange}
+                    helperText={touched.teamMemberId && errors.teamMemberId}
+                    error={Boolean(touched.teamMemberId && errors.teamMemberId)}
+                  />
+                </Grid>
 
                 <Grid item sm={6} xs={12}>
                   <InputLabel>Role</InputLabel>
@@ -287,7 +331,7 @@ const UpdateUser = () => {
                   <MenuItem value="assistant">assistant</MenuItem>
                   <MenuItem value="teamLeader">teamLeader</MenuItem>
                   <MenuItem value="Leader">Leader</MenuItem>
-                  <MenuItem value="distbituer">distbituer</MenuItem>
+                  <MenuItem value="distributeur">distributeur</MenuItem>
                   </Select>
                 </Grid>
 

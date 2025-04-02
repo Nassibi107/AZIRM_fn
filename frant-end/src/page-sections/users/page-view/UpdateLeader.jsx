@@ -101,6 +101,7 @@ const UpdateUser = () => {
         password: values.password,
         role: values.role,
         label: values.label
+
       };
       const response = await axios.put(`${LEADER_ROUTE}/user/${id}`, body, {
         headers: {
@@ -142,48 +143,55 @@ const UpdateUser = () => {
                                 </Alert>
                               )}</Grid>
       <Grid item md={4} xs={12}>
-          <StyledCard>
-            <ButtonWrapper>
-              <UploadButton>
-                <label htmlFor="upload-btn">
-                  <input accept="image/*" id="upload-btn" type="file" style={{ display: "none" }} />
-                  <IconButton component="span">
-                    <PhotoCamera sx={{ fontSize: 26, color: "grey.400" }} />
-                  </IconButton>
-                </label>
-              </UploadButton>
-            </ButtonWrapper>
-
-            <Paragraph marginTop={2} maxWidth={200} display="block" textAlign="center" color="text.secondary">
-              Allowed *.jpeg, *.jpg, *.png, *.gif max size of 3.1 MB
-            </Paragraph>
-
-            <Box maxWidth={250} marginTop={5} marginBottom={1}>
-              <SwitchWrapper>
-                <Paragraph display="block" fontWeight={600}>
-                  Public Profile
-                </Paragraph>
-
-                <Switch defaultChecked />
-              </SwitchWrapper>
-
-              <Small display="block" color="text.secondary">
-                Apply disable account
-              </Small>
-
-              <SwitchWrapper>
-                <Paragraph display="block" fontWeight={600}>
-                  Email Verified
-                </Paragraph>
-
-                <Switch defaultChecked />
-              </SwitchWrapper>
-
-              <Small display="block" color="text.secondary">
-                Disabling this will automatically send the user a verification email
-              </Small>
-            </Box>
-          </StyledCard>
+           <StyledCard>
+                      <ButtonWrapper>
+                        {/* send imge from her */}
+                        <UploadButton>
+                          <label htmlFor="upload-btn">
+                            <input
+                              accept="image/*"
+                              id="upload-btn"
+                              type="file"
+                              style={{ display: "none" }}
+                              onChange={handleFileChange} // Capture the selected file
+                            />
+                            <IconButton component="span">
+                              <PhotoCamera sx={{ fontSize: 26, color: "grey.400" }} />
+                            </IconButton>
+                          </label>
+                        </UploadButton>
+                      </ButtonWrapper>
+          
+                      <Paragraph marginTop={2} maxWidth={200} display="block" textAlign="center" color="text.secondary">
+                        Allowed *.jpeg, *.jpg, *.png, *.gif max size of 3.1 MB
+                      </Paragraph>
+          
+                      <Box maxWidth={250} marginTop={5} marginBottom={1}>
+                        <SwitchWrapper>
+                          <Paragraph display="block" fontWeight={600}>
+                            Public Profile
+                          </Paragraph>
+          
+                          <Switch defaultChecked />
+                        </SwitchWrapper>
+          
+                        <Small display="block" color="text.secondary">
+                          Apply disable account
+                        </Small>
+          
+                        <SwitchWrapper>
+                          <Paragraph display="block" fontWeight={600}>
+                            Email Verified
+                          </Paragraph>
+          
+                          <Switch defaultChecked />
+                        </SwitchWrapper>
+          
+                        <Small display="block" color="text.secondary">
+                          Disabling this will automatically send the user a verification email
+                        </Small>
+                      </Box>
+                    </StyledCard>
         </Grid>
 
         <Grid item md={8} xs={12}>
@@ -240,6 +248,18 @@ const UpdateUser = () => {
                     error={Boolean(touched.phoneNumber && errors.phoneNumber)}
                   />
                 </Grid>
+                 <Grid item sm={6} xs={12}>
+                                  <InputLabel>team member id</InputLabel>
+                                  <TextField
+                                    placeholder="get the code from squares"
+                                    fullWidth
+                                    name="teamMemberId"
+                                    value={values.password}
+                                    onChange={handleChange}
+                                    helperText={touched.password && errors.password}
+                                    error={Boolean(touched.password && errors.password)}
+                                  />
+                                </Grid>
 
                 <Grid item sm={6} xs={12}>
                   <InputLabel>Address</InputLabel>

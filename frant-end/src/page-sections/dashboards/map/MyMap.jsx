@@ -177,8 +177,7 @@ const MyMap = () => {
     const letname = name.split(" ")[1];
     const userID = usersInfo.find(user => user.lastName === letname)?.id;
     console.log(usersInfo);
-
-    console.log("userId : "  + userID)
+    console.log(locations)
     const requests = locations.map(location => {
       const body = {
         amount: 0,
@@ -191,7 +190,7 @@ const MyMap = () => {
   
       return axios.post(`${VITE_LEADER}/don`, body);
     });
-    // console.log(requests);
+    console.log(requests);
     try {
       const responses = await Promise.all(requests); // Wait for all requests to complete
       responses.forEach(response => console.log('Request successful:', response.data));

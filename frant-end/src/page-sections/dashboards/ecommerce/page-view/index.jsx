@@ -23,9 +23,6 @@ const EcommercePageView = () => {
         <Grid item lg={4} sm={6} xs={12}>
           <DailyVisitors />
         </Grid>
-
-  
-
         {
         /* ORDER THIS MONTH CARD */
       }
