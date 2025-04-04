@@ -45,13 +45,7 @@ const Cash = () => {
   return `${day}-${month}-${year}`;
   };
 
-  // Format End Date: Set time to 23:59:59.999Z
-  const formatEndDate = (date) => {
-    if (!date) return null;
-    let d = new Date(date);
-    d.setUTCHours(23, 59, 59, 999);
-    return d.toISOString().substring(0, 10);
-  };
+ 
 
   useEffect(() => {
     if (!sdata || !edata) return; // Prevent fetching if dates are not selected
@@ -60,7 +54,7 @@ const Cash = () => {
       try {
         setIsLoading(true); // Start loading
         const response = await axios.get(
-          `${ADMIN_ROUTE}/reportDaily?date=${formatStartDate(sdata)}` 
+          `${ADMIN_ROUTE}/reportDaily?dates=${formatStartDate(sdata)}&daten=${formatStartDate(edata)}` 
         );
         setDataReport(response.data);
         console.log(response); // Use response.data instead of response.json()
@@ -82,10 +76,11 @@ const Cash = () => {
   const columns = [
     { field: 'id', headerName: 'id', width: 180 },
     { field: 'firstName', headerName: 'prenom', width: 150 },
-    { field: 'lastName', headerName: 'nom', width: 180 },
-    { field: 'donationDate', headerName: 'date', width: 180 },
-    { field: 'donationCount', headerName: 'count', width: 180 },
-    { field: 'totalAmount', headerName: 'total', width: 180 },
+    { field: 'lastName', headerName: 'nom', width: 120 },
+    { field: 'donationDate', headerName: 'start date', width: 180 },
+    { field: 'donationEnd', headerName: 'end date', width: 180 },
+    { field: 'donationCount', headerName: 'count', width: 90 },
+    { field: 'totalAmount', headerName: 'total', width: 100 },
   ];
 
   // Convert API Data to Table Rows
@@ -93,7 +88,8 @@ const Cash = () => {
     id: user.id,
     firstName: user.firstName,
     lastName: user.lastName,
-    donationDate: user.donationDate.substring(0, 10),
+    donationDate: user.donationDate,
+    donationEnd :user.donationEnd,
     donationCount: user.donationCount,
     totalAmount: user.totalAmount.toFixed(2), 
   }));
@@ -106,7 +102,7 @@ const Cash = () => {
     const excelBuffer = XLSX.write(wb, { bookType: 'xlsx', type: 'array' });
     const file = new Blob([excelBuffer], { type: 'application/octet-stream' });
 
-    saveAs(file, 'report_data.xlsx');
+    saveAs(file, `cash_${sdata}_${edata}.xlsx`);
   };
 
   return (
@@ -125,6 +121,15 @@ const Cash = () => {
               label="Start Date"
               value={sdata}
               onChange={(date) => setSdata(date)}
+              fullWidth
+              renderInput={(params) => <TextField {...params} fullWidth />}
+            />
+          </Grid>
+          <Grid item md={4} xs={12} sm={4}>
+            <DatePicker
+              label="End Date"
+              value={edata}
+              onChange={(date) => setEdata(date)}
               fullWidth
               renderInput={(params) => <TextField {...params} fullWidth />}
             />

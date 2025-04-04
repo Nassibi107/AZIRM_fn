@@ -43,7 +43,7 @@ const MultiLevelMenu = ({
 
   const renderLevels = data => {
     return data.map((item, index) => {
-      console.log(data);
+     
       // MENU LABEL DESIGN
       if (item.type === "label") {
         return <ListLabel key={index} compact={COMPACT}>

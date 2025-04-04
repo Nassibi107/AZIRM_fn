@@ -49,16 +49,28 @@ const AddNewUserPageView = () => {
     role: "",
     address: "",
     password: "",
-    label: ""
+    label: "",
+    team_member_id : ""
   };
   const [alertMessage, setAlertMessage] = useState(null); 
   const [isLoading, setIsLoading] = useState(false);
   const [alertSeverity, setAlertSeverity] = useState(null); 
   const [selectedFile, setSelectedFile] = useState(null);
-
-const handleFileChange = (event) => {
-  setSelectedFile(event.target.files[0]);
-};
+ const [image, setImage] = useState(null);
+  const handleFileChange = (event) => {
+    setSelectedFile(event.target.files[0]);
+    console.log(selectedFile);
+    
+      const file = event.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onloadend = () => {
+          setImage(reader.result); // Save the image data
+        };
+        reader.readAsDataURL(file); // Convert the image to a data URL
+      }
+    
+  };
 
   const validationSchema = Yup.object().shape({
     firstName: Yup.string().required("First Name is Required!"),
@@ -68,7 +80,7 @@ const handleFileChange = (event) => {
     role: Yup.string().required("Role is Required!"),
     address: Yup.string().required("Address is Required!"),
     password: Yup.string().required("Password is Required!"),
-    
+    team_member_id : Yup.string().required("Team Member ID is Required!"),
   });
   
   const _handleSubmit = async (values) => {
@@ -83,6 +95,7 @@ const handleFileChange = (event) => {
       formData.append("password", values.password);
       formData.append("role", values.role);
       formData.append("label", values.label);
+      formData.append("team_member_id", values.team_member_id); // Assuming you want to set this to true by default
   
       if (selectedFile) {
         formData.append("uimg", selectedFile); // Add the selected image file
@@ -126,24 +139,26 @@ const handleFileChange = (event) => {
     
         <Grid item md={4} xs={12}>
           <StyledCard>
-            <ButtonWrapper>
-              {/* send imge from her */}
-              <UploadButton>
-                <label htmlFor="upload-btn">
-                  <input
-                    accept="image/*"
-                    id="upload-btn"
-                    type="file"
-                    style={{ display: "none" }}
-                    onChange={handleFileChange} // Capture the selected file
-                  />
-                  <IconButton component="span">
-                    <PhotoCamera sx={{ fontSize: 26, color: "grey.400" }} />
-                  </IconButton>
-                </label>
-              </UploadButton>
-            </ButtonWrapper>
-
+                <ButtonWrapper>
+                         <UploadButton>
+                           <label htmlFor="upload-btn">
+                             <input accept="image/*" id="upload-btn" type="file" style={{ display: "none" }}  onChange={handleFileChange} />
+                             {image ? (
+                         // If an image is selected, display it
+                         <img
+                           src={image}
+                           alt="Uploaded"
+                           style={{ width: 100, height: 100, objectFit: 'contain', borderRadius: '50%' }}
+                         />
+                       ) : (
+                         // Otherwise, display the IconButton
+                         <IconButton component="span">
+                           <PhotoCamera sx={{ fontSize: 26, color: "grey.400" }} />
+                         </IconButton>
+                       )}
+                           </label>
+                         </UploadButton>
+                </ButtonWrapper>
             <Paragraph marginTop={2} maxWidth={200} display="block" textAlign="center" color="text.secondary">
               Allowed *.jpeg, *.jpg, *.png, *.gif max size of 3.1 MB
             </Paragraph>
@@ -256,7 +271,18 @@ const handleFileChange = (event) => {
                     error={Boolean(touched.password && errors.password)} 
                   />
                 </Grid>
-
+              <Grid item sm={8} xs={12}>
+                  <InputLabel>team member id</InputLabel>
+                  <TextField
+                    placeholder="get the code from squares"
+                    fullWidth
+                    name="team_member_id"
+                    value={values.team_member_id}
+                    onChange={handleChange}
+                    helperText={touched.team_member_id && errors.team_member_id}
+                    error={Boolean(touched.team_member_id && errors.team_member_id)}
+                  />
+                </Grid>
                 <Grid item sm={6} xs={12}>
                   <InputLabel id="role-label">Role</InputLabel>
                   <Select
