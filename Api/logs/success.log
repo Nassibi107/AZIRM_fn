@@ -2050,3 +2050,442 @@
 {"level":"info","message":{"method":"GET","status":200,"url":"/reportDaily?date=2025-03-08"},"timestamp":"2025-04-02T17:56:50.546Z"}
 {"level":"info","message":"Server started on port 4000","timestamp":"2025-04-02T17:57:58.153Z"}
 {"level":"info","message":{"method":"GET","status":200,"url":"/reportDaily?date=2025-03-08"},"timestamp":"2025-04-02T17:58:03.725Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-04-02T17:58:43.211Z"}
+{"level":"info","message":{"method":"GET","status":200,"url":"/reportDaily?date=2025-03-08"},"timestamp":"2025-04-02T17:58:51.907Z"}
+{"level":"info","message":{"method":"GET","status":200,"url":"/reportDaily?date=2025-03-08"},"timestamp":"2025-04-02T17:59:46.300Z"}
+{"level":"info","message":{"method":"GET","status":200,"url":"/reportDaily?date=2025-03-08"},"timestamp":"2025-04-02T18:00:17.729Z"}
+{"level":"info","message":{"method":"GET","status":200,"url":"/reportDaily?date=2025-03-08"},"timestamp":"2025-04-02T18:00:57.264Z"}
+{"level":"info","message":{"method":"GET","status":200,"url":"/reportDaily?date=2025-03-16"},"timestamp":"2025-04-02T18:01:26.130Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=2025-03-27"},"timestamp":"2025-04-02T18:08:20.104Z"}
+{"level":"info","message":{"method":"GET","status":200,"url":"/reportDaily?date=2025-03-27"},"timestamp":"2025-04-02T18:09:01.241Z"}
+{"level":"info","message":{"method":"GET","status":200,"url":"/reportDaily?date=2025-03-27"},"timestamp":"2025-04-02T18:09:17.352Z"}
+{"level":"info","message":{"method":"GET","status":401,"url":"/reportDaily?date=2025-03-27"},"timestamp":"2025-04-02T18:11:12.833Z"}
+{"level":"info","message":{"method":"GET","status":401,"url":"/reportDaily?date=2025-03-27"},"timestamp":"2025-04-02T18:11:18.438Z"}
+{"level":"info","message":{"method":"POST","status":200,"url":"/login"},"timestamp":"2025-04-02T18:11:32.139Z"}
+{"level":"info","message":{"method":"GET","status":200,"url":"/reportDaily?date=2025-03-27"},"timestamp":"2025-04-02T18:11:55.514Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-04-02T18:13:33.856Z"}
+{"level":"info","message":{"method":"GET","status":200,"url":"/reportDaily?date=2025-03-27"},"timestamp":"2025-04-02T18:13:36.801Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-04-02T18:14:30.111Z"}
+{"level":"info","message":{"method":"GET","status":500,"url":"/reportDaily?date=2025-03-27"},"timestamp":"2025-04-02T18:14:33.009Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-04-02T18:14:43.558Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-04-02T18:15:14.897Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-04-02T18:15:26.760Z"}
+{"level":"info","message":{"method":"GET","status":200,"url":"/reportDaily?date=2025-03-27"},"timestamp":"2025-04-02T18:15:29.704Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-04-02T18:31:06.818Z"}
+{"level":"info","message":{"method":"GET","status":200,"url":"/reportDaily?date=2025-03-27"},"timestamp":"2025-04-02T18:31:07.678Z"}
+{"level":"info","message":{"method":"GET","status":200,"url":"/reportDaily?date=2025-03-27"},"timestamp":"2025-04-02T18:31:09.591Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-04-02T18:31:25.225Z"}
+{"level":"info","message":{"method":"GET","status":200,"url":"/reportDaily?date=2025-03-27"},"timestamp":"2025-04-02T18:31:30.316Z"}
+{"level":"info","message":{"method":"GET","status":200,"url":"/reportDaily?date=2025-03-27"},"timestamp":"2025-04-02T18:32:16.705Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-04-03T16:21:30.613Z"}
+{"level":"info","message":{"method":"GET","status":401,"url":"/me"},"timestamp":"2025-04-03T16:21:52.391Z"}
+{"level":"info","message":{"method":"GET","status":401,"url":"/me"},"timestamp":"2025-04-03T16:21:52.405Z"}
+{"level":"info","message":{"method":"POST","status":200,"url":"/login"},"timestamp":"2025-04-03T16:24:59.506Z"}
+{"level":"info","message":{"method":"GET","status":200,"url":"/me"},"timestamp":"2025-04-03T16:24:59.527Z"}
+{"level":"info","message":{"method":"GET","status":304,"url":"/me"},"timestamp":"2025-04-03T16:24:59.885Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/top-leaders?date=now"},"timestamp":"2025-04-03T16:25:04.083Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/top-leaders?date=now"},"timestamp":"2025-04-03T16:25:05.277Z"}
+{"level":"info","message":{"method":"GET","status":200,"url":"/report?startDate=2025-04-03T00:00:00.000Z&endDate=2025-04-03T23:59:59.999Z"},"timestamp":"2025-04-03T16:25:18.368Z"}
+{"level":"info","message":{"method":"GET","status":304,"url":"/report?startDate=2025-04-03T00:00:00.000Z&endDate=2025-04-03T23:59:59.999Z"},"timestamp":"2025-04-03T16:25:19.353Z"}
+{"level":"info","message":{"method":"GET","status":200,"url":"/team-members"},"timestamp":"2025-04-03T16:25:38.277Z"}
+{"level":"info","message":{"method":"GET","status":304,"url":"/team-members"},"timestamp":"2025-04-03T16:25:38.514Z"}
+{"level":"info","message":{"method":"GET","status":304,"url":"/report?startDate=2025-04-03T00:00:00.000Z&endDate=2025-04-03T23:59:59.999Z"},"timestamp":"2025-04-03T16:28:04.677Z"}
+{"level":"info","message":{"method":"GET","status":304,"url":"/report?startDate=2025-04-03T00:00:00.000Z&endDate=2025-04-03T23:59:59.999Z"},"timestamp":"2025-04-03T16:28:05.831Z"}
+{"level":"info","message":{"method":"GET","status":401,"url":"/reportDaily?date=2025-03-27"},"timestamp":"2025-04-03T16:55:56.814Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-04-03T17:00:33.514Z"}
+{"level":"info","message":{"method":"POST","status":200,"url":"/login"},"timestamp":"2025-04-03T17:04:41.525Z"}
+{"level":"info","message":{"method":"GET","status":200,"url":"/reportDaily?date=2025-03-27"},"timestamp":"2025-04-03T17:05:06.388Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-04-03T17:07:57.977Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-04-03T17:08:03.313Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-04-03T17:08:19.217Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-04-03T17:08:31.678Z"}
+{"level":"info","message":{"method":"GET","status":200,"url":"/reportDaily?date=2025-03-27"},"timestamp":"2025-04-03T17:08:33.661Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-04-03T17:11:33.991Z"}
+{"level":"info","message":{"method":"GET","status":200,"url":"/reportDaily?date=2025-03-27"},"timestamp":"2025-04-03T17:11:48.332Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-04-03T17:12:32.805Z"}
+{"level":"info","message":{"method":"GET","status":200,"url":"/reportDaily?date=2025-03-27"},"timestamp":"2025-04-03T17:13:34.499Z"}
+{"level":"info","message":{"method":"GET","status":200,"url":"/reportDaily?date=2025-03-27"},"timestamp":"2025-04-03T17:13:42.240Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-04-03T17:14:05.080Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-04-03T17:14:11.089Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-04-03T17:14:14.506Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-04-03T17:14:20.307Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-04-03T17:14:23.901Z"}
+{"level":"info","message":{"method":"GET","status":200,"url":"/reportDaily?date=2025-03-27"},"timestamp":"2025-04-03T17:14:24.352Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-04-03T17:14:49.845Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-04-03T17:15:01.147Z"}
+{"level":"info","message":{"method":"GET","status":200,"url":"/reportDaily?date=2025-03-27"},"timestamp":"2025-04-03T17:15:26.763Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-04-03T17:19:49.895Z"}
+{"level":"info","message":{"method":"GET","status":200,"url":"/reportDaily?date=2025-03-27"},"timestamp":"2025-04-03T17:19:51.085Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-04-03T17:22:55.532Z"}
+{"level":"info","message":{"method":"GET","status":500,"url":"/reportDaily?date=2025-03-27"},"timestamp":"2025-04-03T17:22:55.711Z"}
+{"level":"info","message":{"method":"GET","status":500,"url":"/reportDaily?date=2025-03-27"},"timestamp":"2025-04-03T17:22:58.685Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-04-03T17:23:09.363Z"}
+{"level":"info","message":{"method":"GET","status":200,"url":"/reportDaily?date=2025-03-27"},"timestamp":"2025-04-03T17:23:09.738Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-04-03T17:23:51.318Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-04-03T17:24:01.596Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-04-03T17:24:07.604Z"}
+{"level":"info","message":{"method":"GET","status":500,"url":"/reportDaily?date=2025-03-27"},"timestamp":"2025-04-03T17:24:07.960Z"}
+{"level":"info","message":{"method":"GET","status":500,"url":"/reportDaily?date=2025-03-27"},"timestamp":"2025-04-03T17:24:09.695Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-04-03T17:24:30.864Z"}
+{"level":"info","message":{"method":"GET","status":200,"url":"/reportDaily?date=2025-03-27"},"timestamp":"2025-04-03T17:24:31.073Z"}
+{"level":"info","message":{"method":"GET","status":200,"url":"/reportDaily?date=2025-03-27"},"timestamp":"2025-04-03T17:24:51.783Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-04-03T17:25:23.465Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-04-03T17:25:28.403Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-04-03T17:26:18.392Z"}
+{"level":"info","message":{"method":"GET","status":200,"url":"/reportDaily?date=2025-03-27"},"timestamp":"2025-04-03T17:26:19.301Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-04-03T17:26:57.390Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-04-03T17:27:02.520Z"}
+{"level":"info","message":{"method":"GET","status":200,"url":"/reportDaily?date=2025-03-27"},"timestamp":"2025-04-03T17:27:03.771Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-04-03T17:27:41.606Z"}
+{"level":"info","message":{"method":"GET","status":200,"url":"/reportDaily?date=2025-03-27"},"timestamp":"2025-04-03T17:27:42.311Z"}
+{"level":"info","message":{"method":"GET","status":200,"url":"/users"},"timestamp":"2025-04-03T17:28:21.998Z"}
+{"level":"info","message":{"method":"GET","status":304,"url":"/users"},"timestamp":"2025-04-03T17:28:22.015Z"}
+{"level":"info","message":{"method":"GET","status":304,"url":"/cmp/4"},"timestamp":"2025-04-03T17:28:22.109Z"}
+{"level":"info","message":{"method":"GET","status":304,"url":"/cmp/4"},"timestamp":"2025-04-03T17:28:22.123Z"}
+{"level":"info","message":{"method":"GET","status":304,"url":"/cmp/4"},"timestamp":"2025-04-03T17:28:22.133Z"}
+{"level":"info","message":{"method":"GET","status":304,"url":"/cmp/4"},"timestamp":"2025-04-03T17:28:22.143Z"}
+{"level":"info","message":{"method":"GET","status":304,"url":"/cmp/4"},"timestamp":"2025-04-03T17:28:22.151Z"}
+{"level":"info","message":{"method":"GET","status":304,"url":"/cmp/4"},"timestamp":"2025-04-03T17:28:22.161Z"}
+{"level":"info","message":{"method":"GET","status":304,"url":"/cmp/4"},"timestamp":"2025-04-03T17:28:22.171Z"}
+{"level":"info","message":{"method":"GET","status":304,"url":"/cmp/4"},"timestamp":"2025-04-03T17:28:22.181Z"}
+{"level":"info","message":{"method":"GET","status":304,"url":"/cmp/4"},"timestamp":"2025-04-03T17:28:22.189Z"}
+{"level":"info","message":{"method":"GET","status":304,"url":"/cmp/4"},"timestamp":"2025-04-03T17:28:22.203Z"}
+{"level":"info","message":{"method":"GET","status":200,"url":"/report?startDate=2025-04-03T00:00:00.000Z&endDate=2025-04-03T23:59:59.999Z"},"timestamp":"2025-04-03T17:28:23.260Z"}
+{"level":"info","message":{"method":"GET","status":304,"url":"/report?startDate=2025-04-03T00:00:00.000Z&endDate=2025-04-03T23:59:59.999Z"},"timestamp":"2025-04-03T17:28:23.994Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-04-04T11:55:01.466Z"}
+{"level":"info","message":{"method":"POST","status":200,"url":"/login"},"timestamp":"2025-04-04T11:57:45.079Z"}
+{"level":"info","message":{"method":"GET","status":304,"url":"/me"},"timestamp":"2025-04-04T11:57:45.163Z"}
+{"level":"info","message":{"method":"GET","status":304,"url":"/me"},"timestamp":"2025-04-04T11:57:45.223Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/top-leaders?date=now"},"timestamp":"2025-04-04T11:57:46.255Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/top-leaders?date=now"},"timestamp":"2025-04-04T11:57:46.304Z"}
+{"level":"info","message":{"method":"GET","status":200,"url":"/report?startDate=2025-04-04T00:00:00.000Z&endDate=2025-04-04T23:59:59.999Z"},"timestamp":"2025-04-04T11:57:50.323Z"}
+{"level":"info","message":{"method":"GET","status":304,"url":"/report?startDate=2025-04-04T00:00:00.000Z&endDate=2025-04-04T23:59:59.999Z"},"timestamp":"2025-04-04T11:57:50.354Z"}
+{"level":"info","message":{"method":"GET","status":304,"url":"/me"},"timestamp":"2025-04-04T11:57:55.411Z"}
+{"level":"info","message":{"method":"GET","status":304,"url":"/me"},"timestamp":"2025-04-04T11:57:55.431Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=2025-04-04T00:00:00.000Z"},"timestamp":"2025-04-04T11:57:56.321Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=2025-04-04T00:00:00.000Z"},"timestamp":"2025-04-04T11:57:56.365Z"}
+{"level":"info","message":{"method":"GET","status":304,"url":"/report?startDate=2025-04-04T00:00:00.000Z&endDate=2025-04-04T23:59:59.999Z"},"timestamp":"2025-04-04T12:00:03.080Z"}
+{"level":"info","message":{"method":"GET","status":304,"url":"/report?startDate=2025-04-04T00:00:00.000Z&endDate=2025-04-04T23:59:59.999Z"},"timestamp":"2025-04-04T12:00:03.158Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=2025-04-04T00:00:00.000Z"},"timestamp":"2025-04-04T12:00:03.855Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=2025-04-04T00:00:00.000Z"},"timestamp":"2025-04-04T12:00:03.880Z"}
+{"level":"info","message":{"method":"GET","status":304,"url":"/report?startDate=2025-04-04T00:00:00.000Z&endDate=2025-04-04T23:59:59.999Z"},"timestamp":"2025-04-04T12:00:16.227Z"}
+{"level":"info","message":{"method":"GET","status":304,"url":"/report?startDate=2025-04-04T00:00:00.000Z&endDate=2025-04-04T23:59:59.999Z"},"timestamp":"2025-04-04T12:00:16.249Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=2025-04-04T00:00:00.000Z"},"timestamp":"2025-04-04T12:00:16.644Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=2025-04-04T00:00:00.000Z"},"timestamp":"2025-04-04T12:00:16.686Z"}
+{"level":"info","message":{"method":"GET","status":304,"url":"/me"},"timestamp":"2025-04-04T12:14:33.660Z"}
+{"level":"info","message":{"method":"GET","status":304,"url":"/me"},"timestamp":"2025-04-04T12:14:33.670Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=2025-04-04T00:00:00.000Z"},"timestamp":"2025-04-04T12:14:36.706Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=2025-04-04T00:00:00.000Z"},"timestamp":"2025-04-04T12:14:36.729Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-04-04T12:16:31.351Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=2025-03-04T00:00:00.000Z"},"timestamp":"2025-04-04T12:17:43.523Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=0025-03-02T00:00:00.000Z"},"timestamp":"2025-04-04T12:17:44.608Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=0025-03-20T00:00:00.000Z"},"timestamp":"2025-04-04T12:17:44.769Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=0025-03-12T00:00:00.000Z"},"timestamp":"2025-04-04T12:17:44.997Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=0025-03-10T00:00:00.000Z"},"timestamp":"2025-04-04T12:17:46.875Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=0025-03-18T00:00:00.000Z"},"timestamp":"2025-04-04T12:17:47.162Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=0002-03-18T00:00:00.000Z"},"timestamp":"2025-04-04T12:17:49.711Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=0002-03-18T00:00:00.000Z"},"timestamp":"2025-04-04T12:17:51.744Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=0020-03-18T00:00:00.000Z"},"timestamp":"2025-04-04T12:17:52.115Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=0202-03-18T00:00:00.000Z"},"timestamp":"2025-04-04T12:17:52.913Z"}
+{"level":"info","message":{"method":"GET","status":200,"url":"/reportDaily?date=2025-03-18T00:00:00.000Z"},"timestamp":"2025-04-04T12:17:53.216Z"}
+{"level":"info","message":{"method":"GET","status":304,"url":"/report?startDate=2025-04-04T00:00:00.000Z&endDate=2025-04-04T23:59:59.999Z"},"timestamp":"2025-04-04T12:19:44.818Z"}
+{"level":"info","message":{"method":"GET","status":304,"url":"/report?startDate=2025-04-04T00:00:00.000Z&endDate=2025-04-04T23:59:59.999Z"},"timestamp":"2025-04-04T12:19:44.849Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=2025-04-04T00:00:00.000Z"},"timestamp":"2025-04-04T12:19:46.273Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=2025-04-04T00:00:00.000Z"},"timestamp":"2025-04-04T12:19:46.340Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=0202-04-04T00:00:00.000Z"},"timestamp":"2025-04-04T12:20:01.807Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=2025-04-04T00:00:00.000Z"},"timestamp":"2025-04-04T12:20:01.823Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-04-04T12:20:43.482Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-04-04T12:20:59.054Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=2025-04-04T00:00:00.000Z"},"timestamp":"2025-04-04T12:21:06.757Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=2025-04-04T00:00:00.000Z"},"timestamp":"2025-04-04T12:21:42.364Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=2025-04-04T00:00:00.000Z"},"timestamp":"2025-04-04T12:21:44.174Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=2025-04-04T00:00:00.000Z"},"timestamp":"2025-04-04T12:22:34.334Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=2025-04-04T00:00:00.000Z"},"timestamp":"2025-04-04T12:22:37.274Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=2025-04-04T00:00:00.000Z"},"timestamp":"2025-04-04T12:22:45.214Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=2025-04-04T00:00:00.000Z"},"timestamp":"2025-04-04T12:22:48.167Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=2025-04-04T00:00:00.000Z"},"timestamp":"2025-04-04T12:22:50.180Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=2025-04-04T00:00:00.000Z"},"timestamp":"2025-04-04T12:22:52.176Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=2025-04-04T00:00:00.000Z"},"timestamp":"2025-04-04T12:22:55.196Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=2025-04-04T00:00:00.000Z"},"timestamp":"2025-04-04T12:23:00.206Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=2025-04-04T00:00:00.000Z"},"timestamp":"2025-04-04T12:23:13.057Z"}
+{"level":"info","message":{"method":"POST","status":200,"url":"/login"},"timestamp":"2025-04-04T12:30:10.955Z"}
+{"level":"info","message":{"method":"GET","status":200,"url":"/reportDaily?date=2025-03-08"},"timestamp":"2025-04-04T12:31:29.659Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=2025-04-04T00:00:00.000Z"},"timestamp":"2025-04-04T12:31:59.385Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=2025-04-04T00:00:00.000Z"},"timestamp":"2025-04-04T12:32:20.563Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=2025-04-04T00:00:00.000Z"},"timestamp":"2025-04-04T12:32:25.169Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=2025-04-04T00:00:00.000Z"},"timestamp":"2025-04-04T12:32:29.181Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=2025-04-04T00:00:00.000Z"},"timestamp":"2025-04-04T12:32:33.273Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=2025-04-04T00:00:00.000Z"},"timestamp":"2025-04-04T12:32:37.250Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=2025-04-04T00:00:00.000Z"},"timestamp":"2025-04-04T12:32:39.354Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=2025-04-04T00:00:00.000Z"},"timestamp":"2025-04-04T12:32:45.403Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=2025-04-04T00:00:00.000Z"},"timestamp":"2025-04-04T12:32:49.235Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=2025-04-04T00:00:00.000Z"},"timestamp":"2025-04-04T12:32:53.197Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=2025-04-04T00:00:00.000Z"},"timestamp":"2025-04-04T12:32:55.230Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=2025-04-04T00:00:00.000Z"},"timestamp":"2025-04-04T12:32:57.377Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=2025-04-04T00:00:00.000Z"},"timestamp":"2025-04-04T12:32:59.195Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=2025-04-04T00:00:00.000Z"},"timestamp":"2025-04-04T12:33:04.230Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=2025-04-04T00:00:00.000Z"},"timestamp":"2025-04-04T12:33:06.220Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=2025-04-04T00:00:00.000Z"},"timestamp":"2025-04-04T12:33:07.176Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=2025-04-04T00:00:00.000Z"},"timestamp":"2025-04-04T12:33:13.209Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=2025-04-04T00:00:00.000Z"},"timestamp":"2025-04-04T12:33:15.250Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=2025-04-04T00:00:00.000Z"},"timestamp":"2025-04-04T12:33:29.587Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=2025-04-04T00:00:00.000Z"},"timestamp":"2025-04-04T12:33:35.177Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=2025-04-04T00:00:00.000Z"},"timestamp":"2025-04-04T12:33:43.214Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=2025-04-04T00:00:00.000Z"},"timestamp":"2025-04-04T12:33:45.186Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=2025-04-04T00:00:00.000Z"},"timestamp":"2025-04-04T12:33:54.194Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=2025-04-04T00:00:00.000Z"},"timestamp":"2025-04-04T12:34:01.190Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=2025-08-03T00:00:00.000Z"},"timestamp":"2025-04-04T12:34:10.922Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=0025-08-02T00:00:00.000Z"},"timestamp":"2025-04-04T12:34:12.232Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=2025-08-02T00:00:00.000Z"},"timestamp":"2025-04-04T12:34:12.808Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=0202-08-03T00:00:00.000Z"},"timestamp":"2025-04-04T12:34:16.139Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=2025-08-02T00:00:00.000Z"},"timestamp":"2025-04-04T12:34:16.792Z"}
+{"level":"info","message":{"method":"GET","status":200,"url":"/reportDaily?date=2025-03-08"},"timestamp":"2025-04-04T12:34:41.209Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=2025-08-02T00:00:00.000Z"},"timestamp":"2025-04-04T12:36:50.364Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=2025-08-02"},"timestamp":"2025-04-04T12:36:58.343Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=0202-08-03"},"timestamp":"2025-04-04T12:37:05.856Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=2025-08-02"},"timestamp":"2025-04-04T12:37:06.239Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=2025-03-03"},"timestamp":"2025-04-04T12:37:53.821Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=0025-03-02"},"timestamp":"2025-04-04T12:37:54.920Z"}
+{"level":"info","message":{"method":"GET","status":200,"url":"/reportDaily?date=2025-03-08"},"timestamp":"2025-04-04T12:37:55.491Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=2025-04-04"},"timestamp":"2025-04-04T12:38:34.300Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=2025-04-04"},"timestamp":"2025-04-04T12:38:34.316Z"}
+{"level":"info","message":{"method":"GET","status":304,"url":"/me"},"timestamp":"2025-04-04T13:35:10.991Z"}
+{"level":"info","message":{"method":"GET","status":304,"url":"/me"},"timestamp":"2025-04-04T13:35:11.002Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=2025-04-04"},"timestamp":"2025-04-04T13:35:12.690Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=2025-04-04"},"timestamp":"2025-04-04T13:35:12.705Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=2025-08-03"},"timestamp":"2025-04-04T13:35:38.178Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=0025-08-02"},"timestamp":"2025-04-04T13:35:40.482Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=2025-08-02"},"timestamp":"2025-04-04T13:35:40.742Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=0025-08-02"},"timestamp":"2025-04-04T13:35:56.592Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=2025-08-02"},"timestamp":"2025-04-04T13:35:56.957Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=2025-03-03"},"timestamp":"2025-04-04T13:36:10.214Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=0025-03-02"},"timestamp":"2025-04-04T13:36:11.179Z"}
+{"level":"info","message":{"method":"GET","status":304,"url":"/reportDaily?date=2025-03-08"},"timestamp":"2025-04-04T13:36:11.970Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=2025-04-04"},"timestamp":"2025-04-04T13:36:21.965Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=2025-04-04"},"timestamp":"2025-04-04T13:36:21.987Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=2025-03-04"},"timestamp":"2025-04-04T13:36:26.163Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=0025-03-02"},"timestamp":"2025-04-04T13:36:27.189Z"}
+{"level":"info","message":{"method":"GET","status":304,"url":"/reportDaily?date=2025-03-08"},"timestamp":"2025-04-04T13:36:27.924Z"}
+{"level":"info","message":{"method":"GET","status":304,"url":"/reportDaily?date=2025-03-08"},"timestamp":"2025-04-04T13:37:21.419Z"}
+{"level":"info","message":{"method":"GET","status":304,"url":"/reportDaily?date=2025-03-08"},"timestamp":"2025-04-04T13:37:23.280Z"}
+{"level":"info","message":{"method":"GET","status":200,"url":"/report?startDate=2025-04-04T00:00:00.000Z&endDate=2025-04-04T23:59:59.999Z"},"timestamp":"2025-04-04T13:44:29.430Z"}
+{"level":"info","message":{"method":"GET","status":304,"url":"/report?startDate=2025-04-04T00:00:00.000Z&endDate=2025-04-04T23:59:59.999Z"},"timestamp":"2025-04-04T13:44:30.666Z"}
+{"level":"info","message":{"method":"GET","status":304,"url":"/report?startDate=2025-04-04T00:00:00.000Z&endDate=2025-04-04T23:59:59.999Z"},"timestamp":"2025-04-04T13:50:07.798Z"}
+{"level":"info","message":{"method":"GET","status":304,"url":"/report?startDate=2025-04-04T00:00:00.000Z&endDate=2025-04-04T23:59:59.999Z"},"timestamp":"2025-04-04T13:50:09.022Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=2025-04-04"},"timestamp":"2025-04-04T13:50:28.124Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=2025-04-04"},"timestamp":"2025-04-04T13:50:28.142Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=2025-04-04T00:00:00.000Z"},"timestamp":"2025-04-04T13:50:51.530Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=2025-04-04T00:00:00.000Z"},"timestamp":"2025-04-04T13:50:56.824Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=0025-04-20T00:00:00.000Z"},"timestamp":"2025-04-04T13:51:25.220Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=0005-02-02T00:00:00.000Z"},"timestamp":"2025-04-04T13:51:26.729Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=0025-08-20T00:00:00.000Z"},"timestamp":"2025-04-04T13:51:28.513Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=2025-08-19T00:00:00.000Z"},"timestamp":"2025-04-04T13:51:46.386Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=19/08/2025"},"timestamp":"2025-04-04T13:53:18.378Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=19/08/2025"},"timestamp":"2025-04-04T13:53:22.265Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=19/08/2025"},"timestamp":"2025-04-04T13:53:25.168Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=02/02/25"},"timestamp":"2025-04-04T13:53:39.190Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=20/03/2025"},"timestamp":"2025-04-04T13:53:39.194Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=02/02/25"},"timestamp":"2025-04-04T13:53:39.802Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=19/08/2025"},"timestamp":"2025-04-04T13:53:41.476Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=22/08/25"},"timestamp":"2025-04-04T13:53:42.894Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=20/08/25"},"timestamp":"2025-04-04T13:53:43.365Z"}
+{"level":"info","message":{"method":"GET","status":304,"url":"/me"},"timestamp":"2025-04-04T13:53:52.576Z"}
+{"level":"info","message":{"method":"GET","status":304,"url":"/me"},"timestamp":"2025-04-04T13:53:52.584Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=04/04/2025"},"timestamp":"2025-04-04T13:53:54.536Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=04/04/2025"},"timestamp":"2025-04-04T13:53:54.554Z"}
+{"level":"info","message":{"method":"GET","status":500,"url":"/reportDaily?date=NaN/NaN/NaN"},"timestamp":"2025-04-04T13:53:58.463Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=03/08/2025"},"timestamp":"2025-04-04T13:53:58.838Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=02/08/25"},"timestamp":"2025-04-04T13:54:00.284Z"}
+{"level":"info","message":{"method":"GET","status":500,"url":"/reportDaily?date=NaN/NaN/NaN"},"timestamp":"2025-04-04T13:54:03.360Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=03/08/25"},"timestamp":"2025-04-04T13:54:03.418Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=02/08/2025"},"timestamp":"2025-04-04T13:54:06.650Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=03/08/202"},"timestamp":"2025-04-04T13:54:20.362Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=02/08/2025"},"timestamp":"2025-04-04T13:54:20.372Z"}
+{"level":"info","message":{"method":"GET","status":200,"url":"/reportDaily?date=2025-03-08"},"timestamp":"2025-04-04T13:55:08.535Z"}
+{"level":"info","message":{"method":"GET","status":500,"url":"/reportDaily?date=02-08/2025"},"timestamp":"2025-04-04T13:55:22.525Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=02-08-2025"},"timestamp":"2025-04-04T13:55:24.934Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=02-08-25"},"timestamp":"2025-04-04T13:55:32.487Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=02-08-2025"},"timestamp":"2025-04-04T13:55:32.796Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=03-03-2025"},"timestamp":"2025-04-04T13:56:10.348Z"}
+{"level":"info","message":{"method":"GET","status":200,"url":"/reportDaily?date=08-03-2025"},"timestamp":"2025-04-04T13:56:19.792Z"}
+{"level":"info","message":{"method":"GET","status":304,"url":"/report?startDate=2025-04-04T00:00:00.000Z&endDate=2025-04-04T23:59:59.999Z"},"timestamp":"2025-04-04T13:56:32.479Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=04-04-2025"},"timestamp":"2025-04-04T13:56:32.913Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=04-04-2025"},"timestamp":"2025-04-04T13:56:32.959Z"}
+{"level":"info","message":{"method":"GET","status":304,"url":"/report?startDate=2025-04-04T00:00:00.000Z&endDate=2025-04-04T23:59:59.999Z"},"timestamp":"2025-04-04T13:56:33.313Z"}
+{"level":"info","message":{"method":"GET","status":500,"url":"/reportDaily?date=NaN-NaN-NaN"},"timestamp":"2025-04-04T13:56:37.293Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=04-03-2025"},"timestamp":"2025-04-04T13:56:37.583Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=02-03-25"},"timestamp":"2025-04-04T13:56:38.710Z"}
+{"level":"info","message":{"method":"GET","status":304,"url":"/reportDaily?date=08-03-2025"},"timestamp":"2025-04-04T13:56:39.661Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=04-04-2025"},"timestamp":"2025-04-04T13:57:00.319Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=04-04-2025"},"timestamp":"2025-04-04T13:57:00.337Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=04-04-2025"},"timestamp":"2025-04-04T13:58:37.691Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=04-04-2025"},"timestamp":"2025-04-04T13:58:37.722Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=04-04-2025"},"timestamp":"2025-04-04T13:59:17.098Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=04-04-2025"},"timestamp":"2025-04-04T13:59:31.843Z"}
+{"level":"info","message":{"method":"GET","status":500,"url":"/reportDaily?date=NaN-NaN-NaN"},"timestamp":"2025-04-04T13:59:35.661Z"}
+{"level":"info","message":{"method":"GET","status":500,"url":"/reportDaily?date=NaN-NaN-NaN"},"timestamp":"2025-04-04T13:59:36.178Z"}
+{"level":"info","message":{"method":"GET","status":500,"url":"/reportDaily?date=NaN-NaN-NaN"},"timestamp":"2025-04-04T13:59:37.770Z"}
+{"level":"info","message":{"method":"GET","status":500,"url":"/reportDaily?date=NaN-NaN-NaN"},"timestamp":"2025-04-04T13:59:37.906Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=02-02-5"},"timestamp":"2025-04-04T13:59:38.646Z"}
+{"level":"info","message":{"method":"GET","status":500,"url":"/reportDaily?date=NaN-NaN-NaN"},"timestamp":"2025-04-04T13:59:39.074Z"}
+{"level":"info","message":{"method":"GET","status":304,"url":"/me"},"timestamp":"2025-04-04T13:59:45.785Z"}
+{"level":"info","message":{"method":"GET","status":304,"url":"/me"},"timestamp":"2025-04-04T13:59:45.798Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=04-04-2025"},"timestamp":"2025-04-04T13:59:47.640Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=04-04-2025"},"timestamp":"2025-04-04T13:59:47.670Z"}
+{"level":"info","message":{"method":"GET","status":200,"url":"/reportDaily?date=18-03-2025"},"timestamp":"2025-04-04T14:00:02.897Z"}
+{"level":"info","message":{"method":"GET","status":304,"url":"/me"},"timestamp":"2025-04-04T14:00:21.239Z"}
+{"level":"info","message":{"method":"GET","status":304,"url":"/me"},"timestamp":"2025-04-04T14:00:21.250Z"}
+{"level":"info","message":{"method":"GET","status":304,"url":"/me"},"timestamp":"2025-04-04T14:01:20.461Z"}
+{"level":"info","message":{"method":"GET","status":304,"url":"/me"},"timestamp":"2025-04-04T14:01:20.470Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=04-04-2025"},"timestamp":"2025-04-04T14:03:30.502Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=04-04-2025"},"timestamp":"2025-04-04T14:03:30.534Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=02-04-25"},"timestamp":"2025-04-04T14:03:35.565Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=03-04-2025"},"timestamp":"2025-04-04T14:03:35.674Z"}
+{"level":"info","message":{"method":"GET","status":500,"url":"/reportDaily?date=NaN-NaN-NaN"},"timestamp":"2025-04-04T14:03:36.880Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=02-08-2025"},"timestamp":"2025-04-04T14:03:37.635Z"}
+{"level":"info","message":{"method":"GET","status":500,"url":"/reportDaily?date=NaN-NaN-NaN"},"timestamp":"2025-04-04T14:03:40.501Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=03-03-2025"},"timestamp":"2025-04-04T14:03:40.637Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=02-03-25"},"timestamp":"2025-04-04T14:03:41.778Z"}
+{"level":"info","message":{"method":"GET","status":304,"url":"/reportDaily?date=08-03-2025"},"timestamp":"2025-04-04T14:03:42.652Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=04-04-2025"},"timestamp":"2025-04-04T14:04:01.475Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=04-04-2025"},"timestamp":"2025-04-04T14:04:01.495Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=02-04-25"},"timestamp":"2025-04-04T14:04:03.779Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=03-04-2025"},"timestamp":"2025-04-04T14:04:04.193Z"}
+{"level":"info","message":{"method":"GET","status":500,"url":"/reportDaily?date=NaN-NaN-NaN"},"timestamp":"2025-04-04T14:04:05.911Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=02-08-2025"},"timestamp":"2025-04-04T14:04:06.373Z"}
+{"level":"info","message":{"method":"GET","status":500,"url":"/reportDaily?date=NaN-NaN-NaN"},"timestamp":"2025-04-04T14:04:07.743Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=03-03-2025"},"timestamp":"2025-04-04T14:04:08.021Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=02-03-25"},"timestamp":"2025-04-04T14:04:09.151Z"}
+{"level":"info","message":{"method":"GET","status":304,"url":"/reportDaily?date=08-03-2025"},"timestamp":"2025-04-04T14:04:09.811Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=04-04-2025"},"timestamp":"2025-04-04T14:10:15.847Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=04-04-2025"},"timestamp":"2025-04-04T14:10:15.860Z"}
+{"level":"info","message":{"method":"GET","status":304,"url":"/report?startDate=2025-04-04T00:00:00.000Z&endDate=2025-04-04T23:59:59.999Z"},"timestamp":"2025-04-04T14:10:25.393Z"}
+{"level":"info","message":{"method":"GET","status":304,"url":"/report?startDate=2025-04-04T00:00:00.000Z&endDate=2025-04-04T23:59:59.999Z"},"timestamp":"2025-04-04T14:10:26.433Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=04-04-2025"},"timestamp":"2025-04-04T14:10:27.158Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=04-04-2025"},"timestamp":"2025-04-04T14:10:27.177Z"}
+{"level":"info","message":{"method":"GET","status":500,"url":"/reportDaily?date=NaN-NaN-NaN"},"timestamp":"2025-04-04T14:10:31.243Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=04-03-2025"},"timestamp":"2025-04-04T14:10:31.502Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=02-03-25"},"timestamp":"2025-04-04T14:10:32.706Z"}
+{"level":"info","message":{"method":"GET","status":304,"url":"/reportDaily?date=08-03-2025"},"timestamp":"2025-04-04T14:10:33.567Z"}
+{"level":"info","message":{"method":"GET","status":304,"url":"/users"},"timestamp":"2025-04-04T14:38:48.053Z"}
+{"level":"info","message":{"method":"GET","status":304,"url":"/users"},"timestamp":"2025-04-04T14:38:48.088Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=04-04-2025"},"timestamp":"2025-04-04T14:38:53.931Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=04-04-2025"},"timestamp":"2025-04-04T14:38:53.949Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=04-04-2025"},"timestamp":"2025-04-04T14:38:57.363Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=04-04-2025"},"timestamp":"2025-04-04T14:38:57.390Z"}
+{"level":"info","message":{"method":"GET","status":200,"url":"/team-members"},"timestamp":"2025-04-04T14:38:57.433Z"}
+{"level":"info","message":{"method":"GET","status":304,"url":"/team-members"},"timestamp":"2025-04-04T14:38:57.720Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=04-04-2025"},"timestamp":"2025-04-04T14:39:00.036Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=04-04-2025"},"timestamp":"2025-04-04T14:39:00.053Z"}
+{"level":"info","message":{"method":"GET","status":304,"url":"/team-members"},"timestamp":"2025-04-04T14:39:00.109Z"}
+{"level":"info","message":{"method":"GET","status":304,"url":"/users"},"timestamp":"2025-04-04T14:39:00.659Z"}
+{"level":"info","message":{"method":"GET","status":304,"url":"/team-members"},"timestamp":"2025-04-04T14:39:00.675Z"}
+{"level":"info","message":{"method":"GET","status":304,"url":"/users"},"timestamp":"2025-04-04T14:39:00.682Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=04-04-2025"},"timestamp":"2025-04-04T14:40:06.118Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=04-04-2025"},"timestamp":"2025-04-04T14:40:06.133Z"}
+{"level":"info","message":{"method":"GET","status":500,"url":"/reportDaily?date=NaN-NaN-NaN"},"timestamp":"2025-04-04T14:40:11.852Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=04-03-2025"},"timestamp":"2025-04-04T14:40:11.946Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=02-03-25"},"timestamp":"2025-04-04T14:40:13.135Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=20-03-25"},"timestamp":"2025-04-04T14:40:14.026Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=22-03-5"},"timestamp":"2025-04-04T14:40:16.106Z"}
+{"level":"info","message":{"method":"GET","status":500,"url":"/reportDaily?date=NaN-NaN-NaN"},"timestamp":"2025-04-04T14:40:18.934Z"}
+{"level":"info","message":{"method":"GET","status":500,"url":"/reportDaily?date=NaN-NaN-NaN"},"timestamp":"2025-04-04T14:40:26.262Z"}
+{"level":"info","message":{"method":"GET","status":500,"url":"/reportDaily?date=NaN-NaN-NaN"},"timestamp":"2025-04-04T14:40:26.354Z"}
+{"level":"info","message":{"method":"GET","status":500,"url":"/reportDaily?date=NaN-NaN-NaN"},"timestamp":"2025-04-04T14:40:26.628Z"}
+{"level":"info","message":{"method":"GET","status":500,"url":"/reportDaily?date=NaN-NaN-NaN"},"timestamp":"2025-04-04T14:40:30.281Z"}
+{"level":"info","message":{"method":"GET","status":500,"url":"/reportDaily?date=NaN-NaN-NaN"},"timestamp":"2025-04-04T14:40:31.485Z"}
+{"level":"info","message":{"method":"GET","status":500,"url":"/reportDaily?date=NaN-NaN-NaN"},"timestamp":"2025-04-04T14:40:35.669Z"}
+{"level":"info","message":{"method":"GET","status":500,"url":"/reportDaily?date=NaN-NaN-NaN"},"timestamp":"2025-04-04T14:40:38.483Z"}
+{"level":"info","message":{"method":"GET","status":500,"url":"/reportDaily?date=NaN-NaN-NaN"},"timestamp":"2025-04-04T14:40:39.654Z"}
+{"level":"info","message":{"method":"GET","status":500,"url":"/reportDaily?date=NaN-NaN-NaN"},"timestamp":"2025-04-04T14:40:41.312Z"}
+{"level":"info","message":{"method":"GET","status":500,"url":"/reportDaily?date=NaN-NaN-NaN"},"timestamp":"2025-04-04T14:40:41.402Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=18-03-1"},"timestamp":"2025-04-04T14:40:43.795Z"}
+{"level":"info","message":{"method":"GET","status":500,"url":"/reportDaily?date=NaN-NaN-NaN"},"timestamp":"2025-04-04T14:40:45.032Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=18-03-2"},"timestamp":"2025-04-04T14:40:45.318Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=18-03-20"},"timestamp":"2025-04-04T14:40:46.494Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=18-03-202"},"timestamp":"2025-04-04T14:40:46.537Z"}
+{"level":"info","message":{"method":"GET","status":304,"url":"/reportDaily?date=18-03-2025"},"timestamp":"2025-04-04T14:40:47.252Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-04-04T14:43:15.599Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-04-04T14:43:35.688Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-04-04T14:43:59.806Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-04-04T14:45:11.689Z"}
+{"level":"error","message":"Not Found 404","stack":"Error: Not Found 404\n    at C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\server.js:94:19\n    at Layer.handle [as handle_request] (C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at trim_prefix (C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\index.js:328:13)\n    at C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\index.js:286:9\n    at Function.process_params (C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\index.js:346:12)\n    at next (C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\index.js:280:10)\n    at C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\index.js:646:15\n    at next (C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\node_modules\\express\\lib\\router\\index.js:265:14)\n    at exports.checkIs (C:\\Users\\acerAspire\\Desktop\\AZIRM_fn\\Api\\Middleware\\adminMiddleware.js:12:13)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)","status":404,"timestamp":"2025-04-04T14:46:19.272Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/ad/getAddress?lat=45.5017&lng=-73.769"},"timestamp":"2025-04-04T14:46:19.287Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-04-04T14:47:07.979Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-04-04T14:47:54.662Z"}
+{"level":"info","message":{"method":"GET","status":500,"url":"/getAddress?lat=45.5017&lng=-73.769"},"timestamp":"2025-04-04T14:48:59.091Z"}
+{"level":"info","message":"Server started on port 4000","timestamp":"2025-04-04T14:49:45.545Z"}
+{"level":"info","message":{"method":"GET","status":200,"url":"/getAddress?lat=45.5017&lng=-73.769"},"timestamp":"2025-04-04T14:49:52.826Z"}
+{"level":"info","message":{"method":"GET","status":304,"url":"/getAddress?lat=45.5017&lng=-73.769"},"timestamp":"2025-04-04T14:50:58.309Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=04-04-2025"},"timestamp":"2025-04-04T14:51:12.559Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=04-04-2025"},"timestamp":"2025-04-04T14:51:12.611Z"}
+{"level":"info","message":{"method":"GET","status":500,"url":"/reportDaily?date=NaN-NaN-NaN"},"timestamp":"2025-04-04T14:51:22.183Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=04-03-2025"},"timestamp":"2025-04-04T14:51:22.854Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=02-03-25"},"timestamp":"2025-04-04T14:51:24.339Z"}
+{"level":"info","message":{"method":"GET","status":304,"url":"/reportDaily?date=08-03-2025"},"timestamp":"2025-04-04T14:51:25.321Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=02-03-25"},"timestamp":"2025-04-04T14:51:27.576Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=20-03-25"},"timestamp":"2025-04-04T14:51:28.073Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=12-03-25"},"timestamp":"2025-04-04T14:51:29.163Z"}
+{"level":"info","message":{"method":"GET","status":200,"url":"/reportDaily?date=16-03-2025"},"timestamp":"2025-04-04T14:51:29.801Z"}
+{"level":"info","message":{"method":"GET","status":200,"url":"/getAddress?lat=45.524314061019375&lng=-73.63103633696903"},"timestamp":"2025-04-04T14:51:34.997Z"}
+{"level":"info","message":{"method":"GET","status":304,"url":"/getAddress?lat=45.524314061019375&lng=-73.63103633696903"},"timestamp":"2025-04-04T14:51:35.194Z"}
+{"level":"info","message":{"method":"GET","status":304,"url":"/me"},"timestamp":"2025-04-04T15:07:47.686Z"}
+{"level":"info","message":{"method":"GET","status":304,"url":"/me"},"timestamp":"2025-04-04T15:07:47.698Z"}
+{"level":"info","message":{"method":"GET","status":304,"url":"/getAddress?lat=45.524314061019375&lng=-73.63103633696903"},"timestamp":"2025-04-04T15:07:50.923Z"}
+{"level":"info","message":{"method":"GET","status":304,"url":"/getAddress?lat=45.524314061019375&lng=-73.63103633696903"},"timestamp":"2025-04-04T15:07:51.111Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=04-04-2025"},"timestamp":"2025-04-04T15:10:12.065Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=04-04-2025"},"timestamp":"2025-04-04T15:10:12.083Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=02-04-25"},"timestamp":"2025-04-04T15:10:40.023Z"}
+{"level":"info","message":{"method":"GET","status":500,"url":"/reportDaily?date=NaN-NaN-NaN"},"timestamp":"2025-04-04T15:10:41.956Z"}
+{"level":"info","message":{"method":"GET","status":500,"url":"/reportDaily?date=NaN-NaN-NaN"},"timestamp":"2025-04-04T15:10:44.392Z"}
+{"level":"info","message":{"method":"GET","status":304,"url":"/me"},"timestamp":"2025-04-04T15:10:51.251Z"}
+{"level":"info","message":{"method":"GET","status":304,"url":"/me"},"timestamp":"2025-04-04T15:10:51.269Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=04-04-2025"},"timestamp":"2025-04-04T15:10:52.208Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=04-04-2025"},"timestamp":"2025-04-04T15:10:52.230Z"}
+{"level":"info","message":{"method":"GET","status":304,"url":"/reportDaily?date=18-03-2025"},"timestamp":"2025-04-04T15:10:58.901Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=06-03-2025"},"timestamp":"2025-04-04T15:11:04.210Z"}
+{"level":"info","message":{"method":"GET","status":304,"url":"/reportDaily?date=16-03-2025"},"timestamp":"2025-04-04T15:11:11.036Z"}
+{"level":"info","message":{"method":"GET","status":200,"url":"/getAddress?lat=45.54819764153181&lng=-73.6248779296875"},"timestamp":"2025-04-04T15:11:19.198Z"}
+{"level":"info","message":{"method":"GET","status":304,"url":"/getAddress?lat=45.54819764153181&lng=-73.6248779296875"},"timestamp":"2025-04-04T15:11:19.389Z"}
+{"level":"info","message":{"method":"GET","status":304,"url":"/getAddress?lat=45.54819764153181&lng=-73.6248779296875"},"timestamp":"2025-04-04T15:13:39.598Z"}
+{"level":"info","message":{"method":"GET","status":304,"url":"/getAddress?lat=45.54819764153181&lng=-73.6248779296875"},"timestamp":"2025-04-04T15:13:44.068Z"}
+{"level":"info","message":{"method":"GET","status":304,"url":"/getAddress?lat=45.54819764153181&lng=-73.6248779296875"},"timestamp":"2025-04-04T15:13:48.187Z"}
+{"level":"info","message":{"method":"GET","status":304,"url":"/getAddress?lat=45.54819764153181&lng=-73.6248779296875"},"timestamp":"2025-04-04T15:14:05.644Z"}
+{"level":"info","message":{"method":"GET","status":304,"url":"/getAddress?lat=45.54819764153181&lng=-73.6248779296875"},"timestamp":"2025-04-04T15:14:09.671Z"}
+{"level":"info","message":{"method":"GET","status":304,"url":"/getAddress?lat=45.54819764153181&lng=-73.6248779296875"},"timestamp":"2025-04-04T15:14:17.527Z"}
+{"level":"info","message":{"method":"GET","status":304,"url":"/getAddress?lat=45.54819764153181&lng=-73.6248779296875"},"timestamp":"2025-04-04T15:16:40.707Z"}
+{"level":"info","message":{"method":"GET","status":304,"url":"/getAddress?lat=45.54819764153181&lng=-73.6248779296875"},"timestamp":"2025-04-04T15:16:47.669Z"}
+{"level":"info","message":{"method":"GET","status":304,"url":"/getAddress?lat=45.54819764153181&lng=-73.6248779296875"},"timestamp":"2025-04-04T15:17:00.576Z"}
+{"level":"info","message":{"method":"GET","status":304,"url":"/getAddress?lat=45.54819764153181&lng=-73.6248779296875"},"timestamp":"2025-04-04T15:17:01.517Z"}
+{"level":"info","message":{"method":"GET","status":304,"url":"/getAddress?lat=45.54819764153181&lng=-73.6248779296875"},"timestamp":"2025-04-04T15:17:08.725Z"}
+{"level":"info","message":{"method":"GET","status":304,"url":"/getAddress?lat=45.54819764153181&lng=-73.6248779296875"},"timestamp":"2025-04-04T15:17:11.405Z"}
+{"level":"info","message":{"method":"GET","status":304,"url":"/getAddress?lat=45.54819764153181&lng=-73.6248779296875"},"timestamp":"2025-04-04T15:17:12.934Z"}
+{"level":"info","message":{"method":"GET","status":304,"url":"/getAddress?lat=45.54819764153181&lng=-73.6248779296875"},"timestamp":"2025-04-04T15:17:22.713Z"}
+{"level":"info","message":{"method":"GET","status":304,"url":"/getAddress?lat=45.54819764153181&lng=-73.6248779296875"},"timestamp":"2025-04-04T15:17:24.311Z"}
+{"level":"info","message":{"method":"GET","status":304,"url":"/getAddress?lat=45.54819764153181&lng=-73.6248779296875"},"timestamp":"2025-04-04T15:17:30.977Z"}
+{"level":"info","message":{"method":"GET","status":304,"url":"/getAddress?lat=45.54819764153181&lng=-73.6248779296875"},"timestamp":"2025-04-04T15:17:32.040Z"}
+{"level":"info","message":{"method":"GET","status":304,"url":"/getAddress?lat=45.54819764153181&lng=-73.6248779296875"},"timestamp":"2025-04-04T15:17:46.764Z"}
+{"level":"info","message":{"method":"GET","status":304,"url":"/getAddress?lat=45.54819764153181&lng=-73.6248779296875"},"timestamp":"2025-04-04T15:17:55.545Z"}
+{"level":"info","message":{"method":"GET","status":304,"url":"/getAddress?lat=45.54819764153181&lng=-73.6248779296875"},"timestamp":"2025-04-04T15:18:12.426Z"}
+{"level":"info","message":{"method":"GET","status":304,"url":"/getAddress?lat=45.54819764153181&lng=-73.6248779296875"},"timestamp":"2025-04-04T15:18:16.460Z"}
+{"level":"info","message":{"method":"GET","status":304,"url":"/getAddress?lat=45.54819764153181&lng=-73.6248779296875"},"timestamp":"2025-04-04T15:18:22.469Z"}
+{"level":"info","message":{"method":"GET","status":304,"url":"/getAddress?lat=45.54819764153181&lng=-73.6248779296875"},"timestamp":"2025-04-04T15:18:33.073Z"}
+{"level":"info","message":{"method":"GET","status":304,"url":"/getAddress?lat=45.54819764153181&lng=-73.6248779296875"},"timestamp":"2025-04-04T15:18:35.598Z"}
+{"level":"info","message":{"method":"GET","status":304,"url":"/getAddress?lat=45.54819764153181&lng=-73.6248779296875"},"timestamp":"2025-04-04T15:18:40.247Z"}
+{"level":"info","message":{"method":"GET","status":304,"url":"/getAddress?lat=45.54819764153181&lng=-73.6248779296875"},"timestamp":"2025-04-04T15:18:59.948Z"}
+{"level":"info","message":{"method":"GET","status":304,"url":"/getAddress?lat=45.54819764153181&lng=-73.6248779296875"},"timestamp":"2025-04-04T15:19:00.289Z"}
+{"level":"info","message":{"method":"GET","status":304,"url":"/getAddress?lat=45.54819764153181&lng=-73.6248779296875"},"timestamp":"2025-04-04T15:19:11.908Z"}
+{"level":"info","message":{"method":"GET","status":304,"url":"/getAddress?lat=45.54819764153181&lng=-73.6248779296875"},"timestamp":"2025-04-04T15:19:13.286Z"}
+{"level":"info","message":{"method":"GET","status":304,"url":"/getAddress?lat=45.54819764153181&lng=-73.6248779296875"},"timestamp":"2025-04-04T15:19:40.988Z"}
+{"level":"info","message":{"method":"GET","status":304,"url":"/getAddress?lat=45.54819764153181&lng=-73.6248779296875"},"timestamp":"2025-04-04T15:19:45.639Z"}
+{"level":"info","message":{"method":"GET","status":304,"url":"/getAddress?lat=45.54819764153181&lng=-73.6248779296875"},"timestamp":"2025-04-04T15:19:52.991Z"}
+{"level":"info","message":{"method":"GET","status":304,"url":"/getAddress?lat=45.54819764153181&lng=-73.6248779296875"},"timestamp":"2025-04-04T15:20:14.416Z"}
+{"level":"info","message":{"method":"GET","status":304,"url":"/getAddress?lat=45.54819764153181&lng=-73.6248779296875"},"timestamp":"2025-04-04T15:20:16.443Z"}
+{"level":"info","message":{"method":"GET","status":304,"url":"/getAddress?lat=45.54819764153181&lng=-73.6248779296875"},"timestamp":"2025-04-04T15:20:18.235Z"}
+{"level":"info","message":{"method":"GET","status":304,"url":"/getAddress?lat=45.54819764153181&lng=-73.6248779296875"},"timestamp":"2025-04-04T15:20:50.674Z"}
+{"level":"info","message":{"method":"GET","status":304,"url":"/getAddress?lat=45.54819764153181&lng=-73.6248779296875"},"timestamp":"2025-04-04T15:20:53.570Z"}
+{"level":"info","message":{"method":"GET","status":304,"url":"/getAddress?lat=45.54819764153181&lng=-73.6248779296875"},"timestamp":"2025-04-04T15:20:55.624Z"}
+{"level":"info","message":{"method":"GET","status":304,"url":"/getAddress?lat=45.54819764153181&lng=-73.6248779296875"},"timestamp":"2025-04-04T15:21:06.690Z"}
+{"level":"info","message":{"method":"GET","status":304,"url":"/getAddress?lat=45.54819764153181&lng=-73.6248779296875"},"timestamp":"2025-04-04T15:21:08.378Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=04-04-2025"},"timestamp":"2025-04-04T15:25:05.856Z"}
+{"level":"info","message":{"method":"GET","status":404,"url":"/reportDaily?date=04-04-2025"},"timestamp":"2025-04-04T15:25:05.878Z"}

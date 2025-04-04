@@ -11,6 +11,7 @@ import { Create } from "@mui/icons-material";
 import { el } from "date-fns/locale";
 
 import PrivateRoute from "@/components/auth/PrivteRoute"; 
+import { patch } from "@mui/material";
 const  HomePage= Loadable(lazy(() => import("@/pages/dashboard/ecommerce")));
 const  UserPage = Loadable(lazy(() => import("../pages/dashboard/users/UserList1Page")));
 const  UserLeaderPageView = Loadable(lazy(() => import("../pages/dashboard/users/UserLeaderPageView")));
@@ -24,7 +25,8 @@ const  SquareLink = Loadable(lazy(() => import("../pages/dashboard/finance-2.jsx
 const ReportPage = Loadable(lazy(() => import("../pages/dashboard/Report/ReportPage")));
 const Upbyass = Loadable(lazy(() => import("../pages/dashboard/users/updateLeaderPage")));
 const ReportD = Loadable(lazy(() => import("../pages/dashboard/Report/ReportDpage")));
-
+const ReCach = Loadable(lazy(() => import("../pages/dashboard/Cash/CashPage")));
+const CashDlsPage = Loadable(lazy(() => import("../pages/dashboard/Cash/CashDlsPage")));
 export const DashboardRoutes = [{
   path: "/",
   element: <AuthGuard>
@@ -85,6 +87,13 @@ export const DashboardRoutes = [{
   {
     path : "/report/:id",
     element :<PrivateRoute><ReportD/></PrivateRoute>
+  },{
+    path :"/cash",
+    element : <PrivateRoute><ReCach/></PrivateRoute>
+  }
+  ,{
+    path :"/CashDlsPage/:id",
+    element : <PrivateRoute><CashDlsPage/></PrivateRoute>
   }
   // , {
   //   path :"announcement",

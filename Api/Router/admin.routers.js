@@ -31,4 +31,5 @@ router.get('/dons', adminController.getAllDonations);
 router.get("/report",SquareControllers.getPayementsByDate);
 router.delete("/don/",adminController.DeleteAllDontion);
 router.get("/reportDaily",SquareControllers.getDonationsByDate);
+router.get("/getAddress",SquareControllers.getLaction);
 exports.router = router;

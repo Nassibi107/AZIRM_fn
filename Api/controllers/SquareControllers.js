@@ -6,6 +6,8 @@ const { Square } = require("square");
 const { Op, Sequelize } = require("sequelize");
 const { User, Donation , } = require("../Models"); // Adjust path as needed
 
+const axios = require("axios");
+const GOOGLE_MAPS_API_KEY = process.env.GOOGLE_MAPS_API_KEY || "YOUR_GOOGLE_MAPS_API_KEY"; // Replace with your actual API key
 
 const mergePaymentsById = (transactions, allCash, searchId) => {
     // Find the transaction by team_member_id
@@ -300,7 +302,10 @@ exports.getAllCashWeeK = async (req,res) => {
 exports.getDonationsByDate = async (req,res) => {
     const { date } = req.query;
     try{
-    
+        console.log("Date:", date);
+        if (!date) {
+            return res.status(400).json({ message: "Date is required" });
+        }
         const donationCAsh = await squareService.getDonationsSummary(date);
         if (donationCAsh.length === 0) {
             return res.status(404).json({ message: "No donations found" });
@@ -311,5 +316,18 @@ exports.getDonationsByDate = async (req,res) => {
     }catch(error)
     {
         res.status(500).json({ message: "Internal Server Error" });
+    }
+}
+
+exports.getLaction  = async (req,res) => {
+    const { lat, lng } = req.query;
+    const url = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lng}&key=${GOOGLE_MAPS_API_KEY}`;
+  
+    try {
+      const response = await axios.get(url);
+      res.json(response.data); // Send the API response back to the client
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ error: 'Error fetching address' });
     }
 }

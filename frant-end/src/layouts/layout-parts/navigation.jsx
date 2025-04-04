@@ -27,7 +27,7 @@ export const navigations = [{
 ,
 {
   name: "Cash",
-  path: "/Report",
+  path: "/cash",
   icon: duotone.Credit
 },
 {

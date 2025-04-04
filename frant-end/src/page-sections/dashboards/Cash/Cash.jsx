@@ -29,15 +29,20 @@ const Cash = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   const handleRowClick = (user) => {
-    navigate(`/Report/${user.id}`, { state: { user ,dataReport} });
+    navigate(`/CashDlsPage/${user.id}`, { state: { user ,dataReport} });
   };
 
   // Format Start Date: Set time to 00:00:00.000Z
   const formatStartDate = (date) => {
     if (!date) return null;
     let d = new Date(date);
-    d.setUTCHours(0, 0, 0, 0);
-    return d.toISOString();
+    
+  // Extract the day, month, and year
+    let day = String(d.getUTCDate()).padStart(2, '0');
+    let month = String(d.getUTCMonth() + 1).padStart(2, '0'); // Month is 0-based
+    let year = d.getUTCFullYear();
+
+  return `${day}-${month}-${year}`;
   };
 
   // Format End Date: Set time to 23:59:59.999Z
@@ -45,7 +50,7 @@ const Cash = () => {
     if (!date) return null;
     let d = new Date(date);
     d.setUTCHours(23, 59, 59, 999);
-    return d.toISOString();
+    return d.toISOString().substring(0, 10);
   };
 
   useEffect(() => {
@@ -55,36 +60,42 @@ const Cash = () => {
       try {
         setIsLoading(true); // Start loading
         const response = await axios.get(
-          `${ADMIN_ROUTE}/report?startDate=${formatStartDate(sdata)}&endDate=${formatEndDate(edata)}`
+          `${ADMIN_ROUTE}/reportDaily?date=${formatStartDate(sdata)}` 
         );
-        setDataReport(response.data); // Use response.data instead of response.json()
+        setDataReport(response.data);
+        console.log(response); // Use response.data instead of response.json()
         setIsLoading(false);
       } catch (error) {
         console.error("Error fetching data:", error);
+        setIsLoading(false);
       }
     };
-
     fetchData();
   }, [sdata, edata]);
 
+// "id": "1",
+//         "firstName": "admin",
+//         "lastName": "unknown",
+//         "donationDate": "2025-03-08T15:25:47.666Z",
+//         "donationCount": 6,
+//         "totalAmount": 184,/ 
   const columns = [
     { field: 'id', headerName: 'id', width: 180 },
-    { field: 'name', headerName: 'Name', width: 150 },
-    { field: 'totalPayments', headerName: 'Total Payments', width: 180 },
-    { field: 'Startdata', headerName: 'Start Data', width: 180 },
-    { field: 'Enddata', headerName: 'End Data', width: 180 },
-    { field: 'commission', headerName: 'Commission', width: 180 },
+    { field: 'firstName', headerName: 'prenom', width: 150 },
+    { field: 'lastName', headerName: 'nom', width: 180 },
+    { field: 'donationDate', headerName: 'date', width: 180 },
+    { field: 'donationCount', headerName: 'count', width: 180 },
+    { field: 'totalAmount', headerName: 'total', width: 180 },
   ];
 
   // Convert API Data to Table Rows
   const rows = dataReport.map((user, index) => ({
-    tri: index + 1,
     id: user.id,
-    name: user.name,
-    totalPayments: user.totalPayments.toFixed(2),
-    Startdata: sdata.toISOString().substring(0, 10), // Convert Date to YYYY-MM-DD format
-    Enddata: edata.toISOString().substring(0, 10), // Convert Date to YYYY-MM-DD format
-    commission: (user.totalPayments * 0.35).toFixed(4),
+    firstName: user.firstName,
+    lastName: user.lastName,
+    donationDate: user.donationDate.substring(0, 10),
+    donationCount: user.donationCount,
+    totalAmount: user.totalAmount.toFixed(2), 
   }));
 
   // Export Data to Excel
@@ -104,7 +115,7 @@ const Cash = () => {
         <IconWrapper>
           <Pages sx={{ color: "primary.main" }} />
         </IconWrapper>
-        <H6 fontSize={16}>Report</H6>
+        <H6 fontSize={16}>cash Report</H6>
       </FlexBox>
       <Divider sx={{ my: 3 }} />
       <Box sx={{ padding: 3 }}>
@@ -118,15 +129,7 @@ const Cash = () => {
               renderInput={(params) => <TextField {...params} fullWidth />}
             />
           </Grid>
-          <Grid item md={4} xs={12} sm={4}>
-            <DatePicker
-              label="End Date"
-              value={edata}
-              onChange={(date) => setEdata(date)}
-              fullWidth
-              renderInput={(params) => <TextField {...params} fullWidth />}
-            />
-          </Grid>
+        
           <Grid item md={2} xs={6} sm={4}>
             <Button variant="outlined" color="primary" onClick={exportToExcel}>
               Export to Excel

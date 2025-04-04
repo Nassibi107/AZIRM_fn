@@ -283,7 +283,7 @@ async getDonationsSummary(date) {
         {
           model: Donation,
           as: "donations",
-          attributes: ["idD", "createdAt", "amount"],
+          attributes: ["idD", "createdAt", "amount","lat","lng"],
           required: false, // LEFT JOIN
           where: Sequelize.where(
             Sequelize.fn("DATE", Sequelize.col("donations.createdAt")),
@@ -302,18 +302,20 @@ async getDonationsSummary(date) {
       order: [[Sequelize.literal("COALESCE(SUM(donations.amount), 0)"), "DESC"]],
       raw: false, // Keep raw false to maintain object structure
     });
-
+    console.log("donationsSummary", donationsSummary);
     return donationsSummary.map(user => ({
       id: user.id,
       firstName: user.firstName,
       lastName: user.lastName,
-      donationDate: user.donationDate,
-      donationCount: user.donationCount,
-      totalAmount: user.totalAmount,
+      donationDate: user.donations[0].createdAt,
+      donationCount:  user.donations.length,
+      totalAmount: user.donations.reduce((sum, d) => sum + parseFloat(d.amount), 0),
       donations: user.donations.map(d => ({
         id: d.idD,
         createdAt: d.createdAt,
         amount: d.amount,
+        lat: d.lat,
+        lng: d.lng,
       })),
     }));
   } catch (error) {
