@@ -1,7 +1,9 @@
 
 import React, { useEffect, useState } from 'react'
 import helpers from './helpers';
-import {  Box, Button, Card, Divider, TextField , Grid, useTheme,Switch, Radio , List, ListItem, Paper, CircularProgress, colors } from '@mui/material';
+import {  Box, Button, Card, Divider, TextField , Grid, useTheme,Dialog,DialogContent, DialogTitle,
+    CircularProgress, IconButton
+  } from '@mui/material';
 import { FlexBetween } from "@/components/flexbox";
 import Top from '../../../icons/Top';
 import Bottom from '../../../icons/Bottom';
@@ -9,12 +11,15 @@ import MaxTop from '../../../icons/MaxTop';
 import MaxBottom from '../../../icons/MaxBottom';
 import { isDark } from "@/utils/constants";
 import {Paragraph } from "@/components/typography";
-
+import { IconWrapper } from '@/components/icon-wrapper';
+import Flag from '@/icons/Flag';
+import { H6 } from '@/components/typography';
 import { CheckBox, Margin, Search } from '@mui/icons-material';
 import axios from 'axios';
 import { ModeSelectors } from '@/___GlobalState__/Selectors/ModeSelectors';
 import { useSelector } from 'react-redux';
 
+import { FlexBox } from '@/components/flexbox';
 
 
 import SelectAllIcon from '../../../icons/Select_All.svg';
@@ -31,7 +36,7 @@ const ADMIN_ROUTE = import.meta.env.VITE_ADMIN_URL;
 const VITE_LEADER= import.meta.env.VITE_LEADER_URL;
 
 
-
+import ModalContent from './ModalContent';
 
  function  Maping (
     {
@@ -60,6 +65,8 @@ const isDarkMode = theme.palette.mode === 'dark';
     const [onChangeIdLive , setOnChangeIdLive] = useState([]);
     const [address, setAddress] = useState([]);
     const [onChangeIdSerie , setOnChangeIdSerie] = useState([]);
+    const [openModal, setOpenModal] = useState(false); // Modal state
+
   const __getSearch = async () =>{
      try {
         const response = await axios.get(`${ADMIN_ROUTE}/getAddressCanadaPost?searchTerm=${search}`)
@@ -179,7 +186,22 @@ const StyleLight = (bq,arr) => {
     }
 }
 
+
+  // Function to open modal
+  const handleOpenModal = () => setOpenModal(true);
+
+  // Function to close modal
+  const handleCloseModal = () => setOpenModal(false);
+
     return  <>
+    <Card sx={{ mt: 3, padding: 3 }}>
+          <FlexBox gap={0.5} alignItems="center">
+            <IconWrapper>
+              <Flag sx={{ color: "primary.main" }} />
+            </IconWrapper>
+            <H6 fontSize={16}>Adresse de mappage pour l'utilisateur</H6>
+          </FlexBox>
+          <Divider sx={{ my: 3 }} />
     <Box sx={{ backgroundColor: '', padding :"5px 10px" ,textAlign:"center", }}>
 
         <Grid container spacing={4} alignItems="center">
@@ -348,11 +370,16 @@ const StyleLight = (bq,arr) => {
             </Grid>
             </Grid>
         </Box>
-    </Grid>
-    </Grid>
-   </Box>
 
+    </Grid>
+    </Grid>
+    <Divider  sx={{ my: 3 }} />
+    <Button variant="outlined"  onClick={handleOpenModal}> <Flag/> </Button>
+    <ModalContent open={openModal} onClose={handleCloseModal} />
+   </Box>
+</Card>
 </>
 }
+
 
 export default Maping ;

@@ -1,5 +1,7 @@
 // CUSTOM ICON COMPONENT
-import duotone from "@/icons/duotone"; // type ChildItem = { name: string; path: string };
+import duotone from "@/icons/duotone";
+import flag from "@/icons/flag";
+// type ChildItem = { name: string; path: string };
 // type ChildItemWithChildren = {
 //   name: string;
 //   path: string;
@@ -34,6 +36,11 @@ export const navigations = [{
   name: "Square",
   path: "/Report",
   icon: duotone.Report
+}
+, {
+  name: "maping",
+  path: "/maping",
+  icon: flag
 }
 , {
   name: "map",
