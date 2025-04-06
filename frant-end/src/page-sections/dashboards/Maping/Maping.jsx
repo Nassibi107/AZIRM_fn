@@ -19,6 +19,7 @@ import { useSelector } from 'react-redux';
 
 import SelectAllIcon from '../../../icons/Select_All.svg';
 import UNselectAllIcon from '../../../icons/unCheck.svg';
+import { set } from 'nprogress';
 // import iconLive from '../../../icons/livesvg.svg';
 // import iconSeries from '../../icons/serie.svg';
 // import iconMovies from '../../icons/moviesSvg.svg';
@@ -42,7 +43,7 @@ const VITE_LEADER= import.meta.env.VITE_LEADER_URL;
         setbouquetSerieApi,
         selectedMovieIds,
         selectedSerieIds,
-        onChangeIdSerie,
+    
         onChangeIdMovie,
      })
 {
@@ -50,6 +51,7 @@ const VITE_LEADER= import.meta.env.VITE_LEADER_URL;
 const theme = useTheme();
 const isDarkMode = theme.palette.mode === 'dark';
     const [search , setSearch] = useState('');
+    const [searchAd , setSearchAd] = useState('');
     const [searchMove ,setSearchMove] = useState('');
     const [searchSerie , setSearchSerie] = useState('');
     const [searchData, setSearchData] = useState([]);
@@ -57,6 +59,7 @@ const isDarkMode = theme.palette.mode === 'dark';
     const [selectedIds , setSelectedIds] = useState([]);
     const [onChangeIdLive , setOnChangeIdLive] = useState([]);
     const [address, setAddress] = useState([]);
+    const [onChangeIdSerie , setOnChangeIdSerie] = useState([]);
   const __getSearch = async () =>{
      try {
         const response = await axios.get(`${ADMIN_ROUTE}/getAddressCanadaPost?searchTerm=${search}`)
@@ -71,36 +74,46 @@ const isDarkMode = theme.palette.mode === 'dark';
      }
    }
 
-   const __getLastId = async () =>{
-  
+   const __getLastId = async () => {
+    const filteMAp = searchData?.filter((item) =>
+      onChangeIdLive.includes(item.id)
+    );
+    
+    const mapping = filteMAp?.filter((item) => item.Next === "Find").map((item) => item.Id);
+    
+    const allResults = [];
+    let index = 0;
+    
+    // Process each mapping item one by one until all are done
+    while (index < mapping.length) {
+      try {
+        const response = await axios.get(`${ADMIN_ROUTE}/getAddressCanadaPost?lastId=${mapping[index]}`);
+        const resultItem = response.data;
+        console.log(resultItem);
         
-        const filteMAp = searchData?.filter((item) =>
-            onChangeIdLive.includes(item.id)
-        )
-        const mapping  = filteMAp?.filter((item) => item.Next== "Find").map((item) => item.Id)
-      const allResults = [];
-        let index = 0;
-        while (index < mapping.length) {
-            try {
-              const response = await axios.get(`${ADMIN_ROUTE}/getAddressCanadaPost?lastId=${mapping[index]}`);
-              
-              const resultItem = response.data; 
-              allResults.push(resultItem); 
-              const itemsWithIds = allResults.map((item, index) => ({
-                ...item,
-                id: index + 1,   
-            }));
-          
-              index++; 
-              console.log(itemsWithIds)
-              setAddress(itemsWithIds);
-              // move to next item
-            } catch (error) {
-              console.error("Error fetching item:", mapping[index], error);
-              index++; // still move on even if one fails
-            }
-   }
-}
+        // Accumulate results in the 1D array
+        allResults.push(...resultItem.Items); // Merging items into one 1D array
+    
+        // Increment index after a successful response
+        index++;
+      } catch (error) {
+        console.error("Error fetching item:", mapping[index], error);
+        // Still increment index even on failure to ensure the loop moves on
+        index++;
+      }
+    }
+  
+    // Once all results are fetched, update the state with the accumulated results
+    
+    // Log the results to verify everything was added correctly
+    const filterAdr = allResults.map((item, index) => ({
+        ...item,
+        id: index + 1,   
+    }));
+    setAddress(filterAdr);
+  };
+  
+  
    useEffect(() => {
     __getLastId();
    }, [onChangeIdLive]);
@@ -112,16 +125,20 @@ const isDarkMode = theme.palette.mode === 'dark';
         setSearchMove(e.target.value)
     }
 
-    const handleChangeSearchLive = (e) =>{
+    const handleChangeSearchAdress = (e) =>{
         setSearch(e.target.value)
     }
-    const handleChangeSearchSerie = (e) =>{
-        setSearchSerie(e.target.value)
+    const handleChangeSearchPorts = (e) =>{
+        setSearchAd(e.target.value)
     }
 
-    const bouquetLiveFilter  = searchData?.filter (item =>
+    const bouquetAdress  = searchData?.filter (item =>
 
         item?.Text?.toLowerCase().includes(search?.toLocaleLowerCase())
+    )
+    const bouquetPorts = address?.filter (item =>
+
+        item?.Text?.toLowerCase().includes(searchAd?.toLocaleLowerCase())
     )
 
   
@@ -172,7 +189,7 @@ const StyleLight = (bq,arr) => {
         <Grid container spacing={1} alignItems="center">
         <Grid item xs={12} sm={12} md={8}>
         <TextField sx={{my : 1, color: 'rgb(198 120 52)' , fontSize :"25px"}} fullWidth  placeholder="search your address . . . ."
-        InputProps={{ startAdornment: <Search/>}} value={search} onChange={handleChangeSearchLive} />
+        InputProps={{ startAdornment: <Search/>}} value={search} onChange={handleChangeSearchAdress} />
         </Grid>
       <Grid item sm={6} xs={6} md={2}>
                 <Button fullWidth color="success"  variant="text" 
@@ -214,7 +231,7 @@ const StyleLight = (bq,arr) => {
                 setOnChangeIdLive(value.map(Number));
             }}
         >
-            {bouquetLiveFilter.length > 0 ? bouquetLiveFilter.map((bq) => (
+            {bouquetAdress.length > 0 ? bouquetAdress.map((bq) => (
                 <option
                     key={bq.id}
                     value={bq.id}
@@ -223,7 +240,7 @@ const StyleLight = (bq,arr) => {
                     {bq.Text.toUpperCase()}
                 </option>)):<option style={{ color :"rgb(198 120 52)" ,fontWeight : "bolde" ,
           fontSize : "30px",
-          margin : "130px 140px"}}> Loading ... </option>}
+          margin : "130px 140px"}}>  </option>}
        
         </select>
         <Box sx={isDarkMode ? BandDark(onChangeIdLive):BandLight(onChangeIdLive)}>
@@ -256,17 +273,17 @@ const StyleLight = (bq,arr) => {
     textAlign:"center"}}>
          <Grid container spacing={1} alignItems="center">
          <Grid item xs={12} sm={12} md={8}>
-     <TextField sx={{my : 1}} fullWidth placeholder="address." InputProps={{ startAdornment: <Search/>}}
-     value={searchSerie} onChange={handleChangeSearchSerie} />
+     <TextField sx={{my : 1}} fullWidth placeholder="ports ...." InputProps={{ startAdornment: <Search/>}}
+     value={searchAd} onChange={handleChangeSearchPorts} />
      </Grid>
      <Grid item sm={6} xs={6} md={2}>                <Button fullWidth color="success"  variant="text"   
-                onClick={() =>helpers.actionBq.handleSelectAll(selectedSectionSerie , bouquetSerieApi , onChangeIdSerie)}>                     
+                onClick={() =>helpers.actionBq.handleSelectAll(onChangeIdSerie , address , setOnChangeIdSerie)}>                     
                 <img src={SelectAllIcon} alt="icon" width="35" height="35" />
                 </Button>
         </Grid>
         <Grid item sm={6} xs={6} md={2}>
                 <Button fullWidth color='error' variant='text'
-                 onClick={() => helpers.actionBq.handleUnselectAll(onChangeIdSerie)}>
+                 onClick={() => helpers.actionBq.handleUnselectAll(setOnChangeIdSerie)}>
                     <img src={UNselectAllIcon} alt="icon" width="35" height="35" />
                  </Button>
         </Grid>
@@ -293,41 +310,41 @@ const StyleLight = (bq,arr) => {
 
         }}
             multiple
-            value={selectedSerieIds}
+            value={onChangeIdSerie}
             onChange={(e) => {
                 const value = Array.from(e.target.selectedOptions, option => option.value);
-                onChangeIdSerie(value.map(Number));
+                setOnChangeIdSerie(value.map(Number));
             }}
         >
-            {address?.length > 0 ? address.map((bq) => (
+            {bouquetPorts?.length > 0 ? bouquetPorts.map((bq, index) => (
                 <option
                     key={bq.id}
                     value={bq.id}
-                    style={isDarkMode ? StyleDark (bq,selectedSerieIds): StyleLight (bq,selectedSerieIds)}
+                    style={isDarkMode ? StyleDark (bq,onChangeIdSerie): StyleLight (bq,onChangeIdSerie)}
                 >
-                    {bq.Text.toUpperCase()}
+                    {bq?.Text}
                 </option>
           )):<option style={{ color :"rgb(198 120 52)" ,fontWeight : "bolde" ,
-          fontSize : "30px",
-          margin : "130px 140px"}}> Loading ... </option>}
+          fontSize : "25px",
+          margin : "130px 40px"}}> il n'y a aucun port à afficher</option>}
         </select>
-        <Box sx={isDarkMode ? BandDark(selectedSerieIds):BandLight(selectedSerieIds)}>
-             <Paragraph fontWeight={900}>Element Selected : {selectedSerieIds?.length}</Paragraph>
+        <Box sx={isDarkMode ? BandDark(onChangeIdSerie):BandLight(onChangeIdSerie)}>
+             <Paragraph fontWeight={900}>Element Selected : {onChangeIdSerie?.length}</Paragraph>
         </Box>
         <Box sx={{ padding :"10px 5px"}}>
 
         <Grid container spacing={2} >
             <Grid item sm={6} md={3}  xs={6}>
-                <Button fullWidth color="primary" variant="outlined"  onClick={() => helpers.actionBq.sortTop(bouquetSerieApi, selectedSerieIds, setbouquetSerieApi)}><Top/></Button>
+                <Button fullWidth color="primary" variant="outlined"  onClick={() => helpers.actionBq.sortTop(address,onChangeIdSerie ,  setAddress)}><Top/></Button>
             </Grid>
             <Grid item sm={6} md={3}  xs={6}>
-                <Button fullWidth color="primary" variant="outlined"  onClick={()=>{helpers.actionBq.sortMaxTop(bouquetSerieApi, selectedSerieIds, setbouquetSerieApi)}}><MaxTop/></Button>
+                <Button fullWidth color="primary" variant="outlined"  onClick={()=>{helpers.actionBq.sortMaxTop(address,onChangeIdSerie ,  setAddress)}}><MaxTop/></Button>
             </Grid>
             <Grid item sm={6} md={3}  xs={6}>
-                <Button fullWidth color="inherit"variant="outlined" onClick={() => helpers.actionBq.sortBottom(bouquetSerieApi, selectedSerieIds, setbouquetSerieApi)}><Bottom/></Button>
+                <Button fullWidth color="inherit"variant="outlined"  onClick={() => helpers.actionBq.sortBottom(address,onChangeIdSerie ,  setAddress)}><Bottom/></Button>
             </Grid>
             <Grid item sm={6} md={3}  xs={6}>
-                <Button fullWidth color="inherit" variant="outlined" onClick={() => helpers.actionBq.sortMaxBottom(bouquetSerieApi, selectedSerieIds, setbouquetSerieApi)}><MaxBottom/></Button>
+                <Button fullWidth color="inherit" variant="outlined" onClick={() => helpers.actionBq.sortMaxBottom(address,onChangeIdSerie ,  setAddress)}><MaxBottom/></Button>
             </Grid>
             </Grid>
         </Box>
