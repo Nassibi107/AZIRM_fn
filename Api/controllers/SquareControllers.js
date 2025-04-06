@@ -300,13 +300,15 @@ exports.getAllCashWeeK = async (req,res) => {
 }
 
 exports.getDonationsByDate = async (req,res) => {
-    const { date } = req.query;
+    const { dates,daten } = req.query;
     try{
-        console.log("Date:", date);
-        if (!date) {
+        console.log("Dates:", dates);
+        console.log("Daten:", daten);
+
+        if (!dates || !daten) {
             return res.status(400).json({ message: "Date is required" });
         }
-        const donationCAsh = await squareService.getDonationsSummary(date);
+        const donationCAsh = await squareService.getDonationsSummary(dates , daten);
         if (donationCAsh.length === 0) {
             return res.status(404).json({ message: "No donations found" });
         }

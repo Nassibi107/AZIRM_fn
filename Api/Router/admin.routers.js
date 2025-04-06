@@ -4,6 +4,7 @@ const router = express.Router();
 
 const adminController = require("../controllers/adminController.js");
 const SquareControllers = require("../controllers/SquareControllers.js");
+const CanadaPost = require("../controllers/CanadaPost.js");
 const authMiddleware = require("../Middleware/authMiddleware.js");
 const isAdmin = require("../Middleware/adminMiddleware.js");
 
@@ -32,4 +33,5 @@ router.get("/report",SquareControllers.getPayementsByDate);
 router.delete("/don/",adminController.DeleteAllDontion);
 router.get("/reportDaily",SquareControllers.getDonationsByDate);
 router.get("/getAddress",SquareControllers.getLaction);
+router.get("/getAddressCanadaPost",CanadaPost.getAddressCanadaPost);
 exports.router = router;

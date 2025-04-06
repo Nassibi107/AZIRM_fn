@@ -27,6 +27,8 @@ const Upbyass = Loadable(lazy(() => import("../pages/dashboard/users/updateLeade
 const ReportD = Loadable(lazy(() => import("../pages/dashboard/Report/ReportDpage")));
 const ReCach = Loadable(lazy(() => import("../pages/dashboard/Cash/CashPage")));
 const CashDlsPage = Loadable(lazy(() => import("../pages/dashboard/Cash/CashDlsPage")));
+
+const MapingPage = Loadable(lazy(() => import("../pages/dashboard/Maping/MapingPage")));
 export const DashboardRoutes = [{
   path: "/",
   element: <AuthGuard>
@@ -94,6 +96,9 @@ export const DashboardRoutes = [{
   ,{
     path :"/CashDlsPage/:id",
     element : <PrivateRoute><CashDlsPage/></PrivateRoute>
+  },{
+    path :"/maping",
+    element :<MapingPage/>
   }
   // , {
   //   path :"announcement",
