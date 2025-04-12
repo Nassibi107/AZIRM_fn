@@ -67,6 +67,9 @@ const isDarkMode = theme.palette.mode === 'dark';
     const [onChangeIdSerie , setOnChangeIdSerie] = useState([]);
     const [openModal, setOpenModal] = useState(false); // Modal state
 
+
+    
+
   const __getSearch = async () =>{
      try {
         const response = await axios.get(`${ADMIN_ROUTE}/getAddressCanadaPost?searchTerm=${search}`)
@@ -374,7 +377,7 @@ const StyleLight = (bq,arr) => {
     </Grid>
     <Divider  sx={{ my: 3 }} />
     <Button variant="outlined"  onClick={handleOpenModal}> <Flag/> </Button>
-    <ModalContent open={openModal} onClose={handleCloseModal}  map={address}  port={onChangeIdSerie} />
+    <ModalContent open={openModal} onClose={handleCloseModal} title={bouquetAdress} titleId={onChangeIdLive} map={address}  port={onChangeIdSerie} />
    </Box>
 </Card>
 </>

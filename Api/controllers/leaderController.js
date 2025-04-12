@@ -2,7 +2,7 @@
 
 const { where } = require('sequelize');
 const Model = require('../Models');
-
+const axios = require('axios');
 
 exports.register = async (req, res) => {
     try {
@@ -342,3 +342,23 @@ exports.getTopWeek = async (req, res) => {
     }
 }
 
+
+exports.getLongLat = async (req, res) => {
+  const { address } = req.query;
+  try {
+    // URL encode the address
+    const encodedAddress = encodeURIComponent(address);
+
+    // Make the API request with the encoded address
+    const response = await axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${encodedAddress}&key=${process.env.GOOGLE_MAPS_API_KEY}`);
+
+    // Extract lat and lng from the response
+    const { lat, lng } = response.data.results[0].geometry.location;
+
+    // Send the lat and lng as the response
+    res.status(200).json({ lat, lng });
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).json({ msg: 'Server Error' });
+  }
+};

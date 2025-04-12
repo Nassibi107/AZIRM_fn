@@ -4,9 +4,12 @@ import { Autocomplete,Dialog, InputLabel,DialogActions, DialogContent, DialogTit
 import { FlexBetween } from '@/components/flexbox';
 import axios from 'axios';
 import { LoadingButton } from '@mui/lab';
+import { Title } from '@mui/icons-material';
+const GOOGLE_MAP_KEY = import.meta.env.VITE_YOUR_GOOGLE_MAPS_API_KEY;
 const   ADMIN_ROUTE = import.meta.env.VITE_ADMIN_URL;
 const   VITE_LEADER = import.meta.env.VITE_LEADER_URL;
-const ModalContent = ({ open, onClose , title , map ,port}) => {
+const ModalContent = ({ open, onClose , title , map ,port,titleId}) => {
+  const TiR = title[titleId -1]?.Text;
     const [selectedUser, setSelectedUser] = useState(""); 
     const [users, setUsers] = useState("");
     const [usersInfo, setusersInfo] = useState("");
@@ -16,6 +19,16 @@ const ModalContent = ({ open, onClose , title , map ,port}) => {
   const [alertSeverity, setAlertSeverity] = useState(null); 
   const [selectedFile, setSelectedFile] = useState(null);
     const [items, setItems] = useState([]); 
+
+    const getLatLngFromAddress = async (address) => {
+    
+        try{
+          const res =  await axios.post(`${VITE_LEADER}/getLongLat?address=${address}`);
+          console.log(res.data);
+        }catch(err){
+          console.log(err);
+        }
+      };
     const handleUserChange = (event, newValue) => {
       setSelectedUser(newValue);
    
@@ -27,7 +40,8 @@ const ModalContent = ({ open, onClose , title , map ,port}) => {
         const response = await axios.get(`${ADMIN_ROUTE}/users`);
         setUsers(response.data.data.map((user) => `${user.firstName} ${user.lastName}`));
         setusersInfo(response.data.data);
-        
+       
+   
       }catch(err){
         console.log(err);
       }
@@ -35,12 +49,11 @@ const ModalContent = ({ open, onClose , title , map ,port}) => {
   
     const _Addontion = async (name) => {
       setIsLoading(true);
-      console.log(usersInfo);
-      console.log(name);
+     
       const letname = name.split(" ")[1];
       const fstname = name.split(" ")[0];
       const userID = usersInfo.find(user => user.lastName === letname && user.firstName == fstname)?.id;
-    console.log(userID);
+
       // Create a single array of details from locations
       const details = locations.map((location) => ({
         amount: 0,
@@ -89,6 +102,7 @@ const ModalContent = ({ open, onClose , title , map ,port}) => {
     }
     useEffect(() => {
       getPorts();
+      getLatLngFromAddress(TiR);
     }, [port, map]);
 
     useEffect(() => {get_info()}, []);
@@ -113,14 +127,14 @@ const ModalContent = ({ open, onClose , title , map ,port}) => {
        <FlexBetween mb={2}>
 
        <img src="/static/loactions/blue.png" alt="QR" style={{ width: "50px", height: "50px" }} />
-       <h4 style={{ marginTop: "10px"  }}> 130 la rue de la barre </h4>
+       <h4 style={{ marginTop: "10px"  }}> {TiR || "unknows"} </h4>
        </FlexBetween>
         <Divider sx={{ my: 3 }} />
          
         <Grid container spacing={2} alignItems="center" justifyContent="center">
         
         {
-          locations?.map((item, index) => ( <TextField value={item}  /> ))
+          locations?.map((item, index) => ( <TextField value={item || "" }  key={index} /> ))
         }
     
        </Grid>
@@ -132,7 +146,7 @@ const ModalContent = ({ open, onClose , title , map ,port}) => {
                     fullWidth
                     value={selectedUser}
                     onChange={handleUserChange}
-                    options={users  || []}
+                    options={users  ||  []}
                     renderInput={(params) => <TextField {...params} label="Select User" variant="outlined" />}
                     isOptionEqualToValue={(option, value) => option === value}
                     disableClearable
