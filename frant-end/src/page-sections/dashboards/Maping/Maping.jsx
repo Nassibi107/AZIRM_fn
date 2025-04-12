@@ -152,14 +152,14 @@ const isDarkMode = theme.palette.mode === 'dark';
 const BandDark = (arr) =>  {
         return {   
             padding :"10px 37px" ,   
-            backgroundColor: arr?.length ? "rgb(198 120 52)" :"#404651" , 
+            backgroundColor: arr?.length ? "rgb(63 59 89)" :"#404651" , 
             borderRadius: '8px'
         }
 }
 const BandLight = (arr) => {
     return {
         padding :"10px 37px" ,   
-        backgroundColor: arr?.length ? "rgb(198 120 52)" :"#c3c3c3" , 
+        backgroundColor: arr?.length ? "rgb(63 59 89)" :"#c3c3c3" , 
         borderRadius: '8px'
     }
 }
@@ -168,7 +168,7 @@ const StyleDark = (bq,arr) => {
     cursor: 'pointer',
     padding: '12px 18px',
     margin: '6px',
-    backgroundColor:arr.includes(bq.id) ? "rgb(198 120 52)" : "#404651",
+    backgroundColor:arr.includes(bq.id) ? "rgb(63 59 89)" : "#404651",
     borderRadius: '13px',
     color :"white",
     transition: 'background-color 0.3s ease'
@@ -179,7 +179,7 @@ const StyleLight = (bq,arr) => {
     cursor: 'pointer',
     padding: '12px 18px',
     margin: '6px',
-    backgroundColor:arr.includes(bq.id) ? "rgb(198 120 52)" : "#c3c3c3",
+    backgroundColor:arr.includes(bq.id) ? "rgb(63 59 89)" : "#c3c3c3",
     borderRadius: '13px',
     color :"black",
     transition: 'background-color 0.3s ease'
@@ -210,7 +210,7 @@ const StyleLight = (bq,arr) => {
     <Box sx={{ backgroundColor: '', padding :"5px 10px" ,textAlign:"center", }}>
         <Grid container spacing={1} alignItems="center">
         <Grid item xs={12} sm={12} md={8}>
-        <TextField sx={{my : 1, color: 'rgb(198 120 52)' , fontSize :"25px"}} fullWidth  placeholder="search your address . . . ."
+        <TextField sx={{my : 1, color: 'rgb(63 59 89)' , fontSize :"25px"}} fullWidth  placeholder="search your address . . . ."
         InputProps={{ startAdornment: <Search/>}} value={search} onChange={handleChangeSearchAdress} />
         </Grid>
       <Grid item sm={6} xs={6} md={2}>
@@ -260,7 +260,7 @@ const StyleLight = (bq,arr) => {
                     style={isDarkMode ? StyleDark (bq,onChangeIdLive): StyleLight(bq,onChangeIdLive)}
                 >
                     {bq.Text.toUpperCase()}
-                </option>)):<option style={{ color :"rgb(198 120 52)" ,fontWeight : "bolde" ,
+                </option>)):<option style={{ color :"rgb(63 59 89)" ,fontWeight : "bolde" ,
           fontSize : "30px",
           margin : "130px 140px"}}>  </option>}
        
@@ -273,13 +273,13 @@ const StyleLight = (bq,arr) => {
             <Grid container spacing={2} >
             
             <Grid item sm={6} md={3}  xs={6}>
-                <Button fullWidth color="primary" variant="outlined" onClick={() => helpers.actionBq.sortTop(searchData, onChangeIdLive, setSearchData)}><Top/></Button>
+                <Button fullWidth color="primary" variant="outlined"  onClick={() => helpers.actionBq.sortTop(searchData, onChangeIdLive, setSearchData)}><Top/></Button>
             </Grid>
             <Grid item sm={6}  md={3}  xs={6}>
-                <Button fullWidth color="primary" variant="outlined" onClick={()=>{helpers.actionBq.sortMaxTop(searchData, onChangeIdLive, setSearchData)}}><MaxTop/></Button>
+                <Button fullWidth color="primary" variant="outlined"  onClick={()=>{helpers.actionBq.sortMaxTop(searchData, onChangeIdLive, setSearchData)}}><MaxTop/></Button>
             </Grid>
             <Grid item sm={6}  md={3}  xs={6}>
-                <Button fullWidth color="inherit" variant="outlined" onClick={() => helpers.actionBq.sortBottom(searchData, onChangeIdLive, setSearchData)}><Bottom/></Button>
+                <Button fullWidth color="inherit" variant="outlined"  onClick={() => helpers.actionBq.sortBottom(searchData, onChangeIdLive, setSearchData)}><Bottom/></Button>
             </Grid>
             <Grid item sm={6}  md={3} xs={6}>
                 <Button fullWidth 
@@ -312,7 +312,6 @@ const StyleLight = (bq,arr) => {
        
      </Grid>
     </Box>
-   
         <select
           style={{
             height: '335px',
@@ -346,7 +345,7 @@ const StyleLight = (bq,arr) => {
                 >
                     {bq?.Text}
                 </option>
-          )):<option style={{ color :"rgb(198 120 52)" ,fontWeight : "bolde" ,
+          )):<option style={{ color :"rgb(63 59 89)" ,fontWeight : "bolde" ,
           fontSize : "25px",
           margin : "130px 40px"}}> il n'y a aucun port à afficher</option>}
         </select>
@@ -375,7 +374,7 @@ const StyleLight = (bq,arr) => {
     </Grid>
     <Divider  sx={{ my: 3 }} />
     <Button variant="outlined"  onClick={handleOpenModal}> <Flag/> </Button>
-    <ModalContent open={openModal} onClose={handleCloseModal} />
+    <ModalContent open={openModal} onClose={handleCloseModal}  map={address}  port={onChangeIdSerie} />
    </Box>
 </Card>
 </>

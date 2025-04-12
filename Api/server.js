@@ -36,27 +36,27 @@ const minutes = now.minute(); // Returns an integer (0-59)
 // Log the results
 console.log(`Current Time in ${timezone} is ${hours}:${minutes < 10 ? '0' : ''}${minutes}`);
 // Winston Logger Configuration
-const logger = winston.createLogger({
-    level: 'info',
-    format: winston.format.combine(
-        winston.format.timestamp(),
-        winston.format.json()
-    ),
-    transports: [
-        new winston.transports.File({ filename: 'logs/success.log', level: 'info' }),
-        new winston.transports.File({ filename: 'logs/error.log', level: 'error' })
-    ]
-});
+// const logger = winston.createLogger({
+//     level: 'info',
+//     format: winston.format.combine(
+//         winston.format.timestamp(),
+//         winston.format.json()
+//     ),
+//     transports: [
+//         new winston.transports.File({ filename: 'logs/success.log', level: 'info' }),
+//         new winston.transports.File({ filename: 'logs/error.log', level: 'error' })
+//     ]
+// });
 
 // If in development, also log to the console
-if (process.env.NODE_ENV !== 'production') {
-    logger.add(new winston.transports.Console({
-        format: winston.format.combine(
-            winston.format.colorize(),
-            winston.format.simple()
-        )
-    }));
-}
+// if (process.env.NODE_ENV !== 'production') {
+//     logger.add(new winston.transports.Console({
+//         format: winston.format.combine(
+//             winston.format.colorize(),
+//             winston.format.simple()
+//         )
+//     }));
+// }
 
 
 app.use(cors());
@@ -69,16 +69,16 @@ app.use(express.static(path.join(__dirname, "views")));
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Log all successful requests
-app.use((req, res, next) => {
-    res.on('finish', () => {
-        logger.info({
-            method: req.method,
-            url: req.url,
-            status: res.statusCode
-        });
-    });
-    next();
-});
+// app.use((req, res, next) => {
+//     res.on('finish', () => {
+//         logger.info({
+//             method: req.method,
+//             url: req.url,
+//             status: res.statusCode
+//         });
+//     });
+//     next();
+// });
 
 app.use('/uploads', express.static(path.join(__dirname, 'controllers/public/uploads')));
 app.use('/qrcodes', express.static(path.join(__dirname, 'controllers/public/qrcodes')));
@@ -96,25 +96,25 @@ app.use((req, res, next) => {
     next(error);
 });
 
-app.use((error, req, res, next) => {
-    logger.error({
-        message: error.message,
-        status: error.status || 500,
-        stack: error.stack
-    });
+// app.use((error, req, res, next) => {
+//     logger.error({
+//         message: error.message,
+//         status: error.status || 500,
+//         stack: error.stack
+//     });
 
-    res.status(error.status || 500).json({
-        error: {
-            message: error.message
-        }
-    });
-});
+//     res.status(error.status || 500).json({
+//         error: {
+//             message: error.message
+//         }
+//     });
+// });
 
 // Start Server
 db.sync().then(() => {
     app.listen(port, () => {
         console.log('Server is running on port => ' + port);
-        logger.info(`Server started on port ${port}`);
+        // logger.info(`Server started on port ${port}`);
 
         // Call the function immediately when the server starts
         squareService.getTopEmployeesByPaymentsBackup();

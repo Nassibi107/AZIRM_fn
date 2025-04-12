@@ -27,10 +27,15 @@ const Donation = db.define("Donation", {
     type: DataTypes.INTEGER,
     allowNull: false,
   },
+  
 });
 
 Donation.associate = (models) => {
   Donation.belongsTo(models.User, { foreignKey: "userId", as: "user" });
+  Donation.hasMany(models.Don_Details, {
+    foreignKey: "donationId",
+    as: "details"
+  });
 };
 
 module.exports = Donation;

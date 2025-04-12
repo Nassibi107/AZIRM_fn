@@ -28,6 +28,7 @@
     "aws-amplify": "^5.3.10",
     "axios": "^1.7.2",
     "date-fns": "^2.30.0",
+    "file-saver": "^2.0.5",
     "firebase": "^10.3.0",
     "formik": "^2.4.3",
     "i18next": "^23.4.6",
@@ -62,6 +63,7 @@
     "stylis-plugin-rtl": "^2.1.1",
     "swiper": "^9.2.4",
     "typescript": "^5.2.2",
+    "xlsx": "^0.18.5",
     "yup": "^0.32.11"
   },
   "devDependencies": {

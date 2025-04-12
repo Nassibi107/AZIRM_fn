@@ -223,61 +223,102 @@ exports.destroyUser = async (req, res) => {
 
 exports.insertDonation = async (req, res) => {
     try {
-        const { 
-            amount,
-            type,
-            lat,
-            lng,
-            feed,
-            userId
-        } = req.body;
-
-        const donation = await Model.Donation.create({
-            amount,
-            type,
-            lat,
-            lng,
-            feed,
-            userId
-        });
-
-        res.status(201).json({
-            success: true,
-            data: donation
-        });
-
+      const { 
+        amount,
+        type,
+        lat,
+        lng,
+        feed,
+        userId,
+        details // <-- this should be an array of Don_Details
+      } = req.body;
+  
+      const donation = await Model.Donation.create({
+        amount,
+        type,
+        lat,
+        lng,
+        feed,
+        userId,
+        details // Sequelize will auto-insert these into Don_Details
+      }, {
+        include: [{ model: Model.Don_Details, as: "details" }]
+      });
+  
+      res.status(201).json({
+        success: true,
+        data: donation
+      });
+  
     } catch (error) {
-        console.error(error.message);
-        res.status(500).json({ msg: 'Server Error' });
+      console.error("Insert donation error:", error.message);
+      res.status(500).json({ msg: 'Server Error' });
     }
-}
+  };
+  
 
-exports.updateDon = async (req, res) => {
+  exports.updateDon = async (req, res) => {
     const reqId = req.params.id;
-    const { amount, type, lat, lng, feed ,userIds } = req.body;
+    const { type, lat, lng, feed, userId, details } = req.body;
+  
     try {
-        const don = await Model.Donation.findOne({
-            where: {
-                idD: reqId
+      const don = await Model.Donation.findOne({
+        where: { idD: reqId },
+        include: [{ model: Model.Don_Details, as: "details" }]
+      });
+      if (!don) {
+        return res.status(404).json({ msg: 'Donation not found' });
+      }
+      // Update donation main fields
+      don.type = type || don.type;
+      don.lat = lat || don.lat;
+      don.lng = lng || don.lng;
+      if (feed || feed == 0) {
+      don.feed = feed ;
+      }else{
+        don.feed = don.feed;
+      }
+      don.userId = userId || don.userId;
+      // Update Don_Details if provided
+      if (Array.isArray(details)) {
+        let totalAmount = 0;
+  
+        for (const item of details) {
+          if (item.idDD) {
+            // Update existing Don_Details
+            const existingDetail = await Model.Don_Details.findOne({
+              where: { idDD: item.idDD, donationId: don.idD }
+            });
+  
+            if (existingDetail) {
+              existingDetail.amount = item.amount || existingDetail.amount;
+              existingDetail.type = item.type || existingDetail.type;
+              existingDetail.feed = item.feed || existingDetail.feed;
+              existingDetail.numP = item.numP || existingDetail.numP;
+              existingDetail.description = item.description || existingDetail.description;
+              await existingDetail.save();
+              totalAmount += parseFloat(existingDetail.amount);
             }
-        });
-        if (!don) {
-            return res.status(404).json({ msg: 'Donation not found' });
+          }
         }
-        don.amount = amount   || don.amount;
-        don.type = type || don.type;
-        don.lat = lat       || don.lat; 
-        don.lng = lng    || don.lng;
-        don.feed = feed     || don.feed;
-        don.userId = userIds || don.userId;  
-        await don.save();
-        res.status(200).json({ msg: 'Donation updated successfully', don });
-    
+
+        // Update total amount on Donation
+        don.amount = totalAmount;
+      }
+  
+      await don.save();
+  
+      res.status(200).json({
+        msg: 'Donation and details updated successfully',
+        donation: don
+      });
+  
     } catch (error) {
-        console.error(error.message);
-        res.status(500).json({ msg: 'Server Error' });
+      console.error("Update donation error:", error.message);
+      res.status(500).json({ msg: 'Server Error' });
     }
-}
+  };
+  
 
 exports.getTopWeek = async (req, res) => {
      const{team_member_id} = req.query;

@@ -351,7 +351,14 @@ exports.getDonationsbyID = async (req, res) => {
         const donations = await Model.Donation.findAll({
             where: {
                 userId: id
-            }
+            },
+            include: [
+                {
+                    model: Model.Don_Details,
+                    as: 'donationDetails',
+                    
+                }
+            ]
         });
         res.status(200).json({
             success: true,
